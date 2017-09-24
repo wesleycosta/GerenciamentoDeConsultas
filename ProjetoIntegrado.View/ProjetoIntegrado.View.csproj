@@ -1,0 +1,469 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CAB1BDF2-8C01-4D6B-9BEF-B18874944ECA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjetoIntegrado.View</RootNamespace>
+    <AssemblyName>ProjetoIntegrado</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\DEPLOY\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dragablz, Version=0.0.3.197, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dragablz.0.0.3.197\lib\net45\Dragablz.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.5.0.23, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.3\lib\net45\MaterialDesignColors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.MahApps, Version=0.0.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.MahApps.0.0.11\lib\net45\MaterialDesignThemes.MahApps.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.3.1.953, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.3.1.953\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WebEye.Controls.Wpf.WebCameraControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebEye.Controls.Wpf.WebCameraControl.1.0.2\lib\net40\WebEye.Controls.Wpf.WebCameraControl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Categoria\CadCategoriaWin.xaml.cs">
+      <DependentUpon>CadCategoriaWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Categoria\PrincipalCategoriaWin.xaml.cs">
+      <DependentUpon>PrincipalCategoriaWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\CadClienteWin.xaml.cs">
+      <DependentUpon>CadClienteWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensao\ComponentesExt.cs" />
+    <Compile Include="Extensao\Mbox.cs" />
+    <Compile Include="FormaDePagamento\CadFormaDePagamentoWin.xaml.cs">
+      <DependentUpon>CadFormaDePagamentoWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormaDePagamento\PrincipalFormaDePagamentoWin.xaml.cs">
+      <DependentUpon>PrincipalFormaDePagamentoWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Funcionario\CadFuncionarioWin.xaml.cs">
+      <DependentUpon>CadFuncionarioWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Funcionario\PrincipalFuncionarioWin.xaml.cs">
+      <DependentUpon>PrincipalFuncionarioWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Principal\Enum.cs" />
+    <Compile Include="Principal\MenuItens.cs" />
+    <Compile Include="SplashInicial\SplashInicial.xaml.cs">
+      <DependentUpon>SplashInicial.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Splash\SplashScreen.cs" />
+    <Compile Include="Splash\SplashScreenWin.xaml.cs">
+      <DependentUpon>SplashScreenWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WebServices\Requisicao.cs" />
+    <Compile Include="WebServices\ViaCep.cs" />
+    <Compile Include="WebCam\WebCamWin.xaml.cs">
+      <DependentUpon>WebCamWin.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cargo\CadCargoWin.xaml.cs">
+      <DependentUpon>CadCargoWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cargo\PrincipalCargoWin.xaml.cs">
+      <DependentUpon>PrincipalCargoWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Icons.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Icons.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginWin.xaml.cs">
+      <DependentUpon>LoginWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Principal\PrincipalWin.xaml.cs">
+      <DependentUpon>PrincipalWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Icons.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Icons.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjetoIntegrado.BaseDeDados\ProjetoIntegrado.BaseDeDados.csproj">
+      <Project>{e40cf0a3-e406-437c-ada7-240c8b43620c}</Project>
+      <Name>ProjetoIntegrado.BaseDeDados</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjetoIntegrado.Funcoes\ProjetoIntegrado.Funcoes.csproj">
+      <Project>{92fc1146-fe7c-4d4c-b1bd-91dc7b4b59db}</Project>
+      <Name>ProjetoIntegrado.Funcoes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjetoIntegrado.Mensagens\ProjetoIntegrado.Mensagens.csproj">
+      <Project>{b36852e5-af57-4b3d-8cbf-83221c187dab}</Project>
+      <Name>ProjetoIntegrado.Mensagens</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjetoIntegrado.Model\ProjetoIntegrado.Model.csproj">
+      <Project>{0fefe5bf-cebe-4184-8edd-6dd4f4ad329d}</Project>
+      <Name>ProjetoIntegrado.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjetoIntegrado.ViewUtil\ProjetoIntegrado.ViewUtil.csproj">
+      <Project>{d29fcce5-4559-453b-b495-7324407334e2}</Project>
+      <Name>ProjetoIntegrado.ViewUtil</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Cargo\CadCargoWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Cargo\PrincipalCargoWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Categoria\CadCategoriaWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Categoria\PrincipalCategoriaWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Clientes\CadClienteWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormaDePagamento\CadFormaDePagamentoWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormaDePagamento\PrincipalFormaDePagamentoWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Funcionario\CadFuncionarioWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Funcionario\PrincipalFuncionarioWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login\LoginWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Principal\PrincipalWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SplashInicial\SplashInicial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Splash\SplashScreenWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WebCam\WebCamWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eyeglasses.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calendar_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calendar_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Content_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Content_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Customer_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Customer_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Employee_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Employee_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FluxoDeCaixa16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FluxoDeCaixa32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Grid_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Grid_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HistoryItem_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HistoryItem_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Home_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Home_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MonthView_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MonthView_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewTask_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewTask_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Palette_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Palette_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Properties_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Properties_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Time_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Time_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AlignHorizontalBottom_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AlignHorizontalBottom_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AlignHorizontalCenter_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AlignHorizontalCenter_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chart_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chart_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Contact_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Contact_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FullStackedBar_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FullStackedBar_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GroupFooter_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GroupFooter_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InsertFooter_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InsertFooter_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InsertHeader_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InsertHeader_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackageProduct_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackageProduct_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Project_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Project_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShowWorkTimeOnly_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShowWorkTimeOnly_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SwitchTimeScalesTo_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SwitchTimeScalesTo_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Team_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Team_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Convert_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Convert_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_32x32.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
