@@ -195,7 +195,6 @@
                 </TreeView>
             </StackPanel>
         </Border>
-        <Button x:Name="button" Content="Nova Consulta" Grid.Column="1" Margin="743,52,-866,27" VerticalAlignment="Center" HorizontalAlignment="Center" Width="126" />
     </Grid>
 
 </controls:MetroWindow>

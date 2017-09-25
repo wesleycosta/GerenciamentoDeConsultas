@@ -14,7 +14,7 @@ namespace ProjetoIntegrado.View.WebServices
         public async Task<EnderecoModel> BuscarCep(string cep)
         {
             var requisicao = new Requisicao();
-            var respJson = requisicao.MetodoGet(GetUrl(Marcara.Remover(cep)));
+            var respJson = requisicao.MetodoGet(GetUrl(cep));
 
             if (respJson != string.Empty)
             {

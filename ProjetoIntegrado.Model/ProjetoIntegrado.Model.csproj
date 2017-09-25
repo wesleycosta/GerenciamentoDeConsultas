@@ -34,6 +34,7 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,8 +47,11 @@
     <Compile Include="Cargo\CargoInfraData.cs" />
     <Compile Include="Categoria\CategoriaInfraData.cs" />
     <Compile Include="Categoria\CategoriaModel.cs" />
+    <Compile Include="Clinica\ClinicaInfraData.cs" />
+    <Compile Include="Clinica\ClinicaModel.cs" />
     <Compile Include="Endereco\EnderecoInfraData.cs" />
     <Compile Include="Endereco\EnderecoModel.cs" />
+    <Compile Include="Estado\EstadoModel.cs" />
     <Compile Include="FormaDePagamento\FormaDePagamentoInfraData.cs" />
     <Compile Include="FormaDePagamento\FormaDePagamentoModel.cs" />
     <Compile Include="Funcionario\FuncionarioInfraData.cs" />

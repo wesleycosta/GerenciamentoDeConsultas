@@ -20,5 +20,10 @@ namespace ProjetoIntegrado.Funcoes
 
             return dt;
         }
+
+        public static DateTime Converter(string valor)
+        {
+            return DateTime.Now;
+        }
     }
 }

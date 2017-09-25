@@ -7,6 +7,8 @@ namespace ProjetoIntegrado.View.Cargo
 
     public partial class CadCargoWin
     {
+        #region  PROPRIEDADES E CTOR
+
         public bool cadastrou;
 
         private CargoModel cargo = new CargoModel();
@@ -31,6 +33,10 @@ namespace ProjetoIntegrado.View.Cargo
             CarregarDados();
         }
 
+        #endregion
+
+        #region CARREGAR E INICIAR
+
         private void Iniciar()
         {
             Loaded += (o, a) => tbDescricao.Focus();
@@ -40,6 +46,8 @@ namespace ProjetoIntegrado.View.Cargo
         {
             tbDescricao.Text = cargo.descricao;
         }
+
+        #endregion
 
         #region MANTEM CARGO
 
@@ -52,7 +60,7 @@ namespace ProjetoIntegrado.View.Cargo
 
         private void MantemCargo()
         {
-            var cargo = ToModel();
+            cargo = ToModel();
 
             if (cadastrar)
                 cargo.Cadastrar();

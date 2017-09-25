@@ -23,7 +23,7 @@ namespace ProjetoIntegrado.View.Funcionario
         #region MANTEM FUNCIONARIO
 
         private FiltroPessoa GetFiltro() =>
-           (FiltroPessoa)Enum.Parse(typeof(FiltroPessoa), Marcara.Remover(cbFiltro.Text.ToLower()));
+           (FiltroPessoa)Enum.Parse(typeof(FiltroPessoa), Mascara.Remover(cbFiltro.Text.ToLower()));
 
         private void CarregarFuncionarios()
         {

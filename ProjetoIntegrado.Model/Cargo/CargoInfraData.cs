@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace ProjetoIntegrado.Model
 {
-    using BaseDeDados;
     using View;
+    using BaseDeDados;
 
     public partial class CargoModel : ICadastro
     {

@@ -28,9 +28,14 @@ namespace ProjetoIntegrado.Model
         //  LOGIN
         public string usuario { get; set; }
         public string senha { get; set; }
-        public string senhaMd5() => MD5.Criptografar(senha);
+
+        public string senhaHash;
+
+        public string senhaMd5() =>
+            string.IsNullOrEmpty(senha) ? senhaHash : MD5.Criptografar(senha);
 
         public EnderecoModel endereco { get; set; }
+
         public bool ativo { get; set; } = true;
     }
 }

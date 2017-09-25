@@ -23,7 +23,6 @@ namespace ProjetoIntegrado.View.Login
         private void CarregarUsuarios()
         {
             var usuarios = FuncionarioModel.CarregarTodos().Select(x => x.usuario).Where(x => x != string.Empty).ToList();
-
             cbUsuario.Items.Clear();
             usuarios.ForEach(x => cbUsuario.Items.Add(x));
         }
@@ -39,23 +38,18 @@ namespace ProjetoIntegrado.View.Login
 
         private void RealizarLogin()
         {
-            var f = new FuncionarioModel { id = 1 };
-            f.Carregar();
-            Sessao.funcionario = f;
-            CriarTelaPrincipal();
+            if (Validar())
+            {
+                var login = new LoginModel();
+                var autenticou = login.Autenticar(cbUsuario.Text, tbSenha.Password);
 
-            //if (Validar())
-            //{
-            //    var login = new LoginModel();
-            //    var autenticou = login.Autenticar(cbUsuario.Text, tbSenha.Password);
-
-            //    if (autenticou)
-            //        CriarTelaPrincipal();
-            //    else
-            //        lbInvalido.Visibility = Visibility.Visible;
-            //}
-            //else
-            //    lbInvalido.Visibility = Visibility.Visible;
+                if (autenticou)
+                    CriarTelaPrincipal();
+                else
+                    lbInvalido.Visibility = Visibility.Visible;
+            }
+            else
+                lbInvalido.Visibility = Visibility.Visible;
         }
 
         #endregion

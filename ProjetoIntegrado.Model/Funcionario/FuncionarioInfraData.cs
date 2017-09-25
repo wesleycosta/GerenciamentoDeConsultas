@@ -93,6 +93,7 @@ namespace ProjetoIntegrado.Model
 				var cmd = @"UPDATE funcionario SET
 	                            id_cargo			= @id_cargo,
 	                            nome				= @nome,
+	                            cpf					= @cpf,
 	                            genero				= @genero,
 	                            data_de_nascimento  = @data_de_nascimento,
 	                            ddd_cel				= @ddd_cel,
@@ -114,8 +115,8 @@ namespace ProjetoIntegrado.Model
 				Conexao.Cmd.Parameters.AddWithValue("id", id);
 				Conexao.Cmd.Parameters.AddWithValue("id_cargo", cargo.id);
 				Conexao.Cmd.Parameters.AddWithValue("nome", nome);
-				Conexao.Cmd.Parameters.AddWithValue("genero", genero);
 				Conexao.Cmd.Parameters.AddWithValue("cpf", cpf);
+				Conexao.Cmd.Parameters.AddWithValue("genero", genero);
 				Conexao.Cmd.Parameters.AddWithValue("data_de_nascimento", dataDeNascimento);
 				Conexao.Cmd.Parameters.AddWithValue("ddd_cel", dddCel);
 				Conexao.Cmd.Parameters.AddWithValue("celular", celular);
@@ -193,7 +194,7 @@ namespace ProjetoIntegrado.Model
 
 					salario = decimal.Parse(Conexao.Leitor["salario"].ToString());
 					usuario = Conexao.Leitor["usuario"].ToString();
-					senha = Conexao.Leitor["senha"].ToString();
+					senhaHash = Conexao.Leitor["senha"].ToString();
 
 					dataDeNascimento.Converter(Conexao.Leitor, "data_de_nascimento");
 					dataDeAdmissao.Converter(Conexao.Leitor, "data_de_admissao");
@@ -220,8 +221,8 @@ namespace ProjetoIntegrado.Model
 				Conexao.FecharConexao();
 			}
 
-			endereco.Carregar();
-			cargo.Carregar();
+			endereco?.Carregar();
+			cargo?.Carregar();
 		}
 
 		#endregion
@@ -231,7 +232,6 @@ namespace ProjetoIntegrado.Model
 		public static List<FuncionarioModel> Pesquisar(FiltroPessoa filtro, string pesquisa)
 		{
 			var lista = new List<FuncionarioModel>();
-			var carregou = false;
 
 			try
 			{
@@ -283,7 +283,7 @@ namespace ProjetoIntegrado.Model
 
 						salario = decimal.Parse(Conexao.Leitor["salario"].ToString()),
 						usuario = Conexao.Leitor["usuario"].ToString(),
-						senha = Conexao.Leitor["senha"].ToString(),
+						senhaHash = Conexao.Leitor["senha"].ToString(),
 
 						dataDeNascimento = DataUtil.Converter(Conexao.Leitor, "data_de_nascimento"),
 						dataDeAdmissao = DataUtil.Converter(Conexao.Leitor, "data_de_admissao"),
@@ -301,11 +301,9 @@ namespace ProjetoIntegrado.Model
 						ativo = true
 					});
 
-				carregou = true;
 			}
 			catch (Exception ex)
 			{
-				carregou = false;
 				Excecao.Mostrar(ex);
 			}
 			finally
@@ -313,7 +311,7 @@ namespace ProjetoIntegrado.Model
 				Conexao.FecharConexao();
 			}
 
-			if (carregou)
+			if (lista.Count > 0)
 			{
 				lista.ForEach(x => x.cargo.Carregar());
 				lista.ForEach(x => x.endereco.Carregar());
