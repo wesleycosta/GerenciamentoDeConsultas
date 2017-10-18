@@ -1,7 +1,7 @@
 ﻿using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 
-namespace ProjetoIntegrado.View
+namespace ProjetoIntegrado.Mensagens
 {
     public static class Mbox
     {
@@ -21,19 +21,16 @@ namespace ProjetoIntegrado.View
 
         #endregion
 
-        public static void SelecioneUmaLinhaDaTabela()
-        {
+        public static void SelecioneUmaLinhaDaTabela() => 
             Afirmacao("Aviso", "Por favor, selecione uma linha da tabela.");
-        }
 
-        public static MessageDialogResult DesejaExcluir()
-        {
-            return Pergunta("Aviso", "Tem certeza que deseja remover esse registro?");
-        }
+        public static MessageDialogResult DesejaExcluir() => 
+            Pergunta("Aviso", "Tem certeza que deseja remover esse registro?");
 
-        public static MessageDialogResult DesejaSair()
-        {
-            return Pergunta("Aviso", "Tem certeza que deseja sair?");
-        }
+        public static MessageDialogResult DesejaSair() => 
+            Pergunta("Aviso", "Tem certeza que deseja sair?");
+
+        public static void Excecao(string msg) => 
+            Afirmacao("Aviso", msg);
     }
 }

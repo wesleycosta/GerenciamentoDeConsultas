@@ -6,6 +6,8 @@ using MahApps.Metro.Controls.Dialogs;
 namespace ProjetoIntegrado.View.FormaDePagamento
 {
     using Model;
+    using Mensagens;
+    using ViewUtil;
 
     public partial class PrincipalFormaDePagamentoWin 
     {

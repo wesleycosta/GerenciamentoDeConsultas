@@ -10,23 +10,23 @@ namespace ProjetoIntegrado.View.Principal
 
             switch (item)
             {
-                case MenuItensEnum.Agenda: Agenda(); break;
-                case MenuItensEnum.ListaDeConsultas: ListaDeConsultas(); break;
-                case MenuItensEnum.Pacientes: Pacientes(); break;
+                case MenuItensEnum.Agenda:              Agenda();               break;
+                case MenuItensEnum.ListaDeConsultas:    ListaDeConsultas();     break;
+                case MenuItensEnum.Pacientes:           Pacientes();            break;
 
-                case MenuItensEnum.Empresa: Empresa(); break;
-                case MenuItensEnum.Funcionarios: Funcionarios(); break;
-                case MenuItensEnum.Usuarios: Usuarios(); break;
-                case MenuItensEnum.Cargos: Cargos(); break;
-                case MenuItensEnum.Categoria: Categoria(); break;
+                case MenuItensEnum.Empresa:             Empresa();              break;
+                case MenuItensEnum.Funcionarios:        Funcionarios();         break;
+                case MenuItensEnum.Usuarios:            Usuarios();             break;
+                case MenuItensEnum.Cargos:              Cargos();               break;
+                case MenuItensEnum.Categoria:           Categoria();            break;
 
-                case MenuItensEnum.FormaDePagamento: FormaDePagamento(); break;
-                case MenuItensEnum.FluxoDeCaixa: FluxoDeCaixa(); break;
-                case MenuItensEnum.LivroCaixa: LivroCaixa(); break;
-                case MenuItensEnum.Faturamento: Faturamento(); break;
+                case MenuItensEnum.FormaDePagamento:    FormaDePagamento();     break;
+                case MenuItensEnum.FluxoDeCaixa:        FluxoDeCaixa();         break;
+                case MenuItensEnum.LivroCaixa:          LivroCaixa();           break;
+                case MenuItensEnum.Faturamento:         Faturamento();          break;
 
-                case MenuItensEnum.Relatorios: Relatorios(); break;
-                case MenuItensEnum.Configuracoes: Configuracoes(); break;
+                case MenuItensEnum.Relatorios:          Relatorios();           break;
+                case MenuItensEnum.Configuracoes:       Configuracoes();        break;
             }
         }
 
@@ -37,9 +37,12 @@ namespace ProjetoIntegrado.View.Principal
             new WebCam.WebCamWin().ShowDialog();
 
         // CADASTROS
-        private static void Empresa() { }
+        private static void Empresa() =>
+            new Clinica.CadClinicaWin().ShowDialog();
+
         private static void Funcionarios() =>
             new Funcionario.PrincipalFuncionarioWin().ShowDialog();
+
         private static void Usuarios() { }
 
         private static void Cargos() =>
@@ -53,11 +56,14 @@ namespace ProjetoIntegrado.View.Principal
             new FormaDePagamento.PrincipalFormaDePagamentoWin().ShowDialog();
 
         private static void FluxoDeCaixa() { }
+
         private static void LivroCaixa() { }
+
         private static void Faturamento() { }
 
         // OUTROS
         private static void Relatorios() { }
+
         private static void Configuracoes() { }
 
         #endregion

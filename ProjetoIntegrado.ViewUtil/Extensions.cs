@@ -12,6 +12,15 @@ namespace ProjetoIntegrado.ViewUtil
 {
     public static class Extensions
     {
+        public static void SelecionarPrimeiraLinha(this ListView lvw)
+        {
+            if (lvw.Items.Count > 0)
+            {
+                lvw.Focus();
+                lvw.SelectedItem = lvw.Items[0];
+            }
+        }
+
         public static void CarregarPagina(this Window janelaPrincipal, Frame frame, Page pagina, double descontar = 0)
         {
             frame.Width = Janela.GetWidth() - descontar;

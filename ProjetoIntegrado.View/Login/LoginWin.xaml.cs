@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using ProjetoIntegrado.Funcoes;
 using ProjetoIntegrado.ViewUtil;
 
 namespace ProjetoIntegrado.View.Login
@@ -24,6 +25,8 @@ namespace ProjetoIntegrado.View.Login
         {
             var usuarios = FuncionarioModel.CarregarTodos().Select(x => x.usuario).Where(x => x != string.Empty).ToList();
             cbUsuario.Items.Clear();
+
+            cbUsuario.Items.Add("ADMINISTRADOR");
             usuarios.ForEach(x => cbUsuario.Items.Add(x));
         }
 

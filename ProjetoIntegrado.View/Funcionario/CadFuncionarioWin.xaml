@@ -5,18 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        x:Class="ProjetoIntegrado.View.Funcionario.CadFuncionarioWin"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        x:Class="ProjetoIntegrado.View.Funcionario.CadFuncionarioWin"
         mc:Ignorable="d"
     
         KeyDown="MetroWindow_KeyDown"
-    
         Style="{StaticResource WindowSimples}"
         WindowStartupLocation="CenterScreen"
     
         Title="FUNCIONÁRIO" 
         Height="529" 
-        Width="722.833">
+        Width="722">
 
     <Grid>
         <Grid.RowDefinitions>

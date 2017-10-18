@@ -153,7 +153,7 @@ namespace ProjetoIntegrado.Model
 			try
 			{
 				var cmd = @"SELECT
-	                            id_endereco,
+	                            ISNULL(id_endereco, 0) AS id_endereco,
 	                            id_cargo,
 	                            nome, 
 	                            genero,
@@ -164,7 +164,7 @@ namespace ProjetoIntegrado.Model
 	                            ddd_tel,
 	                            telefone,
 	                            email,
-	                            salario,
+	                            ISNULL(salario, 0) AS salario,
 	                            data_de_admissao,
 	                            usuario,
 	                            senha,
@@ -235,7 +235,7 @@ namespace ProjetoIntegrado.Model
 
 			try
 			{
-				var cmd = $@"SELECT
+				var cmd = $@"SELECT TOP 50
                                 id_funcionario,
                                 id_endereco,
 	                            id_cargo,
@@ -256,11 +256,13 @@ namespace ProjetoIntegrado.Model
                             FROM
 	                            funcionario
                             WHERE
-	                            ativo = 1
+	                            ativo		    = 1
+								AND
+								id_funcionario != 1
 	                            AND
 	                            {filtro} LIKE @pesquisa
                             ORDER BY
-                                id_cargo";
+                                id_funcionario";
 
 				Conexao.AbrirConexao();
 				Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);

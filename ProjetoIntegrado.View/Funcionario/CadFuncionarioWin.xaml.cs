@@ -10,7 +10,7 @@ namespace ProjetoIntegrado.View.Funcionario
     using Funcoes;
     using WebServices;
 
-    public partial class CadFuncionarioWin
+    public partial class CadFuncionarioWin 
     {
         #region PROPRIEDADES E CTOR
 
@@ -156,7 +156,7 @@ namespace ProjetoIntegrado.View.Funcionario
 
                 usuario = tbUsuario.Text,
                 senha = tbSenha.Password,
-                senhaHash = funcionario.senhaHash
+                senhaHash = funcionario?.senhaHash
             };
 
         #endregion

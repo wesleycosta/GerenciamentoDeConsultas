@@ -117,7 +117,7 @@ namespace ProjetoIntegrado.Model
             var lista = new List<CategoriaModel>();
             try
             {
-                var cmd = $@"SELECT
+                var cmd = $@"SELECT TOP 50
 	                            id_categoria,
 	                            descricao,
 	                            ativo

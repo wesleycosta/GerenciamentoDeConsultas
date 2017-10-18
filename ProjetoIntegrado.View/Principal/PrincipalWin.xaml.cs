@@ -5,9 +5,10 @@ using MahApps.Metro.Controls.Dialogs;
 
 namespace ProjetoIntegrado.View.Principal
 {
-    using  Model;
+    using Model;
     using View;
     using ViewUtil;
+    using Mensagens;
 
     public partial class JanelaPrincipalWin
     {

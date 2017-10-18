@@ -6,8 +6,10 @@ using MahApps.Metro.Controls.Dialogs;
 
 namespace ProjetoIntegrado.View.Funcionario
 {
-    using Funcoes;
     using Model;
+    using Funcoes;
+    using Mensagens;
+    using ViewUtil;
 
     public partial class PrincipalFuncionarioWin
     {

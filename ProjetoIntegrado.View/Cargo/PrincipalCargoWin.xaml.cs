@@ -6,6 +6,8 @@ using MahApps.Metro.Controls.Dialogs;
 namespace ProjetoIntegrado.View.Cargo
 {
     using Model;
+    using Mensagens;
+    using ViewUtil;
 
     public partial class PrincipalCargoWin
     {

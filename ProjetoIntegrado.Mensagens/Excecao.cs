@@ -7,7 +7,6 @@ namespace ProjetoIntegrado.View
     {
         public static void Mostrar(Exception ex)
         {
-            MessageBox.Show(ex.ToString());
         }
     }
 }
