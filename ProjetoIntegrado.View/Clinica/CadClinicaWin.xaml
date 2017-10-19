@@ -32,10 +32,10 @@
 
             <!-- LOGO -->
             <Border  Background="#fafafa" BorderBrush="Gainsboro" BorderThickness="1" Margin="512,17,0,0" VerticalAlignment="Top" Height="126" HorizontalAlignment="Left" Width="189">
-                <Image x:Name="imageLogo" HorizontalAlignment="Left" Width="187" Margin="0,0,0,1"/>
+                <Image x:Name="imageLogo" Stretch="Fill" HorizontalAlignment="Left" Width="187"/>
             </Border>
-            <Button x:Name="btnBuscar"  Content="Buscar"  IsTabStop="False" Margin="512,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.111,0.438" HorizontalAlignment="Left" Width="89" Height="26"/>
-            <Button x:Name="btnRemover" Content="Remover" IsTabStop="False" Margin="610,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.111,0.438" HorizontalAlignment="Left" Width="90" Height="26"/>
+            <Button x:Name="btnBuscar"  Content="BUSCAR"  IsTabStop="False" Margin="512,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.111,0.438" HorizontalAlignment="Left" Width="89" Height="26" FontSize="11" Background="#607D8B" BorderBrush="#607D8B"/>
+            <Button x:Name="btnRemover" Content="REMOVER" IsTabStop="False" Margin="610,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.111,0.438" HorizontalAlignment="Left" Width="90" Height="26" FontSize="10" Background="#607D8B" BorderBrush="#607D8B"/>
 
             <!-- CONTATO -->
             <TextBox x:Name="tbDddCel" TabIndex="7" MaxLength="2" TextAlignment="Center"  HorizontalAlignment="Left" Height="38" Width="75" Margin="20,197,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="DDD CEL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />

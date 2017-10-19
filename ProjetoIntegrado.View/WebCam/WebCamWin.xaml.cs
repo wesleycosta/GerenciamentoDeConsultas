@@ -37,9 +37,10 @@ namespace ProjetoIntegrado.View.WebCam
             cbWebCam.Visibility = listaCameras.Count > 1 ? Visibility.Visible : Visibility.Hidden;
         }
 
-        private void IniciarCapturacao()
+        private async void IniciarCapturacao()
         {
-            webCameraControl.StartCapture(listaCameras[cbWebCam.SelectedIndex]);
+            await Task.Run(() => Dispatcher.Invoke(() =>
+                            webCameraControl.StartCapture(listaCameras[cbWebCam.SelectedIndex])));
         }
 
         private void Iniciar()

@@ -10,6 +10,7 @@ namespace ProjetoIntegrado.View.Clinica
     using Funcoes;
     using WebServices;
     using Model.Estado;
+    using System.Threading.Tasks;
 
     public partial class CadClinicaWin : MetroWindow
     {
@@ -75,12 +76,15 @@ namespace ProjetoIntegrado.View.Clinica
             tbComplemento.Text = endereco.complemento;
         }
 
-        private void CarregaLogo()
+        private async void CarregaLogo()
         {
-            if (logo != null)
-                imageLogo.BitmapToImageSource(logo);
-            else
-                imageLogo.Source = null;
+            await Task.Run(() => Dispatcher.Invoke(() =>
+                                 {
+                                     if (logo != null)
+                                         imageLogo.BitmapToImageSource(logo);
+                                     else
+                                         imageLogo.Source = null;
+                                 }));
         }
 
         #endregion
@@ -166,6 +170,10 @@ namespace ProjetoIntegrado.View.Clinica
             if (selecionou)
             {
                 logo = new Bitmap(abrir.caminho);
+
+                if (logo.Width > Config.TamanhoImg || logo.Height > Config.TamanhoImg)
+                    logo.ResizeImage(Config.TamanhoImg, Config.TamanhoImg * logo.Height / logo.Width);
+
                 CarregaLogo();
             }
         }
@@ -173,7 +181,8 @@ namespace ProjetoIntegrado.View.Clinica
         private void EventosLogo()
         {
             btnBuscar.Click += (o, a) => BuscarImg();
-            btnRemover.Click += (o, a) =>
+
+            btnRemover.Click += async (o, a) =>
             {
                 logo = null;
                 CarregaLogo();

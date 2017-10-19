@@ -13,7 +13,7 @@ CREATE TABLE consulta
 CREATE TABLE funcionario 
 ( 
     id_funcionario     INT PRIMARY KEY			IDENTITY, 
-    id_endereco        INT						NOT NULL, 
+    id_endereco        INT						NULL, 
     id_cargo           INT						NOT NULL, 
     nome               VARCHAR(255)				NOT NULL, 
     genero             CHAR						NOT NULL, 
@@ -215,6 +215,6 @@ VALUES
 	('GERENTE');
 
 INSERT INTO funcionario
-	(usuario, senha, genero, id_cargo)
+	(usuario, nome, senha, genero, id_cargo)
 VALUES
-	('ADMINISTRADOR', 'O6mf4eZH5vrNc/0kE2NAkw==', 1, 3)
+	('ADMINISTRADOR', 'ADMINISTRADOR', 's5BgyNX0yLPNc/0kE2NAkw==', 1, 3)

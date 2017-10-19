@@ -4,8 +4,7 @@
     {
         public bool Autenticar(string usuario, string senha)
         {
-            var id = 1;
-            //var id = FuncionarioModel.Autenticar(usuario, senha);
+            var id = FuncionarioModel.Autenticar(usuario, senha);
 
             if (id > 0)
                 IniciarUsuario(id);

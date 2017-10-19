@@ -16,7 +16,13 @@ namespace ProjetoIntegrado.Mensagens
 
         private static MessageDialogResult Pergunta(string titulo, string texto)
         {
-            return JanelaPrincipal.ShowModalMessageExternal(titulo, texto, MessageDialogStyle.AffirmativeAndNegative);
+            var config = new MetroDialogSettings
+            {
+                AffirmativeButtonText = "SIM",
+                NegativeButtonText = "NÃO"
+            };
+
+            return JanelaPrincipal.ShowModalMessageExternal(titulo, texto, MessageDialogStyle.AffirmativeAndNegative, config);
         }
 
         #endregion
@@ -31,6 +37,6 @@ namespace ProjetoIntegrado.Mensagens
             Pergunta("Aviso", "Tem certeza que deseja sair?");
 
         public static void Excecao(string msg) => 
-            Afirmacao("Aviso", msg);
+            Afirmacao("ERRO", msg);
     }
 }

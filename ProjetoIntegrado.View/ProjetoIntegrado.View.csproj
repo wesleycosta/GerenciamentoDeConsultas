@@ -139,6 +139,7 @@
     <Compile Include="Clinica\CadClinicaWin.xaml.cs">
       <DependentUpon>CadClinicaWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Config.cs" />
     <Compile Include="FormaDePagamento\CadFormaDePagamentoWin.xaml.cs">
       <DependentUpon>CadFormaDePagamentoWin.xaml</DependentUpon>
     </Compile>
