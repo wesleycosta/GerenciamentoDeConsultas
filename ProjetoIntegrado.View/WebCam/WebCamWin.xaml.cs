@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Controls;
+using System.Windows.Threading;
+using WebEye.Controls.Wpf;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ProjetoIntegrado.View.WebCam
 {
-    using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Threading;
-    using WebEye.Controls.Wpf;
-    using System.Collections.Generic;
-
     public partial class WebCamWin
     {
         public bool Capturou;
         public Bitmap imgCapturada;
-
         private List<WebCameraId> listaCameras;
         private bool iniciou;
 

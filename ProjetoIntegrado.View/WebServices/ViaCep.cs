@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ProjetoIntegrado.View.WebServices
 {
     using Model;
-    using Funcoes;
 
     public class ViaCep
     {
@@ -14,21 +13,22 @@ namespace ProjetoIntegrado.View.WebServices
         public async Task<EnderecoModel> BuscarCep(string cep)
         {
             var requisicao = new Requisicao();
-            var respJson = requisicao.MetodoGet(GetUrl(cep));
+            var respJson = await requisicao.MetodoGetAsync(GetUrl(cep));
 
             if (respJson != string.Empty)
             {
                 var dicionario = JsonConvert.DeserializeObject<Dictionary<string, string>>(respJson);
 
                 if (!dicionario.ContainsKey("erro"))
-                    return ConveterToEnderecoModel(dicionario);
+                    return await Task.Run(() => ConveterToEnderecoModel(dicionario));
             }
 
             return null;
         }
 
-        private EnderecoModel ConveterToEnderecoModel(Dictionary<string, string> dicionario) =>
-            new EnderecoModel
+        private EnderecoModel ConveterToEnderecoModel(Dictionary<string, string> dicionario)
+        {
+            return new EnderecoModel
             {
                 cep = dicionario["cep"].ToUpper(),
                 cidade = dicionario["localidade"].ToUpper(),
@@ -37,5 +37,6 @@ namespace ProjetoIntegrado.View.WebServices
                 logradouro = dicionario["logradouro"].ToUpper(),
                 complemento = dicionario["complemento"].ToUpper()
             };
+        }
     }
 }

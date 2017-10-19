@@ -1,28 +1,55 @@
-﻿using MahApps.Metro.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using MahApps.Metro.Controls;
+using System.Drawing;
 
 namespace ProjetoIntegrado.View.Clinica
 {
+    using ViewUtil;
+
     public partial class CadClinicaWin : MetroWindow
     {
+        private Bitmap logo;
+
         public CadClinicaWin()
         {
             InitializeComponent();
+            Iniciar();
+        }
+
+        private void Iniciar()
+        {
+            EventosLogo();
+        }
+
+        private void CarregaLogo()
+        {
+            imageLogo.BitmapToImageSource(logo);
         }
 
         #region EVENTOS
+
+        #region EVENTOS IMAGEM LOGO
+
+        private void BuscarImg()
+        {
+            AbrirArquivo abrir = new AbrirArquivo();
+            var selecionou = abrir.AbrirImagem();
+
+            if (selecionou)
+            {
+                logo = new Bitmap(abrir.caminho);
+                CarregaLogo();
+            }
+        }
+
+        private void EventosLogo()
+        {
+            btnBuscar.Click += (o, a) => BuscarImg();
+            btnRemover.Click += (o, a) => imageLogo.Source = null;
+        }
+
+        #endregion
 
         private void BtnSalvar_OnClick(object sender, RoutedEventArgs e)
         {

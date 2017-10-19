@@ -34,12 +34,6 @@ namespace ProjetoIntegrado.View.SplashInicial
 
         #endregion
 
-        private void Executar(Action acao) =>
-                            Dispatcher.Invoke(acao);
-
-        private void SetStatus(string status) =>
-                            Executar(() => lbStatus.Text = status);
-
         private void Carregar()
         {
             try
@@ -55,6 +49,23 @@ namespace ProjetoIntegrado.View.SplashInicial
                 Processo.MatarProcessoSistema();
             }
         }
+
+        private void MantemLogin()
+        {
+            Executar(() => new Login.LoginWin(this).ShowDialog());
+        }
+
+        #region TRATAMENTO THREAD
+
+        private void Executar(Action acao) =>
+                            Dispatcher.Invoke(acao);
+
+        private void SetStatus(string status) =>
+                            Executar(() => lbStatus.Text = status);
+
+        #endregion
+
+        #region METODOS DE CARREGAMENTO
 
         private void CarregarConfiguracao()
         {
@@ -79,11 +90,9 @@ namespace ProjetoIntegrado.View.SplashInicial
         private void CarregarComponentes()
         {
             SetStatus("Carregando componentes...");
+            new ViewUtil.AbrirArquivo();
         }
 
-        private void MantemLogin()
-        {
-            Executar(() => new Login.LoginWin(this).ShowDialog());
-        }
+        #endregion
     }
 }
