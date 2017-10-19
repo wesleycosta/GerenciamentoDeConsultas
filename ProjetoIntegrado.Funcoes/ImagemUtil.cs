@@ -19,9 +19,9 @@ namespace ProjetoIntegrado.Funcoes
             }
         }
 
-        public static Image ByteParaImage(object img)
+        public static Bitmap ByteParaImage(object img)
         {
-            Image foto = null;
+            Bitmap foto = null;
 
             if (img != null)
                 if (img != DBNull.Value)

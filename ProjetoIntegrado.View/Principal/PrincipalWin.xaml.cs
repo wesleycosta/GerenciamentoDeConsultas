@@ -33,7 +33,6 @@ namespace ProjetoIntegrado.View.Principal
 
             // CONSULTAS
             imgAgenda.BitmapToImageSource(Icons.Time_16x16);
-            imgListaConsulta.BitmapToImageSource(Icons.MonthView_16x16);
             imgPacientes.BitmapToImageSource(Icons.Customer_16x16);
 
             // CADASTROS

@@ -103,7 +103,7 @@ CREATE TABLE clinica
     razao_social		 VARCHAR(255)			NULL, 
     nome_fantasia		 VARCHAR(255)			NULL, 
     cnpj				 VARCHAR(14)			NULL, 
-    ie					 VARCHAR(9)				NULL, 
+    ie					 VARCHAR(32)			NULL, 
     ddd_tel				 CHAR(2)				NULL, 
     telefone			 VARCHAR(11)			NULL, 
     ddd_cel				 CHAR(2)				NULL, 

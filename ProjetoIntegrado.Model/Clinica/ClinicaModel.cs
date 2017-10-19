@@ -16,7 +16,7 @@ namespace ProjetoIntegrado.Model
         public string email { get; set; }
 
         public string site { get; set; }
-        public Image logo { get; set; }
+        public Bitmap logo { get; set; }
         public EnderecoModel endereco { get; set; }
     }
 }

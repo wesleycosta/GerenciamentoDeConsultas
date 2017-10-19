@@ -8,10 +8,9 @@ namespace ProjetoIntegrado.View.Cargo
     public partial class CadCargoWin
     {
         #region  PROPRIEDADES E CTOR
+        public bool cadastrou { get; private set; }
 
-        public bool cadastrou;
-
-        private CargoModel cargo = new CargoModel();
+        private CargoModel cargo;
         private bool cadastrar;
 
         public CadCargoWin()

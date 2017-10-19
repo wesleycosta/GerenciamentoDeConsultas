@@ -53,21 +53,11 @@
 
                     <!-- CONSULTAS -->
                     <TreeViewItem Header="Consultas" IsExpanded="True">
-
-                        <TreeViewItem MouseDoubleClick="Menu_OnMouseDoubleClick" x:Uid="Agenda" x:Name="agendaItem">
+                        <TreeViewItem MouseUp="Menu_OnMouseDoubleClick" x:Uid="Agenda" x:Name="agendaItem">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgAgenda" Source="/Resources/Time_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
                                     <Label Height="16" Padding="0">Agenda</Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-
-                        <TreeViewItem x:Uid="ListaDeConsultas" MouseDoubleClick="Menu_OnMouseDoubleClick">
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="imgListaConsulta" Source="/Resources/MonthView_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Lista de Consultas</Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>

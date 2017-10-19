@@ -10,13 +10,15 @@ namespace ProjetoIntegrado.View.Funcionario
     using Funcoes;
     using WebServices;
 
-    public partial class CadFuncionarioWin 
+    public partial class CadFuncionarioWin
     {
         #region PROPRIEDADES E CTOR
 
-        public bool cadastrou;
+        public bool cadastrou { get; set; }
+
         private List<CargoModel> cargos;
         private FuncionarioModel funcionario;
+        private bool cadastrar;
 
         public CadFuncionarioWin()
         {
@@ -25,7 +27,7 @@ namespace ProjetoIntegrado.View.Funcionario
             lbCodigo.Visibility = lbCodigoText.Visibility = Visibility.Hidden;
 
             Title = "NOVO FUNCIONÁRIO";
-            cadastrou = true;
+            cadastrar = true;
         }
 
         public CadFuncionarioWin(FuncionarioModel funcionario)
@@ -146,9 +148,9 @@ namespace ProjetoIntegrado.View.Funcionario
                 dataDeAdmissao = DataUtil.Converter(tbDataAdminissao.Text),
                 salario = tbSalario.Text != string.Empty ? decimal.Parse(tbSalario.Text) : 0,
 
-                dddCel = tbDddCel.Text,
+                dddCel = tbDddCel.Text.Trim(),
                 celular = tbCelular.Text,
-                dddTel = tbDddTel.Text,
+                dddTel = tbDddTel.Text.Trim(),
                 telefone = tbTelefone.Text,
                 email = tbEmail.Text,
 
@@ -165,7 +167,7 @@ namespace ProjetoIntegrado.View.Funcionario
         {
             funcionario = ToModel();
 
-            if (cadastrou)
+            if (cadastrar)
                 funcionario.Cadastrar();
             else
                 funcionario.Atualizar();

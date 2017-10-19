@@ -38,10 +38,11 @@ namespace ProjetoIntegrado.View.SplashInicial
         {
             try
             {
-                CarregarConfiguracao();
-                MantemBaseDeDados();
-                CarregarComponentes();
-                MantemLogin();
+                CarregarConfiguracao();     // LÊ OS DADOS DO ARQUIVO E CONFIGURA A STRING DE CONEXÃO
+                CarregarComponentes();      // CARREGA OS COMPONENTES DO SISTEMA
+                MantemBaseDeDados();        // VERIFICA  SE O BANCO DE DADOS EXISTE, CASO NÃO CRIA A BASE DE DADOS E AS TABELAS
+                MantemCadastroEmpresa();    // VERIFICAR SE EXISTE O CADASTRO DE EMPRESA, CASO NÃO APRESENTA A TELA DE CADASTRO
+                MantemLogin();              // INICIALIZA O LOGIN
             }
             catch (Exception ex)
             {
@@ -85,6 +86,22 @@ namespace ProjetoIntegrado.View.SplashInicial
                 SetStatus("Criando base de dados...");
                 BancoDeDados.CriarBaseDeDados();
             }
+        }
+
+        private void MantemCadastroEmpresa()
+        {
+            SetStatus("Verificando se existe o cadastro da empresa...");
+
+            if (!Model.ClinicaModel.ExisteCadastro())
+                Executar(() =>
+                {
+                    var frmCad = new Clinica.CadClinicaWin(true);
+                    frmCad.ShowDialog();
+
+                    // SE CANCELAR O CADASTRO DA CLINICA, FECHA A APLICAÇÃO
+                    if (!frmCad.cadastrou)
+                        Processo.MatarProcessoSistema();
+                });
         }
 
         private void CarregarComponentes()

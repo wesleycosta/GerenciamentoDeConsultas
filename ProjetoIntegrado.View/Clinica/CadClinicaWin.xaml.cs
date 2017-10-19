@@ -5,27 +5,154 @@ using System.Drawing;
 
 namespace ProjetoIntegrado.View.Clinica
 {
+    using Model;
     using ViewUtil;
+    using Funcoes;
+    using WebServices;
+    using Model.Estado;
 
     public partial class CadClinicaWin : MetroWindow
     {
-        private Bitmap logo;
+        public bool cadastrou { get; private set; }
 
-        public CadClinicaWin()
+        private ClinicaModel clinica;
+        private Bitmap logo;
+        private bool cadastrar;
+
+        public CadClinicaWin(bool cadastrar = false)
         {
             InitializeComponent();
             Iniciar();
+
+            this.cadastrar = cadastrar;
+
+            if (!cadastrar)
+                CarregarDados();
         }
 
         private void Iniciar()
         {
             EventosLogo();
+
+            tbCep.LostFocus += (o, a) => MantemBuscaCep();
+            cbUf.ItemsSource = EstadoModel.Siglas;
+        }
+
+        #region CARREGAR
+
+        private async void CarregarDados()
+        {
+            clinica = new ClinicaModel();
+            await clinica.CarregarAsync();
+
+            // DADOS EMPRESA
+            tbRazaoSocial.Text = clinica.razaoSocial;
+            tbNomeFantasia.Text = clinica.nomeFantasia;
+            tbIE.Text = clinica.ie;
+            tbCNPJ.Text = clinica.cnpj;
+            logo = clinica.logo;
+
+            // CONTADO EMPRESA
+            tbDddCel.Text = clinica.dddCel.Trim();
+            tbCelular.Text = clinica.celular;
+            tbDddTel.Text = clinica.dddTel.Trim();
+            tbTelefone.Text = clinica.telefone;
+            tbEmail.Text = clinica.email;
+            tbSite.Text = clinica.site;
+
+            CarregarEndereco(clinica.endereco);
+            CarregaLogo();
+        }
+
+        private void CarregarEndereco(EnderecoModel endereco)
+        {
+            tbCep.Text = endereco.cep;
+            tbCidade.Text = endereco.cidade;
+            cbUf.SelectedItem = endereco.uf;
+            tbBairro.Text = endereco.bairro;
+            tbLogradouro.Text = endereco.logradouro;
+            tbNumero.Text = endereco.numero;
+            tbComplemento.Text = endereco.complemento;
         }
 
         private void CarregaLogo()
         {
-            imageLogo.BitmapToImageSource(logo);
+            if (logo != null)
+                imageLogo.BitmapToImageSource(logo);
+            else
+                imageLogo.Source = null;
         }
+
+        #endregion
+
+        #region  MANTEM CEP
+
+        private async void MantemBuscaCep()
+        {
+            var cep = Mascara.Remover(tbCep.Text);
+
+            if (cep != string.Empty)
+            {
+                var viaCep = new ViaCep();
+                var end = await viaCep.BuscarCep(cep);
+
+                if (end != null)
+                    CarregarEndereco(end);
+            }
+        }
+
+        #endregion
+
+        #region MANTEM CLINICA
+
+        #region TO MODEL
+
+        private EnderecoModel ToModelEndereco() =>
+          new EnderecoModel
+          {
+              id = clinica?.endereco?.id ?? 0,
+              cep = Mascara.Remover(tbCep.Text),
+              cidade = tbCidade.Text,
+              uf = cbUf.Text,
+              bairro = tbBairro.Text,
+              logradouro = tbLogradouro.Text,
+              numero = tbNumero.Text,
+              complemento = tbComplemento.Text
+          };
+
+        private ClinicaModel ToModel() =>
+            new ClinicaModel
+            {
+                id = clinica?.id ?? 0,
+                razaoSocial = tbRazaoSocial.Text,
+                nomeFantasia = tbNomeFantasia.Text,
+                ie = Mascara.Remover(tbIE.Text),
+                cnpj = Mascara.Remover(tbCNPJ.Text),
+                logo = logo,
+
+                dddCel = tbDddCel.Text.Trim(),
+                celular = tbCelular.Text,
+                dddTel = tbDddTel.Text.Trim(),
+                telefone = tbTelefone.Text,
+                email = tbEmail.Text,
+                site = tbSite.Text,
+
+                endereco = ToModelEndereco()
+            };
+
+        #endregion
+
+        private void MantemClinica()
+        {
+            clinica = ToModel();
+
+            if (cadastrar)
+                clinica.Cadastrar();
+            else
+                clinica.Atualizar();
+        }
+
+        #endregion
 
         #region EVENTOS
 
@@ -46,15 +173,19 @@ namespace ProjetoIntegrado.View.Clinica
         private void EventosLogo()
         {
             btnBuscar.Click += (o, a) => BuscarImg();
-            btnRemover.Click += (o, a) => imageLogo.Source = null;
+            btnRemover.Click += (o, a) =>
+            {
+                logo = null;
+                CarregaLogo();
+            };
         }
 
         #endregion
 
         private void BtnSalvar_OnClick(object sender, RoutedEventArgs e)
         {
-            //MantemFuncionario();
-            //cadastrou = true;
+            MantemClinica();
+            cadastrou = true;
             Close();
         }
 

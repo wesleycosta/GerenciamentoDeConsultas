@@ -4,7 +4,6 @@
     {
         // CONSULTAS
         Agenda,
-        ListaDeConsultas,
         Pacientes,
 
         // CADASTROS

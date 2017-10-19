@@ -11,7 +11,6 @@ namespace ProjetoIntegrado.View.Principal
             switch (item)
             {
                 case MenuItensEnum.Agenda:              Agenda();               break;
-                case MenuItensEnum.ListaDeConsultas:    ListaDeConsultas();     break;
                 case MenuItensEnum.Pacientes:           Pacientes();            break;
 
                 case MenuItensEnum.Empresa:             Empresa();              break;
@@ -32,7 +31,6 @@ namespace ProjetoIntegrado.View.Principal
 
         #region MENU ITENS
         private static void Agenda() { }
-        private static void ListaDeConsultas() { }
         private static void Pacientes() =>
             new WebCam.WebCamWin().ShowDialog();
 
