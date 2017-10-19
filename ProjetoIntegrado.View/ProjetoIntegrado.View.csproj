@@ -157,8 +157,8 @@
     <Compile Include="SplashInicial\SplashInicial.xaml.cs">
       <DependentUpon>SplashInicial.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Splash\SplashScreen.cs" />
-    <Compile Include="Splash\SplashScreenWin.xaml.cs">
+    <Compile Include="Splash\Aguarde\SplashScreen.cs" />
+    <Compile Include="Splash\Aguarde\SplashScreenWin.xaml.cs">
       <DependentUpon>SplashScreenWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="WebServices\Requisicao.cs" />
@@ -288,7 +288,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Splash\SplashScreenWin.xaml">
+    <Page Include="Splash\Aguarde\SplashScreenWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
