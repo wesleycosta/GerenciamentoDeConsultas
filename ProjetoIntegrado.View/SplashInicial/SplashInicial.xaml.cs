@@ -6,7 +6,6 @@ namespace ProjetoIntegrado.View.SplashInicial
 {
     using Funcoes;
     using BaseDeDados;
-    using View;
 
     public partial class SplashInicial
     {

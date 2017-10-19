@@ -1,0 +1,62 @@
+﻿<controls:MetroWindow x:Class="ProjetoIntegrado.View.Relatorios.RelatorioWins"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        Style="{StaticResource WindowSimples}"
+        WindowStartupLocation="CenterScreen"
+        Title="RELATÓRIOS"
+        Height="360"
+        Width="400"
+        KeyDown="MetroWindow_KeyDown">
+    <Grid>
+        <Label HorizontalAlignment="Center"  Margin="10" FontWeight="Bold">Por favor, selecione um relatório!</Label>
+        <Border Background="#fafafa" BorderBrush="Gainsboro" BorderThickness="1" Width="350" Margin="20, 40, 20, 60">
+            <StackPanel 
+            x:Name="menuLateral" 
+            Background="#fafafa" 
+            HorizontalAlignment="Left" 
+            Margin="20"
+            Width="379">
+                <TreeView x:Name="menu" 
+                  MinWidth="220" Padding="0">
+                    <TreeViewItem Header="Consultas" IsExpanded="True">
+                        <TreeViewItem MouseUp="Menu_OnMouseDoubleClick" x:Uid="Agenda" x:Name="agendaItem">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image x:Name="imgAgenda" Source="/Resources/Time_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0">Lista de Consultas</Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+                        <TreeViewItem x:Uid="Pacientes" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image x:Name="imgPacientes" Source="/Resources/Customer_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0">Consultas Canceladas</Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                    </TreeViewItem>
+
+                    <TreeViewItem Header="Financeiro" IsExpanded="True">
+                        <TreeViewItem MouseUp="Menu_OnMouseDoubleClick" x:Uid="Agenda" x:Name="ada">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Resources/Time_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0">Faturamento</Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                    </TreeViewItem>
+
+                </TreeView>
+
+            </StackPanel>
+        </Border>
+
+        <Button x:Name="btnGerar" Content="OK" Click="btnOk_OnClick" HorizontalAlignment="Left" Height="35" Margin="112,282,0,0" VerticalAlignment="Top" Width="123"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" Click="BtnCancelar_OnClick" HorizontalAlignment="Left" Height="35" Margin="249,282,0,0" VerticalAlignment="Top" Width="123"/>
+
+    </Grid>
+</controls:MetroWindow>
