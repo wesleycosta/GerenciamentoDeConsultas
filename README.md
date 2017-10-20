@@ -2,10 +2,10 @@
 <p>SISTEMA PARA GERENCIAMENTO DE CONSULTAS DE CLÍNICAS OFTALMOLÓGICAS<br>
 TECNOLOGIA EM ANÁLISE E DESENVOLVIMENTO DE SISTEMAS - IFSP CJO<br></p>
 
-<h4>Objetivo Geral<h4>
+<h4>Objetivo Geral</h4>
 <p>Desenvolver um sistema para o gerenciamento de consultas, controle financeiro,
 acompanhamento de diagnósticos dos pacientes de uma clínica oftalmológica.</p>
-<h4>Objetivo Específico<h4>
+<h4>Objetivo Específico</h4>
 <p>De acordo com a coleta de requisitos as funcionalidades do sistema são:</p>
 
 <ul>
