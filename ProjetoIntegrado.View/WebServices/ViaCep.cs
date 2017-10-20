@@ -26,8 +26,8 @@ namespace ProjetoIntegrado.View.WebServices
 
                 return endereco;
             }
-            else
-                return null;
+
+            return null;
         }
     }
 }

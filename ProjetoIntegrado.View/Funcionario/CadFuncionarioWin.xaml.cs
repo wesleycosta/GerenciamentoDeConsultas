@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Collections.Generic;
 
@@ -66,10 +65,10 @@ namespace ProjetoIntegrado.View.Funcionario
 
         private async void MantemBuscaCep()
         {
-            var cep = Mascara.Remover(tbCep.Text);
-
-            if (cep != string.Empty)
+            if (tbCep.IsMaskFull)
             {
+                var cep = Mascara.Remover(tbCep.Text);
+
                 var viaCep = new ViaCep();
                 var end = await viaCep.BuscarCep(cep);
 

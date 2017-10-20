@@ -10,8 +10,8 @@ namespace ProjetoIntegrado.View.Cargo
         #region  PROPRIEDADES E CTOR
         public bool cadastrou { get; private set; }
 
-        private CargoModel cargo;
-        private bool cadastrar;
+        private readonly CargoModel cargo;
+        private readonly bool cadastrar;
 
         public CadCargoWin()
         {
@@ -36,10 +36,7 @@ namespace ProjetoIntegrado.View.Cargo
 
         #region CARREGAR E INICIAR
 
-        private void Iniciar()
-        {
-            Loaded += (o, a) => tbDescricao.Focus();
-        }
+        private void Iniciar() => Loaded += (o, a) => tbDescricao.Focus();
 
         private void CarregarDados()
         {
@@ -53,13 +50,13 @@ namespace ProjetoIntegrado.View.Cargo
         private CargoModel ToModel() =>
             new CargoModel
             {
-                id = cargo.id,
+                id = cargo?.id ?? 0,
                 descricao = tbDescricao.Text
             };
 
         private void MantemCargo()
         {
-            cargo = ToModel();
+            var cargo = ToModel();
 
             if (cadastrar)
                 cargo.Cadastrar();
@@ -78,10 +75,7 @@ namespace ProjetoIntegrado.View.Cargo
             Close();
         }
 
-        private void BtnCancelar_OnClick(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
+        private void BtnCancelar_OnClick(object sender, RoutedEventArgs e) => Close();
 
         private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
         {

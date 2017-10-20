@@ -69,10 +69,7 @@ namespace ProjetoIntegrado.View.Principal
         }
 
         // DOUBLE CLICK ITEM MENU
-        private void Menu_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            MenuItens.MantemItem((sender as TreeViewItem)?.Uid);
-        }
+        private void Menu_OnMouseDoubleClick(object sender, MouseButtonEventArgs e) => MenuItens.MantemItem((sender as TreeViewItem)?.Uid);
 
         // KEY DOWN
         private void MetroWindow_KeyDown(object sender, KeyEventArgs e)

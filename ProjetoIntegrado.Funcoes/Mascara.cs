@@ -5,15 +5,21 @@ namespace ProjetoIntegrado.Funcoes
 {
     public static class Mascara
     {
-        private static readonly List<string> caracteres = new List<string>()
+        #region LISTA
+
+        private static readonly List<string> caracteres = new List<string>
         {
             " ",
             ".",
             ",",
             "-",
             "/",
-            "\\"
+            "\\",
+            "(",
+            ")"
         };
+
+        #endregion
 
         public static string Remover(string texto)
         {

@@ -1,5 +1,5 @@
 ﻿<controls:MetroWindow
-     x:Class="ProjetoIntegrado.View.FormaDePagamento.PrincipalFormaDePagamentoWin"
+    x:Class="ProjetoIntegrado.View.FormaDePagamento.PrincipalFormaDePagamentoWin"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"

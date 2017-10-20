@@ -7,9 +7,11 @@ namespace ProjetoIntegrado.ViewUtil
         public string filtro { private get; set; }
         public string caminho { get; private set; }
 
+        private OpenFileDialog op;
+
         public bool Abrir()
         {
-            OpenFileDialog op = new OpenFileDialog
+            op = new OpenFileDialog
             {
                 Filter = filtro
             };

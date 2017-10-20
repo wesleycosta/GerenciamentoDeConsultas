@@ -1,5 +1,7 @@
-﻿namespace ProjetoIntegrado.View.Principal
+﻿namespace ProjetoIntegrado.View
 {
+    #region  ENUM MENU PRINCIPAL
+
     enum MenuItensEnum
     {
         // CONSULTAS
@@ -20,7 +22,22 @@
         Faturamento,
 
         // OUTROS
-        Relatorios,
-        Configuracoes
+        Relatorios
     }
+
+    #endregion
+
+    #region  ENUM MENU RELATÓRIOS
+
+    enum RelatorioEnum
+    {
+        // CONSULTAS
+        ListaDeConsultas,
+        ConsultasCanceladas,
+        
+        // FINANCEIRO
+        Faturamento
+    }
+
+    #endregion
 }

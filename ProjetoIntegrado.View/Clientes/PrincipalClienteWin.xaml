@@ -1,0 +1,18 @@
+﻿<controls:MetroWindow  
+        x:Class="ProjetoIntegrado.View.Clientes.PrincipalClienteWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+
+        Style="{StaticResource WindowSimples}"
+        WindowStartupLocation="CenterScreen"
+    
+        Title="PACIENTES" 
+        Height="155.917" 
+        Width="380.075"
+        KeyDown="MetroWindow_KeyDown"
+>
+    <Grid>
+        
+    </Grid>
+</controls:MetroWindow>

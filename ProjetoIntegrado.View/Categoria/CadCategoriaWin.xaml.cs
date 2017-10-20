@@ -7,10 +7,12 @@ namespace ProjetoIntegrado.View.Categoria
 
     public partial class CadCategoriaWin
     {
+        #region  PROPRIEDADES E CTOR
+
         public bool cadastrou;
 
-        private CategoriaModel categoria = new CategoriaModel();
-        private bool cadastrar;
+        private readonly CategoriaModel categoria;
+        private readonly bool cadastrar;
 
         public CadCategoriaWin()
         {
@@ -31,6 +33,10 @@ namespace ProjetoIntegrado.View.Categoria
             CarregarDados();
         }
 
+        #endregion
+
+        #region INICIAR E CARREGAR
+
         private void Iniciar()
         {
             Loaded += (o, a) => tbDescricao.Focus();
@@ -41,12 +47,14 @@ namespace ProjetoIntegrado.View.Categoria
             tbDescricao.Text = categoria.descricao;
         }
 
+        #endregion
+
         #region MANTEM CARGO
 
         private CategoriaModel ToModel() =>
             new CategoriaModel
             {
-                id = categoria.id,
+                id = categoria?.id ?? 0,
                 descricao = tbDescricao.Text
             };
 

@@ -27,7 +27,6 @@ namespace ProjetoIntegrado.View.Principal
                 case MenuItensEnum.Faturamento: Faturamento(); break;
 
                 case MenuItensEnum.Relatorios: Relatorios(); break;
-                case MenuItensEnum.Configuracoes: Configuracoes(); break;
             }
         }
 
@@ -37,7 +36,7 @@ namespace ProjetoIntegrado.View.Principal
 
         private static void Agenda() { }
 
-        private static void Pacientes() => new WebCam.WebCamWin().ShowDialog();
+        private static void Pacientes() => new Clientes.PrincipalClienteWin().ShowDialog();
 
         #endregion
 
@@ -47,7 +46,7 @@ namespace ProjetoIntegrado.View.Principal
 
         private static void Funcionarios() => new Funcionario.PrincipalFuncionarioWin().ShowDialog();
 
-        private static void Usuarios() { }
+        private static void Usuarios() => new Usuarios.PrincipalUsuariosWin().ShowDialog();
 
         private static void Cargos() => new Cargo.PrincipalCargoWin().ShowDialog();
 
@@ -58,19 +57,17 @@ namespace ProjetoIntegrado.View.Principal
         #region FINANCEIRO
         private static void FormaDePagamento() => new FormaDePagamento.PrincipalFormaDePagamentoWin().ShowDialog();
 
-        private static void FluxoDeCaixa() { }
+        private static void FluxoDeCaixa() => new FluxoDeCaixa.PrincipalFluxoDeCaixaWin().ShowDialog();
 
-        private static void LivroCaixa() { }
+        private static void LivroCaixa() => new LivroCaixa.PrincipalLivroCaixa().ShowDialog();
 
-        private static void Faturamento() { }
+        private static void Faturamento() => new WebCam.WebCamWin().ShowDialog();
 
         #endregion
 
         #region  OUTROS
 
         private static void Relatorios() => new Relatorios.RelatorioWins().ShowDialog();
-
-        private static void Configuracoes() { }
 
         #endregion
     }

@@ -1,7 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using MahApps.Metro.Controls;
 using System.Drawing;
+using System.Threading.Tasks;
+using MahApps.Metro.Controls;
 
 namespace ProjetoIntegrado.View.Clinica
 {
@@ -10,15 +11,16 @@ namespace ProjetoIntegrado.View.Clinica
     using Funcoes;
     using WebServices;
     using Model.Estado;
-    using System.Threading.Tasks;
 
     public partial class CadClinicaWin : MetroWindow
     {
+        #region  PROPRIEDADES E CTOR
+
         public bool cadastrou { get; private set; }
 
         private ClinicaModel clinica;
+        private readonly bool cadastrar;
         private Bitmap logo;
-        private bool cadastrar;
 
         public CadClinicaWin(bool cadastrar = false)
         {
@@ -37,7 +39,11 @@ namespace ProjetoIntegrado.View.Clinica
 
             tbCep.LostFocus += (o, a) => MantemBuscaCep();
             cbUf.ItemsSource = EstadoModel.Siglas;
+
+            Loaded += (o, a) => tbRazaoSocial.Focus();
         }
+
+        #endregion
 
         #region CARREGAR
 
@@ -93,10 +99,10 @@ namespace ProjetoIntegrado.View.Clinica
 
         private async void MantemBuscaCep()
         {
-            var cep = Mascara.Remover(tbCep.Text);
-
-            if (cep != string.Empty)
+            if (tbCep.IsMaskFull)
             {
+                var cep = Mascara.Remover(tbCep.Text);
+
                 var viaCep = new ViaCep();
                 var end = await viaCep.BuscarCep(cep);
 

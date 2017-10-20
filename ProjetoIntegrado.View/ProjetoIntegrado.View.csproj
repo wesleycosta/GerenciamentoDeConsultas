@@ -136,10 +136,16 @@
     <Compile Include="Clientes\CadClienteWin.xaml.cs">
       <DependentUpon>CadClienteWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Clientes\PrincipalClienteWin.xaml.cs">
+      <DependentUpon>PrincipalClienteWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Clinica\CadClinicaWin.xaml.cs">
       <DependentUpon>CadClinicaWin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Config.cs" />
+    <Compile Include="Apoio\Config.cs" />
+    <Compile Include="FluxoDeCaixa\PrincipalFluxoDeCaixaWin.xaml.cs">
+      <DependentUpon>PrincipalFluxoDeCaixaWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FormaDePagamento\CadFormaDePagamentoWin.xaml.cs">
       <DependentUpon>CadFormaDePagamentoWin.xaml</DependentUpon>
     </Compile>
@@ -152,8 +158,12 @@
     <Compile Include="Funcionario\PrincipalFuncionarioWin.xaml.cs">
       <DependentUpon>PrincipalFuncionarioWin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Principal\Enum.cs" />
+    <Compile Include="Apoio\Enum.cs" />
+    <Compile Include="LivroCaixa\PrincipalLivroCaixa.xaml.cs">
+      <DependentUpon>PrincipalLivroCaixa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Principal\MenuItens.cs" />
+    <Compile Include="Relatorios\RelatorioItens.cs" />
     <Compile Include="Relatorios\RelatoriosWin.xaml.cs">
       <DependentUpon>RelatoriosWin.xaml</DependentUpon>
     </Compile>
@@ -163,6 +173,9 @@
     <Compile Include="Splash\Aguarde\SplashScreen.cs" />
     <Compile Include="Splash\Aguarde\SplashScreenWin.xaml.cs">
       <DependentUpon>SplashScreenWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\PrincipalUsuariosWin.xaml.cs">
+      <DependentUpon>PrincipalUsuariosWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="WebServices\Requisicao.cs" />
     <Compile Include="WebServices\ViaCep.cs" />
@@ -259,7 +272,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Clientes\PrincipalClienteWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Clinica\CadClinicaWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FluxoDeCaixa\PrincipalFluxoDeCaixaWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -276,6 +297,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Funcionario\PrincipalFuncionarioWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LivroCaixa\PrincipalLivroCaixa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -300,6 +325,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Usuarios\PrincipalUsuariosWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -497,12 +526,26 @@
   <ItemGroup>
     <None Include="Resources\Edit_32x32.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\AlignHorizontalBottom2_16x16.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GroupHeader_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Merge_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WorkWeekView_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Faturamento\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
