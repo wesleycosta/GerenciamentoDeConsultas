@@ -26,3 +26,5 @@ acompanhamento de diagnósticos dos pacientes de uma clínica oftalmológica.</p
   <li>Relatório de consultas canceladas;</li>
   <li>Relatório de faturamento.</li>
 </ul>
+
+<p><b>USUÁRIOS:</b> Recepcionista, Oftalmologista, Gerente.</p>
