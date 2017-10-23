@@ -11,7 +11,7 @@ namespace ProjetoIntegrado.View.Cargo
 
     public partial class PrincipalCargoWin
     {
-        List<CargoModel> cargos = new List<CargoModel>();
+        private List<CargoModel> cargos;
 
         public PrincipalCargoWin()
         {

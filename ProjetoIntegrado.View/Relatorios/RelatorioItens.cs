@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime.InteropServices.WindowsRuntime;
+
 // ReSharper disable All
 
 namespace ProjetoIntegrado.View.Relatorios
@@ -27,7 +29,14 @@ namespace ProjetoIntegrado.View.Relatorios
 
         private static void ListaDeConsultas() { Mbox.Excecao("ListaDeConsultas"); }
 
-        private static void ConsultasCanceladas() => new Consultas.Canceladas.RelConsultaCanceladaWin().ShowDialog();
+        private static void ConsultasCanceladas()
+        {
+            var frmData = new Filtros.IntervaloDataWin();
+            frmData.ShowDialog();
+
+            if (frmData.SelecionouOK)
+                new Consultas.Canceladas.RelConsultaCanceladaWin().ShowDialog();
+        }
 
         private static void Faturamento() { Mbox.Excecao("Faturamento"); }
 

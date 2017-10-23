@@ -194,6 +194,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsEmpresa.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\Filtros\IntervaloDataWin.xaml.cs">
+      <DependentUpon>IntervaloDataWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\RelatorioItens.cs" />
     <Compile Include="Relatorios\RelatoriosWin.xaml.cs">
       <DependentUpon>RelatoriosWin.xaml</DependentUpon>
@@ -201,8 +204,8 @@
     <Compile Include="SplashInicial\SplashInicial.xaml.cs">
       <DependentUpon>SplashInicial.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Splash\Aguarde\SplashScreen.cs" />
-    <Compile Include="Splash\Aguarde\SplashScreenWin.xaml.cs">
+    <Compile Include="Splash\SplashScreenControle.cs" />
+    <Compile Include="Splash\SplashScreenWin.xaml.cs">
       <DependentUpon>SplashScreenWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
@@ -350,6 +353,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Relatorios\Filtros\IntervaloDataWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Relatorios\RelatoriosWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -358,7 +365,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Splash\Aguarde\SplashScreenWin.xaml">
+    <Page Include="Splash\SplashScreenWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

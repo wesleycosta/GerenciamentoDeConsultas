@@ -9,9 +9,9 @@ namespace ProjetoIntegrado.View.Categoria
     using Mensagens;
     using ViewUtil;
 
-    public partial class PrincipalCategoriaWin 
+    public partial class PrincipalCategoriaWin
     {
-        List<CategoriaModel> categorias = new List<CategoriaModel>();
+        private List<CategoriaModel> categorias;
 
         public PrincipalCategoriaWin()
         {
@@ -20,7 +20,7 @@ namespace ProjetoIntegrado.View.Categoria
             Loaded += (o, a) => CarregarCategorias();
         }
 
-        #region MANTEM CARGO
+        #region MANTEM CATEGORIA
 
         private void CarregarCategorias()
         {
@@ -66,7 +66,7 @@ namespace ProjetoIntegrado.View.Categoria
 
                 if (r == MessageDialogResult.Affirmative)
                 {
-                    categoria.Remover();
+                    categoria?.Remover();
                     categorias.Remove(categoria);
                     lvwCategorias.Items.Refresh();
                 }
@@ -84,7 +84,7 @@ namespace ProjetoIntegrado.View.Categoria
             Novo();
         }
 
-        private void lvwCargos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void lvwCategoria_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Editar();
         }
@@ -97,18 +97,18 @@ namespace ProjetoIntegrado.View.Categoria
                 lvwCategorias.SelecionarPrimeiraLinha();
         }
 
-        private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-                Close();
-        }
-
-        private void lvwCargos_KeyDown(object sender, KeyEventArgs e)
+        private void lvwCategoria_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
                 Editar();
             else if (e.Key == Key.Delete)
                 Remover();
+        }
+
+        private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
 
         #endregion

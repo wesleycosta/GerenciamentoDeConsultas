@@ -22,5 +22,6 @@
             funcionario.Carregar();
             Sessao.funcionario = funcionario;
         }
+
     }
 }

@@ -13,7 +13,7 @@ namespace ProjetoIntegrado.View.Funcionario
 
     public partial class PrincipalFuncionarioWin
     {
-        List<FuncionarioModel> lFuncionarios = new List<FuncionarioModel>();
+        private List<FuncionarioModel> lFuncionarios;
 
         public PrincipalFuncionarioWin()
         {
@@ -73,7 +73,7 @@ namespace ProjetoIntegrado.View.Funcionario
 
                 if (r == MessageDialogResult.Affirmative)
                 {
-                    funcionario.Remover();
+                    funcionario?.Remover();
                     lFuncionarios.Remove(funcionario);
                     lvwFuncionarios.Items.Refresh();
                 }
@@ -104,18 +104,18 @@ namespace ProjetoIntegrado.View.Funcionario
                 lvwFuncionarios.SelecionarPrimeiraLinha();
         }
 
-        private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-                Close();
-        }
-
         private void lvwFuncionarios_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
                 Editar();
             else if (e.Key == Key.Delete)
                 Remover();
+        }
+
+        private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
 
         #endregion

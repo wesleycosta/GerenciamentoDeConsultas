@@ -16,6 +16,8 @@ namespace ProjetoIntegrado.Model
         public string senha { get; set; }
 
         public string senhaHash { get; set; }
+
         public string senhaMd5() => string.IsNullOrEmpty(senha) ? senhaHash : MD5.Criptografar(senha);
+        public string cargoDescricao => cargo?.descricao ?? "";
     }
 }

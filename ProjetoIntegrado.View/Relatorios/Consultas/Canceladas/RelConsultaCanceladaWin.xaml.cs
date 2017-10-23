@@ -15,6 +15,8 @@ namespace ProjetoIntegrado.View.Relatorios.Consultas.Canceladas
         {
             InitializeComponent();
             rptViewer.FormatoImpressao();
+
+            Loaded += (o, a) => SplashScreenControle.Fechar();
         }
 
         private void RptViewer_OnLoad(object sender, EventArgs e)

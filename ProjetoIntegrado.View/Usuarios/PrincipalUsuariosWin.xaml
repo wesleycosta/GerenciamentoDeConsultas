@@ -19,19 +19,19 @@
             x:Name="tbPesquisa" 
             HorizontalAlignment="Left" 
             Height="36" 
-            Margin="20, 25,0,0" 
+            Margin="40,25,0,0" 
             TextWrapping="Wrap"     
             materialDesign:HintAssist.Hint="PESQUISAR"
             CharacterCasing="Upper"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
             VerticalAlignment="Top" 
-            Width="540"
+            Width="500"
             KeyUp="tbPesquisa_KeyUp"/>
 
         <ListView x:Name="lvwCargos"
                   HorizontalAlignment="Left" 
-                  Height="370" 
-                  Margin="20,80,0,0" 
+                  Height="360" 
+                  Margin="23,80,0,0" 
                   VerticalAlignment="Top" 
                   Width="540"
                   KeyDown="lvwCargos_KeyDown"
@@ -39,11 +39,13 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn  DisplayMemberBinding="{Binding usuario}" Width="100">Usuário</GridViewColumn>
-                    <GridViewColumn  DisplayMemberBinding="{Binding nome}" Width="200">Funcionário</GridViewColumn>
-                    <GridViewColumn  DisplayMemberBinding="{Binding nome}" Width="100">Cargo</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding nome}" Width="250">Funcionário</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding cargoDescricao}" Width="80">Cargo</GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
+        <Label Content="Registros Encontrados:" HorizontalAlignment="Left" Margin="20,441,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbTotalRegistro" Content="000" HorizontalAlignment="Left" Margin="150,442,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
 
     </Grid>
 </controls:MetroWindow>

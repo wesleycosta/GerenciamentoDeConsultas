@@ -29,14 +29,14 @@
                  Width="400"
                  KeyUp="tbPesquisa_KeyUp"/>
 
-        <ListView x:Name="lvwCategorias"
+        <ListView x:Name="lvwFormaDePagamento"
                   HorizontalAlignment="Left" 
                   Height="234" 
                   Margin="20,80,0,0" 
                   VerticalAlignment="Top" 
                   Width="543"
-                  KeyDown="lvwCargos_KeyDown"
-                  MouseDoubleClick="lvwCargos_MouseDoubleClick" >
+                  KeyDown="lvwFormaDePagamento_KeyDown"
+                  MouseDoubleClick="lvwFormaDePagamento_MouseDoubleClick" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn  DisplayMemberBinding="{Binding id}" Width="85">Código</GridViewColumn>

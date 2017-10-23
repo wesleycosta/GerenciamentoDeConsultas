@@ -59,7 +59,7 @@ namespace ProjetoIntegrado.View.WebCam
                 timer.IsEnabled = false;
                 timer.Stop();
 
-                SplashScreen.Fechar();
+                SplashScreenControle.Fechar();
                 webCameraControl.Visibility = Visibility.Visible;
             };
 
@@ -68,7 +68,7 @@ namespace ProjetoIntegrado.View.WebCam
 
         private void WebCamWin_OnLoaded(object sender, RoutedEventArgs e)
         {
-            SplashScreen.Mostrar();
+            SplashScreenControle.Mostrar();
             Iniciar();
         }
 

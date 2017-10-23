@@ -1,6 +1,6 @@
 ﻿namespace ProjetoIntegrado.View
 {
-    public static class SplashScreen
+    public static class SplashScreenControle
     {
         private static bool visivel;
         private static SplashScreenWin frmSplashScreen;

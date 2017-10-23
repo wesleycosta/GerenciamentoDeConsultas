@@ -1,0 +1,27 @@
+﻿<controls:MetroWindow
+    x:Class="ProjetoIntegrado.View.Relatorios.Filtros.IntervaloDataWin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
+    mc:Ignorable="d"
+        
+    Style="{StaticResource WindowSimples}"
+    WindowStartupLocation="CenterScreen"
+    
+    Title="FILTRAR" 
+    Height="193.917" 
+    Width="402.742"
+    KeyDown="MetroWindow_KeyDown"
+>
+    
+
+    <Grid>
+
+        <Button x:Name="BtnOk"   Click="BtnOk_OnClick_OnClick" Content="Gerar" HorizontalAlignment="Left" Height="35" Margin="127,113,0,0" VerticalAlignment="Top" Width="122"/>
+        <Button x:Name="BtnCancelar" Click="BtnCancelar_OnClick" Content="Cancelar" HorizontalAlignment="Left" Height="35" Margin="259,113,0,0" VerticalAlignment="Top" Width="124"/>
+    </Grid>
+</controls:MetroWindow>
