@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using MahApps.Metro.Controls.Dialogs;
@@ -17,14 +18,17 @@ namespace ProjetoIntegrado.View.Principal
         public JanelaPrincipalWin(Window frmLogin)
         {
             InitializeComponent();
-            IniciarIcones();
-
             this.frmLogin = frmLogin;
-            tbUsuario.Text = Sessao.funcionario.usuario;
+            MenuItens.Evento = EventoItem;
+
+            IniciarIcones();
+            CarregarUsuario();
 
             Closing += (o, a) =>
                 a.Cancel = !Sair();
         }
+
+        private void CarregarUsuario() => tbUsuario.Text = Sessao.funcionario.usuario;
 
         private void IniciarIcones()
         {
@@ -50,7 +54,7 @@ namespace ProjetoIntegrado.View.Principal
 
             // RELATORIOS E CONFIGURACOES
             imgRelatorios.BitmapToImageSource(Icons.Report_16x16);
-            imgConfiguracoes.BitmapToImageSource(Icons.Properties_16x16);
+            imgTrocarUsuario.BitmapToImageSource(Icons.Project_16x16);
         }
 
         private bool Sair()
@@ -70,6 +74,14 @@ namespace ProjetoIntegrado.View.Principal
 
         // DOUBLE CLICK ITEM MENU
         private void Menu_OnMouseDoubleClick(object sender, MouseButtonEventArgs e) => MenuItens.MantemItem((sender as TreeViewItem)?.Uid);
+
+        private void EventoItem(object sender, EventArgs e)
+        {
+            var item = MenuItens.GetItem(sender.ToString());
+
+            if(item == MenuItensEnum.TrocarUsuario)
+                CarregarUsuario();
+        }
 
         // KEY DOWN
         private void MetroWindow_KeyDown(object sender, KeyEventArgs e)

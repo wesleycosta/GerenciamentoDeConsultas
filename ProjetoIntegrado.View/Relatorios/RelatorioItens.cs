@@ -27,7 +27,7 @@ namespace ProjetoIntegrado.View.Relatorios
 
         private static void ListaDeConsultas() { Mbox.Excecao("ListaDeConsultas"); }
 
-        private static void ConsultasCanceladas() { Mbox.Excecao("ConsultasCanceladas"); }
+        private static void ConsultasCanceladas() => new Consultas.Canceladas.RelConsultaCanceladaWin().ShowDialog();
 
         private static void Faturamento() { Mbox.Excecao("Faturamento"); }
 

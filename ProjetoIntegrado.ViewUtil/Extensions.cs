@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Microsoft.Reporting.WinForms;
 using Image = System.Windows.Controls.Image;
 
 
@@ -77,6 +78,13 @@ namespace ProjetoIntegrado.ViewUtil
             var bc = new BrushConverter();
 
             ctrl.Background = (System.Windows.Media.Brush)bc.ConvertFrom(hex);
+        }
+
+        public static void FormatoImpressao(this ReportViewer rpt)
+        {
+            rpt.SetDisplayMode(DisplayMode.PrintLayout);
+            rpt.ZoomMode = ZoomMode.Percent;
+            rpt.ZoomPercent = 100;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Threading;
 using System.Threading.Tasks;
+using ProjetoIntegrado.View.Properties;
 
 namespace ProjetoIntegrado.View.SplashInicial
 {
@@ -74,6 +75,8 @@ namespace ProjetoIntegrado.View.SplashInicial
 
             if (!carregou)
                 throw new Exception("Não possível carregar o arquivo de configuração");
+
+            Settings.Default["Conexao"] = Conexao.StringDeConexao;
         }
 
         private void MantemBaseDeDados()

@@ -2,7 +2,7 @@
 {
     #region  ENUM MENU PRINCIPAL
 
-    enum MenuItensEnum
+    public enum MenuItensEnum
     {
         // CONSULTAS
         Agenda,
@@ -22,7 +22,8 @@
         Faturamento,
 
         // OUTROS
-        Relatorios
+        Relatorios,
+        TrocarUsuario
     }
 
     #endregion

@@ -1,14 +1,22 @@
 ﻿using System;
+using ProjetoIntegrado.Mensagens;
 
 namespace ProjetoIntegrado.View.Principal
 {
     public static class MenuItens
     {
+        public static EventHandler Evento;
+
         #region MANTEM ITENS
+
+        public static MenuItensEnum GetItem(string item)
+        {
+            return (MenuItensEnum)Enum.Parse(typeof(MenuItensEnum), item);
+        }
 
         public static void MantemItem(string itemSelecionado)
         {
-            var item = (MenuItensEnum)Enum.Parse(typeof(MenuItensEnum), itemSelecionado);
+            var item = GetItem(itemSelecionado);
 
             switch (item)
             {
@@ -27,6 +35,7 @@ namespace ProjetoIntegrado.View.Principal
                 case MenuItensEnum.Faturamento: Faturamento(); break;
 
                 case MenuItensEnum.Relatorios: Relatorios(); break;
+                case MenuItensEnum.TrocarUsuario: TrocarUsuario(); break;
             }
         }
 
@@ -68,6 +77,12 @@ namespace ProjetoIntegrado.View.Principal
         #region  OUTROS
 
         private static void Relatorios() => new Relatorios.RelatorioWins().ShowDialog();
+
+        private static void TrocarUsuario()
+        {
+            new Login.LoginWin(null, true).ShowDialog();
+            Evento(MenuItensEnum.TrocarUsuario, EventArgs.Empty);
+        }
 
         #endregion
     }

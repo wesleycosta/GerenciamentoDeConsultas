@@ -1,21 +1,25 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using ProjetoIntegrado.Funcoes;
-using ProjetoIntegrado.ViewUtil;
 
 namespace ProjetoIntegrado.View.Login
 {
     using Model;
+    using ViewUtil;
 
     public partial class LoginWin
     {
-        public LoginWin(Window splashInicial)
+        private bool trocarUsuario;
+
+        public LoginWin(Window splashInicial, bool trocarUsuario = false)
         {
             InitializeComponent();
-            splashInicial.Close();
-            imgLogin.BitmapToImageSource(Icons.eyeglasses);
+            this.trocarUsuario = trocarUsuario;
 
+            if (!trocarUsuario)
+                splashInicial.Close();
+
+            imgLogin.BitmapToImageSource(Icons.eyeglasses);
             Loaded += (o, a) => CarregarUsuarios();
         }
 
@@ -32,8 +36,13 @@ namespace ProjetoIntegrado.View.Login
 
         private void CriarTelaPrincipal()
         {
-            var frmPrincipal = new Principal.JanelaPrincipalWin(this);
-            frmPrincipal.ShowDialog();
+            if (!trocarUsuario)
+            {
+                var frmPrincipal = new Principal.JanelaPrincipalWin(this);
+                frmPrincipal.ShowDialog();
+            }
+            else
+                Close();
         }
 
         private bool Validar() =>
