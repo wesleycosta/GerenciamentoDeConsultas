@@ -9,6 +9,8 @@ namespace ProjetoIntegrado.Funcoes
     {
         public static byte[] ImageParaByte(Image foto)
         {
+            if (foto == null) return null;
+
             using (var stream = new MemoryStream())
             {
                 foto.Save(stream, ImageFormat.Png);

@@ -4,21 +4,21 @@ using System.Collections.Generic;
 
 namespace ProjetoIntegrado.Model
 {
-	using BaseDeDados;
-	using Funcoes;
-	using View;
+    using BaseDeDados;
+    using Funcoes;
+    using View;
 
-	public partial class FuncionarioModel : ICadastro
-	{
-		#region ICADASTRO
+    public partial class FuncionarioModel : ICadastro
+    {
+        #region ICADASTRO
 
-		public void Cadastrar()
-		{
-			try
-			{
-				endereco.Cadastrar();
+        public void Cadastrar()
+        {
+            try
+            {
+                endereco.Cadastrar();
 
-				var cmd = @"INSERT INTO funcionario
+                var cmd = @"INSERT INTO funcionario
 	                            (id_endereco, 
 	                             id_cargo, 
 	                             nome, 
@@ -54,43 +54,43 @@ namespace ProjetoIntegrado.Model
 	                             @senha, 
 	                             @ativo)";
 
-				Conexao.AbrirConexao();
-				Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
+                Conexao.AbrirConexao();
+                Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
 
-				Conexao.Cmd.Parameters.AddWithValue("id_endereco", endereco.id);
-				Conexao.Cmd.Parameters.AddWithValue("id_cargo", cargo.id);
-				Conexao.Cmd.Parameters.AddWithValue("nome", nome);
-				Conexao.Cmd.Parameters.AddWithValue("genero", genero);
-				Conexao.Cmd.Parameters.AddWithValue("cpf", cpf);
-				Conexao.Cmd.Parameters.AddWithValue("data_de_nascimento", dataDeNascimento);
-				Conexao.Cmd.Parameters.AddWithValue("ddd_cel", dddCel);
-				Conexao.Cmd.Parameters.AddWithValue("celular", celular);
-				Conexao.Cmd.Parameters.AddWithValue("ddd_tel", dddTel);
-				Conexao.Cmd.Parameters.AddWithValue("telefone", telefone);
-				Conexao.Cmd.Parameters.AddWithValue("email", email);
-				Conexao.Cmd.Parameters.AddWithValue("salario", salario);
-				Conexao.Cmd.Parameters.AddWithValue("data_de_admissao", dataDeAdmissao);
-				Conexao.Cmd.Parameters.AddWithValue("usuario", usuario);
-				Conexao.Cmd.Parameters.AddWithValue("senha", senhaMd5());
-				Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
+                Conexao.Cmd.Parameters.AddWithValue("id_endereco", endereco.id);
+                Conexao.Cmd.Parameters.AddWithValue("id_cargo", cargo.id);
+                Conexao.Cmd.Parameters.AddWithValue("nome", nome);
+                Conexao.Cmd.Parameters.AddWithValue("genero", genero);
+                Conexao.Cmd.Parameters.AddWithValue("cpf", cpf);
+                Conexao.Cmd.Parameters.AddWithValue("data_de_nascimento", dataDeNascimento);
+                Conexao.Cmd.Parameters.AddWithValue("ddd_cel", dddCel);
+                Conexao.Cmd.Parameters.AddWithValue("celular", celular);
+                Conexao.Cmd.Parameters.AddWithValue("ddd_tel", dddTel);
+                Conexao.Cmd.Parameters.AddWithValue("telefone", telefone);
+                Conexao.Cmd.Parameters.AddWithValue("email", email);
+                Conexao.Cmd.Parameters.AddWithValue("salario", salario);
+                Conexao.Cmd.Parameters.AddWithValue("data_de_admissao", dataDeAdmissao);
+                Conexao.Cmd.Parameters.AddWithValue("usuario", usuario);
+                Conexao.Cmd.Parameters.AddWithValue("senha", senhaMd5());
+                Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
 
-				id = (int)Conexao.Cmd.ExecuteScalar();
-			}
-			catch (Exception ex)
-			{
-				Excecao.Mostrar(ex);
-			}
-			finally
-			{
-				Conexao.FecharConexao();
-			}
-		}
+                id = (int)Conexao.Cmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                Excecao.Mostrar(ex);
+            }
+            finally
+            {
+                Conexao.FecharConexao();
+            }
+        }
 
-		public void Atualizar()
-		{
-			try
-			{
-				var cmd = @"UPDATE funcionario SET
+        public void Atualizar()
+        {
+            try
+            {
+                var cmd = @"UPDATE funcionario SET
 	                            id_cargo			= @id_cargo,
 	                            nome				= @nome,
 	                            cpf					= @cpf,
@@ -109,50 +109,50 @@ namespace ProjetoIntegrado.Model
                             WHERE					  
 	                            id_funcionario		= @id";
 
-				Conexao.AbrirConexao();
-				Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
+                Conexao.AbrirConexao();
+                Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
 
-				Conexao.Cmd.Parameters.AddWithValue("id", id);
-				Conexao.Cmd.Parameters.AddWithValue("id_cargo", cargo.id);
-				Conexao.Cmd.Parameters.AddWithValue("nome", nome);
-				Conexao.Cmd.Parameters.AddWithValue("cpf", cpf);
-				Conexao.Cmd.Parameters.AddWithValue("genero", genero);
-				Conexao.Cmd.Parameters.AddWithValue("data_de_nascimento", dataDeNascimento);
-				Conexao.Cmd.Parameters.AddWithValue("ddd_cel", dddCel);
-				Conexao.Cmd.Parameters.AddWithValue("celular", celular);
-				Conexao.Cmd.Parameters.AddWithValue("ddd_tel", dddTel);
-				Conexao.Cmd.Parameters.AddWithValue("telefone", telefone);
-				Conexao.Cmd.Parameters.AddWithValue("email", email);
-				Conexao.Cmd.Parameters.AddWithValue("salario", salario);
-				Conexao.Cmd.Parameters.AddWithValue("data_de_admissao", dataDeAdmissao);
-				Conexao.Cmd.Parameters.AddWithValue("usuario", usuario);
-				Conexao.Cmd.Parameters.AddWithValue("senha", senhaMd5());
-				Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
+                Conexao.Cmd.Parameters.AddWithValue("id", id);
+                Conexao.Cmd.Parameters.AddWithValue("id_cargo", cargo.id);
+                Conexao.Cmd.Parameters.AddWithValue("nome", nome);
+                Conexao.Cmd.Parameters.AddWithValue("cpf", cpf);
+                Conexao.Cmd.Parameters.AddWithValue("genero", genero);
+                Conexao.Cmd.Parameters.AddWithValue("data_de_nascimento", dataDeNascimento);
+                Conexao.Cmd.Parameters.AddWithValue("ddd_cel", dddCel);
+                Conexao.Cmd.Parameters.AddWithValue("celular", celular);
+                Conexao.Cmd.Parameters.AddWithValue("ddd_tel", dddTel);
+                Conexao.Cmd.Parameters.AddWithValue("telefone", telefone);
+                Conexao.Cmd.Parameters.AddWithValue("email", email);
+                Conexao.Cmd.Parameters.AddWithValue("salario", salario);
+                Conexao.Cmd.Parameters.AddWithValue("data_de_admissao", dataDeAdmissao);
+                Conexao.Cmd.Parameters.AddWithValue("usuario", usuario);
+                Conexao.Cmd.Parameters.AddWithValue("senha", senhaMd5());
+                Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
 
-				Conexao.Cmd.ExecuteNonQuery();
-			}
-			catch (Exception ex)
-			{
-				Excecao.Mostrar(ex);
-			}
-			finally
-			{
-				Conexao.FecharConexao();
-			}
-		}
+                Conexao.Cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Excecao.Mostrar(ex);
+            }
+            finally
+            {
+                Conexao.FecharConexao();
+            }
+        }
 
-		public void Remover()
-		{
-			ativo = endereco.ativo = false;
-			endereco.Atualizar();
-			Atualizar();
-		}
+        public void Remover()
+        {
+            ativo = endereco.ativo = false;
+            endereco.Atualizar();
+            Atualizar();
+        }
 
-		public void Carregar()
-		{
-			try
-			{
-				var cmd = @"SELECT
+        public void Carregar()
+        {
+            try
+            {
+                var cmd = @"SELECT
 	                            ISNULL(id_endereco, 0) AS id_endereco,
 	                            id_cargo,
 	                            nome, 
@@ -174,68 +174,68 @@ namespace ProjetoIntegrado.Model
                             WHERE
 	                            id_funcionario	= @id";
 
-				Conexao.AbrirConexao();
-				Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
-				Conexao.Cmd.Parameters.AddWithValue("id", id);
+                Conexao.AbrirConexao();
+                Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
+                Conexao.Cmd.Parameters.AddWithValue("id", id);
 
-				Conexao.Leitor = Conexao.Cmd.ExecuteReader();
+                Conexao.Leitor = Conexao.Cmd.ExecuteReader();
 
-				if (Conexao.Leitor.Read())
-				{
-					nome = Conexao.Leitor["nome"].ToString();
-					cpf = Conexao.Leitor["cpf"].ToString();
-					genero = (Genero)Enum.Parse(typeof(Genero), Conexao.Leitor["genero"].ToString());
+                if (Conexao.Leitor.Read())
+                {
+                    nome = Conexao.Leitor["nome"].ToString();
+                    cpf = Conexao.Leitor["cpf"].ToString();
+                    genero = (Genero)Enum.Parse(typeof(Genero), Conexao.Leitor["genero"].ToString());
 
-					dddCel = Conexao.Leitor["ddd_cel"].ToString();
-					celular = Conexao.Leitor["celular"].ToString();
-					dddTel = Conexao.Leitor["ddd_tel"].ToString();
-					telefone = Conexao.Leitor["telefone"].ToString();
-					email = Conexao.Leitor["email"].ToString();
+                    dddCel = Conexao.Leitor["ddd_cel"].ToString();
+                    celular = Conexao.Leitor["celular"].ToString();
+                    dddTel = Conexao.Leitor["ddd_tel"].ToString();
+                    telefone = Conexao.Leitor["telefone"].ToString();
+                    email = Conexao.Leitor["email"].ToString();
 
-					salario = decimal.Parse(Conexao.Leitor["salario"].ToString());
-					usuario = Conexao.Leitor["usuario"].ToString();
-					senhaHash = Conexao.Leitor["senha"].ToString();
+                    salario = decimal.Parse(Conexao.Leitor["salario"].ToString());
+                    usuario = Conexao.Leitor["usuario"].ToString();
+                    senhaHash = Conexao.Leitor["senha"].ToString();
 
-					dataDeNascimento.Converter(Conexao.Leitor, "data_de_nascimento");
-					dataDeAdmissao.Converter(Conexao.Leitor, "data_de_admissao");
+                    dataDeNascimento.Converter(Conexao.Leitor, "data_de_nascimento");
+                    dataDeAdmissao.Converter(Conexao.Leitor, "data_de_admissao");
 
-					endereco = new EnderecoModel
-					{
-						id = int.Parse(Conexao.Leitor["id_endereco"].ToString())
-					};
+                    endereco = new EnderecoModel
+                    {
+                        id = int.Parse(Conexao.Leitor["id_endereco"].ToString())
+                    };
 
-					cargo = new CargoModel
-					{
-						id = int.Parse(Conexao.Leitor["id_cargo"].ToString())
-					};
+                    cargo = new CargoModel
+                    {
+                        id = int.Parse(Conexao.Leitor["id_cargo"].ToString())
+                    };
 
-					ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
-				}
-			}
-			catch (Exception ex)
-			{
-				Excecao.Mostrar(ex);
-			}
-			finally
-			{
-				Conexao.FecharConexao();
-			}
+                    ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Excecao.Mostrar(ex);
+            }
+            finally
+            {
+                Conexao.FecharConexao();
+            }
 
-			endereco?.Carregar();
-			cargo?.Carregar();
-		}
+            endereco?.Carregar();
+            cargo?.Carregar();
+        }
 
-		#endregion
+        #endregion
 
-		#region CARREGAR LISTA
+        #region CARREGAR LISTA
 
-		public static List<FuncionarioModel> Pesquisar(FiltroPessoa filtro, string pesquisa)
-		{
-			var lista = new List<FuncionarioModel>();
+        public static List<FuncionarioModel> Pesquisar(FiltroPessoa filtro, string pesquisa)
+        {
+            var lista = new List<FuncionarioModel>();
 
-			try
-			{
-				var cmd = $@"SELECT TOP 50
+            try
+            {
+                var cmd = $@"SELECT TOP 50
                                 id_funcionario,
                                 id_endereco,
 	                            id_cargo,
@@ -262,83 +262,81 @@ namespace ProjetoIntegrado.Model
 	                            AND
 	                            {filtro} LIKE @pesquisa
                             ORDER BY
-                                id_funcionario";
+                                id_funcionario DESC";
 
-				Conexao.AbrirConexao();
-				Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
-				Conexao.Cmd.Parameters.AddWithValue("pesquisa", $"%{pesquisa}%");
-				Conexao.Leitor = Conexao.Cmd.ExecuteReader();
+                Conexao.AbrirConexao();
+                Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
+                Conexao.Cmd.Parameters.AddWithValue("pesquisa", $"%{pesquisa}%");
+                Conexao.Leitor = Conexao.Cmd.ExecuteReader();
 
-				while (Conexao.Leitor.Read())
-					lista.Add(new FuncionarioModel
-					{
-						id = int.Parse(Conexao.Leitor["id_funcionario"].ToString()),
-						nome = Conexao.Leitor["nome"].ToString(),
-						cpf = Conexao.Leitor["cpf"].ToString(),
-						genero = (Genero)Enum.Parse(typeof(Genero), Conexao.Leitor["genero"].ToString()),
+                while (Conexao.Leitor.Read())
+                    lista.Add(new FuncionarioModel
+                    {
+                        id = int.Parse(Conexao.Leitor["id_funcionario"].ToString()),
+                        nome = Conexao.Leitor["nome"].ToString(),
+                        cpf = Conexao.Leitor["cpf"].ToString(),
+                        genero = (Genero)Enum.Parse(typeof(Genero), Conexao.Leitor["genero"].ToString()),
 
-						dddCel = Conexao.Leitor["ddd_cel"].ToString(),
-						celular = Conexao.Leitor["celular"].ToString(),
-						dddTel = Conexao.Leitor["ddd_tel"].ToString(),
-						telefone = Conexao.Leitor["telefone"].ToString(),
-						email = Conexao.Leitor["email"].ToString(),
+                        dddCel = Conexao.Leitor["ddd_cel"].ToString(),
+                        celular = Conexao.Leitor["celular"].ToString(),
+                        dddTel = Conexao.Leitor["ddd_tel"].ToString(),
+                        telefone = Conexao.Leitor["telefone"].ToString(),
+                        email = Conexao.Leitor["email"].ToString(),
 
-						salario = decimal.Parse(Conexao.Leitor["salario"].ToString()),
-						usuario = Conexao.Leitor["usuario"].ToString(),
-						senhaHash = Conexao.Leitor["senha"].ToString(),
+                        salario = decimal.Parse(Conexao.Leitor["salario"].ToString()),
+                        usuario = Conexao.Leitor["usuario"].ToString(),
+                        senhaHash = Conexao.Leitor["senha"].ToString(),
 
-						dataDeNascimento = DataUtil.Converter(Conexao.Leitor, "data_de_nascimento"),
-						dataDeAdmissao = DataUtil.Converter(Conexao.Leitor, "data_de_admissao"),
+                        dataDeNascimento = DataUtil.Converter(Conexao.Leitor, "data_de_nascimento"),
+                        dataDeAdmissao = DataUtil.Converter(Conexao.Leitor, "data_de_admissao"),
 
-						endereco = new EnderecoModel
-						{
-							id = int.Parse(Conexao.Leitor["id_endereco"].ToString())
-						},
+                        endereco = new EnderecoModel
+                        {
+                            id = int.Parse(Conexao.Leitor["id_endereco"].ToString())
+                        },
 
-						cargo = new CargoModel
-						{
-							id = int.Parse(Conexao.Leitor["id_cargo"].ToString())
-						},
+                        cargo = new CargoModel
+                        {
+                            id = int.Parse(Conexao.Leitor["id_cargo"].ToString())
+                        },
 
-						ativo = true
-					});
+                        ativo = true
+                    });
 
-			}
-			catch (Exception ex)
-			{
-				Excecao.Mostrar(ex);
-			}
-			finally
-			{
-				Conexao.FecharConexao();
-			}
+            }
+            catch (Exception ex)
+            {
+                Excecao.Mostrar(ex);
+            }
+            finally
+            {
+                Conexao.FecharConexao();
+            }
 
-			if (lista.Count > 0)
-			{
-				lista.ForEach(x => x.cargo.Carregar());
-				lista.ForEach(x => x.endereco.Carregar());
-			}
+            if (lista.Count > 0)
+            {
+                lista.ForEach(x => x.cargo.Carregar());
+                lista.ForEach(x => x.endereco.Carregar());
+            }
 
-			return lista;
-		}
+            return lista;
+        }
 
-		public static List<FuncionarioModel> CarregarTodos()
-		{
-			return Pesquisar(FiltroPessoa.nome, "");
-		}
+        public static List<FuncionarioModel> CarregarTodos() =>
+            Pesquisar(FiltroPessoa.nome, "");
 
-		#endregion
+        #endregion
 
-		#region LOGIN
+        #region LOGIN
 
-		public static int Autenticar(string usuario, string senha)
-		{
-			var id = 0;
-			senha = MD5.Criptografar(senha);
+        public static int Autenticar(string usuario, string senha)
+        {
+            var id = 0;
+            senha = MD5.Criptografar(senha);
 
-			try
-			{
-				var cmd = @"SELECT
+            try
+            {
+                var cmd = @"SELECT
 								id_funcionario
 							FROM
 								funcionario
@@ -349,28 +347,28 @@ namespace ProjetoIntegrado.Model
 								AND
 								ativo		= 1";
 
-				Conexao.AbrirConexao();
-				Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
+                Conexao.AbrirConexao();
+                Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
 
-				Conexao.Cmd.Parameters.AddWithValue("usuario", usuario);
-				Conexao.Cmd.Parameters.AddWithValue("senha", senha);
-				Conexao.Leitor = Conexao.Cmd.ExecuteReader();
+                Conexao.Cmd.Parameters.AddWithValue("usuario", usuario);
+                Conexao.Cmd.Parameters.AddWithValue("senha", senha);
+                Conexao.Leitor = Conexao.Cmd.ExecuteReader();
 
-				if (Conexao.Leitor.Read())
-					id = int.Parse(Conexao.Leitor["id_funcionario"].ToString());
-			}
-			catch (Exception ex)
-			{
-				Excecao.Mostrar(ex);
-			}
-			finally
-			{
-				Conexao.FecharConexao();
-			}
+                if (Conexao.Leitor.Read())
+                    id = int.Parse(Conexao.Leitor["id_funcionario"].ToString());
+            }
+            catch (Exception ex)
+            {
+                Excecao.Mostrar(ex);
+            }
+            finally
+            {
+                Conexao.FecharConexao();
+            }
 
-			return id;
-		}
+            return id;
+        }
 
-		#endregion
-	}
+        #endregion
+    }
 }

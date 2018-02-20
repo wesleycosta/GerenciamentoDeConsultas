@@ -4,6 +4,7 @@ using System.Windows.Input;
 namespace ProjetoIntegrado.View.Cargo
 {
     using Model;
+    using Funcoes;
 
     public partial class CadCargoWin
     {
@@ -62,6 +63,7 @@ namespace ProjetoIntegrado.View.Cargo
                 cargo.Cadastrar();
             else
                 cargo.Atualizar();
+
         }
 
         #endregion
@@ -70,9 +72,12 @@ namespace ProjetoIntegrado.View.Cargo
 
         private void BtnSalvar_OnClick(object sender, RoutedEventArgs e)
         {
-            MantemCargo();
-            cadastrou = true;
-            Close();
+            if (ValidarCampos.Validar(this))
+            {
+                MantemCargo();
+                cadastrou = true;
+                Close();
+            }
         }
 
         private void BtnCancelar_OnClick(object sender, RoutedEventArgs e) => Close();

@@ -7,11 +7,11 @@ namespace ProjetoIntegrado.Mensagens
     {
         #region MBOX DE AFIRMAÇÃOE E CONFIRMAÇÃO
 
-        public static MetroWindow JanelaPrincipal;
+        public static MetroWindow JanelaPrincipal { get; set; }
 
         private static void Afirmacao(string titulo, string texto)
         {
-            JanelaPrincipal.ShowModalMessageExternal(titulo, texto, MessageDialogStyle.Affirmative);
+            JanelaPrincipal.ShowModalMessageExternal(titulo, texto);
         }
 
         private static MessageDialogResult Pergunta(string titulo, string texto)
@@ -27,16 +27,19 @@ namespace ProjetoIntegrado.Mensagens
 
         #endregion
 
-        public static void SelecioneUmaLinhaDaTabela() => 
+        public static void SelecioneUmaLinhaDaTabela() =>
             Afirmacao("Aviso", "Por favor, selecione uma linha da tabela.");
 
-        public static MessageDialogResult DesejaExcluir() => 
+        public static MessageDialogResult DesejaExcluir() =>
             Pergunta("Aviso", "Tem certeza que deseja remover esse registro?");
 
-        public static MessageDialogResult DesejaSair() => 
+        public static MessageDialogResult DesejaSair() =>
             Pergunta("Aviso", "Tem certeza que deseja sair?");
 
-        public static void Excecao(string msg) => 
+        public static void Excecao(string msg) =>
             Afirmacao("ERRO", msg);
+
+        public static void CampoInvalido(string campo) =>
+                     Afirmacao("Aviso", $"Por favor, preencha o campo {campo}.");
     }
 }

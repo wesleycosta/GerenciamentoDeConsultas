@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caixa\CaixaInfraData.cs" />
+    <Compile Include="Caixa\CaixaModel.cs" />
     <Compile Include="Cargo\CargoModel.cs" />
     <Compile Include="Cargo\CargoInfraData.cs" />
     <Compile Include="Categoria\CategoriaInfraData.cs" />

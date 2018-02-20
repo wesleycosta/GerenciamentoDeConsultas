@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 using MahApps.Metro.Controls.Dialogs;
+using ProjetoIntegrado.Funcoes;
 
 namespace ProjetoIntegrado.View.Cargo
 {
@@ -18,6 +19,7 @@ namespace ProjetoIntegrado.View.Cargo
             InitializeComponent();
 
             Loaded += (o, a) => CarregarCargos();
+            ValidarCampos.JanelaPrincipal = this;
         }
 
         #region MANTEM CARGO

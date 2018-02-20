@@ -151,7 +151,7 @@ CREATE TABLE caixa
 ( 
     id_caixa							INT PRIMARY KEY			IDENTITY, 
     funcionario_abertura				INT						NOT NULL, 
-    funcionario_fechamento				INT						NOT NULL, 
+    funcionario_fechamento				INT						NULL, 
     valor_inicial						DECIMAL(9, 2)			NOT NULL, 
     data_abertura						DATETIME				NOT NULL, 
     data_fechamento						DATETIME				NULL, 
@@ -217,4 +217,4 @@ VALUES
 INSERT INTO funcionario
 	(usuario, nome, senha, genero, id_cargo)
 VALUES
-	('ADMINISTRADOR', 'ADMINISTRADOR', 's5BgyNX0yLPNc/0kE2NAkw==', 1, 3)
+	('ADMINISTRADOR', 'ADMINISTRADOR', 'A/gVrESDv+E=', 1, 3)

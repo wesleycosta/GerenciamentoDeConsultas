@@ -1,63 +1,13 @@
-﻿using System.Windows.Controls;
-using System.Windows.Input;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Media;
 
 namespace ProjetoIntegrado.Funcoes
 {
-    public static class Validar
+    internal static class ValidaUtil
     {
-        #region VALIDAR KEY PRESS
-
-        // EVENTO KEY PRESS PARA VALIDAR NUMERO REAIS
-        public static void Real_KeyPress(object sender, KeyEventArgs e)
-        {
-            if (e.Key != Key.Tab)
-            {
-                // 0 = 48 ||| 9 = 57
-                int ascii = KeyInterop.VirtualKeyFromKey(e.Key);
-                var tb = sender as TextBox;
-
-                if (e.Key == Key.OemComma)
-                {
-                    if (tb.Text.Contains(",") || tb.Text.Length == 0)
-                        e.Handled = true;
-                }
-                else if ((ascii < 48 || ascii > 57) && e.Key != Key.Back) // VALDIDA APENAS VALORES NUMERICOS (0 ATÉ 9)
-                    e.Handled = true;
-            }
-        }
-
-        // EVENTO KEY PRESS PARA VALIDAR NUMERO NATURAIS
-        public static void Naturais_KeyPress(object sender, KeyEventArgs e)
-        {
-            if (e.Key != Key.Tab)
-            {
-                int ascii = KeyInterop.VirtualKeyFromKey(e.Key);
-
-                if ((ascii < 48 || ascii > 57) && e.Key != Key.Back)
-                    e.Handled = true;
-            }
-        }
-
-        // EVENTO KEY PRESS PARA VALIDA LETRA DE 'A' ATÉ 'Z' COM '_'
-        public static void LetrasA_Z_KeyPress(object sender, KeyEventArgs e)
-        {
-            if (e.Key != Key.Tab)
-            {
-                int ascii = KeyInterop.VirtualKeyFromKey(e.Key);
-
-                if (e.Key != Key.Back)
-                {
-                    // VALIDA CAMPO CAIXA BAIXA
-                    if (ascii >= 97 && ascii <= 122)
-                        ascii -= 32;
-
-                    if ((ascii < 65 || ascii > 90) && ascii != '_')
-                        e.Handled = true;
-                }
-            }
-        }
-
+        #region EMAIL
         public static bool ValidaEmail(string emailAddress)
         {
             if (string.IsNullOrEmpty(emailAddress))
@@ -68,20 +18,6 @@ namespace ProjetoIntegrado.Funcoes
 
             return match.Success;
         }
-
-        //// EVENTO KEY PRESS PARA VALIDAR APENAS LETRAS
-        //public static void Letras_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    int ascii = e.KeyChar;
-
-
-        //    if (ascii != 95 && ascii != 8)
-        //        // NUMERICO 0 a 10                      // LETRAS CAIXA ALTA             // LETRAS CAIXA BAIXA
-        //        if (!(ascii >= 48 || ascii <= 57 || ascii >= 65 || ascii <= 90 || ascii >= 97 || ascii <= 122))
-        //            e.Handled = true;
-        //}
-
-        // EVENTO KEY PRESS PARA VALIDAR APENAS LETRAS DE A - Z
 
         #endregion
 
@@ -189,5 +125,25 @@ namespace ProjetoIntegrado.Funcoes
         }
 
         #endregion
+
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
     }
 }

@@ -55,8 +55,8 @@ namespace ProjetoIntegrado.View.Funcionario
         private void AdicionarEventos()
         {
             tbCep.LostFocus += (o, a) => MantemBuscaCep();
-            tbSalario.KeyDown += Validar.Real_KeyPress;
-            tbNumero.KeyDown += Validar.Naturais_KeyPress;
+            tbSalario.KeyDown += ValidarEntrada.Real_KeyPress;
+            tbNumero.KeyDown += ValidarEntrada.Naturais_KeyPress;
         }
 
         #endregion

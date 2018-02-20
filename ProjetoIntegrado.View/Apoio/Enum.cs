@@ -35,10 +35,11 @@
         // CONSULTAS
         ListaDeConsultas,
         ConsultasCanceladas,
-        
+
         // FINANCEIRO
         Faturamento
     }
 
     #endregion
+
 }

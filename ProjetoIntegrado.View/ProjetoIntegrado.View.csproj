@@ -166,6 +166,10 @@
       <DependentUpon>CadClinicaWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Apoio\Config.cs" />
+    <Compile Include="FluxoDeCaixa\AbrirCaixaWin.xaml.cs">
+      <DependentUpon>AbrirCaixaWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FluxoDeCaixa\CaixaControle.cs" />
     <Compile Include="FluxoDeCaixa\PrincipalFluxoDeCaixaWin.xaml.cs">
       <DependentUpon>PrincipalFluxoDeCaixaWin.xaml</DependentUpon>
     </Compile>
@@ -314,6 +318,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Clinica\CadClinicaWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FluxoDeCaixa\AbrirCaixaWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

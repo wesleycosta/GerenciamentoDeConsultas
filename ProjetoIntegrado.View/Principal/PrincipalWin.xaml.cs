@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using MahApps.Metro.Controls.Dialogs;
+using ProjetoIntegrado.Funcoes;
 
 namespace ProjetoIntegrado.View.Principal
 {
@@ -68,7 +69,7 @@ namespace ProjetoIntegrado.View.Principal
         // ON LOADED
         private void JanelaPrincipal_OnLoaded(object sender, RoutedEventArgs e)
         {
-            Mbox.JanelaPrincipal = this;
+            Mbox.JanelaPrincipal =  this;
             frmLogin.Close();
         }
 
@@ -79,7 +80,7 @@ namespace ProjetoIntegrado.View.Principal
         {
             var item = MenuItens.GetItem(sender.ToString());
 
-            if(item == MenuItensEnum.TrocarUsuario)
+            if (item == MenuItensEnum.TrocarUsuario)
                 CarregarUsuario();
         }
 

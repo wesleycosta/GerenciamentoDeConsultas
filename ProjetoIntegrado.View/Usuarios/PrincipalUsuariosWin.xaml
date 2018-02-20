@@ -40,7 +40,7 @@
                 <GridView>
                     <GridViewColumn  DisplayMemberBinding="{Binding usuario}" Width="100">Usuário</GridViewColumn>
                     <GridViewColumn  DisplayMemberBinding="{Binding nome}" Width="250">Funcionário</GridViewColumn>
-                    <GridViewColumn  DisplayMemberBinding="{Binding cargoDescricao}" Width="80">Cargo</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding cargoDescricao}" Width="120">Cargo</GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
