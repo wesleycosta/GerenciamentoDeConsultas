@@ -27,6 +27,8 @@ namespace ProjetoIntegrado.View.Principal
 
             Closing += (o, a) =>
                 a.Cancel = !Sair();
+
+            ValidarCampos.JanelaPrincipal = this;
         }
 
         private void CarregarUsuario() => tbUsuario.Text = Sessao.funcionario.usuario;
@@ -36,22 +38,21 @@ namespace ProjetoIntegrado.View.Principal
             // LOGO
             imgLogo.BitmapToImageSource(Icons.eyeglasses);
 
-            // CONSULTAS
-            imgAgenda.BitmapToImageSource(Icons.Time_16x16);
+            // PRINCIPAL
             imgPacientes.BitmapToImageSource(Icons.Customer_16x16);
-
+            imgCirurgia.BitmapToImageSource(Icons.Time_16x16);
+            imgConvenio.BitmapToImageSource(Icons.Contact_16x16);
+            
             // CADASTROS
             imgEmpresa.BitmapToImageSource(Icons.Home_16x16);
             imgFuncionarios.BitmapToImageSource(Icons.Employee_16x16);
             imgUsuarios.BitmapToImageSource(Icons.Team_16x16);
             imgCargos.BitmapToImageSource(Icons.PackageProduct_16x16);
-            imgCategoria.BitmapToImageSource(Icons.Palette_16x16);
 
             // FINANCEIRO
             imgFormaDePagamento.BitmapToImageSource(Icons.FullStackedBar_16x16);
             imgFluxoDeCaixa.BitmapToImageSource(Icons.FluxoDeCaixa16x16);
-            imgLivroCaixa.BitmapToImageSource(Icons.Content_16x16);
-            imgFaturamento.BitmapToImageSource(Icons.Chart_32x32);
+            imgDespesas.BitmapToImageSource(Icons.SwitchTimeScalesTo_16x16);
 
             // RELATORIOS E CONFIGURACOES
             imgRelatorios.BitmapToImageSource(Icons.Report_16x16);

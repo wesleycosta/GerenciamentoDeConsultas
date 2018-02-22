@@ -4,22 +4,21 @@
 
     public enum MenuItensEnum
     {
-        // CONSULTAS
-        Agenda,
+        // PRINCIPAL
         Pacientes,
+        Cirurgias,
+        Convenio,
 
         // CADASTROS
         Empresa,
         Funcionarios,
         Usuarios,
         Cargos,
-        Categoria,
 
         // FINANCEIRO
-        FormaDePagamento,
+        Despesas,
         FluxoDeCaixa,
-        LivroCaixa,
-        Faturamento,
+        FormaDePagamento,
 
         // OUTROS
         Relatorios,

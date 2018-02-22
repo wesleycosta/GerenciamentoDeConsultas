@@ -1,14 +1,12 @@
 ﻿using MahApps.Metro.Controls;
-using ProjetoIntegrado.Mensagens;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
+using Xceed.Wpf.Toolkit;
 
 namespace ProjetoIntegrado.Funcoes
 {
+    using Mensagens;
+
     public static class ValidarCampos
     {
         public static MetroWindow JanelaPrincipal { get; set; }
@@ -18,7 +16,8 @@ namespace ProjetoIntegrado.Funcoes
             Mbox.JanelaPrincipal = JanelaPrincipal;
             var TbOk = ValidarTextBox(ValidaUtil.FindVisualChildren<TextBox>(janela));
 
-            if (!TbOk) return false;
+            if (!TbOk)
+                return false;
 
             return true;
         }
@@ -39,5 +38,40 @@ namespace ProjetoIntegrado.Funcoes
 
             return true;
         }
+
+        //private static bool ValidarCpf(IEnumerable<MaskedTextBox> lTextBoxs)
+        //{
+        //    foreach (MaskedTextBox tb in lTextBoxs)
+        //    {
+        //        if (tb?.Tag?.ToString() == "cpf*")
+        //            if (ValidarEntrada.ValidaCPF(Mascara.Remover(tb.Text)))
+        //            {
+        //                Mbox.CampoInvalido(tb.Uid);
+        //                tb.Focus();
+
+        //                return false;
+        //            }
+        //    }
+
+        //    return true;
+        //}
+
+        //private static bool ValidarData(IEnumerable<TextBox> lTextBoxs)
+        //{
+        //    foreach (TextBox tb in lTextBoxs)
+        //    {
+        //        if (tb?.Tag?.ToString() == "data*")
+        //            if (string.IsNullOrEmpty(tb.Text.Trim()))
+        //            {
+        //                Mbox.CampoInvalido(tb.Uid);
+        //                tb.Focus();
+
+        //                return false;
+        //            }
+        //    }
+
+        //    return true;
+        //}
+
     }
 }

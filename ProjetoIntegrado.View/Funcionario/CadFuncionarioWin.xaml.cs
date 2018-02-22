@@ -7,7 +7,6 @@ namespace ProjetoIntegrado.View.Funcionario
     using Model;
     using Model.Estado;
     using Funcoes;
-    using WebServices;
 
     public partial class CadFuncionarioWin
     {
@@ -54,27 +53,8 @@ namespace ProjetoIntegrado.View.Funcionario
 
         private void AdicionarEventos()
         {
-            tbCep.LostFocus += (o, a) => MantemBuscaCep();
             tbSalario.KeyDown += ValidarEntrada.Real_KeyPress;
             tbNumero.KeyDown += ValidarEntrada.Naturais_KeyPress;
-        }
-
-        #endregion
-
-        #region  MANTEM CEP
-
-        private async void MantemBuscaCep()
-        {
-            if (tbCep.IsMaskFull)
-            {
-                var cep = Mascara.Remover(tbCep.Text);
-
-                var viaCep = new ViaCep();
-                var end = await viaCep.BuscarCep(cep);
-
-                if (end != null)
-                    CarregarEndereco(end);
-            }
         }
 
         #endregion

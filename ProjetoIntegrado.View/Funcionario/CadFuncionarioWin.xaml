@@ -15,7 +15,8 @@
     
         Title="FUNCIONÁRIO" 
         Height="529" 
-        Width="722">
+        Width="722"
+>
 
     <Grid>
         <Grid.RowDefinitions>

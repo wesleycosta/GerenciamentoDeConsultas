@@ -20,19 +20,18 @@ namespace ProjetoIntegrado.View.Principal
 
             switch (item)
             {
-                case MenuItensEnum.Agenda: Agenda(); break;
                 case MenuItensEnum.Pacientes: Pacientes(); break;
+                case MenuItensEnum.Cirurgias: Cirurgias(); break;
+                case MenuItensEnum.Convenio: Convenio(); break;
 
                 case MenuItensEnum.Empresa: Empresa(); break;
                 case MenuItensEnum.Funcionarios: Funcionarios(); break;
                 case MenuItensEnum.Usuarios: Usuarios(); break;
                 case MenuItensEnum.Cargos: Cargos(); break;
-                case MenuItensEnum.Categoria: Categoria(); break;
 
-                case MenuItensEnum.FormaDePagamento: FormaDePagamento(); break;
+                case MenuItensEnum.Despesas: Despesas(); break;
                 case MenuItensEnum.FluxoDeCaixa: FluxoDeCaixa(); break;
-                case MenuItensEnum.LivroCaixa: LivroCaixa(); break;
-                case MenuItensEnum.Faturamento: Faturamento(); break;
+                case MenuItensEnum.FormaDePagamento: FormaDePagamento(); break;
 
                 case MenuItensEnum.Relatorios: Relatorios(); break;
                 case MenuItensEnum.TrocarUsuario: TrocarUsuario(); break;
@@ -43,9 +42,13 @@ namespace ProjetoIntegrado.View.Principal
 
         #region  PRINCIPAL
 
-        private static void Agenda() { }
+        private static void Pacientes() =>
+            new Clientes.PrincipalClienteWin().ShowDialog();
 
-        private static void Pacientes() => new Clientes.PrincipalClienteWin().ShowDialog();
+        private static void Cirurgias() { }
+
+        private static void Convenio() { }
+
 
         #endregion
 
@@ -64,13 +67,17 @@ namespace ProjetoIntegrado.View.Principal
         #endregion
 
         #region FINANCEIRO
-        private static void FormaDePagamento() => new FormaDePagamento.PrincipalFormaDePagamentoWin().ShowDialog();
 
-        private static void FluxoDeCaixa() => new FluxoDeCaixa.PrincipalFluxoDeCaixaWin().ShowDialog();
+        private static void Despesas()
+        {
 
-        private static void LivroCaixa() => new LivroCaixa.PrincipalLivroCaixa().ShowDialog();
+        }
 
-        private static void Faturamento() => new WebCam.WebCamWin().ShowDialog();
+        private static void FluxoDeCaixa() =>
+            new FluxoDeCaixa.PrincipalFluxoDeCaixaWin().ShowDialog();
+
+        private static void FormaDePagamento() =>
+            new FormaDePagamento.PrincipalFormaDePagamentoWin().ShowDialog();
 
         #endregion
 

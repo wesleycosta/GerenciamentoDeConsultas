@@ -8,9 +8,76 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+
         mc:Ignorable="d"
-        Title="CadClienteWin" Height="300" Width="300">
+    
+        Style="{StaticResource WindowSimples}"
+        WindowStartupLocation="CenterScreen"
+        KeyDown="MetroWindow_KeyDown"
+    
+        Title="CLIENTES" 
+        Height="529" 
+        Width="722"
+>
     <Grid>
+
+        <dragablz:TabablzControl>
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController />
+            </dragablz:TabablzControl.InterTabController>
+            <TabItem Header="DADOS DO PACIENTE">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid Margin="3, 3,-3,-2" Grid.RowSpan="2">
+                        <TextBox x:Name="tbNome"  Tag="*"    x:Uid="Nome" TabIndex="0" HorizontalAlignment="Left" Height="39" Width="360" Margin="16,18,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="NOME" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+                        <xctk:MaskedTextBox       Tag="cpf*" x:Uid="CPF" x:Name="tbCpf"  TabIndex="1" Mask="000,000,000-00"  PromptChar=" " HorizontalAlignment="Left" Height="40" Width="160" Margin="396,18,0,0" TextWrapping="Wrap"      TextAlignment="Center" CharacterCasing="Upper" materialDesign:HintAssist.Hint="CPF" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+                        <ComboBox x:Name="cbGenero" TabIndex="2" IsTabStop="True" Margin="576,20,0,0" materialDesign:HintAssist.Hint="GÊNERO" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Height="38" SelectedIndex="0" VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="119" >
+                            <ComboBoxItem Content="MASCULINO"/>
+                            <ComboBoxItem Content="FEMININO"/>
+                        </ComboBox>
+
+                        <ComboBox x:Name="cbConvenio" TabIndex="3" IsTabStop="True" DisplayMemberPath="descricao" Margin="16,79,0,0" materialDesign:HintAssist.Hint="CONVÊNIO"  IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Height="38" SelectedIndex="0" VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="198"  />
+                        <TextBox x:Name="tbNumeroConvenio"  TabIndex="4" HorizontalAlignment="Left" Height="39" Width="160" Margin="236,79,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="NÚMERO DO CONVÊNIO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+                        <xctk:MaskedTextBox Tag="data*" x:Uid="Data de Nascimento" x:Name="tbDataNascimento" TabIndex="5" Mask="00/00/0000"  PromptChar=" " HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="120" Margin="577,79,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="DATA DE NASCIMENTO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+
+                        <TextBox x:Name="tbDddCel" TabIndex="6" MaxLength="2" TextAlignment="Center"  HorizontalAlignment="Left" Height="38" Width="78" Margin="16,139,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="DDD CEL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+                        <TextBox x:Name="tbCelular"  TabIndex="7" HorizontalAlignment="Left" Height="38" Width="258" Margin="116,139,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="CELULAR" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+                        <TextBox x:Name="tbDddTel"  TabIndex="8" MaxLength="2" HorizontalAlignment="Left"  TextAlignment="Center" Height="38" Width="78" Margin="396,139,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="DDD TEL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+                        <TextBox x:Name="tbTelefone"  TabIndex="9" HorizontalAlignment="Left" Height="38" Width="199" Margin="496,139,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="TELEFONE" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+                        <TextBox x:Name="tbEmail"  TabIndex="10" HorizontalAlignment="Left" Height="38" Width="679" Margin="16,199,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="E-MAIL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+
+                        <xctk:MaskedTextBox  x:Name="tbCep" Mask="99999-999"  PromptChar=" "  TabIndex="11" TextAlignment="Center" HorizontalAlignment="Left" Height="38" Width="120" Margin="15,259,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="CEP" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+                        <TextBox x:Name="tbCidade"  TabIndex="12" HorizontalAlignment="Left" Height="38" Width="260"  Margin="155,259,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="CIDADE" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+                        <ComboBox x:Name="cbUf" TabIndex="13" IsTabStop="True" Margin="435,261,247,0" materialDesign:HintAssist.Hint="UF" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Height="38" VerticalAlignment="Top" IsReadOnly="True" RenderTransformOrigin="1.494,0.559" />
+                        <TextBox x:Name="tbBairro"  TabIndex="14" HorizontalAlignment="Left" Height="38" Width="199"  Margin="495,259,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="BAIRRO"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+                        <TextBox x:Name="tbLogradouro"  TabIndex="15" HorizontalAlignment="Left" Height="38" Width="359" Margin="15,319,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="LOGRADOURO"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+                        <TextBox x:Name="tbNumero"  TabIndex="16" HorizontalAlignment="Left"  Height="38" Width="80" TextAlignment="Center" Margin="395,320,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="NÚMERO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+                        <TextBox x:Name="tbComplemento"  TabIndex="17" HorizontalAlignment="Left" Height="38" Width="199" Margin="496,319,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="COMPLEMENTO"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="5, 400,-4,7">
+                        <Button x:Name="BtnSalvar"   Click="BtnSalvar_OnClick" TabIndex="18" Content="Salvar" HorizontalAlignment="Right" Height="34"  Margin="0,2,152,0" VerticalAlignment="Top" Width="122"/>
+                        <Button x:Name="BtnCancelar" Click="BtnCancelar_OnClick" TabIndex="19" Content="Cancelar" HorizontalAlignment="Right" Height="34" Margin="0,2,17,0" VerticalAlignment="Top" Width="124"/>
+                        <Label x:Name ="lbCodigoText" Content="Código:" HorizontalAlignment="Left" Margin="15,9,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lbCodigo" Content="000" HorizontalAlignment="Left" Margin="66,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="CONVÊNIO">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Material Design</TextBlock>
+            </TabItem>
+
+            <TabItem Header="HISTÓRICO">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Looks Quite Nice</TextBlock>
+            </TabItem>
+        </dragablz:TabablzControl>
 
     </Grid>
 </controls:MetroWindow>

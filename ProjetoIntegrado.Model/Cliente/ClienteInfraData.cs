@@ -18,14 +18,13 @@ namespace ProjetoIntegrado.Model
 
             try
             {
-                var fotoBytes = ImagemUtil.ImageParaByte(foto);
                 endereco.Cadastrar();
 
                 var cmd = @"INSERT INTO cliente
-	                            (id_endereco, nome, genero, cpf, data_de_nascimento, ddd_cel, celular, ddd_tel, telefone, email, foto)
+	                            (id_endereco, nome, genero, cpf, data_de_nascimento, ddd_cel, celular, ddd_tel, telefone, email)
                             OUTPUT inserted.id_cliente
                             VALUES
-	                            (@id_endereco, @nome, @genero, @cpf, @data_de_nascimento, @ddd_cel, @celular, @ddd_tel, @telefone, @email, @foto)";
+	                            (@id_endereco, @nome, @genero, @cpf, @data_de_nascimento, @ddd_cel, @celular, @ddd_tel, @telefone, @email)";
 
                 Conexao.AbrirConexao();
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
@@ -40,11 +39,6 @@ namespace ProjetoIntegrado.Model
                 Conexao.Cmd.Parameters.AddWithValue("ddd_tel", dddTel);
                 Conexao.Cmd.Parameters.AddWithValue("telefone", telefone);
                 Conexao.Cmd.Parameters.AddWithValue("email", email);
-
-                if (fotoBytes != null)
-                    Conexao.Cmd.Parameters.Add("foto", SqlDbType.Image, fotoBytes.Length).Value = fotoBytes;
-                else
-                    Conexao.Cmd.Parameters.AddWithValue("foto", SqlBinary.Null);
 
                 id = (int)Conexao.Cmd.ExecuteScalar();
             }
@@ -62,7 +56,6 @@ namespace ProjetoIntegrado.Model
         {
             try
             {
-                var fotoBytes = ImagemUtil.ImageParaByte(foto);
                 endereco.Atualizar();
 
                 var cmd = @"UPDATE cliente SET
@@ -76,7 +69,6 @@ namespace ProjetoIntegrado.Model
 	                            ddd_tel					= @ddd_tel,
 	                            telefone				= @telefone,
 	                            email					= @email,
-	                            foto					= @foto,
 	                            ativo					= @ativo
                             WHERE
 	                            id_cliente				= @id";
@@ -96,11 +88,6 @@ namespace ProjetoIntegrado.Model
                 Conexao.Cmd.Parameters.AddWithValue("telefone", telefone);
                 Conexao.Cmd.Parameters.AddWithValue("email", email);
                 Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
-
-                if (fotoBytes != null)
-                    Conexao.Cmd.Parameters.Add("foto", SqlDbType.Image, fotoBytes.Length).Value = fotoBytes;
-                else
-                    Conexao.Cmd.Parameters.AddWithValue("foto", SqlBinary.Null);
 
                 Conexao.Cmd.ExecuteNonQuery();
             }
@@ -130,7 +117,6 @@ namespace ProjetoIntegrado.Model
 	                            ddd_tel,
 	                            telefone,
 	                            email,
-	                            foto,
                                 ativo
                             FROM
 	                            cliente
@@ -163,7 +149,6 @@ namespace ProjetoIntegrado.Model
                         id = int.Parse(Conexao.Leitor["id_endereco"].ToString())
                     };
 
-                    foto = ImagemUtil.ByteParaImage(Conexao.Leitor["foto"]);
                     ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
                 }
             }

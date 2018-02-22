@@ -9,7 +9,6 @@ namespace ProjetoIntegrado.View.Clinica
     using Model;
     using ViewUtil;
     using Funcoes;
-    using WebServices;
     using Model.Estado;
 
     public partial class CadClinicaWin : MetroWindow
@@ -37,7 +36,6 @@ namespace ProjetoIntegrado.View.Clinica
         {
             EventosLogo();
 
-            tbCep.LostFocus += (o, a) => MantemBuscaCep();
             cbUf.ItemsSource = EstadoModel.Siglas;
 
             Loaded += (o, a) => tbRazaoSocial.Focus();
@@ -91,24 +89,6 @@ namespace ProjetoIntegrado.View.Clinica
                                      else
                                          imageLogo.Source = null;
                                  }));
-        }
-
-        #endregion
-
-        #region  MANTEM CEP
-
-        private async void MantemBuscaCep()
-        {
-            if (tbCep.IsMaskFull)
-            {
-                var cep = Mascara.Remover(tbCep.Text);
-
-                var viaCep = new ViaCep();
-                var end = await viaCep.BuscarCep(cep);
-
-                if (end != null)
-                    CarregarEndereco(end);
-            }
         }
 
         #endregion

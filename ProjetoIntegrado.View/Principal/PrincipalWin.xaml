@@ -51,21 +51,31 @@
                   MinWidth="220" Padding="0, 20, 0, 0">
 
                     <!-- CONSULTAS -->
-                    <TreeViewItem Header="Consultas" IsExpanded="True">
-                        <TreeViewItem MouseUp="Menu_OnMouseDoubleClick" x:Uid="Agenda" x:Name="agendaItem">
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="imgAgenda" Source="/Resources/Time_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Agenda</Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
+                    <TreeViewItem Header="Principal" IsExpanded="True">
 
                         <TreeViewItem x:Uid="Pacientes" MouseDoubleClick="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgPacientes" Source="/Resources/Customer_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
                                     <Label Height="16" Padding="0">Pacientes</Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+                        <TreeViewItem x:Uid="Cirurgias" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image x:Name="imgCirurgia" Source="/Resources/Customer_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0">Cirurgias</Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+                        <TreeViewItem  x:Uid="Convenio" MouseUp="Menu_OnMouseDoubleClick"  x:Name="agendaItem">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image x:Name="imgConvenio" Source="/Resources/Time_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0">Convênio</Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
@@ -111,30 +121,21 @@
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem x:Uid="Categoria" MouseDoubleClick="Menu_OnMouseDoubleClick">
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="imgCategoria" Source="/Resources/Palette_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Categoria</Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-
                     </TreeViewItem>
 
                     <!-- FINANCEIRO -->
                     <TreeViewItem Header="Financeiro" IsExpanded="True">
 
-                        <TreeViewItem x:Uid="FormaDePagamento" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Uid="Despesas" MouseDoubleClick="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="imgFormaDePagamento" Source="/Resources/FullStackedBar_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Forma de Pagamento</Label>
+                                    <Image x:Name="imgDespesas" Source="/Resources/Content_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0">Despesas</Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem x:Uid="FluxoDeCaixa" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                         <TreeViewItem x:Uid="FluxoDeCaixa" MouseDoubleClick="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgFluxoDeCaixa" Source="/Resources/FluxoDeCaixa16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
@@ -142,21 +143,12 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-
-                        <TreeViewItem x:Uid="LivroCaixa" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                        
+                        <TreeViewItem x:Uid="FormaDePagamento" MouseDoubleClick="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="imgLivroCaixa" Source="/Resources/Content_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Livro Caixa</Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-
-                        <TreeViewItem x:Uid="Faturamento" MouseDoubleClick="Menu_OnMouseDoubleClick">
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="imgFaturamento" Source="/Resources/Chart_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Faturamento</Label>
+                                    <Image x:Name="imgFormaDePagamento" Source="/Resources/FullStackedBar_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0">Forma de Pagamento</Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
@@ -191,9 +183,8 @@
                     </TreeViewItem>
 
                 </TreeView>
-          
+
             </StackPanel>
         </Border>
     </Grid>
-
 </controls:MetroWindow>
