@@ -1,0 +1,81 @@
+﻿<controls:MetroWindow  
+        x:Class="ProjetoIntegrado.View.Despesa.PrincipalDespesaWin"
+        xmlns:local="clr-namespace:ProjetoIntegrado.View.Despesa"
+    
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+        Style="{StaticResource WindowSimples}"
+        WindowStartupLocation="CenterScreen"
+    
+        Title="DESPESAS" 
+    
+        Height="590" 
+        Width="950"
+        KeyDown="MetroWindow_KeyDown"
+>
+    <Grid Margin="0, 0, 0, 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="482"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="#CCC"  Margin="-1,-2,1,472" Grid.RowSpan="2">
+            <Grid Grid.Row="0" Margin="0">
+                <Button x:Name="BtnNovo" Content="Novo" Click="BtnNovo_OnClick" HorizontalAlignment="Left" Height="34" Margin="784,36,0,0" VerticalAlignment="Top" Width="140"/>
+                <TextBox 
+                      TabIndex="0"
+                      x:Name="tbPesquisa" 
+                      HorizontalAlignment="Left" 
+                      Height="39" 
+                      Width="417"
+                      Margin="24,28,0,0" 
+                      TextWrapping="Wrap"     
+                      materialDesign:HintAssist.Hint="PESQUISAR"
+                      CharacterCasing="Upper"
+                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                      VerticalAlignment="Top" 
+                      KeyUp="tbPesquisa_KeyUp"/>
+                <DatePicker HorizontalAlignment="Left" Margin="461,42,0,0" VerticalAlignment="Top" Width="140" 
+                    materialDesign:HintAssist.Hint="DATA INICIAL" x:Name="tbDataInicial" SelectedDateChanged="tbDataInicial_SelectedDateChanged"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                    />
+                <DatePicker HorizontalAlignment="Left" Margin="621,42,0,0" VerticalAlignment="Top" Width="140" 
+                    materialDesign:HintAssist.Hint="DATA FINAL" x:Name="tbDataFinal" SelectedDateChanged="tbDataInicial_SelectedDateChanged"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                    />
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1" >
+            <Border   Margin="22,20,21,38" 
+                          Padding="0" 
+                          BorderBrush="#FFE6E4E4" BorderThickness="1">
+                <ListView x:Name="lvwFuncionarios"
+                      HorizontalAlignment="Left" 
+                      Height="423" 
+                      Width="901"
+                      Padding="0"
+                      Margin="-1,0,-1,-1" 
+                      VerticalAlignment="Top" 
+                      KeyDown="lvwFuncionarios_KeyDown"
+                      MouseDoubleClick="lvwFuncionarios_MouseDoubleClick" Grid.Row="1" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn  DisplayMemberBinding="{Binding data, StringFormat={}{0:dd/MM/yyyy}}" Width="100">Data</GridViewColumn>
+                            <GridViewColumn  DisplayMemberBinding="{Binding descricao}" Width="630">Descrição</GridViewColumn>
+                            <GridViewColumn  DisplayMemberBinding="{Binding valor, StringFormat={}{0:n}}" Width="120">Valor</GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Border>
+
+            <Label Content="Registros Encontrados:" HorizontalAlignment="Left" Margin="21,448,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbTotalRegistro" Content="000" HorizontalAlignment="Left" Margin="150,449,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label Content="Total:" HorizontalAlignment="Left" Margin="805,449,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbTotal" Content="0,00" Width="80" HorizontalAlignment="Right" HorizontalContentAlignment="Right"  Margin="0,448,21,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        </Grid>
+    </Grid>
+
+</controls:MetroWindow>

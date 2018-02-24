@@ -40,14 +40,14 @@ namespace ProjetoIntegrado.View.Principal
 
             // PRINCIPAL
             imgPacientes.BitmapToImageSource(Icons.Customer_16x16);
-            imgCirurgia.BitmapToImageSource(Icons.Time_16x16);
-            imgConvenio.BitmapToImageSource(Icons.Contact_16x16);
+            imgProcedimentos.BitmapToImageSource(Icons.Time_16x16);
             
             // CADASTROS
             imgEmpresa.BitmapToImageSource(Icons.Home_16x16);
             imgFuncionarios.BitmapToImageSource(Icons.Employee_16x16);
             imgUsuarios.BitmapToImageSource(Icons.Team_16x16);
             imgCargos.BitmapToImageSource(Icons.PackageProduct_16x16);
+            imgConvenio.BitmapToImageSource(Icons.Contact_16x16);
 
             // FINANCEIRO
             imgFormaDePagamento.BitmapToImageSource(Icons.FullStackedBar_16x16);

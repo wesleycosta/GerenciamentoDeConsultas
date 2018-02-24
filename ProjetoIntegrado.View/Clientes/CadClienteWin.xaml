@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjetoIntegrado.View.Clientes"
+        
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
@@ -68,10 +69,6 @@
                         <Label x:Name="lbCodigo" Content="000" HorizontalAlignment="Left" Margin="66,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     </Grid>
                 </Grid>
-            </TabItem>
-
-            <TabItem Header="CONVÊNIO">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Material Design</TextBlock>
             </TabItem>
 
             <TabItem Header="HISTÓRICO">

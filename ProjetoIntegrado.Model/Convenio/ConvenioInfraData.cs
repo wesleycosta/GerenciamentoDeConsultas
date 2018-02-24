@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 
@@ -6,7 +6,7 @@ namespace ProjetoIntegrado.Model
 {
     using BaseDeDados;
 
-    public partial class CargoModel : ICadastro
+    public partial class ConvenioModel : ICadastro
     {
         #region ICADASTRO
 
@@ -14,17 +14,16 @@ namespace ProjetoIntegrado.Model
         {
             try
             {
-                var cmd = @"INSERT INTO cargo
-                                ( descricao, ativo)
-                            OUTPUT inserted.id_cargo
+                var cmd = @"INSERT INTO convenio
+                                (nome)
+                            OUTPUT inserted.id_convenio
                             VALUES
-                                (@descricao, @ativo)";
+                                (@nome)";
 
                 Conexao.AbrirConexao();
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
 
-                Conexao.Cmd.Parameters.AddWithValue("descricao", descricao);
-                Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
+                Conexao.Cmd.Parameters.AddWithValue("nome", nome);
 
                 id = (int)Conexao.Cmd.ExecuteScalar();
             }
@@ -42,18 +41,18 @@ namespace ProjetoIntegrado.Model
         {
             try
             {
-                var cmd = @"UPDATE cargo SET
-	                            descricao = @descricao,
-	                            ativo	  = @ativo
+                var cmd = @"UPDATE convenio SET
+	                            nome        = @nome,
+	                            ativo	    = @ativo
                             WHERE
-	                            id_cargo  = @id";
+	                            id_convenio = @id";
 
                 Conexao.AbrirConexao();
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
 
-                Conexao.Cmd.Parameters.AddWithValue("descricao", descricao);
-                Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
                 Conexao.Cmd.Parameters.AddWithValue("id", id);
+                Conexao.Cmd.Parameters.AddWithValue("nome", nome);
+                Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
 
                 Conexao.Cmd.ExecuteNonQuery();
             }
@@ -78,12 +77,12 @@ namespace ProjetoIntegrado.Model
             try
             {
                 var cmd = @"SELECT
-	                            descricao,
+	                            nome,
 	                            ativo
                             FROM
-	                            cargo
+	                            convenio
                             WHERE
-	                            id_cargo = @id";
+	                            id_convenio = @id";
 
                 Conexao.AbrirConexao();
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
@@ -93,7 +92,7 @@ namespace ProjetoIntegrado.Model
 
                 if (Conexao.Leitor.Read())
                 {
-                    descricao = Conexao.Leitor["descricao"].ToString();
+                    nome = Conexao.Leitor["nome"].ToString();
                     ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
                 }
             }
@@ -111,24 +110,24 @@ namespace ProjetoIntegrado.Model
 
         #region CARREGAR LISTA
 
-        public static List<CargoModel> Pesquisar(string pesquisa)
+        public static List<ConvenioModel> Pesquisar(string pesquisa)
         {
-            var lista = new List<CargoModel>();
+            var lista = new List<ConvenioModel>();
 
             try
             {
                 var cmd = $@"SELECT TOP 50
-	                            id_cargo,
-	                            descricao,
+	                            id_convenio,
+	                            nome,
 	                            ativo
                              FROM
-	                            cargo
+	                            convenio
                              WHERE
 	                            ativo = 1
 	                            AND
-	                            descricao LIKE @pesquisa
+	                            nome LIKE @pesquisa
                             ORDER BY
-                                id_cargo";
+                                id_convenio";
 
                 Conexao.AbrirConexao();
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
@@ -136,10 +135,10 @@ namespace ProjetoIntegrado.Model
                 Conexao.Leitor = Conexao.Cmd.ExecuteReader();
 
                 while (Conexao.Leitor.Read())
-                    lista.Add(new CargoModel
+                    lista.Add(new ConvenioModel
                     {
-                        id = int.Parse(Conexao.Leitor["id_cargo"].ToString()),
-                        descricao = Conexao.Leitor["descricao"].ToString(),
+                        id = int.Parse(Conexao.Leitor["id_convenio"].ToString()),
+                        nome = Conexao.Leitor["nome"].ToString(),
                         ativo = bool.Parse(Conexao.Leitor["ativo"].ToString())
                     });
             }
@@ -155,10 +154,7 @@ namespace ProjetoIntegrado.Model
             return lista;
         }
 
-        public static List<CargoModel> CarregarTodos()
-        {
-            return Pesquisar("");
-        }
+        public static List<ConvenioModel> CarregarTodos() => Pesquisar("");
 
         #endregion
     }

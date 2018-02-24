@@ -1,5 +1,6 @@
 ﻿<controls:MetroWindow  
         x:Class="ProjetoIntegrado.View.Clientes.PrincipalClienteWin"
+    
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
@@ -80,6 +81,7 @@
                         </ListView.View>
                     </ListView>
                 </Border>
+                
                 <Label Content="Registros Encontrados:" HorizontalAlignment="Left" Margin="21,448,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="lbTotalRegistro" Content="000" HorizontalAlignment="Left" Margin="150,449,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
             </Grid>

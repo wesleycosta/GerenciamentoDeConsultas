@@ -6,7 +6,7 @@
     {
         // PRINCIPAL
         Pacientes,
-        Cirurgias,
+        Procedimentos,
         Convenio,
 
         // CADASTROS

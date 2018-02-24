@@ -4,55 +4,55 @@ using System.Windows.Input;
 using MahApps.Metro.Controls.Dialogs;
 using ProjetoIntegrado.Funcoes;
 
-namespace ProjetoIntegrado.View.Cargo
+namespace ProjetoIntegrado.View.Convenio
 {
     using Model;
     using Mensagens;
     using ViewUtil;
 
-    public partial class PrincipalCargoWin
+    public partial class PrincipalConvenioWin
     {
-        private List<CargoModel> cargos;
+        private List<ConvenioModel> listaDeConvenios;
 
-        public PrincipalCargoWin()
+        public PrincipalConvenioWin()
         {
             InitializeComponent();
 
-            Loaded += (o, a) => CarregarCargos();
+            Loaded += (o, a) => CarregarConvenios();
         }
 
         #region MANTEM CARGO
 
-        private void CarregarCargos()
+        private void CarregarConvenios()
         {
             if (string.IsNullOrEmpty(tbPesquisa.Text))
-                cargos = CargoModel.CarregarTodos();
+                listaDeConvenios = ConvenioModel.CarregarTodos();
             else
-                cargos = CargoModel.Pesquisar(tbPesquisa.Text);
+                listaDeConvenios = ConvenioModel.Pesquisar(tbPesquisa.Text);
 
-            lvwCargos.ItemsSource = cargos;
+            lvwCargos.ItemsSource = listaDeConvenios;
             tbPesquisa.Focus();
         }
 
         private void Novo()
         {
-            var cadCargo = new CadCargoWin();
-            cadCargo.ShowDialog();
+            var cadConvenio = new CadConvenioWin();
+            cadConvenio.ShowDialog();
 
-            if (cadCargo.cadastrou)
-                CarregarCargos();
+            if (cadConvenio.cadastrou)
+                CarregarConvenios();
         }
 
         private void Editar()
         {
             if (lvwCargos.SelectedIndex >= 0)
             {
-                var cargo = lvwCargos.SelectedItems[0] as CargoModel;
-                var cadCargo = new CadCargoWin(cargo);
-                cadCargo.ShowDialog();
+                var convenio = lvwCargos.SelectedItems[0] as ConvenioModel;
+                var cadConvenio = new CadConvenioWin(convenio);
+                cadConvenio.ShowDialog();
 
-                if (cadCargo.cadastrou)
-                    CarregarCargos();
+                if (cadConvenio.cadastrou)
+                    CarregarConvenios();
             }
             else
                 Mbox.SelecioneUmaLinhaDaTabela();
@@ -66,10 +66,10 @@ namespace ProjetoIntegrado.View.Cargo
 
                 if (r == MessageDialogResult.Affirmative)
                 {
-                    var cargo = lvwCargos.SelectedItems[0] as CargoModel;
-                    cargo?.Remover();
+                    var convenio = lvwCargos.SelectedItems[0] as ConvenioModel;
+                    convenio?.Remover();
 
-                    cargos.Remove(cargo);
+                    listaDeConvenios.Remove(convenio);
                     lvwCargos.Items.Refresh();
                 }
             }
@@ -81,19 +81,15 @@ namespace ProjetoIntegrado.View.Cargo
 
         #region EVENTOS
 
-        private void BtnNovo_OnClick(object sender, RoutedEventArgs e)
-        {
+        private void BtnNovo_OnClick(object sender, RoutedEventArgs e) => 
             Novo();
-        }
 
-        private void lvwCargos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
+        private void lvwCargos_MouseDoubleClick(object sender, MouseButtonEventArgs e) =>
             Editar();
-        }
 
         private void tbPesquisa_KeyUp(object sender, KeyEventArgs e)
         {
-            CarregarCargos();
+            CarregarConvenios();
 
             if (e.Key == Key.Down)
                 lvwCargos.SelecionarPrimeiraLinha();

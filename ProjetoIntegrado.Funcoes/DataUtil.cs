@@ -25,5 +25,18 @@ namespace ProjetoIntegrado.Funcoes
         {
             return DateTime.Now;
         }
+
+        public static DateTime GetPrimeiroDia(DateTime dt) =>
+            new DateTime(dt.Year, dt.Month, 1);
+
+        public static DateTime GetUltimoDia(DateTime dt) =>
+            new DateTime(dt.Year, dt.Month, DateTime.DaysInMonth(dt.Year, dt.Month));
+
+        public static DateTime GetPrimeiroDiaDesseMes() =>
+            GetPrimeiroDia(DateTime.Now);
+
+        public static DateTime GetUltimoDiaDesseMes() =>
+            GetUltimoDia(DateTime.Now);
+
     }
 }

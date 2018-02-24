@@ -19,12 +19,14 @@ namespace ProjetoIntegrado.Model
 	                            (funcionario_abertura,
 	                             valor_inicial,
 	                             data_abertura,
+                                 caixa_aberto,
 	                             ativo)
                             OUTPUT inserted.id_caixa
                             VALUES
 	                            (@funcionario_abertura,
 	                             @valor_inicial,
 	                             @data_abertura,
+                                 @caixa_aberto,
 	                             @ativo)";
 
                 Conexao.AbrirConexao();
@@ -33,6 +35,7 @@ namespace ProjetoIntegrado.Model
                 Conexao.Cmd.Parameters.AddWithValue("funcionario_abertura", funcionarioAbertura.id);
                 Conexao.Cmd.Parameters.AddWithValue("valor_inicial", valorInicial);
                 Conexao.Cmd.Parameters.AddWithValue("data_abertura", dtAbertura);
+                Conexao.Cmd.Parameters.AddWithValue("caixa_aberto", "V");
                 Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
 
                 id = (int)Conexao.Cmd.ExecuteScalar();
@@ -151,5 +154,8 @@ namespace ProjetoIntegrado.Model
         }
 
         #endregion
+
+        public List<CaixaSaidaModel> CarregarSaidas() =>
+            CaixaSaidaModel.CarregarSaidas(id);
     }
 }

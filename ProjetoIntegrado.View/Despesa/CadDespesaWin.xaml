@@ -1,0 +1,53 @@
+﻿<controls:MetroWindow 
+    x:Class="ProjetoIntegrado.View.Despesa.CadDespesaWin"
+    xmlns:local="clr-namespace:ProjetoIntegrado.View.Despesa"
+    
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    mc:Ignorable="d"
+        
+    Style="{StaticResource WindowSimples}"
+    WindowStartupLocation="CenterScreen"
+    
+    Title="CADASTRAR DESPESA" 
+    Height="209.009" 
+    Width="346.367"
+    KeyDown="MetroWindow_KeyDown"
+>
+    <Grid>
+
+        <ComboBox x:Name="cbDescricao"
+            TabIndex="0" IsTabStop="True"
+            Margin="20,19,0,0" 
+            GotKeyboardFocus="cboTest_GotKeyboardFocus"
+            materialDesign:HintAssist.Hint="DESCRIÇÃO"
+            IsEditable="True" HorizontalAlignment="Left" Width="301" VerticalAlignment="Top" />
+
+        <TextBox 
+            TabIndex="0"
+            x:Name="tbValor" 
+            x:Uid="Valor"
+            Tag="*"
+            HorizontalAlignment="Left" 
+            Height="36" 
+            Margin="20,75,0,0" 
+            TextWrapping="Wrap"     
+            materialDesign:HintAssist.Hint="VALOR"
+            CharacterCasing="Upper"
+            TextAlignment="Center"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+            VerticalAlignment="Top" Width="120"/>
+        <DatePicker HorizontalAlignment="Left" Margin="160,86,0,0" VerticalAlignment="Top" Width="161" 
+                     materialDesign:HintAssist.Hint="DATA" x:Name="tbData"
+                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
+                    />
+
+        <Button x:Name="BtnSalvar"   Click="BtnSalvar_OnClick" Content="Salvar" HorizontalAlignment="Left" Height="36" Margin="65,127,0,0" VerticalAlignment="Top" Width="122"/>
+        <Button x:Name="BtnCancelar" Click="BtnCancelar_OnClick" Content="Cancelar" HorizontalAlignment="Left" Height="36" Margin="197,127,0,0" VerticalAlignment="Top" Width="124"/>
+    </Grid>
+</controls:MetroWindow>

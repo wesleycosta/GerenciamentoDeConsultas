@@ -25,6 +25,7 @@ namespace ProjetoIntegrado.View.FluxoDeCaixa
                 valorInicial = decimal.Parse(tbValorInicial.Text),
                 dtAbertura = DateTime.Now,
                 funcionarioAbertura = Sessao.funcionario,
+                caixaAberto = true,
                 ativo = true
             };
 

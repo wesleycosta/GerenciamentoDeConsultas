@@ -21,7 +21,7 @@ namespace ProjetoIntegrado.View.Principal
             switch (item)
             {
                 case MenuItensEnum.Pacientes: Pacientes(); break;
-                case MenuItensEnum.Cirurgias: Cirurgias(); break;
+                case MenuItensEnum.Procedimentos: Procedimentos(); break;
                 case MenuItensEnum.Convenio: Convenio(); break;
 
                 case MenuItensEnum.Empresa: Empresa(); break;
@@ -45,9 +45,9 @@ namespace ProjetoIntegrado.View.Principal
         private static void Pacientes() =>
             new Clientes.PrincipalClienteWin().ShowDialog();
 
-        private static void Cirurgias() { }
+        private static void Procedimentos() { }
 
-        private static void Convenio() { }
+        private static void Convenio() => new Convenio.PrincipalConvenioWin().ShowDialog();
 
 
         #endregion
@@ -68,10 +68,8 @@ namespace ProjetoIntegrado.View.Principal
 
         #region FINANCEIRO
 
-        private static void Despesas()
-        {
-
-        }
+        private static void Despesas() =>
+            new Despesa.PrincipalDespesaWin().ShowDialog();
 
         private static void FluxoDeCaixa() =>
             new FluxoDeCaixa.PrincipalFluxoDeCaixaWin().ShowDialog();

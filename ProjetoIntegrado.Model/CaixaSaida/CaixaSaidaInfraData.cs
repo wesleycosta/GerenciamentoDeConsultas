@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 
@@ -6,7 +6,7 @@ namespace ProjetoIntegrado.Model
 {
     using BaseDeDados;
 
-    public partial class CargoModel : ICadastro
+    public partial class CaixaSaidaModel : ICadastro
     {
         #region ICADASTRO
 
@@ -14,16 +14,18 @@ namespace ProjetoIntegrado.Model
         {
             try
             {
-                var cmd = @"INSERT INTO cargo
-                                ( descricao, ativo)
-                            OUTPUT inserted.id_cargo
+                var cmd = @"INSERT INTO caixa_saida
+	                            (id_caixa, descricao, valor, ativo)
+                            OUTPUT inserted.id_caixa
                             VALUES
-                                (@descricao, @ativo)";
+	                            (@id_caixa, @descricao, @valor, @ativo)";
 
                 Conexao.AbrirConexao();
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
 
+                Conexao.Cmd.Parameters.AddWithValue("id_caixa", idCaixa);
                 Conexao.Cmd.Parameters.AddWithValue("descricao", descricao);
+                Conexao.Cmd.Parameters.AddWithValue("valor", valor);
                 Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
 
                 id = (int)Conexao.Cmd.ExecuteScalar();
@@ -42,18 +44,20 @@ namespace ProjetoIntegrado.Model
         {
             try
             {
-                var cmd = @"UPDATE cargo SET
-	                            descricao = @descricao,
-	                            ativo	  = @ativo
+                var cmd = @"UPDATE caixa_saida SET
+	                            descricao		= @descricao,
+	                            valor			= @valor,
+                                ativo           = @ativo
                             WHERE
-	                            id_cargo  = @id";
+	                            id_caixa_saida	= @id";
 
                 Conexao.AbrirConexao();
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
 
-                Conexao.Cmd.Parameters.AddWithValue("descricao", descricao);
-                Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
                 Conexao.Cmd.Parameters.AddWithValue("id", id);
+                Conexao.Cmd.Parameters.AddWithValue("descricao", descricao);
+                Conexao.Cmd.Parameters.AddWithValue("valor", valor);
+                Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
 
                 Conexao.Cmd.ExecuteNonQuery();
             }
@@ -77,13 +81,16 @@ namespace ProjetoIntegrado.Model
         {
             try
             {
-                var cmd = @"SELECT
+                var cmd = @"SElECT 
+	                            id_caixa,
 	                            descricao,
+	                            valor,
+	                            data,
 	                            ativo
-                            FROM
-	                            cargo
+                            FROM 
+	                            caixa_saida
                             WHERE
-	                            id_cargo = @id";
+	                            id_caixa_saida	 = @id";
 
                 Conexao.AbrirConexao();
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
@@ -93,7 +100,10 @@ namespace ProjetoIntegrado.Model
 
                 if (Conexao.Leitor.Read())
                 {
+                    idCaixa = int.Parse(Conexao.Leitor["id_caixa"].ToString());
                     descricao = Conexao.Leitor["descricao"].ToString();
+                    valor = decimal.Parse(Conexao.Leitor["valor"].ToString());
+                    data = DateTime.Parse(Conexao.Leitor["data"].ToString());
                     ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
                 }
             }
@@ -111,35 +121,39 @@ namespace ProjetoIntegrado.Model
 
         #region CARREGAR LISTA
 
-        public static List<CargoModel> Pesquisar(string pesquisa)
+        public static List<CaixaSaidaModel> CarregarSaidas(int idCaixa)
         {
-            var lista = new List<CargoModel>();
+            var lista = new List<CaixaSaidaModel>();
 
             try
             {
-                var cmd = $@"SELECT TOP 50
-	                            id_cargo,
+                var cmd = $@"SElECT TOP 100
+                                id_caixa_saida,
+	                            id_caixa,
 	                            descricao,
+	                            valor,
+	                            data,
 	                            ativo
-                             FROM
-	                            cargo
-                             WHERE
-	                            ativo = 1
-	                            AND
-	                            descricao LIKE @pesquisa
-                            ORDER BY
-                                id_cargo";
+                            FROM 
+	                            caixa_saida
+                            WHERE
+	                            id_caixa	 = @id
+                                AND
+                                ativo        = 1";
 
                 Conexao.AbrirConexao();
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
-                Conexao.Cmd.Parameters.AddWithValue("pesquisa", $"%{pesquisa}%");
+                Conexao.Cmd.Parameters.AddWithValue("id", idCaixa);
                 Conexao.Leitor = Conexao.Cmd.ExecuteReader();
 
                 while (Conexao.Leitor.Read())
-                    lista.Add(new CargoModel
+                    lista.Add(new CaixaSaidaModel
                     {
-                        id = int.Parse(Conexao.Leitor["id_cargo"].ToString()),
+                        id = int.Parse(Conexao.Leitor["id_caixa_saida"].ToString()),
+                        idCaixa = int.Parse(Conexao.Leitor["id_caixa"].ToString()),
                         descricao = Conexao.Leitor["descricao"].ToString(),
+                        valor = decimal.Parse(Conexao.Leitor["valor"].ToString()),
+                        data = DateTime.Parse(Conexao.Leitor["data"].ToString()),
                         ativo = bool.Parse(Conexao.Leitor["ativo"].ToString())
                     });
             }
@@ -155,11 +169,7 @@ namespace ProjetoIntegrado.Model
             return lista;
         }
 
-        public static List<CargoModel> CarregarTodos()
-        {
-            return Pesquisar("");
-        }
-
         #endregion
+
     }
 }

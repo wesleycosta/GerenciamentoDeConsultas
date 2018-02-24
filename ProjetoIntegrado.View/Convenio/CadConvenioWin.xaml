@@ -1,23 +1,24 @@
-﻿<controls:MetroWindow
-        x:Class="ProjetoIntegrado.View.Cargo.CadCargoWin"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        
-        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"
-        
-        Style="{StaticResource WindowSimples}"
-        WindowStartupLocation="CenterScreen"
+﻿<controls:MetroWindow 
+    x:Class="ProjetoIntegrado.View.Convenio.CadConvenioWin"
+    xmlns:local="clr-namespace:ProjetoIntegrado.View.Convenio"
     
-        Title="CADASTRAR CARGO" 
-        Height="155.917" 
-        Width="380.075"
-        KeyDown="MetroWindow_KeyDown"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    mc:Ignorable="d"
+        
+    Style="{StaticResource WindowSimples}"
+    WindowStartupLocation="CenterScreen"
+    
+    Title="CADASTRAR CONVÊNIO" 
+    Height="155.917" 
+    Width="380.075"
+    KeyDown="MetroWindow_KeyDown"
 >
-
     <Grid>
         <Button x:Name="BtnSalvar"   Click="BtnSalvar_OnClick" Content="Salvar" HorizontalAlignment="Left" Height="35" Margin="102,72,0,0" VerticalAlignment="Top" Width="122"/>
         <Button x:Name="BtnCancelar" Click="BtnCancelar_OnClick" Content="Cancelar" HorizontalAlignment="Left" Height="35" Margin="234,72,0,0" VerticalAlignment="Top" Width="124"/>
@@ -35,5 +36,4 @@
             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
             VerticalAlignment="Top" Width="337"/>
     </Grid>
-    
 </controls:MetroWindow>

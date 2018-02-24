@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaixaSaida\CaixaSaidaInfraData.cs" />
+    <Compile Include="CaixaSaida\CaixaSaidaModel.cs" />
     <Compile Include="Caixa\CaixaInfraData.cs" />
     <Compile Include="Caixa\CaixaModel.cs" />
     <Compile Include="Cargo\CargoModel.cs" />
@@ -57,6 +59,10 @@
     <Compile Include="Cliente\ClienteModel.cs" />
     <Compile Include="Clinica\ClinicaInfraData.cs" />
     <Compile Include="Clinica\ClinicaModel.cs" />
+    <Compile Include="Convenio\ConvenioInfraData.cs" />
+    <Compile Include="Convenio\ConvenioModel.cs" />
+    <Compile Include="Despesa\DespesaInfraData.cs" />
+    <Compile Include="Despesa\DespesaModel.cs" />
     <Compile Include="Endereco\EnderecoInfraData.cs" />
     <Compile Include="Endereco\EnderecoModel.cs" />
     <Compile Include="Estado\EstadoModel.cs" />
@@ -92,6 +98,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

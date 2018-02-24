@@ -1,13 +1,15 @@
 CREATE TABLE consulta 
 ( 
-	id_consulta			INT PRIMARY KEY			IDENTITY, 
-	id_medico			INT						NOT NULL, 
-	id_cliente			INT						NOT NULL, 
-	data				DATE					NOT NULL, 
-	horario				TIME					NOT NULL, 
-	valor				DECIMAL(9, 2)			NOT NULL, 
-	status				CHAR					NOT NULL, 
-	ativo				BIT						NOT NULL DEFAULT  1
+	id_consulta				INT PRIMARY KEY			IDENTITY, 
+	id_medico				INT						NOT NULL, 
+	id_cliente				INT						NOT NULL, 
+	forma_de_atendimento	CHAR					NOT NULL,
+	data					DATE					NOT NULL, 
+	horario					TIME					NOT NULL, 
+	valor					DECIMAL(9, 2)			NOT NULL, 
+	status_pagamento 		CHAR					NOT NULL, 
+	tipo_de_cancelamento	CHAR					NULL,
+	ativo					BIT						NOT NULL DEFAULT  1
 ); 
 
 CREATE TABLE funcionario 
@@ -58,15 +60,6 @@ CREATE TABLE forma_de_pagamento
     ativo              BIT						NOT NULL DEFAULT  1 
 ); 
 
-CREATE TABLE diferenca_caixa 
-( 
-    id_diferenca_caixa	INT	PRIMARY KEY			IDENTITY, 
-    id_caixa			INT						NOT NULL, 
-    id_forma_pagamento	INT						NOT NULL, 
-    valor				DECIMAL(9, 2)			NOT NULL, 
-    ativo				BIT						NOT NULL DEFAULT  1, 
-    FOREIGN KEY(id_forma_pagamento) REFERENCES forma_de_pagamento (id_forma_pagamento) 
-); 
 
 CREATE TABLE receita 
 ( 
@@ -91,8 +84,7 @@ CREATE TABLE cliente
     ddd_tel				CHAR(2)					NULL, 
     telefone			VARCHAR(11)				NULL, 
     email				VARCHAR(255)			NULL, 
-    foto				VARBINARY(MAX)			NULL, 
-    ativo				BIT						NOT NULL DEFAULT  1, 
+	ativo				BIT						NOT NULL DEFAULT  1
     FOREIGN KEY(id_endereco) REFERENCES endereco (id_endereco) 
 ); 
 
@@ -155,10 +147,39 @@ CREATE TABLE caixa
     valor_inicial						DECIMAL(9, 2)			NOT NULL, 
     data_abertura						DATETIME				NOT NULL, 
     data_fechamento						DATETIME				NULL, 
+	diferenca							DECIMAL(9, 2)			NULL,
+	caixa_aberto						CHAR					NOT NULL DEFAULT 'V',
     ativo								BIT						NOT NULL DEFAULT  1, 
     FOREIGN KEY(funcionario_abertura)	REFERENCES funcionario (id_funcionario), 
     FOREIGN KEY(funcionario_fechamento) REFERENCES funcionario (id_funcionario) 
-); 
+);
+
+CREATE TABLE caixa_saida 
+(	
+	id_caixa_saida						INT	PRIMARY KEY			IDENTITY,
+	id_caixa							INT						NOT NULL,
+	descricao							VARCHAR(255)			NOT NULL,
+	valor								DECIMAL(9,2)			NOT NULL,
+	data								DATETIME				DEFAULT GETDATE(),
+	ativo								BIT						NOT NULL DEFAULT 1
+);
+
+CREATE TABLE despesa
+(
+	id_despesa							INT PRIMARY	KEY			IDENTITY,
+	descricao							VARCHAR(255)			NOT NULL,
+	valor								DECIMAL(9, 2)			NOT NULL,
+	data								DATE					NOT NULL,
+	ativo								BIT						NOT NULL DEFAULT 1
+);
+
+CREATE TABLE convenio
+(
+	id_convenio							INT PRIMARY KEY			IDENTITY,
+	nome								VARCHAR(255),
+	ativo								BIT						NOT NULL DEFAULT 1
+);
+
 
 ALTER TABLE consulta 
   ADD FOREIGN KEY(id_medico)	 REFERENCES funcionario (id_funcionario);
@@ -175,9 +196,6 @@ ALTER TABLE clinica
 ALTER TABLE funcionario 
   ADD FOREIGN KEY(id_cargo)		 REFERENCES cargo (id_cargo);
 
-ALTER TABLE diferenca_caixa 
-  ADD FOREIGN KEY(id_caixa)		 REFERENCES caixa (id_caixa);
-
 ALTER TABLE receita 
   ADD FOREIGN KEY(olho_esquerdo) REFERENCES diagnostico (id_diagnostico);
 
@@ -186,8 +204,6 @@ ALTER TABLE receita
 
 ALTER TABLE pagamento 
   ADD FOREIGN KEY(id_caixa)	     REFERENCES caixa (id_caixa);
-
-
 
 INSERT INTO forma_de_pagamento 
 	(descricao)

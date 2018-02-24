@@ -62,20 +62,11 @@
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem x:Uid="Cirurgias" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Uid="Procedimentos" MouseDoubleClick="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="imgCirurgia" Source="/Resources/Customer_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Cirurgias</Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-
-                        <TreeViewItem  x:Uid="Convenio" MouseUp="Menu_OnMouseDoubleClick"  x:Name="agendaItem">
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="imgConvenio" Source="/Resources/Time_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Convênio</Label>
+                                    <Image x:Name="imgProcedimentos" Source="/Resources/Customer_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0">Procedimentos</Label>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
@@ -121,6 +112,15 @@
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
+                        <TreeViewItem  x:Uid="Convenio" MouseUp="Menu_OnMouseDoubleClick"  x:Name="agendaItem">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image x:Name="imgConvenio" Source="/Resources/Time_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0">Convênio</Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
                     </TreeViewItem>
 
                     <!-- FINANCEIRO -->
@@ -135,7 +135,7 @@
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                         <TreeViewItem x:Uid="FluxoDeCaixa" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Uid="FluxoDeCaixa" MouseDoubleClick="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgFluxoDeCaixa" Source="/Resources/FluxoDeCaixa16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
@@ -143,7 +143,7 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        
+
                         <TreeViewItem x:Uid="FormaDePagamento" MouseDoubleClick="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">

@@ -170,10 +170,28 @@
       <DependentUpon>CadClinicaWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Apoio\Config.cs" />
+    <Compile Include="Convenio\CadConvenioWin.xaml.cs">
+      <DependentUpon>CadConvenioWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Convenio\PrincipalConvenioWin.xaml.cs">
+      <DependentUpon>PrincipalConvenioWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Despesa\CadDespesaWin.xaml.cs">
+      <DependentUpon>CadDespesaWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Despesa\PrincipalDespesaWin.xaml.cs">
+      <DependentUpon>PrincipalDespesaWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FluxoDeCaixa\AbrirCaixaWin.xaml.cs">
       <DependentUpon>AbrirCaixaWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="FluxoDeCaixa\CaixaControle.cs" />
+    <Compile Include="FluxoDeCaixa\FecharCaixaWin.xaml.cs">
+      <DependentUpon>FecharCaixaWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FluxoDeCaixa\LancarSaidaWin.xaml.cs">
+      <DependentUpon>LancarSaidaWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FluxoDeCaixa\PrincipalFluxoDeCaixaWin.xaml.cs">
       <DependentUpon>PrincipalFluxoDeCaixaWin.xaml</DependentUpon>
     </Compile>
@@ -317,7 +335,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Convenio\CadConvenioWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Convenio\PrincipalConvenioWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Despesa\CadDespesaWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Despesa\PrincipalDespesaWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FluxoDeCaixa\AbrirCaixaWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FluxoDeCaixa\FecharCaixaWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FluxoDeCaixa\LancarSaidaWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
