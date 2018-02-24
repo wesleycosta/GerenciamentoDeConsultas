@@ -38,10 +38,12 @@
                       VerticalAlignment="Top" 
                       KeyUp="tbPesquisa_KeyUp"/>
                 <DatePicker HorizontalAlignment="Left" Margin="461,42,0,0" VerticalAlignment="Top" Width="140" 
+                             Tag="*" x:Uid="Data Inicial"
                     materialDesign:HintAssist.Hint="DATA INICIAL" x:Name="tbDataInicial" SelectedDateChanged="tbDataInicial_SelectedDateChanged"
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
                     />
                 <DatePicker HorizontalAlignment="Left" Margin="621,42,0,0" VerticalAlignment="Top" Width="140" 
+                             Tag="*" x:Uid="Data Final"
                     materialDesign:HintAssist.Hint="DATA FINAL" x:Name="tbDataFinal" SelectedDateChanged="tbDataInicial_SelectedDateChanged"
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
                     />

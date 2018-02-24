@@ -21,9 +21,11 @@
 >
     <Grid>
 
-        <ComboBox x:Name="cbDescricao"
+        <ComboBox 
+            x:Name="cbDescricao"
             TabIndex="0" IsTabStop="True"
             Margin="20,19,0,0" 
+            Tag="*" x:Uid="Descrição"
             GotKeyboardFocus="cboTest_GotKeyboardFocus"
             materialDesign:HintAssist.Hint="DESCRIÇÃO"
             IsEditable="True" HorizontalAlignment="Left" Width="301" VerticalAlignment="Top" />
@@ -44,6 +46,7 @@
             VerticalAlignment="Top" Width="120"/>
         <DatePicker HorizontalAlignment="Left" Margin="160,86,0,0" VerticalAlignment="Top" Width="161" 
                      materialDesign:HintAssist.Hint="DATA" x:Name="tbData"
+                    Tag="*" x:Uid="Data"
                      Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
                     />
 

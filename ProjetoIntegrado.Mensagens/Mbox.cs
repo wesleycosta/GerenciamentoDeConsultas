@@ -9,10 +9,8 @@ namespace ProjetoIntegrado.Mensagens
 
         public static MetroWindow JanelaPrincipal { get; set; }
 
-        private static void Afirmacao(string titulo, string texto)
-        {
+        public static void Afirmacao(string titulo, string texto) =>
             JanelaPrincipal.ShowModalMessageExternal(titulo, texto);
-        }
 
         private static MessageDialogResult Pergunta(string titulo, string texto)
         {

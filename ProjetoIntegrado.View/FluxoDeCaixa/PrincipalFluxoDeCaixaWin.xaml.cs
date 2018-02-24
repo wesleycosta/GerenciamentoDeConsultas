@@ -43,7 +43,7 @@ namespace ProjetoIntegrado.View.FluxoDeCaixa
             CarregarEntradas();
             CarregarSaidas();
 
-            totalSaldo = totalEntrada - totalSaida;
+            totalSaldo = totalEntrada + (double)Sessao.caixa.valorInicial - totalSaida;
             CarregarLabel();
         }
 

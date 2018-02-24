@@ -35,13 +35,16 @@ namespace ProjetoIntegrado.View.Despesa
 
         private void CarregarDespesas()
         {
-            lDespesas = DespesaModel.Pesquisar(tbPesquisa.Text, tbDataInicial.SelectedDate.Value, tbDataFinal.SelectedDate.Value);
-            lvwFuncionarios.ItemsSource = lDespesas;
+            if (ValidarCampos.Validar(this))
+            {
+                lDespesas = DespesaModel.Pesquisar(tbPesquisa.Text, tbDataInicial.SelectedDate.Value, tbDataFinal.SelectedDate.Value);
+                lvwFuncionarios.ItemsSource = lDespesas;
 
-            lbTotalRegistro.Content = lDespesas.Count.ToString("D3");
-            lbTotal.Content = lDespesas.Sum(x => x.valor).ToString("n");
+                lbTotalRegistro.Content = lDespesas.Count.ToString("D3");
+                lbTotal.Content = lDespesas.Sum(x => x.valor).ToString("n");
 
-            tbPesquisa.Focus();
+                tbPesquisa.Focus();
+            }
         }
 
         private void Novo()
@@ -79,8 +82,7 @@ namespace ProjetoIntegrado.View.Despesa
                 if (r == MessageDialogResult.Affirmative)
                 {
                     despesa?.Remover();
-                    lDespesas.Remove(despesa);
-                    lvwFuncionarios.Items.Refresh();
+                    CarregarDespesas();
                 }
             }
             else
