@@ -19,6 +19,8 @@ namespace ProjetoIntegrado.View.Clientes
         {
             InitializeComponent();
             lbCodigo.Visibility = lbCodigoText.Visibility = Visibility.Hidden;
+            paginaHistorico.Visibility = Visibility.Hidden;
+            tabControl.RemoveFromSource(paginaHistorico);
 
             Inicializar();
             Title = "NOVO PACIENTE";
@@ -70,6 +72,10 @@ namespace ProjetoIntegrado.View.Clientes
             tbEmail.Text = cliente.email;
 
             CarregarEndereco(cliente.endereco);
+
+            var historico = cliente.Historio(); 
+            lvwHistorico.ItemsSource = historico;
+            lbTotalRegistro.Content = historico.Count.ToString("D3");
         }
 
         private void CarregarEndereco(EnderecoModel endereco)

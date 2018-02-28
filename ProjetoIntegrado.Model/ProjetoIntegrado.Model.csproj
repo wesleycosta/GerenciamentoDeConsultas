@@ -59,6 +59,8 @@
     <Compile Include="Cliente\ClienteModel.cs" />
     <Compile Include="Clinica\ClinicaInfraData.cs" />
     <Compile Include="Clinica\ClinicaModel.cs" />
+    <Compile Include="Consulta\ConsultaInfraData.cs" />
+    <Compile Include="Consulta\ConsultaModel.cs" />
     <Compile Include="Convenio\ConvenioInfraData.cs" />
     <Compile Include="Convenio\ConvenioModel.cs" />
     <Compile Include="Despesa\DespesaInfraData.cs" />
@@ -73,6 +75,8 @@
     <Compile Include="Enum.cs" />
     <Compile Include="ICadastro.cs" />
     <Compile Include="Login\LoginModel.cs" />
+    <Compile Include="Pagamento\PagamentoInfraData.cs" />
+    <Compile Include="Pagamento\PagamentoModel.cs" />
     <Compile Include="SuperClasses\Pessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sessao\Sessao.cs" />

@@ -14,14 +14,37 @@ using System.Windows.Shapes;
 
 namespace ProjetoIntegrado.View.FluxoDeCaixa
 {
+    using Funcoes;
+    using Model;
+
+    internal class FecharCaixaListViewItem
+    {
+        public string formaDePagamento { get; set; }
+        public double valor { get; set; }
+    }
 
     public partial class FecharCaixaWin
     {
-        internal bool fechouCaixa;
+        public bool fechouCaixa;
 
         public FecharCaixaWin()
         {
             InitializeComponent();
+            tbDiferenca.KeyDown += ValidarEntrada.Real_KeyPress;
+            CarregarListView();
+        }
+
+        private void CarregarListView()
+        {
+            var lista = Sessao.caixa.CarregarTotalEntrada();
+            lvwEntrada.Items.Clear();
+
+            foreach (var item in lista)
+                lvwEntrada.Items.Add(new FecharCaixaListViewItem
+                {
+                    formaDePagamento = item.formaDePagamento.descricao,
+                    valor = (double)item.valor
+                });
         }
 
 
@@ -29,8 +52,12 @@ namespace ProjetoIntegrado.View.FluxoDeCaixa
 
         private void BtnSalvar_Click(object sender, RoutedEventArgs e)
         {
-            fechouCaixa = true;
-            Close();
+            if (ValidarCampos.Validar(this))
+            {
+                fechouCaixa = true;
+                Sessao.caixa.FecharCaixa(decimal.Parse(tbDiferenca.Text));
+                Close();
+            }
         }
 
         private void BtnCancelar_Click(object sender, RoutedEventArgs e) =>

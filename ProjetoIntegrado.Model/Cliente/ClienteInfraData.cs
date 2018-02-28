@@ -197,8 +197,6 @@ namespace ProjetoIntegrado.Model
 	                            cliente
                             WHERE
 	                            ativo		    = 1
-								AND
-								id_cliente     != 1
 	                            AND
 	                            {filtro} LIKE @pesquisa
                             ORDER BY
@@ -251,6 +249,9 @@ namespace ProjetoIntegrado.Model
         public static List<ClienteModel> CarregarTodos() =>
             Pesquisar(FiltroPessoa.nome, "");
 
+        public List<ConsultaModel> Historio() =>
+            ConsultaModel.Historio(id);
+        
         #endregion
     }
 }

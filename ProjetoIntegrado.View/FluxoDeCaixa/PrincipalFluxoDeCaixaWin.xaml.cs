@@ -11,6 +11,15 @@ namespace ProjetoIntegrado.View.FluxoDeCaixa
     using System.Collections.Generic;
     using System.Windows.Controls;
 
+    internal class EntradaItemListView
+    {
+        public DateTime data { get; set; }
+        public string horario { get; set; }
+        public string paciente { get; set; }
+        public string formaDePagamento { get; set; }
+        public decimal valor { get; set; }
+    }
+
     public partial class PrincipalFluxoDeCaixaWin
     {
         private List<CaixaSaidaModel> lSaidas = new List<CaixaSaidaModel>();
@@ -30,36 +39,58 @@ namespace ProjetoIntegrado.View.FluxoDeCaixa
         private void Iniciar()
         {
             var caixaAberto = Sessao.caixa?.caixaAberto ?? false;
+            lvwEntrada.Items.Clear();
+            lSaidas?.Clear();
 
             BtnAbrirCaixa.IsEnabled = !caixaAberto;
             BtnSaida.IsEnabled = BtnFecharCaixa.IsEnabled = caixaAberto;
 
             if (caixaAberto)
                 CarregarDados();
+            else
+                Limpar();
+        }
+
+        private void Limpar()
+        {
+            lbAbertura.Content = lbFuncionario.Content = lbValorInicial.Content = "Caixa Fechado";
+            lbTotal.Content = lbSaida.Content = lbSaldo.Content = "0,00";
         }
 
         private void CarregarDados()
         {
-            CarregarEntradas();
-            CarregarSaidas();
+            if (Sessao.caixa?.caixaAberto ?? false)
+            {
+                CarregarEntradas();
+                CarregarSaidas();
 
-            totalSaldo = totalEntrada + (double)Sessao.caixa.valorInicial - totalSaida;
-            CarregarLabel();
+                totalSaldo = totalEntrada + (double)Sessao.caixa.valorInicial - totalSaida;
+                CarregarLabel();
+            }
         }
 
         private void CarregarEntradas()
         {
+            var lista = Sessao.caixa.CarregarEntrada();
+            totalEntrada = (double)lista.Sum(x => x.listaDePagamentos.Sum(z => z.valor));
 
+            foreach (var c in lista)
+                foreach (var p in c.listaDePagamentos)
+                    lvwEntrada.Items.Add(new EntradaItemListView
+                    {
+                        data = c.data,
+                        horario = c.horario.ToString(@"hh\:mm"),
+                        paciente = c.cliente?.nome,
+                        formaDePagamento = p.formaDePagamento.descricao,
+                        valor = p.valor
+                    });
         }
 
         private void CarregarSaidas()
         {
-            if (Sessao.caixa?.caixaAberto ?? false)
-            {
-                lSaidas = Sessao.caixa.CarregarSaidas();
-                lvwSaidas.ItemsSource = lSaidas;
-                totalSaida = lSaidas.Sum(x => (double)x.valor);
-            }
+            lSaidas = Sessao.caixa.CarregarSaidas();
+            lvwSaidas.ItemsSource = lSaidas;
+            totalSaida = lSaidas.Sum(x => (double)x.valor);
         }
 
         private void CarregarLabel()

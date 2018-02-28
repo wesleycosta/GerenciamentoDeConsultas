@@ -41,7 +41,7 @@
                   MouseDoubleClick="lvwCargos_MouseDoubleClick" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn  DisplayMemberBinding="{Binding id}" Width="85">Código</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding id, StringFormat={}{0:D2}}" Width="85">Código</GridViewColumn>
                     <GridViewColumn  DisplayMemberBinding="{Binding nome}" Width="410">Descrição</GridViewColumn>
                 </GridView>
             </ListView.View>

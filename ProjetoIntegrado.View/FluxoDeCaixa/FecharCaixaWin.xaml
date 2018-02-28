@@ -14,7 +14,7 @@
         WindowStartupLocation="CenterScreen"
     
         Title="FECHAR CAIXA" 
-        Height="360" 
+        Height="394" 
         Width="306"
         KeyDown="MetroWindow_KeyDown"
 >
@@ -31,16 +31,22 @@
                                   Grid.Row="1" >
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn  DisplayMemberBinding="{Binding nome}" Width="170">Forma de Pagamento</GridViewColumn>
-                        <GridViewColumn  DisplayMemberBinding="{Binding celular}" Width="70">Valor</GridViewColumn>
+                        <GridViewColumn  DisplayMemberBinding="{Binding formaDePagamento}" Width="166">Forma de Pagamento</GridViewColumn>
+                        <GridViewColumn Header="Valor" Width="Auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding valor, StringFormat={}{0:n}}" TextAlignment="Right" Width="55"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
         </Border>
 
-        <TextBox x:Name="tbDiferenca" x:Uid="Valor da Diferença" TabIndex="0" Tag="*" HorizontalAlignment="Left"    Margin="55,220,0,0"   TextAlignment="Center" Height="38" Width="190"  TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="INFORME O VALOR DA DIFERENÇA" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
-        <Button x:Name="BtnSalvar"   Click="BtnSalvar_Click" TabIndex="22" Content="Salvar" Height="34"             Margin="21,280,0,0"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="122"/>
-        <Button x:Name="BtnCancelar" Click="BtnCancelar_Click" TabIndex="23" Content="Cancelar" Height="34"         Margin="154,280,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="124"/>
+        <TextBox x:Name="tbDiferenca" x:Uid="Valor da Diferença" TabIndex="0" Tag="*" HorizontalAlignment="Left"    Margin="55,0,0,73"   TextAlignment="Center" Height="38" Width="190"  TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="INFORME O VALOR DA DIFERENÇA" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Bottom"  />
+        <Button x:Name="BtnSalvar"   Click="BtnSalvar_Click" TabIndex="22" Content="Salvar" Height="34"             Margin="21,0,0,17" HorizontalAlignment="Left" Width="122" VerticalAlignment="Bottom"/>
+        <Button x:Name="BtnCancelar" Click="BtnCancelar_Click" TabIndex="23" Content="Cancelar" Height="34"         Margin="154,0,0,17" HorizontalAlignment="Left" Width="124" VerticalAlignment="Bottom"/>
     </Grid>
 
 </controls:MetroWindow>

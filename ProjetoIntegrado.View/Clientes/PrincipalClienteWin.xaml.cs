@@ -19,7 +19,7 @@ namespace ProjetoIntegrado.View.Clientes
         {
             InitializeComponent();
 
-            Loaded += (o, a) => CarregarFuncionarios();
+            Loaded += (o, a) => CarregarClientes();
         }
 
         #region MANTEM CLIENTES
@@ -27,7 +27,7 @@ namespace ProjetoIntegrado.View.Clientes
         private FiltroPessoa GetFiltro() =>
            (FiltroPessoa)Enum.Parse(typeof(FiltroPessoa), Mascara.Remover(cbFiltro.Text.ToLower()));
 
-        private void CarregarFuncionarios()
+        private void CarregarClientes()
         {
             if (string.IsNullOrEmpty(tbPesquisa.Text))
                 lClientes = ClienteModel.CarregarTodos();
@@ -45,7 +45,7 @@ namespace ProjetoIntegrado.View.Clientes
             cadCliente.ShowDialog();
 
             if (cadCliente.cadastrou)
-                CarregarFuncionarios();
+                CarregarClientes();
         }
 
         private void Editar()
@@ -58,7 +58,7 @@ namespace ProjetoIntegrado.View.Clientes
                 cadCliente.ShowDialog();
 
                 if (cadCliente.cadastrou)
-                    CarregarFuncionarios();
+                    CarregarClientes();
             }
             else
                 Mbox.SelecioneUmaLinhaDaTabela();
@@ -98,7 +98,7 @@ namespace ProjetoIntegrado.View.Clientes
 
         private void tbPesquisa_KeyUp(object sender, KeyEventArgs e)
         {
-            CarregarFuncionarios();
+            CarregarClientes();
 
             if (e.Key == Key.Down)
                 lvwFuncionarios.SelecionarPrimeiraLinha();

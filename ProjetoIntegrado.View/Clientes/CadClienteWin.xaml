@@ -24,7 +24,7 @@
 >
     <Grid>
 
-        <dragablz:TabablzControl>
+        <dragablz:TabablzControl x:Name="tabControl">
             <dragablz:TabablzControl.InterTabController>
                 <dragablz:InterTabController />
             </dragablz:TabablzControl.InterTabController>
@@ -69,8 +69,37 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="HISTÓRICO">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Looks Quite Nice</TextBlock>
+            <TabItem Header="HISTÓRICO" x:Name="paginaHistorico">
+                <Grid>
+                    <Border   Margin="22,20,21,38" 
+                          Padding="0" 
+                          BorderBrush="#FFE6E4E4" BorderThickness="1">
+                        <ListView x:Name="lvwHistorico"
+                      HorizontalAlignment="Left" 
+                      Height="423" 
+                      Width="901"
+                      Padding="0"
+                      Margin="0" 
+                      FontSize="10"   
+                      VerticalAlignment="Top" 
+                      Grid.Row="1" >
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding data, StringFormat={}{0:dd/MM/yyyy}}" Width="65">Data</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding horarioFormatado}" Width="75">Horário</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding formaDeAtentimentoFormatado}" Width="100">Atendimento</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding medico}" Width="170">Oftalmologista</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding convenio}" Width="100">Convênio</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding valor, StringFormat={}{0:n}}" Width="70">Valor</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding cancelamento}" Width="130">Cancelamento</GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Border>
+
+                    <Label Content="Registros Encontrados:" FontSize="10" HorizontalAlignment="Left" Margin="21,348,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbTotalRegistro" Content="000" FontSize="10" HorizontalAlignment="Left" Margin="130,348,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                </Grid>
             </TabItem>
         </dragablz:TabablzControl>
 

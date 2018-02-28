@@ -16,15 +16,14 @@ namespace ProjetoIntegrado.Model
             try
             {
                 var cmd = @"INSERT INTO despesa
-	                            (id_caixa_saida, descricao, valor, data)
+	                            (descricao, valor, data)
                             OUTPUT inserted.id_despesa
                             VALUES
-	                            (@id_caixa_saida, @descricao, @valor, @data)";
+	                            (@descricao, @valor, @data)";
 
                 Conexao.AbrirConexao();
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
 
-                Conexao.Cmd.Parameters.AddWithValue("id_caixa_saida", idCaixaSaida > 0 ? idCaixaSaida : SqlInt32.Null);
                 Conexao.Cmd.Parameters.AddWithValue("descricao", descricao);
                 Conexao.Cmd.Parameters.AddWithValue("valor", valor);
                 Conexao.Cmd.Parameters.AddWithValue("data", data);
@@ -46,7 +45,6 @@ namespace ProjetoIntegrado.Model
             try
             {
                 var cmd = @"UPDATE despesa SET
-	                            id_caixa_saida		= @id_caixa_saida,
 	                            descricao			= @descricao,
 	                            valor				= @valor,
 	                            data				= @data,
@@ -58,7 +56,6 @@ namespace ProjetoIntegrado.Model
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
 
                 Conexao.Cmd.Parameters.AddWithValue("id", id);
-                Conexao.Cmd.Parameters.AddWithValue("id_caixa_saida", idCaixaSaida > 0 ? idCaixaSaida : SqlInt32.Null);
                 Conexao.Cmd.Parameters.AddWithValue("descricao", descricao);
                 Conexao.Cmd.Parameters.AddWithValue("valor", valor);
                 Conexao.Cmd.Parameters.AddWithValue("data", data);
@@ -87,7 +84,6 @@ namespace ProjetoIntegrado.Model
             try
             {
                 var cmd = @"SELECT
-	                            id_caixa_saida,
 	                            descricao,
 	                            valor,
 	                            data,
@@ -105,9 +101,6 @@ namespace ProjetoIntegrado.Model
 
                 if (Conexao.Leitor.Read())
                 {
-                    if (Conexao.Leitor["id_caixa_saida"] != DBNull.Value)
-                        idCaixaSaida = int.Parse(Conexao.Leitor["id_caixa_saida"].ToString());
-
                     descricao = Conexao.Leitor["descricao"].ToString();
                     valor = decimal.Parse(Conexao.Leitor["valor"].ToString());
                     data = DateTime.Parse(Conexao.Leitor["data"].ToString());

@@ -20,8 +20,9 @@
 
     public enum TipoDeCancelamento
     {
-        Cancelado = 0,
-        NaoCompareceu = 1
+        NaoRealizado = 0,
+        Cancelado = 1,
+        NaoCompareceu = 2
     };
 
     public enum FiltroPessoa
@@ -32,6 +33,4 @@
         celular,
         email
     };
-
-
 }

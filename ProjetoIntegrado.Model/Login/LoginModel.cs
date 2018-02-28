@@ -20,11 +20,8 @@
             };
 
             funcionario.Carregar();
-            var caixa = new CaixaModel();
-            caixa.Carregar();
-
             Sessao.funcionario = funcionario;
-            Sessao.caixa = caixa;
+            Sessao.CarregarUltimoCaixa();
         }
 
     }

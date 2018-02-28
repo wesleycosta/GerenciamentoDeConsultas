@@ -51,11 +51,11 @@
                                   Grid.Row="1" >
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn  DisplayMemberBinding="{Binding id, StringFormat={}{0:D3}}" Width="82">Data</GridViewColumn>
-                                    <GridViewColumn  DisplayMemberBinding="{Binding nome}" Width="85">Horário</GridViewColumn>
-                                    <GridViewColumn  DisplayMemberBinding="{Binding telefone}" Width="250">Paciente</GridViewColumn>
-                                    <GridViewColumn  DisplayMemberBinding="{Binding telefone}" Width="180">Forma de Pagamento</GridViewColumn>
-                                    <GridViewColumn  DisplayMemberBinding="{Binding celular}" Width="120">Valor</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding data, StringFormat={}{0:dd/MM/yyyy}}" Width="82">Data</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding horario}" Width="85">Horário</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding paciente}" Width="250">Paciente</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding formaDePagamento}" Width="180">Forma de Pagamento</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding valor, StringFormat={}{0:n}}" Width="120">Valor</GridViewColumn>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -98,10 +98,6 @@
                 <StackPanel Background="#fafafa" Margin="10, 62, 10, 0" Width="auto" Height="Auto" Orientation="Vertical">
 
                     <StackPanel Orientation="Vertical">
-                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold" >Valor Inicial</Label>
-                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  x:Name="lbValorInicial">Caixa Fechado</Label>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical">
                         <Label HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold" >Data de Abertura</Label>
                         <Label HorizontalAlignment="Center" VerticalAlignment="Center"  x:Name="lbAbertura">Caixa Fechado</Label>
                     </StackPanel>
@@ -109,6 +105,11 @@
                     <StackPanel  Orientation="Vertical" >
                         <Label HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold">Aberto por</Label>
                         <Label HorizontalAlignment="Center" VerticalAlignment="Center"  x:Name="lbFuncionario">Caixa Fechado</Label>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold" >Valor Inicial</Label>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  x:Name="lbValorInicial">Caixa Fechado</Label>
                     </StackPanel>
 
                     <StackPanel Orientation="Vertical">

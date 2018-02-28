@@ -45,7 +45,35 @@ namespace ProjetoIntegrado.View.Principal
         private static void Pacientes() =>
             new Clientes.PrincipalClienteWin().ShowDialog();
 
-        private static void Procedimentos() { }
+        private static void Procedimentos()
+        {
+            //var c = new Model.ConsultaModel
+            //{
+            //    cliente = new Model.ClienteModel
+            //    {
+            //        id = 1,
+            //    },
+            //    medico = new Model.FuncionarioModel
+            //    {
+            //        id = 1,
+            //    },
+            //    convenio = new Model.ConvenioModel
+            //    {
+            //        id = 1
+            //    },
+            //    numeroProcedimento = "123",
+            //    data = DateTime.Now,
+            //    id = 1,
+            //    ativo = true,
+            //    formaDeAtentimento = Model.FormaDeAtendimento.Convenio,
+            //    horario = DateTime.Now.TimeOfDay,
+            //    statusPagamento = Model.StatusPagamento.Pendente,
+            //    tipoDeCancelamento = Model.TipoDeCancelamento.NaoRealizado,
+            //    valor = 200
+            //};
+
+            //c.Cadastrar();
+        }
 
         private static void Convenio() => new Convenio.PrincipalConvenioWin().ShowDialog();
 

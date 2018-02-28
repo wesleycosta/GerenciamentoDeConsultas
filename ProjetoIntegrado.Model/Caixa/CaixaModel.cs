@@ -15,6 +15,7 @@ namespace ProjetoIntegrado.Model
         public FuncionarioModel funcionarioFechamento { get; set; }
 
         public decimal valorInicial { get; set; }
+        public decimal valorDiferenca { get; set; }
 
         public DateTime dtAbertura { get; set; }
 

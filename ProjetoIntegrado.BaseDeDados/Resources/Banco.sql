@@ -3,6 +3,8 @@ CREATE TABLE consulta
 	id_consulta				INT PRIMARY KEY			IDENTITY, 
 	id_medico				INT						NOT NULL, 
 	id_cliente				INT						NOT NULL, 
+	id_convenio				INT						NULL, 
+	numero_procedimento		VARCHAR(255)			NULL,
 	forma_de_atendimento	CHAR					NOT NULL,
 	data					DATE					NOT NULL, 
 	horario					TIME					NOT NULL, 
@@ -233,4 +235,36 @@ VALUES
 INSERT INTO funcionario
 	(usuario, nome, senha, genero, id_cargo)
 VALUES
-	('ADMINISTRADOR', 'ADMINISTRADOR', 'A/gVrESDv+E=', 1, 3)
+	('ADMINISTRADOR', 'ADMINISTRADOR', 'A/gVrESDv+E=', 1, 3);
+
+INSERT INTO convenio
+	(nome)
+VALUES
+	('ALLIANZ'),
+	('AMAFRESP'),
+	('AMIL'),
+	('AMIL ONE'),
+	('AMIL PLANOS'),
+	('BRADESCO SAÚDE S.A.'),
+	('CABESP'),
+	('CARE PLUS'),
+	('CASSI'),
+	('CENTRAL NACIONAL UNIMED (CNU)'),
+	('EMBRATEL'),
+	('EMGEPRON'),
+	('FSFX - USIMINAS'),
+	('FUNDAÇÃO CESP '),
+	('GAMA'),
+	('GOLDEN CROSS'),
+	('LIFE EMPRESARIAL'),
+	('LINCX'),
+	('MAPFRE SAÚDE'),
+	('MEDIAL'),
+	('MEDISERVICE'),
+	('NOTRE DAME'),
+	('PETROBRÁS'),
+	('PORTO SEGURO'),
+	('SAÚDE CAIXA'),
+	('SEGUROS UNIMED'),
+	('SUL AMÉRICA'),
+	('UNIMED')
