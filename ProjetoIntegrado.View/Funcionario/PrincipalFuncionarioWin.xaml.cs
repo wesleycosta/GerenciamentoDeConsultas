@@ -13,6 +13,7 @@ namespace ProjetoIntegrado.View.Funcionario
 
     public partial class PrincipalFuncionarioWin
     {
+        public bool AlterouOftal;
         private List<FuncionarioModel> lFuncionarios;
 
         public PrincipalFuncionarioWin()
@@ -46,6 +47,8 @@ namespace ProjetoIntegrado.View.Funcionario
 
             if (cadFuncionario.cadastrou)
                 CarregarFuncionarios();
+
+            AlterouOftal = cadFuncionario.AlterouOftal;
         }
 
         private void Editar()
@@ -59,6 +62,8 @@ namespace ProjetoIntegrado.View.Funcionario
 
                 if (cadFuncionario.cadastrou)
                     CarregarFuncionarios();
+
+                AlterouOftal = cadFuncionario.AlterouOftal;
             }
             else
                 Mbox.SelecioneUmaLinhaDaTabela();
@@ -73,6 +78,7 @@ namespace ProjetoIntegrado.View.Funcionario
 
                 if (r == MessageDialogResult.Affirmative)
                 {
+                    AlterouOftal = funcionario?.cargo?.id == 1;
                     funcionario?.Remover();
                     lFuncionarios.Remove(funcionario);
                     lvwFuncionarios.Items.Refresh();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjetoIntegrado.Model
 {
@@ -196,8 +197,8 @@ namespace ProjetoIntegrado.Model
                     usuario = Conexao.Leitor["usuario"].ToString();
                     senhaHash = Conexao.Leitor["senha"].ToString();
 
-                    dataDeNascimento.Converter(Conexao.Leitor, "data_de_nascimento");
-                    dataDeAdmissao.Converter(Conexao.Leitor, "data_de_admissao");
+                    dataDeNascimento = DataUtil.Converter(Conexao.Leitor, "data_de_nascimento");
+                    dataDeAdmissao = DataUtil.Converter(Conexao.Leitor, "data_de_admissao");
 
                     endereco = new EnderecoModel
                     {
@@ -324,6 +325,10 @@ namespace ProjetoIntegrado.Model
 
         public static List<FuncionarioModel> CarregarTodos() =>
             Pesquisar(FiltroPessoa.nome, "");
+
+
+        public static List<FuncionarioModel> CarregarMedicos() =>
+            Pesquisar(FiltroPessoa.nome, "").Where(x => x.cargo?.id == 1).ToList();
 
         #endregion
 

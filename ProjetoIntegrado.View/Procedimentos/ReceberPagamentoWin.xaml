@@ -1,0 +1,56 @@
+﻿<controls:MetroWindow  
+    x:Class="ProjetoIntegrado.View.Procedimentos.ReceberPagamentoWin"
+    xmlns:local="clr-namespace:ProjetoIntegrado.View.Procedimentos"
+        
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+    Style="{StaticResource WindowSimples}"
+    WindowStartupLocation="CenterScreen"
+    
+    Title="RECEBER PROCEDIMENTO" 
+    
+    Height="490" 
+    Width="605.667"
+    KeyDown="MetroWindow_KeyDown"
+
+>
+    <Grid>
+        <StackPanel Margin="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  VerticalAlignment="Center">
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10, 15, 5, 5" Foreground="#673AB7"  FontSize="20" FontWeight="Bold">TOTAL (R$)</Label>
+                <Label x:Name="lbTotal" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10, 15, 5, 5" Foreground="#673AB7"  FontSize="24" FontWeight="Bold">0,00</Label>
+            </StackPanel>
+
+            <Border   Margin="20, 10, 20, 0" 
+                          Padding="0" 
+                          BorderBrush="#FFE6E4E4" BorderThickness="1" Height="328">
+                <ListView x:Name="lvwConsultas"
+                        HorizontalAlignment="Left" 
+                        Height="313" 
+                        Width="560"
+                        Padding="0"
+                        VerticalAlignment="Top" 
+                        KeyDown="lvwConsultas_KeyDown"
+                        MouseDoubleClick="lvwConsultas_MouseDoubleClick" Margin="0,0,-5,0"
+                      >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn  DisplayMemberBinding="{Binding convenio}" Width="185" Header="Convênio"/>
+                            <GridViewColumn  DisplayMemberBinding="{Binding numeroProcedimento}" Width="170" Header="Nº do Procedimento"/>
+                            <GridViewColumn  DisplayMemberBinding="{Binding cpfFormatado}" Width="100" Header="CPF"/>
+                            <GridViewColumn  DisplayMemberBinding="{Binding valor, StringFormat=\{0:n\}}" Width="85" Header="Valor"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Border>
+        </StackPanel>
+
+        <Label Content="Número de Consultas:" HorizontalAlignment="Left" Margin="20,411,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbTotalRegistro" Content="000" HorizontalAlignment="Left" Margin="147,411,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Button x:Name="BtnConfirmar"   Click="btnConfirmar_Click" Content="Confirmar" HorizontalAlignment="Left" Height="35" Margin="326,406,0,0" VerticalAlignment="Top" Width="122"/>
+        <Button x:Name="BtnCancelar"    Click="btnCancelar_Click" Content="Cancelar" HorizontalAlignment="Left" Height="35" Margin="458,406,0,0" VerticalAlignment="Top" Width="124"/>
+    </Grid>
+</controls:MetroWindow>

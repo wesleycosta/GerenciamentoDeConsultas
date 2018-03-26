@@ -119,5 +119,7 @@ namespace ProjetoIntegrado.View.Clientes
         }
 
         #endregion
+
+        private void cbFiltro_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) => CarregarClientes();
     }
 }

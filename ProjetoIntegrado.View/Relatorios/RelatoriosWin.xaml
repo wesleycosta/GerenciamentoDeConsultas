@@ -5,7 +5,7 @@
         Style="{StaticResource WindowSimples}"
         WindowStartupLocation="CenterScreen"
         Title="RELATÓRIOS"
-        Height="360"
+        Height="388"
         Width="400"
         KeyDown="MetroWindow_KeyDown">
     <Grid>
@@ -14,10 +14,10 @@
             <StackPanel x:Name="menuLateral" 
                         Background="#fafafa" 
                         HorizontalAlignment="Left" 
-                        Margin="20,20,50,20"
+                        Margin="20,10,0,9"
                         Width="306">
 
-                <TreeView x:Name="menu" MinWidth="220" Padding="0">
+                <TreeView x:Name="menu" MinWidth="220" Padding="0" Height="231">
                     <TreeViewItem Header="Consultas" IsExpanded="True">
                         <TreeViewItem MouseUp="Menu_OnMouseDoubleClick" x:Uid="ListaDeConsultas" Selected="TreeViewItem_OnItemSelected">
                             <TreeViewItem.Header>
@@ -36,10 +36,29 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
+
+                        <TreeViewItem MouseUp="Menu_OnMouseDoubleClick" x:Uid="ListaDeConsultas" Selected="TreeViewItem_OnItemSelected">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image x:Name="imgProcedimentos" Source="/Resources/Time_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0">Procedimentos</Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
                     </TreeViewItem>
 
-                    <TreeViewItem Header="Financeiro" IsExpanded="True">
-                        
+                    <TreeViewItem Header="Financeiro" IsExpanded="True" Height="103">
+
+                        <TreeViewItem MouseUp="Menu_OnMouseDoubleClick" x:Uid="Faturamento" Selected="TreeViewItem_OnItemSelected">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image x:Name="imgDespesas" Source="/Resources/SwitchTimeScalesTo_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0">Despesas</Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
                         <TreeViewItem MouseUp="Menu_OnMouseDoubleClick" x:Uid="Faturamento" Selected="TreeViewItem_OnItemSelected">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
@@ -48,13 +67,13 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
+
                     </TreeViewItem>
                 </TreeView>
             </StackPanel>
         </Border>
 
-        <Button x:Name="btnGerar" Content="OK" Click="btnOk_OnClick" HorizontalAlignment="Left" Height="35" Margin="112,282,0,0" VerticalAlignment="Top" Width="123"/>
-        <Button x:Name="btnCancelar" Content="Cancelar" Click="BtnCancelar_OnClick" HorizontalAlignment="Left" Height="35" Margin="249,282,0,0" VerticalAlignment="Top" Width="123"/>
-
+        <Button x:Name="btnGerar" Content="OK" Click="btnOk_OnClick" HorizontalAlignment="Left" Height="35" Margin="112,0,0,14" VerticalAlignment="Bottom" Width="123"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" Click="BtnCancelar_OnClick" HorizontalAlignment="Left" Height="35" Margin="249,0,0,14" VerticalAlignment="Bottom" Width="123"/>
     </Grid>
 </controls:MetroWindow>

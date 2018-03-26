@@ -14,6 +14,7 @@
         Funcionarios,
         Usuarios,
         Cargos,
+        Material,
 
         // FINANCEIRO
         Despesas,
@@ -34,8 +35,10 @@
         // CONSULTAS
         ListaDeConsultas,
         ConsultasCanceladas,
+        Procedimentos,
 
         // FINANCEIRO
+        Despesas,
         Faturamento
     }
 

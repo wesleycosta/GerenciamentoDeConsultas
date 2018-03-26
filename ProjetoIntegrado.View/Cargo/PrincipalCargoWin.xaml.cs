@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 using MahApps.Metro.Controls.Dialogs;
-using ProjetoIntegrado.Funcoes;
 
 namespace ProjetoIntegrado.View.Cargo
 {

@@ -13,15 +13,23 @@
     WindowStartupLocation="CenterScreen"
     
     Title="FILTRAR" 
-    Height="193.917" 
-    Width="402.742"
+    Height="168.917" 
+    Width="345.742"
     KeyDown="MetroWindow_KeyDown"
 >
-    
+
 
     <Grid>
 
-        <Button x:Name="BtnOk"   Click="BtnOk_OnClick_OnClick" Content="Gerar" HorizontalAlignment="Left" Height="35" Margin="127,113,0,0" VerticalAlignment="Top" Width="122"/>
-        <Button x:Name="BtnCancelar" Click="BtnCancelar_OnClick" Content="Cancelar" HorizontalAlignment="Left" Height="35" Margin="259,113,0,0" VerticalAlignment="Top" Width="124"/>
+        <Button x:Name="BtnOk"   Click="BtnOk_OnClick_OnClick" Content="Gerar" HorizontalAlignment="Left" Height="35" Margin="64,84,0,0" VerticalAlignment="Top" Width="122"/>
+        <Button x:Name="BtnCancelar" Click="BtnCancelar_OnClick" Content="Cancelar" HorizontalAlignment="Left" Height="35" Margin="196,84,0,0" VerticalAlignment="Top" Width="124"/>
+        <DatePicker HorizontalAlignment="Left" Margin="20,31,0,0" VerticalAlignment="Top" Width="140" 
+            Tag="*" x:Uid="Data Inicial"
+            materialDesign:HintAssist.Hint="DATA INICIAL" x:Name="tbDataInicial" 
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Height="25"  />
+        <DatePicker HorizontalAlignment="Left" Margin="180,32,0,0" VerticalAlignment="Top" Width="140" 
+            Tag="*" x:Uid="Data Final"
+            materialDesign:HintAssist.Hint="DATA FINAL" x:Name="tbDataFinal"
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Height="24"/>
     </Grid>
 </controls:MetroWindow>

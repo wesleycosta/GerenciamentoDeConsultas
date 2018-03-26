@@ -25,6 +25,9 @@ namespace ProjetoIntegrado.View.Relatorios
             imgListaConsultas.BitmapToImageSource(Icons.WorkWeekView_16x16);
             imgCancelada.BitmapToImageSource(Icons.InsertHeader_16x16);
             imgFaturamento.BitmapToImageSource(Icons.AlignHorizontalBottom2_16x16);
+
+            imgProcedimentos.BitmapToImageSource(Icons.Time_16x16);
+            imgDespesas.BitmapToImageSource(Icons.SwitchTimeScalesTo_16x16);
         }
 
         #endregion
@@ -41,7 +44,8 @@ namespace ProjetoIntegrado.View.Relatorios
 
         private void BtnCancelar_OnClick(object sender, RoutedEventArgs e) => Close();
 
-        private void Menu_OnMouseDoubleClick(object sender, MouseButtonEventArgs e) => RelatorioItens.MantemItem((sender as TreeViewItem)?.Uid);
+        private void Menu_OnMouseDoubleClick(object sender, MouseButtonEventArgs e) => 
+            RelatorioItens.MantemItem((sender as TreeViewItem)?.Uid);
 
         private void TreeViewItem_OnItemSelected(object sender, RoutedEventArgs e) => item = sender;
 

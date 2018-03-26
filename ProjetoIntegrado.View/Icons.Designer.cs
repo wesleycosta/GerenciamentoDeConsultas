@@ -133,6 +133,16 @@ namespace ProjetoIntegrado.View {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AlignHorizontalTop_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("AlignHorizontalTop_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Calendar_16x16 {
             get {
                 object obj = ResourceManager.GetObject("Calendar_16x16", resourceCulture);
@@ -316,6 +326,16 @@ namespace ProjetoIntegrado.View {
         internal static System.Drawing.Bitmap eyeglasses {
             get {
                 object obj = ResourceManager.GetObject("eyeglasses", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Find_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Find_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

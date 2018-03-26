@@ -31,7 +31,9 @@ namespace ProjetoIntegrado.View.FluxoDeCaixa
         {
             InitializeComponent();
             tbDiferenca.KeyDown += ValidarEntrada.Real_KeyPress;
+            tbDiferenca.KeyDown += MetroWindow_KeyDown;
             CarregarListView();
+            Loaded += (o, a) => tbDiferenca.Focus();
         }
 
         private void CarregarListView()
@@ -67,6 +69,8 @@ namespace ProjetoIntegrado.View.FluxoDeCaixa
         {
             if (e.Key == Key.Escape)
                 Close();
+            else if (e.Key == Key.Enter && sender is TextBox)
+                BtnSalvar_Click(sender, new RoutedEventArgs());
         }
 
         #endregion

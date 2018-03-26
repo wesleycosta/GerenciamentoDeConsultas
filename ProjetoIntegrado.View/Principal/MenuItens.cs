@@ -5,7 +5,7 @@ namespace ProjetoIntegrado.View.Principal
 {
     public static class MenuItens
     {
-        public static EventHandler Evento;
+        public static EventHandler Evento { get; set; }
 
         #region MANTEM ITENS
 
@@ -28,6 +28,7 @@ namespace ProjetoIntegrado.View.Principal
                 case MenuItensEnum.Funcionarios: Funcionarios(); break;
                 case MenuItensEnum.Usuarios: Usuarios(); break;
                 case MenuItensEnum.Cargos: Cargos(); break;
+                case MenuItensEnum.Material: Material(); break;
 
                 case MenuItensEnum.Despesas: Despesas(); break;
                 case MenuItensEnum.FluxoDeCaixa: FluxoDeCaixa(); break;
@@ -45,35 +46,7 @@ namespace ProjetoIntegrado.View.Principal
         private static void Pacientes() =>
             new Clientes.PrincipalClienteWin().ShowDialog();
 
-        private static void Procedimentos()
-        {
-            //var c = new Model.ConsultaModel
-            //{
-            //    cliente = new Model.ClienteModel
-            //    {
-            //        id = 1,
-            //    },
-            //    medico = new Model.FuncionarioModel
-            //    {
-            //        id = 1,
-            //    },
-            //    convenio = new Model.ConvenioModel
-            //    {
-            //        id = 1
-            //    },
-            //    numeroProcedimento = "123",
-            //    data = DateTime.Now,
-            //    id = 1,
-            //    ativo = true,
-            //    formaDeAtentimento = Model.FormaDeAtendimento.Convenio,
-            //    horario = DateTime.Now.TimeOfDay,
-            //    statusPagamento = Model.StatusPagamento.Pendente,
-            //    tipoDeCancelamento = Model.TipoDeCancelamento.NaoRealizado,
-            //    valor = 200
-            //};
-
-            //c.Cadastrar();
-        }
+        private static void Procedimentos() => new Procedimentos.PrincipalProcedimentoWin().ShowDialog();
 
         private static void Convenio() => new Convenio.PrincipalConvenioWin().ShowDialog();
 
@@ -84,11 +57,21 @@ namespace ProjetoIntegrado.View.Principal
 
         private static void Empresa() => new Clinica.CadClinicaWin().ShowDialog();
 
-        private static void Funcionarios() => new Funcionario.PrincipalFuncionarioWin().ShowDialog();
+        private static void Funcionarios()
+        {
+            var frmFun = new Funcionario.PrincipalFuncionarioWin();
+            frmFun.ShowDialog();
+
+            if (frmFun.AlterouOftal)
+                Evento(MenuItensEnum.Funcionarios, EventArgs.Empty);
+        }
+
 
         private static void Usuarios() => new Usuarios.PrincipalUsuariosWin().ShowDialog();
 
         private static void Cargos() => new Cargo.PrincipalCargoWin().ShowDialog();
+
+        private static void Material() => new Material.PrincipalMaterialWin().ShowDialog();
 
         private static void Categoria() => new Categoria.PrincipalCategoriaWin().ShowDialog();
 

@@ -14,7 +14,7 @@
         WindowStartupLocation="CenterScreen"
     
         Title="FECHAR CAIXA" 
-        Height="394" 
+        Height="398.667" 
         Width="306"
         KeyDown="MetroWindow_KeyDown"
 >
@@ -44,9 +44,9 @@
             </ListView>
         </Border>
 
-        <TextBox x:Name="tbDiferenca" x:Uid="Valor da Diferença" TabIndex="0" Tag="*" HorizontalAlignment="Left"    Margin="55,0,0,73"   TextAlignment="Center" Height="38" Width="190"  TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="INFORME O VALOR DA DIFERENÇA" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Bottom"  />
-        <Button x:Name="BtnSalvar"   Click="BtnSalvar_Click" TabIndex="22" Content="Salvar" Height="34"             Margin="21,0,0,17" HorizontalAlignment="Left" Width="122" VerticalAlignment="Bottom"/>
-        <Button x:Name="BtnCancelar" Click="BtnCancelar_Click" TabIndex="23" Content="Cancelar" Height="34"         Margin="154,0,0,17" HorizontalAlignment="Left" Width="124" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="tbDiferenca" x:Uid="Valor da Diferença" HorizontalAlignment="Center"  HorizontalContentAlignment="Center"  TabIndex="0" Tag="*"   Margin="20,0,20,66"   TextAlignment="Center" Height="38" Width="260"  TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="INFORME O VALOR DA DIFERENÇA" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Bottom"  />
+        <Button x:Name="BtnSalvar"   Click="BtnSalvar_Click" TabIndex="22" Content="Salvar" Height="34"             Margin="20,0,0,10" HorizontalAlignment="Left" Width="122" VerticalAlignment="Bottom"/>
+        <Button x:Name="BtnCancelar" Click="BtnCancelar_Click" TabIndex="23" Content="Cancelar" Height="34"         Margin="156,0,0,10" HorizontalAlignment="Left" Width="124" VerticalAlignment="Bottom"/>
     </Grid>
 
 </controls:MetroWindow>

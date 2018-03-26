@@ -46,7 +46,6 @@
                       Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                       Height="39"
                       SelectedIndex="0"
-                              
                       VerticalAlignment="Bottom" IsReadOnly="True">
                         <ComboBoxItem>Nome</ComboBoxItem>
                         <ComboBoxItem>CPF</ComboBoxItem>

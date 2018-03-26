@@ -19,6 +19,9 @@ namespace ProjetoIntegrado.Funcoes
             var TbOk = ValidarTextBox(ValidaUtil.FindVisualChildren<TextBox>(janela));
             if (!TbOk) return false;
 
+            var TbPass = ValidarPassword(ValidaUtil.FindVisualChildren<PasswordBox>(janela));
+            if (!TbPass) return false;
+
             var TbCpf = ValidarCpf(ValidaUtil.FindVisualChildren<MaskedTextBox>(janela));
             if (!TbCpf) return false;
 
@@ -27,6 +30,9 @@ namespace ProjetoIntegrado.Funcoes
 
             var TbData = ValidarData(ValidaUtil.FindVisualChildren<MaskedTextBox>(janela));
             if (!TbData) return false;
+
+            var tbHorario = ValidarHoras(ValidaUtil.FindVisualChildren<MaskedTextBox>(janela));
+            if (!tbHorario) return false;
 
             var tbCombo = ValidarComboBox(ValidaUtil.FindVisualChildren<ComboBox>(janela));
             if (!tbCombo) return false;
@@ -43,6 +49,23 @@ namespace ProjetoIntegrado.Funcoes
             {
                 if (tb?.Tag?.ToString() == "*")
                     if (string.IsNullOrEmpty(tb.Text.Trim()))
+                    {
+                        Mbox.CampoInvalido(tb.Uid);
+                        tb.Focus();
+
+                        return false;
+                    }
+            }
+
+            return true;
+        }
+
+        private static bool ValidarPassword(IEnumerable<PasswordBox> lTextBoxs)
+        {
+            foreach (PasswordBox tb in lTextBoxs)
+            {
+                if (tb?.Tag?.ToString() == "*")
+                    if (string.IsNullOrEmpty(tb.Password.Trim()))
                     {
                         Mbox.CampoInvalido(tb.Uid);
                         tb.Focus();
@@ -152,5 +175,21 @@ namespace ProjetoIntegrado.Funcoes
             return true;
         }
 
+        private static bool ValidarHoras(IEnumerable<MaskedTextBox> lTextBoxs)
+        {
+            foreach (TextBox tb in lTextBoxs)
+            {
+                if (tb?.Tag?.ToString() == "horas*")
+                    if (!DataUtil.ValidarHorario(tb.Text))
+                    {
+                        Mbox.CampoInvalido(tb.Uid);
+                        tb.Focus();
+
+                        return false;
+                    }
+            }
+
+            return true;
+        }
     }
 }

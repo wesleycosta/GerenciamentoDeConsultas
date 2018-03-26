@@ -166,10 +166,22 @@
     <Compile Include="Clientes\PrincipalClienteWin.xaml.cs">
       <DependentUpon>PrincipalClienteWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Clientes\ProcurarClienteWin.xaml.cs">
+      <DependentUpon>ProcurarClienteWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\VincularClienteWin.xaml.cs">
+      <DependentUpon>VincularClienteWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Clinica\CadClinicaWin.xaml.cs">
       <DependentUpon>CadClinicaWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Apoio\Config.cs" />
+    <Compile Include="Consultas\CadConsultasWin.xaml.cs">
+      <DependentUpon>CadConsultasWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\ExcluirConsultaWin.xaml.cs">
+      <DependentUpon>ExcluirConsultaWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Convenio\CadConvenioWin.xaml.cs">
       <DependentUpon>CadConvenioWin.xaml</DependentUpon>
     </Compile>
@@ -208,7 +220,22 @@
       <DependentUpon>PrincipalFuncionarioWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Apoio\Enum.cs" />
+    <Compile Include="Material\CadMaterialWin.xaml.cs">
+      <DependentUpon>CadMaterialWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Material\PrincipalMaterialWin.xaml.cs">
+      <DependentUpon>PrincipalMaterialWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pagamento\CadPagamentoWin.xaml.cs">
+      <DependentUpon>CadPagamentoWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Principal\MenuItens.cs" />
+    <Compile Include="Procedimentos\PrincipalProcedimentoWin.xaml.cs">
+      <DependentUpon>PrincipalProcedimentoWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Procedimentos\ReceberPagamentoWin.xaml.cs">
+      <DependentUpon>ReceberPagamentoWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\Consultas\Canceladas\RelConsultaCanceladaWin.xaml.cs">
       <DependentUpon>RelConsultaCanceladaWin.xaml</DependentUpon>
     </Compile>
@@ -234,6 +261,9 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Usuarios\PrincipalUsuariosWin.xaml.cs">
       <DependentUpon>PrincipalUsuariosWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowTeste.xaml.cs">
+      <DependentUpon>WindowTeste.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -331,7 +361,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Clientes\ProcurarClienteWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Clientes\VincularClienteWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Clinica\CadClinicaWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Consultas\CadConsultasWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Consultas\ExcluirConsultaWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -387,7 +433,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Material\CadMaterialWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Material\PrincipalMaterialWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pagamento\CadPagamentoWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Principal\PrincipalWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Procedimentos\PrincipalProcedimentoWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Procedimentos\ReceberPagamentoWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -416,6 +482,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Usuarios\PrincipalUsuariosWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowTeste.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -658,6 +728,9 @@
       <Link>SqlServerTypes\x86\SqlServerSpatial110.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\Clear_16x16.png" />
+    <None Include="Resources\Find_16x16.png" />
+    <None Include="Resources\AlignHorizontalTop_16x16.png" />
     <Content Include="SqlServerTypes\readme.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

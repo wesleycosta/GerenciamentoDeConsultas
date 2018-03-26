@@ -10,7 +10,8 @@ CREATE TABLE consulta
 	horario					TIME					NOT NULL, 
 	valor					DECIMAL(9, 2)			NOT NULL, 
 	status_pagamento 		CHAR					NOT NULL, 
-	tipo_de_cancelamento	CHAR					NULL,
+	tipo_de_consulta		CHAR					NULL,
+	retorno					BIT						NULL,
 	ativo					BIT						NOT NULL DEFAULT  1
 ); 
 
@@ -182,6 +183,40 @@ CREATE TABLE convenio
 	ativo								BIT						NOT NULL DEFAULT 1
 );
 
+CREATE TABLE material
+(
+	id_material				INT				PRIMARY	KEY		IDENTITY,
+	descricao				VARCHAR(255)	NOT NULL,
+	valor					DECIMAL(9,2)	NOT NULL,
+	ativo					BIT				NOT NULL		DEFAULT 1
+);
+
+CREATE TABLE cirurgia
+(
+	id_cirurgia				INT				PRIMARY	KEY		IDENTITY,
+	id_consulta				INT,
+	local					VARCHAR(255),
+	valor_medico			DECIMAL(9,2),
+	ativo					BIT				NOT NULL		DEFAULT 1
+);
+
+CREATE TABLE material_cirurgia
+(
+	id_material_cirurgia	INT				PRIMARY	KEY		IDENTITY,
+	id_cirurgia				INT,
+	id_material				INT,
+	quantidade				TINYINT,
+	valor_unitario			DECIMAL(9,2),
+	ativo					BIT				NOT NULL		DEFAULT 1
+);
+
+CREATE TABLE equipe_cirurgia
+(	
+	id_equipe_cirurgia		INT				PRIMARY	KEY		IDENTITY,
+	id_cirurgia				INT,
+	id_funcionario			INT,
+	ativo					BIT				NOT NULL		DEFAULT 1
+);
 
 ALTER TABLE consulta 
   ADD FOREIGN KEY(id_medico)	 REFERENCES funcionario (id_funcionario);
@@ -203,9 +238,6 @@ ALTER TABLE receita
 
 ALTER TABLE receita 
   ADD FOREIGN KEY(olho_direito)  REFERENCES diagnostico (id_diagnostico); 
-
-ALTER TABLE pagamento 
-  ADD FOREIGN KEY(id_caixa)	     REFERENCES caixa (id_caixa);
 
 INSERT INTO forma_de_pagamento 
 	(descricao)

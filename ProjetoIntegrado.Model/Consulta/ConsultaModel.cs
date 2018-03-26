@@ -15,7 +15,8 @@ namespace ProjetoIntegrado.Model
         public TimeSpan horario { get; set; }
         public decimal valor { get; set; }
         public StatusPagamento statusPagamento { get; set; }
-        public TipoDeCancelamento tipoDeCancelamento { get; set; }
+        public TipoDeConsulta tipoDeConsulta { get; set; }
+        public bool retorno { get; set; }
         public bool ativo { get; set; } = true;
 
         public List<PagamentoModel> listaDePagamentos { get; set; } = new List<PagamentoModel>();
@@ -26,9 +27,9 @@ namespace ProjetoIntegrado.Model
         {
             get
             {
-                if (tipoDeCancelamento == TipoDeCancelamento.Cancelado)
+                if (tipoDeConsulta == TipoDeConsulta.Cancelado)
                     return "Cancelado";
-                else if (tipoDeCancelamento == TipoDeCancelamento.NaoCompareceu)
+                else if (tipoDeConsulta == TipoDeConsulta.NaoCompareceu)
                     return "Não Compareceu";
                 else
                     return "";
@@ -48,6 +49,13 @@ namespace ProjetoIntegrado.Model
             }
         }
 
+        public string retornoFormatado => retorno ? "SIM" : "NÃO";
+
+        public string cpfFormatado => cliente.cpf;
+
+        public string celularFormatado => $"{cliente.dddCel} {cliente.celular}";
+
+        public string telefoneFormatado => $"{cliente.dddTel} {cliente.telefone}";
 
         #endregion
     }

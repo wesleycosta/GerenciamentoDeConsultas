@@ -7,12 +7,14 @@ namespace ProjetoIntegrado.View.Funcionario
     using Model;
     using Model.Estado;
     using Funcoes;
+    using Mensagens;
 
     public partial class CadFuncionarioWin
     {
         #region PROPRIEDADES E CTOR
 
         public bool cadastrou { get; set; }
+        public bool AlterouOftal { get; set; }
 
         private List<CargoModel> cargos;
         private FuncionarioModel funcionario;
@@ -37,6 +39,35 @@ namespace ProjetoIntegrado.View.Funcionario
 
             Title = "EDITAR FUNCIONÁRIO";
             CarregarDados();
+        }
+
+        private bool ValidarSenha()
+        {
+            if (tbSenha.Password == string.Empty && cadastrar)
+            {
+                Mbox.CampoInvalido("Senha");
+                tbSenha.Focus();
+                return false;
+            }
+
+            if (tbConfirmarSenha.Password == string.Empty && cadastrar)
+            {
+                Mbox.CampoInvalido("Confimar Senha");
+                tbConfirmarSenha.Focus();
+                return false;
+            }
+
+            if (tbSenha.Password != string.Empty)
+                if (tbSenha.Password != tbConfirmarSenha.Password)
+                {
+                    Mbox.Afirmacao("Aviso", "A senhas informadas são diferentes!");
+                    tbSenha.Clear();
+                    tbConfirmarSenha.Clear();
+                    tbSenha.Focus();
+                    return false;
+                }
+
+            return true;
         }
 
         private void Inicializar()
@@ -73,9 +104,9 @@ namespace ProjetoIntegrado.View.Funcionario
             tbDataAdminissao.Text = funcionario.dataDeAdmissao.ToString("d");
             tbSalario.Text = funcionario.salario.ToString("n");
 
-            tbDddCel.Text = funcionario.dddCel;
+            tbDddCel.Text = funcionario.dddCel.Trim();
             tbCelular.Text = funcionario.celular;
-            tbDddTel.Text = funcionario.dddTel;
+            tbDddTel.Text = funcionario.dddTel.Trim();
             tbTelefone.Text = funcionario.telefone;
             tbEmail.Text = funcionario.email;
 
@@ -158,9 +189,14 @@ namespace ProjetoIntegrado.View.Funcionario
 
         private void BtnSalvar_OnClick(object sender, RoutedEventArgs e)
         {
-            MantemFuncionario();
-            cadastrou = true;
-            Close();
+            if (ValidarCampos.Validar(this))
+                if (ValidarSenha())
+                {
+                    MantemFuncionario();
+                    cadastrou = true;
+                    AlterouOftal = cbCargo.SelectedIndex == 0;
+                    Close();
+                }
         }
 
         private void BtnCancelar_OnClick(object sender, RoutedEventArgs e)

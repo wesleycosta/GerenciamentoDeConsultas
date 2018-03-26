@@ -136,7 +136,7 @@ namespace ProjetoIntegrado.Model
                     cpf = Conexao.Leitor["cpf"].ToString();
                     genero = (Genero)Enum.Parse(typeof(Genero), Conexao.Leitor["genero"].ToString());
 
-                    dataDeNascimento.Converter(Conexao.Leitor, "data_de_nascimento");
+                    dataDeNascimento = DataUtil.Converter(Conexao.Leitor, "data_de_nascimento");
 
                     dddCel = Conexao.Leitor["ddd_cel"].ToString();
                     celular = Conexao.Leitor["celular"].ToString();
@@ -251,7 +251,7 @@ namespace ProjetoIntegrado.Model
 
         public List<ConsultaModel> Historio() =>
             ConsultaModel.Historio(id);
-        
+
         #endregion
     }
 }

@@ -5,6 +5,7 @@ namespace ProjetoIntegrado.Model
     public partial class PagamentoModel
     {
         public int id { get; set; }
+        public int idConsulta { get; set; }
         public CaixaModel caixa { get; set; }
         public FormaDePagamentoModel formaDePagamento { get; set; }
         public DateTime data { get; set; }

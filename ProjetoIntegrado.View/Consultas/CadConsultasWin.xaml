@@ -1,0 +1,228 @@
+﻿<controls:MetroWindow 
+    x:Class="ProjetoIntegrado.View.Consultas.CadConsultasWin"
+    xmlns:local="clr-namespace:ProjetoIntegrado.View.Consultas"
+    
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    
+    xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+
+    mc:Ignorable="d"
+    
+    Style="{StaticResource WindowSimples}"
+    WindowStartupLocation="CenterScreen"
+    KeyDown="Window_KeyDown"
+    
+    Title="CONSULTAs" 
+    Height="510.5" 
+    Width="726.417"
+    Loaded="MetroWindow_Loaded"
+>
+    <Grid>
+        <dragablz:TabablzControl x:Name="tabControl">
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController />
+            </dragablz:TabablzControl.InterTabController>
+
+            <TabItem Header="DADOS DA CONSULTA">
+                <Grid>
+                    <TextBox TabIndex="0" x:Name="tbNome"  Tag="*"    x:Uid="Nome"  HorizontalAlignment="Left" Height="38" Width="239" Margin="21,22,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="NOME" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+
+                    <ComboBox 
+                            TabIndex="1"
+                            x:Name="cbTipo"
+                            IsTabStop="True"
+                            SelectedIndex="0"
+                            Margin="320,18,0,0" 
+                            materialDesign:HintAssist.Hint="TIPO" 
+                            IsEditable="True" 
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                            Height="41"
+                            VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="79">
+                        <ComboBoxItem Content="Particular"/>
+                        <ComboBoxItem Content="Convênio"/>
+                    </ComboBox>
+
+                    <DatePicker 
+            TabIndex="2"
+            HorizontalAlignment="Left" Margin="419,35,0,0" VerticalAlignment="Top" Width="100" 
+            Tag="data*" x:Uid="Data"
+            materialDesign:HintAssist.Hint="DATA" x:Name="tbData" 
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Height="25" />
+
+                    <xctk:MaskedTextBox  TabIndex="3" materialDesign:HintAssist.Hint="HORÁRIO"      HorizontalContentAlignment="Center" Tag="horas*" x:Uid="Horário" x:Name="tbHorario"   Mask="00:00"  PromptChar=" " HorizontalAlignment="Left" Height="40" Width="60" Margin="540,20,0,0" TextWrapping="Wrap"      TextAlignment="Center" CharacterCasing="Upper"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+
+                    <TextBox TabIndex="3" Tag="*"    x:Uid="Valor" x:Name="tbValor" HorizontalContentAlignment="Center"  materialDesign:HintAssist.Hint="VALOR"  Height="39" Width="80" Margin="600,21,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+
+                    <xctk:MaskedTextBox TabIndex="8"      Tag="cpf*" x:Uid="CPF" x:Name="tbCpf"   Mask="000,000,000-00"  PromptChar=" " HorizontalAlignment="Left" Height="40" Width="179" Margin="20,140,0,0" TextWrapping="Wrap"      TextAlignment="Center" CharacterCasing="Upper" materialDesign:HintAssist.Hint="CPF" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+                    <TextBox x:Name="tbNumeroProcediemnto"  materialDesign:HintAssist.Hint="Nº PROCEDIMENTO" TabIndex="5" HorizontalAlignment="Left" Height="39" Width="119" Margin="220,81,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+
+                    <ComboBox x:Name="cbConvenio"
+            TabIndex="4" 
+            IsTabStop="True"
+            Margin="20,78,0,0" 
+            materialDesign:HintAssist.Hint="CONVÊNIO" 
+            IsEditable="True" 
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            SelectedIndex="0"
+            VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="180" Height="41"/>
+
+                    <ComboBox x:Name="cbMedicos"
+            TabIndex="6" IsTabStop="True"
+            Margin="360,79,0,0" 
+            materialDesign:HintAssist.Hint="OFTALMOLOGISTA" 
+            IsEditable="True" 
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            Height="41"
+            SelectedIndex="0"
+            VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="200" />
+
+                    <ComboBox x:Name="cbStatusPagamento"
+            TabIndex="7" IsTabStop="True"
+            SelectedIndex="0"
+            Margin="582,81,0,0" 
+            materialDesign:HintAssist.Hint="Status do Pagamento" 
+            IsEditable="True" 
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            VerticalAlignment="Top" IsReadOnly="True" Height="40" HorizontalAlignment="Left" Width="118">
+                        <ComboBoxItem Content="Pendente"/>
+                        <ComboBoxItem Content="Recebido"/>
+                    </ComboBox>
+
+                    <xctk:MaskedTextBox Tag="data*" x:Uid="Data de Nascimento" x:Name="tbDataNascimento" TabIndex="9" Mask="00/00/0000"  PromptChar=" " HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="119" Margin="220,142,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="DATA DE NASCIMENTO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+                    <ComboBox x:Name="cbGenero" TabIndex="10" IsTabStop="True" Margin="360,142,0,0" materialDesign:HintAssist.Hint="GÊNERO" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Height="38" SelectedIndex="0" VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="200" RenderTransformOrigin="-0.009,-4.474" >
+                        <ComboBoxItem Content="MASCULINO"/>
+                        <ComboBoxItem Content="FEMININO"/>
+                    </ComboBox>
+                    <ComboBox x:Name="cbRetorno"
+            TabIndex="11" IsTabStop="True"
+            SelectedIndex="0"
+            Margin="580,140,0,0" 
+            materialDesign:HintAssist.Hint="Retorno" 
+            IsEditable="True" 
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            VerticalAlignment="Top" IsReadOnly="True" Height="40" HorizontalAlignment="Left" Width="120">
+                        <ComboBoxItem Content="Não"/>
+                        <ComboBoxItem Content="Sim"/>
+                    </ComboBox>
+
+                    <TextBox x:Name="tbDddCel" TabIndex="12" MaxLength="2" TextAlignment="Center"  HorizontalAlignment="Left" Height="38" Width="60" Margin="19,202,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="DDD CEL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+                    <TextBox x:Name="tbCelular"  TabIndex="13" HorizontalAlignment="Left" Height="38" Width="100" Margin="100,202,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="CELULAR" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+                    <TextBox x:Name="tbDddTel"  TabIndex="14" MaxLength="2" HorizontalAlignment="Left"  TextAlignment="Center" Height="38" Width="60" Margin="220,202,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="DDD TEL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+                    <TextBox x:Name="tbTelefone"  TabIndex="15" HorizontalAlignment="Left" Height="38" Width="99" Margin="300,202,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="TELEFONE" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+                    <TextBox x:Name="tbEmail"  TabIndex="16" HorizontalAlignment="Left" Height="38" Width="280" Margin="420,202,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="E-MAIL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+
+                    <TextBox x:Name="tbLogradouro"  TabIndex="17" HorizontalAlignment="Left" Height="38" Width="359" Margin="20,262,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="LOGRADOURO"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+                    <TextBox x:Name="tbNumero"  TabIndex="18" HorizontalAlignment="Left"  Height="38" Width="80" TextAlignment="Center" Margin="400,262,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="NÚMERO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+                    <TextBox x:Name="tbComplemento"  TabIndex="19" HorizontalAlignment="Left" Height="38" Width="200" Margin="500,262,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="COMPLEMENTO"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+
+                    <xctk:MaskedTextBox  x:Name="tbCep" Mask="99999-999"  PromptChar=" "  TabIndex="20" TextAlignment="Center" HorizontalAlignment="Left" Height="38" Width="120" Margin="20,322,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="CEP" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+                    <TextBox x:Name="tbCidade"  TabIndex="21" HorizontalAlignment="Left" Height="38" Width="260"  Margin="160,322,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="CIDADE" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+                    <ComboBox x:Name="cbUf" TabIndex="22" IsTabStop="True" Margin="440,322,240,0" materialDesign:HintAssist.Hint="UF" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Height="38" VerticalAlignment="Top" IsReadOnly="True" RenderTransformOrigin="1.494,0.559" />
+                    <TextBox x:Name="tbBairro"  TabIndex="23" HorizontalAlignment="Left" Height="38" Width="200"  Margin="500,322,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="BAIRRO"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+
+                    <Button x:Name="BtnSalvar"   Click="BtnSalvar_Click" TabIndex="24" Content="Salvar" HorizontalAlignment="Right" Height="34"  Margin="0,386,155,0" VerticalAlignment="Top" Width="122"/>
+                    <Button x:Name="BtnCancelar" Click="BtnCancelar_Click" TabIndex="25" Content="Cancelar" HorizontalAlignment="Right" Height="34" Margin="0,386,20,0" VerticalAlignment="Top" Width="124"/>
+                    <Label x:Name ="lbCodigoText" Content="Código:" HorizontalAlignment="Left" Margin="20,390,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbCodigo" Content="000" HorizontalAlignment="Left" Margin="71,391,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+
+                    <Border Cursor="Hand" Background="#fafafa" BorderBrush="Gainsboro" BorderThickness="1" Margin="276,35,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="28" Height="26">
+                        <Image MouseDown="ProcurarPaciente_MouseUp" x:Name="imgProcurar" Margin="5,5,5,3" Source="/Resources/Find_16x16.png" />
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="EXTRATO E HISTÓRICO" x:Name="paginaHistorico">
+
+                <Grid>
+                    <StackPanel Margin="40, 20,20, 20" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Border  Margin="0, 0, 20, 0" Background="#fafafa" BorderBrush="Gainsboro" BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Height="30">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Label FontWeight="Bold">Valor da Consulta:</Label>
+                                <Label x:Name="lbValorConsulta" Width="50">100,00</Label>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Margin="0, 0, 20, 0" Background="#fafafa" BorderBrush="Gainsboro" BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Height="30">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Label FontWeight="Bold" Content="Total Pagamento:"/>
+                                <Label x:Name="lbTotalPagamento"  Width="50" Content="100,00"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Margin="0, 0, 20, 0" Background="#fafafa" BorderBrush="Gainsboro" BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Height="30">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Label FontWeight="Bold" Content="Débito:"/>
+                                <Label x:Name="lbDebito" Width="50" Content="100,00"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <Border  
+                        Margin="21,64,18,266" 
+                          Padding="0" 
+                          BorderBrush="#FFE6E4E4" BorderThickness="1">
+                        <ListView x:Name="lvwPagamentos"
+                                  HorizontalAlignment="Left" 
+                                  Height="148" 
+                                  Width="678"
+                                  Padding="0"
+                                  Margin="0" 
+                                  FontSize="11"   
+                                  VerticalAlignment="Top" 
+                                  Grid.Row="1" >
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding data, StringFormat={}{0:dd/MM/yyyy}}" Width="80">Data</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding formaDePagamento.descricao}" Width="520">Forma de Pagamento</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding valor, StringFormat={}{0:n}}" Width="80">Valor</GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Border>
+
+                    <Button x:Name="BtnAdicionar"  Click="BtnAdicionar_Click"  TabIndex="18" Content="Adicionar"   HorizontalAlignment="Right" Height="34"     Margin="0,190,155,0"    VerticalAlignment="Top" Width="122"/>
+                    <Button x:Name="BtnRemover"     Click="BtnRemover_Click" TabIndex="19" Content="Remover"     HorizontalAlignment="Right" Height="34"     Margin="0,190,20,0"     VerticalAlignment="Top" Width="124"/>
+
+                    <Border   Margin="21,240,18,17" 
+                              Padding="0" 
+                              BorderBrush="#FFE6E4E4" BorderThickness="1" RenderTransformOrigin="0.5,0.5">
+
+                        <ListView x:Name="lvwHistorico"
+                                    HorizontalAlignment="Left" 
+                                    Height="182" 
+                                    Width="678"
+                                    Padding="0"
+                                    Margin="0,0,-1,-1" 
+                                    FontSize="11"   
+                                    VerticalAlignment="Top" 
+                                    Grid.Row="1" >
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding data, StringFormat={}{0:dd/MM/yyyy}}" Width="70">Data</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding horarioFormatado}" Width="85">Horário</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding formaDeAtentimentoFormatado}" Width="70">Tipo</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding medico}" Width="170">Oftalmologista</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding convenio}" Width="100">Convênio</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding valor, StringFormat={}{0:n}}" Width="70">Valor</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding cancelamento}" Width="80">Status</GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Border>
+                    <Label Content="Total Consultas:" HorizontalAlignment="Left" Margin="21,190,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Canceladas:" HorizontalAlignment="Left" Margin="163,190,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbHistoricoTotalConsultas"  Content="00" HorizontalAlignment="Left" Margin="118,190,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label x:Name="lbHistoricoTotalCanceladas" Content="000" HorizontalAlignment="Left" Margin="240,190,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="1.032,0.538"/>
+                </Grid>
+
+            </TabItem>
+        </dragablz:TabablzControl>
+    </Grid>
+</controls:MetroWindow>

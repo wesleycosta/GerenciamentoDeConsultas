@@ -9,7 +9,8 @@
     public enum FormaDeAtendimento
     {
         Particular = 0,
-        Convenio = 1
+        Convenio = 1,
+        Todos
     };
 
     public enum StatusPagamento
@@ -18,11 +19,12 @@
         Pendente = 1
     };
 
-    public enum TipoDeCancelamento
+    public enum TipoDeConsulta
     {
-        NaoRealizado = 0,
+        Retorno = 0,
         Cancelado = 1,
-        NaoCompareceu = 2
+        NaoCompareceu = 2,
+        Confirmada = 3
     };
 
     public enum FiltroPessoa

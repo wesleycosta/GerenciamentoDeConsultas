@@ -65,9 +65,9 @@ namespace ProjetoIntegrado.View.Clientes
 
             tbDataNascimento.Text = cliente.dataDeNascimento.ToString("d");
 
-            tbDddCel.Text = cliente.dddCel;
+            tbDddCel.Text = cliente.dddCel.Trim();
             tbCelular.Text = cliente.celular;
-            tbDddTel.Text = cliente.dddTel;
+            tbDddTel.Text = cliente.dddTel.Trim();
             tbTelefone.Text = cliente.telefone;
             tbEmail.Text = cliente.email;
 
@@ -152,10 +152,7 @@ namespace ProjetoIntegrado.View.Clientes
             }
         }
 
-        private void BtnCancelar_OnClick(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
+        private void BtnCancelar_OnClick(object sender, RoutedEventArgs e) => Close();
 
         private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
         {

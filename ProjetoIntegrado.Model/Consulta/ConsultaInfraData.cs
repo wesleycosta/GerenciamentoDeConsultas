@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlTypes;
 using System.Data.SqlClient;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjetoIntegrado.Model
 {
@@ -28,7 +29,8 @@ namespace ProjetoIntegrado.Model
 	                             horario, 
 	                             valor, 
 	                             status_pagamento, 
-	                             tipo_de_cancelamento) 
+	                             tipo_de_consulta,
+                                 retorno) 
                             OUTPUT inserted.id_consulta
                             VALUES
 	                            (@id_medico,
@@ -40,7 +42,8 @@ namespace ProjetoIntegrado.Model
 	                             @horario, 
 	                             @valor, 
 	                             @status_pagamento, 
-	                             @tipo_de_cancelamento)";
+	                             @tipo_de_consulta,
+                                 @retorno)";
 
                 Conexao.AbrirConexao();
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
@@ -54,7 +57,8 @@ namespace ProjetoIntegrado.Model
                 Conexao.Cmd.Parameters.AddWithValue("horario", horario);
                 Conexao.Cmd.Parameters.AddWithValue("valor", valor);
                 Conexao.Cmd.Parameters.AddWithValue("status_pagamento", statusPagamento);
-                Conexao.Cmd.Parameters.AddWithValue("tipo_de_cancelamento", tipoDeCancelamento);
+                Conexao.Cmd.Parameters.AddWithValue("tipo_de_consulta", tipoDeConsulta);
+                Conexao.Cmd.Parameters.AddWithValue("retorno", retorno);
 
                 id = (int)Conexao.Cmd.ExecuteScalar();
             }
@@ -82,7 +86,8 @@ namespace ProjetoIntegrado.Model
 	                            horario					= @horario,
 	                            valor					= @valor,
 	                            status_pagamento		= @status_pagamento,
-	                            tipo_de_cancelamento	= @tipo_de_cancelamento,
+	                            tipo_de_consulta	    = @tipo_de_consulta,
+                                retorno                 = @retorno,
 	                            ativo					= @ativo
                             WHERE
 	                            id_consulta				= @id";
@@ -100,7 +105,8 @@ namespace ProjetoIntegrado.Model
                 Conexao.Cmd.Parameters.AddWithValue("horario", horario);
                 Conexao.Cmd.Parameters.AddWithValue("valor", valor);
                 Conexao.Cmd.Parameters.AddWithValue("status_pagamento", statusPagamento);
-                Conexao.Cmd.Parameters.AddWithValue("tipo_de_cancelamento", tipoDeCancelamento);
+                Conexao.Cmd.Parameters.AddWithValue("tipo_de_consulta", tipoDeConsulta);
+                Conexao.Cmd.Parameters.AddWithValue("retorno", retorno);
                 Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
 
                 Conexao.Cmd.ExecuteNonQuery();
@@ -116,6 +122,7 @@ namespace ProjetoIntegrado.Model
             }
         }
 
+
         public void Carregar()
         {
             try
@@ -130,7 +137,8 @@ namespace ProjetoIntegrado.Model
                                 horario,
 	                            valor,
 	                            status_pagamento, 
-	                            tipo_de_cancelamento,
+	                            tipo_de_consulta,
+                                retorno,
 	                            ativo
                             FROM
 	                            consulta
@@ -156,11 +164,12 @@ namespace ProjetoIntegrado.Model
                         id = int.Parse(Conexao.Leitor["id_cliente"].ToString())
                     };
 
-                    if (int.Parse(Conexao.Leitor["id_convenio"].ToString()) > 0)
-                        convenio = new ConvenioModel
-                        {
-                            id = int.Parse(Conexao.Leitor["id_cliente"].ToString())
-                        };
+
+                    convenio = new ConvenioModel
+                    {
+                        id = Conexao.Leitor["id_convenio"] != DBNull.Value ?
+                                int.Parse(Conexao.Leitor["id_convenio"].ToString()) : 1
+                    };
 
                     numeroProcedimento = Conexao.Leitor["numero_procedimento"].ToString();
                     formaDeAtentimento = (FormaDeAtendimento)Enum.Parse(typeof(FormaDeAtendimento), Conexao.Leitor["forma_de_atendimento"].ToString());
@@ -168,7 +177,8 @@ namespace ProjetoIntegrado.Model
                     horario = TimeSpan.Parse(Conexao.Leitor["horario"].ToString());
                     valor = decimal.Parse(Conexao.Leitor["valor"].ToString());
                     statusPagamento = (StatusPagamento)Enum.Parse(typeof(StatusPagamento), Conexao.Leitor["status_pagamento"].ToString());
-                    tipoDeCancelamento = (TipoDeCancelamento)Enum.Parse(typeof(TipoDeCancelamento), Conexao.Leitor["tipo_de_cancelamento"].ToString());
+                    tipoDeConsulta = (TipoDeConsulta)Enum.Parse(typeof(TipoDeConsulta), Conexao.Leitor["tipo_de_consulta"].ToString());
+                    retorno = bool.Parse(Conexao.Leitor["retorno"].ToString());
                     ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
                 }
             }
@@ -184,7 +194,7 @@ namespace ProjetoIntegrado.Model
             CarregarPagamentos();
         }
 
-        private void CarregarPagamentos() =>
+        public void CarregarPagamentos() =>
             listaDePagamentos = PagamentoModel.CarregarConsulta(id);
 
         public void Remover()
@@ -204,6 +214,7 @@ namespace ProjetoIntegrado.Model
             try
             {
                 var cmd = @"SELECT
+                                id_consulta,
 	                            id_medico,
 	                            id_cliente,
 	                            ISNULL(id_convenio, 0) AS id_convenio,
@@ -213,7 +224,8 @@ namespace ProjetoIntegrado.Model
                                 horario,
 	                            valor,
 	                            status_pagamento, 
-	                            tipo_de_cancelamento,
+	                            tipo_de_consulta,
+                                retorno,
 	                            ativo
                             FROM
 	                            consulta
@@ -228,6 +240,7 @@ namespace ProjetoIntegrado.Model
                 while (Conexao.Leitor.Read())
                 {
                     var obj = new ConsultaModel();
+                    obj.id = int.Parse(Conexao.Leitor["id_consulta"].ToString());
 
                     obj.medico = new FuncionarioModel
                     {
@@ -239,11 +252,11 @@ namespace ProjetoIntegrado.Model
                         id = int.Parse(Conexao.Leitor["id_cliente"].ToString())
                     };
 
-                    if (int.Parse(Conexao.Leitor["id_convenio"].ToString()) > 0)
-                        obj.convenio = new ConvenioModel
-                        {
-                            id = int.Parse(Conexao.Leitor["id_cliente"].ToString())
-                        };
+                    obj.convenio = new ConvenioModel
+                    {
+                        id = Conexao.Leitor["id_convenio"] != DBNull.Value ?
+                                int.Parse(Conexao.Leitor["id_convenio"].ToString()) : 1
+                    };
 
                     obj.numeroProcedimento = Conexao.Leitor["numero_procedimento"].ToString();
                     obj.formaDeAtentimento = (FormaDeAtendimento)Enum.Parse(typeof(FormaDeAtendimento), Conexao.Leitor["forma_de_atendimento"].ToString());
@@ -251,7 +264,8 @@ namespace ProjetoIntegrado.Model
                     obj.horario = TimeSpan.Parse(Conexao.Leitor["horario"].ToString());
                     obj.valor = decimal.Parse(Conexao.Leitor["valor"].ToString());
                     obj.statusPagamento = (StatusPagamento)Enum.Parse(typeof(StatusPagamento), Conexao.Leitor["status_pagamento"].ToString());
-                    obj.tipoDeCancelamento = (TipoDeCancelamento)Enum.Parse(typeof(TipoDeCancelamento), Conexao.Leitor["tipo_de_cancelamento"].ToString());
+                    obj.tipoDeConsulta = (TipoDeConsulta)Enum.Parse(typeof(TipoDeConsulta), Conexao.Leitor["tipo_de_consulta"].ToString());
+                    obj.ativo = bool.Parse(Conexao.Leitor["retorno"].ToString());
                     obj.ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
 
                     lista.Add(obj);
@@ -266,7 +280,7 @@ namespace ProjetoIntegrado.Model
                 Conexao.FecharConexao();
             }
 
-            lista.ForEach(x => x.convenio.Carregar());
+            lista.ForEach(x => x.convenio?.Carregar());
             lista.ForEach(x => x.medico.Carregar());
 
             return lista;
@@ -289,7 +303,8 @@ namespace ProjetoIntegrado.Model
                                 C.horario,
 	                            C.valor,
 	                            C.status_pagamento,
-	                            C.tipo_de_cancelamento,
+	                            C.tipo_de_consulta,
+                                C.retorno,
 	                            C.ativo
                             FROM
 	                            consulta C
@@ -298,7 +313,9 @@ namespace ProjetoIntegrado.Model
                             WHERE
 	                            C.ativo    =  1
 	                            AND
-	                            P.id_caixa = @id";
+	                            P.id_caixa = @id
+                            ORDER BY
+                                C.data DESC, C.horario DESC";
 
                 Conexao.AbrirConexao();
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
@@ -321,11 +338,11 @@ namespace ProjetoIntegrado.Model
                         id = int.Parse(Conexao.Leitor["id_cliente"].ToString())
                     };
 
-                    if (int.Parse(Conexao.Leitor["id_convenio"].ToString()) > 0)
-                        obj.convenio = new ConvenioModel
-                        {
-                            id = int.Parse(Conexao.Leitor["id_cliente"].ToString())
-                        };
+                    obj.convenio = new ConvenioModel
+                    {
+                        id = Conexao.Leitor["id_convenio"] != DBNull.Value ?
+                                int.Parse(Conexao.Leitor["id_convenio"].ToString()) : 1
+                    };
 
                     obj.numeroProcedimento = Conexao.Leitor["numero_procedimento"].ToString();
                     obj.formaDeAtentimento = (FormaDeAtendimento)Enum.Parse(typeof(FormaDeAtendimento), Conexao.Leitor["forma_de_atendimento"].ToString());
@@ -333,7 +350,8 @@ namespace ProjetoIntegrado.Model
                     obj.horario = TimeSpan.Parse(Conexao.Leitor["horario"].ToString());
                     obj.valor = decimal.Parse(Conexao.Leitor["valor"].ToString());
                     obj.statusPagamento = (StatusPagamento)Enum.Parse(typeof(StatusPagamento), Conexao.Leitor["status_pagamento"].ToString());
-                    obj.tipoDeCancelamento = (TipoDeCancelamento)Enum.Parse(typeof(TipoDeCancelamento), Conexao.Leitor["tipo_de_cancelamento"].ToString());
+                    obj.tipoDeConsulta = (TipoDeConsulta)Enum.Parse(typeof(TipoDeConsulta), Conexao.Leitor["tipo_de_consulta"].ToString());
+                    obj.retorno = bool.Parse(Conexao.Leitor["retorno"].ToString());
                     obj.ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
 
                     lista.Add(obj);
@@ -349,13 +367,254 @@ namespace ProjetoIntegrado.Model
             }
 
             lista.ForEach(x => x.cliente.Carregar());
-            lista.ForEach(x => x.convenio.Carregar());
+            lista.ForEach(x => x.convenio?.Carregar());
             lista.ForEach(x => x.medico.Carregar());
             lista.ForEach(x => x.CarregarPagamentos());
 
             return lista;
         }
 
+        public static List<ConsultaModel> Pesquisar(FiltroPessoa filtro, string pesquisa, FormaDeAtendimento atendimento, DateTime dtInicial, DateTime dtFinal, FuncionarioModel medico, ConvenioModel convenio)
+        {
+            var lista = new List<ConsultaModel>();
+
+            try
+            {
+                var cmd = $@"SELECT
+                                C.id_consulta,
+	                            C.id_medico,
+	                            C.id_cliente,
+	                            ISNULL(C.id_convenio, 0) AS id_convenio,
+	                            C.numero_procedimento,
+	                            C.forma_de_atendimento,
+	                            C.data,
+                                C.horario,
+	                            C.valor,
+	                            C.status_pagamento, 
+	                            C.tipo_de_consulta,
+                                C.retorno,
+	                            C.ativo
+                            FROM
+	                            consulta    C
+                            INNER JOIN cliente CLI
+                                ON CLI.id_cliente = C.id_cliente
+                            WHERE
+	                            C.ativo	= 1
+                                AND
+	                            CLI.{filtro} LIKE @pesquisa
+                                AND
+                                C.data    BETWEEN @data_inicial AND @data_final ";
+
+                if (atendimento != FormaDeAtendimento.Todos)
+                    cmd += " AND C.forma_de_atendimento = @forma_de_atendimento ";
+
+                if (medico != null)
+                    cmd += " AND C.id_medico = @id_medico ";
+
+                if (convenio != null)
+                    cmd += " AND C.id_convenio = @id_convenio ";
+
+                cmd += " ORDER BY C.data, C.horario";
+
+                Conexao.AbrirConexao();
+                Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
+                Conexao.Cmd.Parameters.AddWithValue("pesquisa", $"%{pesquisa}%");
+                Conexao.Cmd.Parameters.AddWithValue("data_inicial", dtInicial.Date);
+                Conexao.Cmd.Parameters.AddWithValue("data_final", dtFinal.Date);
+
+                if (cmd.Contains("@forma_de_atendimento"))
+                    Conexao.Cmd.Parameters.AddWithValue("forma_de_atendimento", atendimento);
+
+                if (cmd.Contains("@id_medico"))
+                    Conexao.Cmd.Parameters.AddWithValue("id_medico", medico?.id);
+
+                if (cmd.Contains("@id_convenio"))
+                    Conexao.Cmd.Parameters.AddWithValue("id_convenio", convenio?.id);
+
+                Conexao.Leitor = Conexao.Cmd.ExecuteReader();
+
+                while (Conexao.Leitor.Read())
+                {
+                    var obj = new ConsultaModel();
+
+                    obj.id = int.Parse(Conexao.Leitor["id_consulta"].ToString());
+
+                    obj.medico = new FuncionarioModel
+                    {
+                        id = int.Parse(Conexao.Leitor["id_medico"].ToString())
+                    };
+
+                    obj.cliente = new ClienteModel
+                    {
+                        id = int.Parse(Conexao.Leitor["id_cliente"].ToString())
+                    };
+
+                    obj.convenio = new ConvenioModel
+                    {
+                        id = Conexao.Leitor["id_convenio"] != DBNull.Value ?
+                                int.Parse(Conexao.Leitor["id_convenio"].ToString()) : 1
+                    };
+
+                    obj.numeroProcedimento = Conexao.Leitor["numero_procedimento"].ToString();
+                    obj.formaDeAtentimento = (FormaDeAtendimento)Enum.Parse(typeof(FormaDeAtendimento), Conexao.Leitor["forma_de_atendimento"].ToString());
+                    obj.data = DateTime.Parse(Conexao.Leitor["data"].ToString());
+                    obj.horario = TimeSpan.Parse(Conexao.Leitor["horario"].ToString());
+                    obj.valor = decimal.Parse(Conexao.Leitor["valor"].ToString());
+                    obj.statusPagamento = (StatusPagamento)Enum.Parse(typeof(StatusPagamento), Conexao.Leitor["status_pagamento"].ToString());
+                    obj.tipoDeConsulta = (TipoDeConsulta)Enum.Parse(typeof(TipoDeConsulta), Conexao.Leitor["tipo_de_consulta"].ToString());
+                    obj.retorno = bool.Parse(Conexao.Leitor["retorno"].ToString());
+                    obj.ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
+
+                    lista.Add(obj);
+                }
+            }
+            catch (Exception ex)
+            {
+                Excecao.Mostrar(ex);
+            }
+            finally
+            {
+                Conexao.FecharConexao();
+            }
+
+            lista.ForEach(x => x.convenio?.Carregar());
+            lista.ForEach(x => x.medico.Carregar());
+            lista.ForEach(x => x.cliente.Carregar());
+
+            return lista;
+        }
+
+        public static List<ConsultaModel> Procedimentos(ConvenioModel convenio, FiltroPessoa filtro, string pesquisa)
+        {
+            var lista = new List<ConsultaModel>();
+
+            try
+            {
+                var cmd = $@"SELECT
+	                            C.id_consulta,
+                                C.id_medico,
+	                            C.id_cliente,
+	                            ISNULL(C.id_convenio, 0) AS id_convenio,
+	                            C.numero_procedimento,
+	                            C.forma_de_atendimento,
+	                            C.data,
+                                C.horario,
+	                            C.valor,
+	                            C.status_pagamento, 
+	                            C.tipo_de_consulta,
+                                C.retorno,
+	                            C.ativo
+                            FROM
+	                            consulta    C
+                            INNER JOIN cliente CLI
+                                ON CLI.id_cliente = C.id_cliente
+                            WHERE
+	                            C.ativo	            = 1
+                                AND
+	                            CLI.{filtro} LIKE @pesquisa
+                                AND
+                                C.status_pagamento     = 1
+	                            AND
+                                C.forma_de_atendimento = 1 ";
+
+                if (convenio != null)
+                    cmd += " AND C.id_convenio = @id_convenio ";
+
+                cmd += " ORDER BY C.data, C.horario";
+
+                Conexao.AbrirConexao();
+                Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
+                Conexao.Cmd.Parameters.AddWithValue("pesquisa", $"%{pesquisa}%");
+
+                if (cmd.Contains("@id_convenio"))
+                    Conexao.Cmd.Parameters.AddWithValue("id_convenio", convenio?.id);
+
+                Conexao.Leitor = Conexao.Cmd.ExecuteReader();
+
+                while (Conexao.Leitor.Read())
+                {
+                    var obj = new ConsultaModel();
+
+                    obj.id = int.Parse(Conexao.Leitor["id_consulta"].ToString());
+
+                    obj.medico = new FuncionarioModel
+                    {
+                        id = int.Parse(Conexao.Leitor["id_medico"].ToString())
+                    };
+
+                    obj.cliente = new ClienteModel
+                    {
+                        id = int.Parse(Conexao.Leitor["id_cliente"].ToString())
+                    };
+
+                    obj.convenio = new ConvenioModel
+                    {
+                        id = Conexao.Leitor["id_convenio"] != DBNull.Value ?
+                                int.Parse(Conexao.Leitor["id_convenio"].ToString()) : 1
+                    };
+
+                    obj.numeroProcedimento = Conexao.Leitor["numero_procedimento"].ToString();
+                    obj.formaDeAtentimento = (FormaDeAtendimento)Enum.Parse(typeof(FormaDeAtendimento), Conexao.Leitor["forma_de_atendimento"].ToString());
+                    obj.data = DateTime.Parse(Conexao.Leitor["data"].ToString());
+                    obj.horario = TimeSpan.Parse(Conexao.Leitor["horario"].ToString());
+                    obj.valor = decimal.Parse(Conexao.Leitor["valor"].ToString());
+                    obj.statusPagamento = (StatusPagamento)Enum.Parse(typeof(StatusPagamento), Conexao.Leitor["status_pagamento"].ToString());
+                    obj.tipoDeConsulta = (TipoDeConsulta)Enum.Parse(typeof(TipoDeConsulta), Conexao.Leitor["tipo_de_consulta"].ToString());
+                    obj.retorno = bool.Parse(Conexao.Leitor["retorno"].ToString());
+                    obj.ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
+
+                    lista.Add(obj);
+                }
+            }
+            catch (Exception ex)
+            {
+                Excecao.Mostrar(ex);
+            }
+            finally
+            {
+                Conexao.FecharConexao();
+            }
+
+            lista.ForEach(x => x.convenio?.Carregar());
+            lista.ForEach(x => x.medico.Carregar());
+            lista.ForEach(x => x.cliente.Carregar());
+
+            return lista;
+        }
+
+
         #endregion
+
+        public void ReceberPagamento()
+        {
+            statusPagamento = StatusPagamento.Recebido;
+
+            var p = new PagamentoModel
+            {
+                idConsulta = id,
+                caixa = new CaixaModel { id = 0 },
+                formaDePagamento = new FormaDePagamentoModel { id = 6 },
+                data = DateTime.Now,
+                qtdParcelas = 1,
+                valor = valor,
+                ativo = true
+            };
+
+            p.Cadastrar();
+            Atualizar();
+        }
+
+        public double CalcularDebito()
+        {
+            var pagamento = TotalPagamento();
+            return (double)valor - pagamento;
+        }
+
+        public double TotalPagamento()
+        {
+            CarregarPagamentos();
+            return listaDePagamentos.Sum(x => (double)x?.valor);
+        }
+
     }
 }

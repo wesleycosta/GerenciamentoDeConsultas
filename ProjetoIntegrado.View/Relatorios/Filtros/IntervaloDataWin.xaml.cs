@@ -3,6 +3,8 @@ using System.Windows.Input;
 
 namespace ProjetoIntegrado.View.Relatorios.Filtros
 {
+    using Funcoes;
+
     public partial class IntervaloDataWin
     {
         public bool SelecionouOK { get; private set; }
@@ -10,6 +12,10 @@ namespace ProjetoIntegrado.View.Relatorios.Filtros
         public IntervaloDataWin()
         {
             InitializeComponent();
+
+
+            tbDataInicial.SelectedDate = DataUtil.GetPrimeiroDiaDesseMes();
+            tbDataFinal.SelectedDate = DataUtil.GetUltimoDiaDesseMes();
         }
 
         #region EVENTOS

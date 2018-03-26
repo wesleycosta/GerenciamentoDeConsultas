@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
         <Grid Margin="3,3,-3,-2" Grid.RowSpan="2">
 
-            <TextBox x:Name="tbNome"  TabIndex="0" HorizontalAlignment="Left" Height="39" Width="360" Margin="16,18,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="NOME" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+            <TextBox x:Name="tbNome"  Tag="*"    x:Uid="Nome" TabIndex="0" HorizontalAlignment="Left" Height="39" Width="360" Margin="16,18,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="NOME" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
 
             <xctk:MaskedTextBox x:Name="tbCpf"  TabIndex="1" Mask="000,000,000-00"  PromptChar=" " HorizontalAlignment="Left" Height="40" Width="160" Margin="396,18,0,0" TextWrapping="Wrap"      TextAlignment="Center" CharacterCasing="Upper" materialDesign:HintAssist.Hint="CPF" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
 
@@ -34,7 +34,7 @@
                 <ComboBoxItem Content="FEMININO"/>
             </ComboBox>
 
-            <xctk:MaskedTextBox x:Name="tbDataNascimento" TabIndex="3" Mask="00/00/0000"  PromptChar=" " HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="138" Margin="16,79,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="DATA DE NASCIMENTO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+            <xctk:MaskedTextBox x:Name="tbDataNascimento" x:Uid="Data de Nascimento" TabIndex="3" Mask="00/00/0000"  PromptChar=" " HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="138" Margin="16,79,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="DATA DE NASCIMENTO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
 
             <ComboBox x:Name="cbCargo" TabIndex="4" IsTabStop="True" DisplayMemberPath="descricao" Margin="176,79,0,0" materialDesign:HintAssist.Hint="CARGO"  IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Height="38" SelectedIndex="0" VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="198"  />
 
@@ -67,7 +67,7 @@
 
             <TextBox x:Name="tbComplemento"  TabIndex="18" HorizontalAlignment="Left" Height="38" Width="199" Margin="496,319,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="COMPLEMENTO"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
 
-            <TextBox x:Name="tbUsuario"         TabIndex="19" HorizontalAlignment="Left" Height="38" Width="240" Margin="17,379,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="USUÁRIO"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+            <TextBox x:Name="tbUsuario"             Tag="*"    x:Uid="Usuário" TabIndex="19" HorizontalAlignment="Left" Height="38" Width="240" Margin="17,379,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="USUÁRIO"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
             <PasswordBox x:Name="tbSenha"           TabIndex="20" HorizontalAlignment="Left" Height="38" Width="200" Margin="275,379,0,0" materialDesign:HintAssist.Hint="SENHA"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"    VerticalAlignment="Top" />
             <PasswordBox x:Name="tbConfirmarSenha"  TabIndex="21" HorizontalAlignment="Left" Height="38" Width="200" Margin="495,379,0,0" materialDesign:HintAssist.Hint="CONFIRMAR SENHA"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"    VerticalAlignment="Top" />
 
