@@ -268,6 +268,16 @@ namespace ProjetoIntegrado.Model
                     obj.ativo = bool.Parse(Conexao.Leitor["retorno"].ToString());
                     obj.ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
 
+                    obj.cirgurgia = new CirurgiaModel
+                    {
+                        idConsulta = obj.id
+                    };
+
+                    obj.receita = new ReceitaModel
+                    {
+                        idConsulta = obj.id
+                    };
+
                     lista.Add(obj);
                 }
             }
@@ -282,6 +292,10 @@ namespace ProjetoIntegrado.Model
 
             lista.ForEach(x => x.convenio?.Carregar());
             lista.ForEach(x => x.medico.Carregar());
+            lista.ForEach(x => x.cirgurgia?.Carregar());
+
+            lista.ForEach(x => x.receita.Carregar());
+            lista.ForEach(x => x.cirgurgia.Carregar());
 
             return lista;
         }
@@ -370,6 +384,9 @@ namespace ProjetoIntegrado.Model
             lista.ForEach(x => x.convenio?.Carregar());
             lista.ForEach(x => x.medico.Carregar());
             lista.ForEach(x => x.CarregarPagamentos());
+
+            lista.ForEach(x => x.receita.Carregar());
+            lista.ForEach(x => x.cirgurgia.Carregar());
 
             return lista;
         }
@@ -465,6 +482,16 @@ namespace ProjetoIntegrado.Model
                     obj.retorno = bool.Parse(Conexao.Leitor["retorno"].ToString());
                     obj.ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
 
+                    obj.cirgurgia = new CirurgiaModel
+                    {
+                        idConsulta = obj.id
+                    };
+
+                    obj.receita = new ReceitaModel
+                    {
+                        idConsulta = obj.id
+                    };
+
                     lista.Add(obj);
                 }
             }
@@ -480,6 +507,9 @@ namespace ProjetoIntegrado.Model
             lista.ForEach(x => x.convenio?.Carregar());
             lista.ForEach(x => x.medico.Carregar());
             lista.ForEach(x => x.cliente.Carregar());
+
+            lista.ForEach(x => x.receita.Carregar());
+            lista.ForEach(x => x.cirgurgia.Carregar());
 
             return lista;
         }
@@ -563,6 +593,16 @@ namespace ProjetoIntegrado.Model
                     obj.retorno = bool.Parse(Conexao.Leitor["retorno"].ToString());
                     obj.ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
 
+                    obj.cirgurgia = new CirurgiaModel
+                    {
+                        idConsulta = obj.id
+                    };
+
+                    obj.receita = new ReceitaModel
+                    {
+                        idConsulta = obj.id
+                    };
+
                     lista.Add(obj);
                 }
             }
@@ -578,6 +618,9 @@ namespace ProjetoIntegrado.Model
             lista.ForEach(x => x.convenio?.Carregar());
             lista.ForEach(x => x.medico.Carregar());
             lista.ForEach(x => x.cliente.Carregar());
+
+            lista.ForEach(x => x.receita.Carregar());
+            lista.ForEach(x => x.cirgurgia.Carregar());
 
             return lista;
         }

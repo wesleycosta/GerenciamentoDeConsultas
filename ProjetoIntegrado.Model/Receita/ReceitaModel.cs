@@ -1,4 +1,6 @@
-﻿namespace ProjetoIntegrado.Model
+﻿using System;
+
+namespace ProjetoIntegrado.Model
 {
     public partial class ReceitaModel
     {

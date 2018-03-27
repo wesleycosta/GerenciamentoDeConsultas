@@ -200,7 +200,7 @@
 
             </StackPanel>
         </Border>
-        <Button x:Name="BtnNovo" Margin="975,48,-207,0" Height="32" Content="Nova Consulta"  Grid.Column="1" HorizontalAlignment="Left" Width="140" Click="BtnNovo_Click" VerticalAlignment="Top"/>
+        <Button x:Name="BtnNovo" Margin="975,48,-207,0" Height="32" Content="Nova Consulta"  Grid.Column="1" HorizontalAlignment="Left" Width="140" Click="BtnNovo_Click" VerticalAlignment="Top" TabIndex="6"/>
         <TextBox 
         TabIndex="0"
         x:Name="tbPesquisa" 
@@ -216,7 +216,7 @@
             KeyUp="tbPesquisa_KeyUp"/>
 
         <ComboBox x:Name="cbFiltro"
-                TabIndex="0" IsTabStop="True"
+                TabIndex="1" IsTabStop="True"
                 Margin="275,40,533,0" 
                 materialDesignMahApps:HintAssist.Hint="FILTRAR POR" 
                 IsEditable="True" 
@@ -235,12 +235,14 @@
 
         <DatePicker HorizontalAlignment="Left" Margin="735,55,0,0" VerticalAlignment="Top" Width="100" 
             Tag="*" x:Uid="Data Inicial"
+            TabIndex="4"
             materialDesignMahApps:HintAssist.Hint="DATA INICIAL" x:Name="tbDataInicial" 
             Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Grid.Column="1" Height="25" 
                     SelectedDateChanged="tbDataInicial_SelectedDateChanged"
                     />
         <DatePicker HorizontalAlignment="Left" Margin="855,55,-48,0" VerticalAlignment="Top" Width="100" 
             Tag="*" x:Uid="Data Final"
+            TabIndex="5"
             materialDesignMahApps:HintAssist.Hint="DATA FINAL" x:Name="tbDataFinal"
             Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Grid.Column="1" Height="25" 
                     SelectedDateChanged="tbDataInicial_SelectedDateChanged"
@@ -270,7 +272,7 @@
             </ListView>
         </Border>
         <ComboBox x:Name="cbMedicos"
-            TabIndex="0" IsTabStop="True"
+            TabIndex="3" IsTabStop="True"
             Margin="515,40,193,0" 
             materialDesignMahApps:HintAssist.Hint="OFTALMOLOGISTA" 
             IsEditable="True" 
@@ -281,7 +283,7 @@
             VerticalAlignment="Top" IsReadOnly="True" Grid.Column="1" />
 
         <ComboBox x:Name="cbTipo"
-            TabIndex="0" IsTabStop="True"
+            TabIndex="2" IsTabStop="True"
             Margin="395,40,413,0" 
             materialDesignMahApps:HintAssist.Hint="TIPO" 
             IsEditable="True" 

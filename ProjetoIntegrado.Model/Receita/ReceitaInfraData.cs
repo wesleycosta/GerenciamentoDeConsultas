@@ -134,5 +134,21 @@ namespace ProjetoIntegrado.Model
         }
 
         #endregion
+
+        public void CadastrarComDiagnostico()
+        {
+            olhoDireito?.Cadastrar();
+            olhoEsquerdo?.Cadastrar();
+
+            Cadastrar();
+        }
+
+        public void AtualizarComDiagnostico()
+        {
+            olhoDireito?.Atualizar();
+            olhoEsquerdo?.Atualizar();
+
+            Atualizar();
+        }
     }
 }

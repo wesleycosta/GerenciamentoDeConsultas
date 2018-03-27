@@ -7,7 +7,7 @@
         public static CaixaModel caixa { get; set; }
 
 
-        public static void CarregarUltimoCaixa()
+        public static void CarregarCaixaAberto()
         {
             var c = new CaixaModel();
             c.Carregar();

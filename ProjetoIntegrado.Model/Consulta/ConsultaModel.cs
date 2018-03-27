@@ -19,6 +19,9 @@ namespace ProjetoIntegrado.Model
         public bool retorno { get; set; }
         public bool ativo { get; set; } = true;
 
+        public CirurgiaModel cirgurgia { get; set; }
+        public ReceitaModel receita { get; set; }
+
         public List<PagamentoModel> listaDePagamentos { get; set; } = new List<PagamentoModel>();
 
         #region BINDING

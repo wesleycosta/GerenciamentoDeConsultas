@@ -15,7 +15,8 @@ namespace ProjetoIntegrado.Model
             {
                 var cmd = @"INSERT INTO cirurgia
 	                            (id_consulta, local, valor_medico, ativo)
-                            OUTPUT cirurgia.id_cirurgia
+                            OUTPUT inserted.id_cirurgia
+                            VALUES
 	                            (@id_consulta, @local, @valor_medico, @ativo)";
 
                 Conexao.AbrirConexao();

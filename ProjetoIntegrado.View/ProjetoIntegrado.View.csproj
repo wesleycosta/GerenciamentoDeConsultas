@@ -179,8 +179,14 @@
     <Compile Include="Consultas\CadConsultasWin.xaml.cs">
       <DependentUpon>CadConsultasWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Consultas\Equipe\CadEquipeWin.xaml.cs">
+      <DependentUpon>CadEquipeWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\ExcluirConsultaWin.xaml.cs">
       <DependentUpon>ExcluirConsultaWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\Material\CadMaterialCirurgiaWin.xaml.cs">
+      <DependentUpon>CadMaterialCirurgiaWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Convenio\CadConvenioWin.xaml.cs">
       <DependentUpon>CadConvenioWin.xaml</DependentUpon>
@@ -377,7 +383,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Consultas\Equipe\CadEquipeWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Consultas\ExcluirConsultaWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Consultas\Material\CadMaterialCirurgiaWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

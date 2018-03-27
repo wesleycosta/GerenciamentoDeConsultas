@@ -215,6 +215,7 @@ CREATE TABLE equipe_cirurgia
 	id_equipe_cirurgia		INT				PRIMARY	KEY		IDENTITY,
 	id_cirurgia				INT,
 	id_funcionario			INT,
+	funcao					VARCHAR(255),
 	ativo					BIT				NOT NULL		DEFAULT 1
 );
 

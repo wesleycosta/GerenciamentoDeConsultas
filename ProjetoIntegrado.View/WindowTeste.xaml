@@ -12,9 +12,7 @@
 >
 
     <Grid Margin="-0">
-        <TextBox x:Name="tbEsferico" TabIndex="6" HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="99" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="ESFÉRICO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" Margin="160,22,0,0"  />
-        <TextBox x:Name="tbCilindro" TabIndex="6" HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="99" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="CILINDRO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" Margin="302,22,0,0"  />
-        <TextBox x:Name="tbAdicao" TabIndex="6" HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="99" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="ADIÇÃO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" Margin="441,22,0,0"  />
-        <TextBox x:Name="tbEixo" TabIndex="6" HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="99" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="EIXO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" Margin="582,22,0,0"  />
+        <TextBox x:Name="tbLocal" TabIndex="6" HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="540" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="LOCAL DE ATENDIMENTO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" Margin="20,22,0,0"  />
+        <TextBox x:Name="tbValorMedico" TabIndex="6" HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="116" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="VALOR MÉDICO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" Margin="583,22,0,0"  />
     </Grid>
 </Window>

@@ -199,7 +199,7 @@ namespace ProjetoIntegrado.Model
             caixaAberto = false;
 
             Atualizar();
-            Sessao.CarregarUltimoCaixa();
+            Sessao.CarregarCaixaAberto();
         }
     }
 }

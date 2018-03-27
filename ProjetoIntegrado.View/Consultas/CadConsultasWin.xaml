@@ -12,7 +12,9 @@
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     
     xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
-
+    xmlns:materialDesignMahApps="http://materialdesigninxaml.net/winfx/xaml/themes"
+ 
+    
     mc:Ignorable="d"
     
     Style="{StaticResource WindowSimples}"
@@ -211,7 +213,7 @@
                                     <GridViewColumn  DisplayMemberBinding="{Binding medico}" Width="170">Oftalmologista</GridViewColumn>
                                     <GridViewColumn  DisplayMemberBinding="{Binding convenio}" Width="100">Convênio</GridViewColumn>
                                     <GridViewColumn  DisplayMemberBinding="{Binding valor, StringFormat={}{0:n}}" Width="70">Valor</GridViewColumn>
-                                    <GridViewColumn  DisplayMemberBinding="{Binding cancelamento}" Width="80">Status</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding cancelamento}" Width="78">Status</GridViewColumn>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -223,6 +225,75 @@
                 </Grid>
 
             </TabItem>
+
+            <TabItem Header="DIAGNÓSTICO" x:Name="paginaDiagnostico">
+            </TabItem>
+
+            <TabItem Header="CIRURGIA" x:Name="paginaCirurgia">
+                <Grid>
+                    <TextBox x:Name="tbLocal" TabIndex="6" HorizontalAlignment="Left" Height="38" Width="538" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="LOCAL DE ATENDIMENTO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" Margin="21, 10, 10, 10"  />
+                    <TextBox x:Name="tbValorMedico" TabIndex="6" HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="120" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="VALOR MÉDICO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" Margin="579, 10, 0, 0"  />
+
+                    <Border  
+                        Margin="21,64,18,260" 
+                          Padding="0" 
+                          BorderBrush="#FFE6E4E4" BorderThickness="1">
+                        <ListView x:Name="lvwEquipe"
+                                  HorizontalAlignment="Left" 
+                                  Height="148" 
+                                  Width="678"
+                                  Padding="0"
+                                  Margin="0"
+                                  FontSize="11"   
+                                  VerticalAlignment="Top" 
+                                  Grid.Row="1" >
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn DisplayMemberBinding="{Binding funcionario.nome}" Width="400">Nome</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding funcao}" Width="200">Função</GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Border>
+
+                    <Border   Margin="20, 240, 20, 20" 
+                              Padding="0" 
+                              VerticalAlignment="Top"
+                              BorderBrush="#FFE6E4E4" BorderThickness="1" RenderTransformOrigin="0.5,0.5">
+
+                        <ListView   x:Name="lvwMaterial"
+                                    HorizontalAlignment="Left" 
+                                    Height="145" 
+                                    Width="678"
+                                    Padding="0"
+                                    Margin="0" 
+                                    FontSize="11"   
+                                    VerticalAlignment="Top" 
+                                    Grid.Row="1" >
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding material.descricao}" Width="435">Material</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding quantidade, StringFormat={}{0:D2}}" Width="60">Qtd</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding valorUnitario, StringFormat={}{0:n}}" Width="95">V. Unitário</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding valorTotal, StringFormat={}{0:n}}" Width="70">Total</GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Border>
+                    <Label Content="Equipe:" HorizontalAlignment="Left" Margin="20, 200, 0, 0" VerticalAlignment="Top"/>
+                    <Label x:Name="tbTotalEquipe" Content="00" HorizontalAlignment="Left" Margin="70, 201, 0, 0" VerticalAlignment="Top" FontWeight="Bold"/>
+
+                    <Button  x:Name="btnAddEquipe" Click="btnAddEquipe_Click" TabIndex="18" Content="Adicionar"   HorizontalAlignment="Right" Height="34"     Margin="0,193,155,0"    VerticalAlignment="Top" Width="122"/>
+                    <Button  x:Name="btnRemEquipe" Click="btnRemEquipe_Click" TabIndex="19" Content="Remover"     HorizontalAlignment="Right" Height="34"     Margin="0,193,20,0"     VerticalAlignment="Top" Width="124"/>
+
+                    <Button x:Name="btnAddMaterial" Click="btnAddMaterial_Click" TabIndex="18" Content="Adicionar"   HorizontalAlignment="Right" Height="34"     Margin="0,397,155,0"    VerticalAlignment="Top" Width="122"/>
+                    <Button x:Name="btnRemMaterial" Click="btnRemMaterial_Click" TabIndex="19" Content="Remover"     HorizontalAlignment="Right" Height="34"     Margin="0,397,20,0"     VerticalAlignment="Top" Width="124"/>
+
+                    <Label Content="Total:" HorizontalAlignment="Left" Margin="20, 405, 0, 0" VerticalAlignment="Top"/>
+                    <Label x:Name="tbTotalMaterial" Content="0,00" HorizontalAlignment="Left" Margin="70, 405, 0, 0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="1.032,0.538"/>
+                </Grid>
+            </TabItem>
+
         </dragablz:TabablzControl>
     </Grid>
 </controls:MetroWindow>

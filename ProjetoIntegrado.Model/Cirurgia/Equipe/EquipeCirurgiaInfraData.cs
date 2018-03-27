@@ -15,16 +15,17 @@ namespace ProjetoIntegrado.Model
             try
             {
                 var cmd = @"INSERT INTO equipe_cirurgia
-	                            (id_cirurgia, id_funcionario, ativo)
+	                            (id_cirurgia, id_funcionario, funcao, ativo)
                             OUTPUT inserted.id_equipe_cirurgia
                             VALUES
-	                            (@id_cirurgia, @id_funcionario, @ativo)";
+	                            (@id_cirurgia, @id_funcionario, @funcao, @ativo)";
 
                 Conexao.AbrirConexao();
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
 
                 Conexao.Cmd.Parameters.AddWithValue("id_cirurgia", cirurgia?.id);
                 Conexao.Cmd.Parameters.AddWithValue("id_funcionario", funcionario?.id);
+                Conexao.Cmd.Parameters.AddWithValue("funcao", funcao);
                 Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
 
                 id = (int)Conexao.Cmd.ExecuteScalar();
@@ -46,6 +47,7 @@ namespace ProjetoIntegrado.Model
                 var cmd = @"UPDATE equipe_cirurgia SET
 	                            id_cirurgia			= @id_cirurgia,
 	                            id_funcionario		= @id_funcionario,
+                                funcao              = @funcao,
 	                            ativo				= @ativo
                             WHERE
 	                            id_equipe_cirurgia	= @id";
@@ -56,6 +58,7 @@ namespace ProjetoIntegrado.Model
                 Conexao.Cmd.Parameters.AddWithValue("id", id);
                 Conexao.Cmd.Parameters.AddWithValue("id_cirurgia", cirurgia?.id);
                 Conexao.Cmd.Parameters.AddWithValue("id_funcionario", funcionario?.id);
+                Conexao.Cmd.Parameters.AddWithValue("funcao", funcao);
                 Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
 
                 Conexao.Cmd.ExecuteNonQuery();
@@ -84,6 +87,7 @@ namespace ProjetoIntegrado.Model
                                 id_equipe_cirurgia,
 	                            id_cirurgia,
 	                            id_funcionario,
+                                funcao,
 	                            ativo
                             FROM
 	                            equipe_cirurgia
@@ -110,7 +114,7 @@ namespace ProjetoIntegrado.Model
                         id = int.Parse(Conexao.Leitor["id_funcionario"].ToString())
                     };
 
-
+                    funcao = Conexao.Leitor["funcao"].ToString();
                     ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
                 }
             }
@@ -141,6 +145,7 @@ namespace ProjetoIntegrado.Model
 	                            E.id_equipe_cirurgia,
 	                            E.id_cirurgia,
 	                            E.id_funcionario,
+                                E.funcao,
 	                            E.ativo
                             FROM
 	                            equipe_cirurgia E
@@ -149,7 +154,7 @@ namespace ProjetoIntegrado.Model
                             INNER JOIN consulta ON
 	                            consulta.id_consulta = cirurgia.id_consulta
                             WHERE
-	                            cirurgia.id_cirurgia = @id
+	                            consulta.id_consulta = @id
                                 AND
                                 E.ativo = 1";
 
@@ -161,7 +166,7 @@ namespace ProjetoIntegrado.Model
                 while (Conexao.Leitor.Read())
                     lista.Add(new EquipeCirurgiaModel
                     {
-                        id = int.Parse(Conexao.Leitor["id_cargo"].ToString()),
+                        id = int.Parse(Conexao.Leitor["id_equipe_cirurgia"].ToString()),
 
                         cirurgia = new CirurgiaModel
                         {
@@ -173,6 +178,7 @@ namespace ProjetoIntegrado.Model
                             id = int.Parse(Conexao.Leitor["id_funcionario"].ToString())
                         },
 
+                        funcao = Conexao.Leitor["funcao"].ToString(),
                         ativo = bool.Parse(Conexao.Leitor["ativo"].ToString())
                     });
             }
@@ -185,8 +191,8 @@ namespace ProjetoIntegrado.Model
                 Conexao.FecharConexao();
             }
 
-            lista.ForEach(x => x?.cirurgia.Carregar());
-            lista.ForEach(x => x?.funcionario.Carregar());
+            lista.ForEach(x => x?.cirurgia?.Carregar());
+            lista.ForEach(x => x?.funcionario?.Carregar());
 
             return lista;
         }

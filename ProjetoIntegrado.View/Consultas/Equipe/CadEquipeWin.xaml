@@ -1,0 +1,51 @@
+﻿<controls:MetroWindow 
+    x:Class="ProjetoIntegrado.View.Consultas.Equipe.CadEquipeWin"
+    xmlns:local="clr-namespace:ProjetoIntegrado.View.Consultas.Equipe"
+
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    mc:Ignorable="d"
+        
+    Style="{StaticResource WindowSimples}"
+    WindowStartupLocation="CenterScreen"
+    
+    Title="CADASTRAR EQUIPE" 
+    Height="213.917" 
+    Width="380.075"
+    KeyDown="MetroWindow_KeyDown"
+>
+
+    <Grid>
+        <ComboBox x:Name="cbFuncionario"
+            TabIndex="0" IsTabStop="True"
+            Margin="20,19,15,0" 
+            materialDesign:HintAssist.Hint="FUNCIONÁRIO" 
+            IsEditable="True" 
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            Height="39"
+            SelectedIndex="0"
+            VerticalAlignment="Top" IsReadOnly="True" SelectionChanged="cbFuncionario_SelectionChanged" />
+
+        <TextBox 
+            TabIndex="1"
+            x:Name="tbFuncao" 
+            x:Uid="Função"
+            Tag="*"
+            HorizontalAlignment="Left" 
+            Height="36" 
+            Margin="20,83,0,0" 
+            TextWrapping="Wrap"     
+            materialDesign:HintAssist.Hint="FUNÇÃO"
+            CharacterCasing="Upper"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+            VerticalAlignment="Top" Width="339"/>
+
+        <Button x:Name="BtnSalvar"   Click="BtnSalvar_OnClick" Content="Salvar" HorizontalAlignment="Left" Height="35" Margin="102,135,0,0" VerticalAlignment="Top" Width="122"/>
+        <Button x:Name="BtnCancelar" Click="BtnSalvar_OnClick" Content="Cancelar" HorizontalAlignment="Left" Height="35" Margin="234,135,0,0" VerticalAlignment="Top" Width="124"/>
+    </Grid>
+</controls:MetroWindow>

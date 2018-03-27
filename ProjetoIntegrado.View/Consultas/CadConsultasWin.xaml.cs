@@ -1,23 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ProjetoIntegrado.View.Consultas
 {
     using Model;
     using Funcoes;
     using ViewUtil;
-    using ProjetoIntegrado.Mensagens;
+    using Mensagens;
     using MahApps.Metro.Controls.Dialogs;
 
     public partial class CadConsultasWin
@@ -29,6 +21,9 @@ namespace ProjetoIntegrado.View.Consultas
         private List<FuncionarioModel> oftals = new List<FuncionarioModel>();
         private List<ConvenioModel> convenios = new List<ConvenioModel>();
         private List<PagamentoModel> pagamentos = new List<PagamentoModel>();
+        private List<MaterialCirurgiaModel> materiais = new List<MaterialCirurgiaModel>();
+        private List<EquipeCirurgiaModel> equipes = new List<EquipeCirurgiaModel>();
+
         private readonly bool cadastrar;
         private ConsultaModel consulta;
         private bool carregouCliente;
@@ -42,6 +37,9 @@ namespace ProjetoIntegrado.View.Consultas
             Title = "NOVA CONSULTA";
 
             tabControl.RemoveFromSource(paginaHistorico);
+            tabControl.RemoveFromSource(paginaCirurgia);
+            tabControl.RemoveFromSource(paginaDiagnostico);
+
             lbCodigo.Visibility = lbCodigoText.Visibility = Visibility.Hidden;
         }
 
@@ -105,6 +103,7 @@ namespace ProjetoIntegrado.View.Consultas
 
             CarregarPagamentos();
             CarregarLabelExtrato();
+            CarregarCirurgia();
         }
 
         private void CarregarLabelExtrato()
@@ -228,6 +227,31 @@ namespace ProjetoIntegrado.View.Consultas
             lvwPagamentos.ItemsSource = pagamentos;
         }
 
+        private void CarregarCirurgia()
+        {
+            tbLocal.Text = consulta?.cirgurgia?.local ?? "";
+            tbValorMedico.Text = $"{consulta?.cirgurgia?.valor ?? 0:n}";
+
+            CarregarEquipe();
+            CarregarMaterial();
+        }
+
+        private void CarregarMaterial()
+        {
+            materiais = new MaterialCirurgiaModel().CarregarPorIdConsulta(consulta?.id ?? 0);
+            lvwMaterial.ItemsSource = materiais;
+
+            tbTotalMaterial.Content = $"{materiais.Sum(x => x.valorTotal):n}";
+        }
+
+        private void CarregarEquipe()
+        {
+            equipes = new EquipeCirurgiaModel().CarregarPorIdConsulta(consulta?.id ?? 0);
+            lvwEquipe.ItemsSource = equipes;
+
+            tbTotalEquipe.Content = $"{equipes.Count:D2}";
+        }
+
         #endregion
 
         #region MANTEM DADOS
@@ -249,7 +273,10 @@ namespace ProjetoIntegrado.View.Consultas
                 valor = decimal.Parse(tbValor.Text),
                 formaDeAtentimento = cbTipo.SelectedIndex == 0 ? FormaDeAtendimento.Particular : FormaDeAtendimento.Convenio,
                 statusPagamento = cbStatusPagamento.SelectedIndex == 0 ? StatusPagamento.Pendente : StatusPagamento.Recebido,
-                tipoDeConsulta = cbRetorno.SelectedIndex == 1 ? TipoDeConsulta.Retorno : TipoDeConsulta.Confirmada
+                tipoDeConsulta = cbRetorno.SelectedIndex == 1 ? TipoDeConsulta.Retorno : TipoDeConsulta.Confirmada,
+
+                cirgurgia = ToModelCirurgia(),
+                receita = ToModelReceita()
             };
 
         private EnderecoModel ToModelEndereco() =>
@@ -283,6 +310,58 @@ namespace ProjetoIntegrado.View.Consultas
                 endereco = ToModelEndereco()
             };
 
+        #region CIRURGIA
+
+        private CirurgiaModel ToModelCirurgia() =>
+            new CirurgiaModel
+            {
+                id = consulta?.cirgurgia?.id ?? 0,
+                idConsulta = consulta?.id ?? 0,
+                local = tbLocal.Text,
+                valor = decimal.Parse(tbValorMedico.Text != string.Empty ? tbValorMedico.Text : "0"),
+                ativo = true,
+            };
+
+        #endregion
+
+        #region TO MODEL RECEITA
+
+        private ReceitaModel ToModelReceita() =>
+            new ReceitaModel
+            {
+                id = consulta?.receita?.id ?? 0,
+                idConsulta = consulta?.id ?? 0,
+                olhoDireito = ToModelOlhoDireito(),
+                olhoEsquerdo = ToModelOlhoEsquerdo(),
+                ativo = true,
+            };
+
+        private DiagnosticoModel ToModelOlhoDireito() =>
+            new DiagnosticoModel
+            {
+                id = consulta.receita?.olhoDireito?.id ?? 0,
+                categoria = new CategoriaModel { id = 1 },
+                adicao = 1,
+                cilindro = 2,
+                eixo = 3,
+                esferico = 4,
+                ativo = true,
+            };
+
+        private DiagnosticoModel ToModelOlhoEsquerdo() =>
+            new DiagnosticoModel
+            {
+                id = consulta.receita?.olhoEsquerdo?.id ?? 0,
+                categoria = new CategoriaModel { id = 1 },
+                adicao = 1,
+                cilindro = 2,
+                eixo = 3,
+                esferico = 4,
+                ativo = true,
+            };
+
+        #endregion
+
         #endregion
 
         private void MantemDados()
@@ -297,11 +376,19 @@ namespace ProjetoIntegrado.View.Consultas
                     consulta.cliente.Cadastrar();
 
                 consulta.Cadastrar();
+
+                consulta.cirgurgia.idConsulta = consulta.id;
+                consulta.receita.idConsulta = consulta.id;
+
+                consulta.cirgurgia.Cadastrar();
+                consulta.receita.CadastrarComDiagnostico();
             }
             else
             {
                 consulta.cliente.Atualizar();
                 consulta.Atualizar();
+                consulta.cirgurgia.Atualizar();
+                consulta.receita.AtualizarComDiagnostico();
             }
         }
 
@@ -371,6 +458,68 @@ namespace ProjetoIntegrado.View.Consultas
                     pagamentos.Remove(pagamento);
                     lvwPagamentos.Items.Refresh();
                     CarregarLabelExtrato();
+                }
+            }
+            else
+                Mbox.SelecioneUmaLinhaDaTabela();
+        }
+
+        #endregion
+
+        #region EVENTOS CIRURGIA
+
+        private void btnAddEquipe_Click(object sender, RoutedEventArgs e)
+        {
+            var cadEquipe = new Equipe.CadEquipeWin(consulta?.cirgurgia);
+            cadEquipe.ShowDialog();
+
+            if (cadEquipe.cadastrou)
+                CarregarEquipe();
+        }
+
+        private void btnRemEquipe_Click(object sender, RoutedEventArgs e)
+        {
+            if (lvwEquipe.SelectedIndex >= 0)
+            {
+                var r = Mbox.DesejaExcluir();
+
+                if (r == MessageDialogResult.Affirmative)
+                {
+                    var equipe = lvwEquipe.SelectedItems[0] as EquipeCirurgiaModel;
+                    equipe?.Remover();
+
+                    equipes.Remove(equipe);
+                    lvwEquipe.Items.Refresh();
+                    tbTotalEquipe.Content = $"{equipes.Count:D2}";
+                }
+            }
+            else
+                Mbox.SelecioneUmaLinhaDaTabela();
+        }
+
+        private void btnAddMaterial_Click(object sender, RoutedEventArgs e)
+        {
+            var cadMaterial = new Material.CadMaterialCirurgiaWin(consulta?.cirgurgia);
+            cadMaterial.ShowDialog();
+
+            if (cadMaterial.cadastrou)
+                CarregarEquipe();
+        }
+
+        private void btnRemMaterial_Click(object sender, RoutedEventArgs e)
+        {
+            if (lvwMaterial.SelectedIndex >= 0)
+            {
+                var r = Mbox.DesejaExcluir();
+
+                if (r == MessageDialogResult.Affirmative)
+                {
+                    var material = lvwMaterial.SelectedItems[0] as MaterialCirurgiaModel;
+                    material?.Remover();
+
+                    materiais.Remove(material);
+                    lvwMaterial.Items.Refresh();
+                    tbTotalEquipe.Content = $"{materiais.Count:n}";
                 }
             }
             else

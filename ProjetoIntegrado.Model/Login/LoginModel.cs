@@ -20,8 +20,9 @@
             };
 
             funcionario.Carregar();
+
             Sessao.funcionario = funcionario;
-            Sessao.CarregarUltimoCaixa();
+            Sessao.CarregarCaixaAberto();
         }
 
     }
