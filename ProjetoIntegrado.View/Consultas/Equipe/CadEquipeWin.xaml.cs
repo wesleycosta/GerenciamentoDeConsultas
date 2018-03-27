@@ -9,6 +9,8 @@ namespace ProjetoIntegrado.View.Consultas.Equipe
 
     public partial class CadEquipeWin
     {
+        #region PROPRIEDADES E CTOR
+
         public bool cadastrou { get; private set; }
 
         private List<FuncionarioModel> funcionarios = new List<FuncionarioModel>();
@@ -21,6 +23,8 @@ namespace ProjetoIntegrado.View.Consultas.Equipe
             InitializeComponent();
             Iniciar();
         }
+
+        #endregion
 
         #region CARREGAR E INICIAR
 
@@ -82,12 +86,12 @@ namespace ProjetoIntegrado.View.Consultas.Equipe
                 Close();
         }
 
-        #endregion
-
         private void cbFuncionario_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (cbFuncionario.SelectedIndex >= 0)
                 tbFuncao.Text = funcionarios[cbFuncionario.SelectedIndex].cargo.descricao;
         }
+
+        #endregion
     }
 }

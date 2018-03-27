@@ -51,7 +51,8 @@ namespace ProjetoIntegrado.View.Consultas
             Iniciar();
             cadastrar = false;
 
-            Title = "EDITAR CONSULTA";
+            Title = $"CONSULTA Nº {consulta.id:D3}  [{consulta.cliente.nome}]";
+            imgProcurar.IsEnabled = bordaProcurar.IsEnabled = false;
         }
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
@@ -503,7 +504,7 @@ namespace ProjetoIntegrado.View.Consultas
             cadMaterial.ShowDialog();
 
             if (cadMaterial.cadastrou)
-                CarregarEquipe();
+                CarregarMaterial();
         }
 
         private void btnRemMaterial_Click(object sender, RoutedEventArgs e)
@@ -519,7 +520,7 @@ namespace ProjetoIntegrado.View.Consultas
 
                     materiais.Remove(material);
                     lvwMaterial.Items.Refresh();
-                    tbTotalEquipe.Content = $"{materiais.Count:n}";
+                    tbTotalMaterial.Content = $"{materiais.Sum(x => x.valorTotal):n}";
                 }
             }
             else

@@ -22,6 +22,8 @@
 
     <Grid>
         <ComboBox x:Name="cbFuncionario"
+                  Tag="*"
+                  Uid="Funcionário"
             TabIndex="0" IsTabStop="True"
             Margin="20,19,15,0" 
             materialDesign:HintAssist.Hint="FUNCIONÁRIO" 

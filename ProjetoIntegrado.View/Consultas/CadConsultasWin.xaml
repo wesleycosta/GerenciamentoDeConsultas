@@ -134,7 +134,7 @@
                     <Label x:Name ="lbCodigoText" Content="Código:" HorizontalAlignment="Left" Margin="20,390,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lbCodigo" Content="000" HorizontalAlignment="Left" Margin="71,391,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
 
-                    <Border Cursor="Hand" Background="#fafafa" BorderBrush="Gainsboro" BorderThickness="1" Margin="276,35,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="28" Height="26">
+                    <Border x:Name="bordaProcurar" Cursor="Hand" Background="#fafafa" BorderBrush="Gainsboro" BorderThickness="1" Margin="276,35,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="28" Height="26">
                         <Image MouseDown="ProcurarPaciente_MouseUp" x:Name="imgProcurar" Margin="5,5,5,3" Source="/Resources/Find_16x16.png" />
                     </Border>
                 </Grid>

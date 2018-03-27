@@ -171,7 +171,7 @@ namespace ProjetoIntegrado.Model
                 while (Conexao.Leitor.Read())
                     lista.Add(new MaterialCirurgiaModel
                     {
-                        id = int.Parse(Conexao.Leitor["	id_material_cirurgia"].ToString()),
+                        id = int.Parse(Conexao.Leitor["id_material_cirurgia"].ToString()),
 
                         cirurgia = new CirurgiaModel
                         {

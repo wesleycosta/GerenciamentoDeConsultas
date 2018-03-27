@@ -20,6 +20,24 @@
         KeyDown="MetroWindow_KeyDown"
 >
     <Grid>
-        
+        <ComboBox x:Name="cbMaterial"
+                  Tag="*"
+                  Uid="Material"
+            TabIndex="0" IsTabStop="True"
+            Margin="21,20,20,0" 
+            materialDesign:HintAssist.Hint="MATERIAL" 
+            IsEditable="True" 
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            Height="39"
+            SelectionChanged="cbMaterial_SelectionChanged"
+            SelectedIndex="0"
+            VerticalAlignment="Top" IsReadOnly="True" />
+
+        <TextBox x:Name="tbQtdParcelas"    KeyUp="tbQtdParcelas_KeyUp"  Tag="*" x:Uid="Quantidade" TabIndex="1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" TextAlignment="Center" Height="38" Width="120" Margin="21,82,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="QUANTIDADE" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+        <TextBox x:Name="tbValor"          IsReadOnly="True" IsTabStop="False"  HorizontalAlignment="Left" HorizontalContentAlignment="Center" TextAlignment="Center" Height="38" Width="80" Margin="280,82,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="VALOR TOTAL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+        <TextBox x:Name="tbValorUnitario"  IsReadOnly="True" IsTabStop="False"  HorizontalAlignment="Left" HorizontalContentAlignment="Center" TextAlignment="Center" Height="38" Width="99" Margin="161,82,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="VALOR UNITÁRIO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+
+        <Button x:Name="BtnSalvar"   Click="BtnSalvar_OnClick" TabIndex="2" Content="Salvar" HorizontalAlignment="Left" Height="35" Margin="104,141,0,0" VerticalAlignment="Top" Width="122"/>
+        <Button x:Name="BtnCancelar" Click="BtnCancelar_OnClick" TabIndex="3" Content="Cancelar" HorizontalAlignment="Left" Height="35" Margin="236,141,0,0" VerticalAlignment="Top" Width="124"/>
     </Grid>
 </controls:MetroWindow>
