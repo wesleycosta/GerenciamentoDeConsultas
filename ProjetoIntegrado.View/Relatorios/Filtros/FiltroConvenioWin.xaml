@@ -1,0 +1,59 @@
+﻿<controls:MetroWindow 
+    xmlns:local="clr-namespace:ProjetoIntegrado.View.Relatorios.Filtros"
+    x:Class="ProjetoIntegrado.View.Relatorios.Filtros.FiltroConvenioWin"
+
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:converters="clr-namespace:MaterialDesignThemes.Wpf.Converters;assembly=MaterialDesignThemes.Wpf"
+    mc:Ignorable="d"
+
+    Style="{StaticResource WindowSimples}"
+    WindowStartupLocation="CenterScreen"
+
+    Title="FILTRAR" 
+    Height="273.804" 
+    Width="345.742"
+    KeyDown="MetroWindow_KeyDown"
+>
+    <Grid>
+
+        <ComboBox x:Name="cbConvenios"
+            TabIndex="3" IsTabStop="True"
+            Margin="21,20,19,0" 
+            materialDesign:HintAssist.Hint="CONVÊNIO" 
+            IsEditable="True" 
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            Height="39"
+            SelectedIndex="0"
+            VerticalAlignment="Top" IsReadOnly="True" />
+
+        <ComboBox x:Name="cbStatusPagamento"
+            TabIndex="7" IsTabStop="True"
+            SelectedIndex="0"
+            Margin="21,78,0,0" 
+            materialDesign:HintAssist.Hint="Status do Pagamento" 
+            IsEditable="True" 
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            VerticalAlignment="Top" IsReadOnly="True" Height="40" HorizontalAlignment="Left" Width="300">
+            <ComboBoxItem Content="Todos"/>
+            <ComboBoxItem Content="Pendente"/>
+            <ComboBoxItem Content="Recebido"/>
+        </ComboBox>
+
+        <DatePicker HorizontalAlignment="Left" Margin="21,151,0,0" VerticalAlignment="Top" Width="140" 
+            Tag="*" x:Uid="Data Inicial"
+            materialDesign:HintAssist.Hint="DATA INICIAL" x:Name="tbDataInicial" 
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Height="25"  />
+        <DatePicker HorizontalAlignment="Left" Margin="181,152,0,0" VerticalAlignment="Top" Width="140" 
+            Tag="*" x:Uid="Data Final"
+            materialDesign:HintAssist.Hint="DATA FINAL" x:Name="tbDataFinal"
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Height="24"/>
+
+        <Button x:Name="BtnOk"   Click="BtnOk_OnClick_OnClick" Content="Gerar" HorizontalAlignment="Left" Height="35" Margin="65,195,0,0" VerticalAlignment="Top" Width="122"/>
+        <Button x:Name="BtnCancelar" Click="BtnCancelar_OnClick" Content="Cancelar" HorizontalAlignment="Left" Height="35" Margin="197,195,0,0" VerticalAlignment="Top" Width="124"/>
+    </Grid>
+</controls:MetroWindow>

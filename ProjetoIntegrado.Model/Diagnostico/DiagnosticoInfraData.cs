@@ -14,15 +14,14 @@ namespace ProjetoIntegrado.Model
             try
             {
                 var cmd = @"INSERT INTO diagnostico
-	                            (id_categoria, esferico, cilindro, adicao, eixo, ativo)
+	                            (esferico, cilindro, adicao, eixo, ativo)
                             OUTPUT inserted.id_diagnostico
                             VALUES
-	                            (@id_categoria, @esferico, @cilindro, @adicao, @eixo, @ativo)";
+	                            (@esferico, @cilindro, @adicao, @eixo, @ativo)";
 
                 Conexao.AbrirConexao();
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
 
-                Conexao.Cmd.Parameters.AddWithValue("id_categoria", categoria?.id);
                 Conexao.Cmd.Parameters.AddWithValue("esferico", esferico);
                 Conexao.Cmd.Parameters.AddWithValue("cilindro", cilindro);
                 Conexao.Cmd.Parameters.AddWithValue("adicao", adicao);
@@ -46,7 +45,6 @@ namespace ProjetoIntegrado.Model
             try
             {
                 var cmd = @"UPDATE diagnostico SET
-	                            id_categoria		= @id_categoria,
 	                            esferico			= @esferico,
 	                            cilindro			= @cilindro,
 	                            adicao				= @adicao,
@@ -60,7 +58,6 @@ namespace ProjetoIntegrado.Model
 
                 Conexao.Cmd.Parameters.AddWithValue("id", id);
 
-                Conexao.Cmd.Parameters.AddWithValue("id_categoria", categoria?.id);
                 Conexao.Cmd.Parameters.AddWithValue("esferico", esferico);
                 Conexao.Cmd.Parameters.AddWithValue("cilindro", cilindro);
                 Conexao.Cmd.Parameters.AddWithValue("adicao", adicao);
@@ -90,7 +87,6 @@ namespace ProjetoIntegrado.Model
             try
             {
                 var cmd = @"SELECT
-	                            id_categoria,
 	                            esferico,
 	                            cilindro,
 	                            adicao,
@@ -109,11 +105,6 @@ namespace ProjetoIntegrado.Model
 
                 if (Conexao.Leitor.Read())
                 {
-                    categoria = new CategoriaModel
-                    {
-                        id = int.Parse(Conexao.Leitor["id_categoria"].ToString())
-                    };
-
                     esferico = decimal.Parse(Conexao.Leitor["esferico"].ToString());
                     cilindro = decimal.Parse(Conexao.Leitor["cilindro"].ToString());
                     adicao = decimal.Parse(Conexao.Leitor["adicao"].ToString());
@@ -130,8 +121,6 @@ namespace ProjetoIntegrado.Model
             {
                 Conexao.FecharConexao();
             }
-
-            categoria?.Carregar();
         }
 
         #endregion

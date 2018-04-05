@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
+using System.Collections.Generic;
 
 namespace ProjetoIntegrado.View.Consultas
 {
@@ -66,7 +67,8 @@ namespace ProjetoIntegrado.View.Consultas
         private void Iniciar()
         {
             cbUf.ItemsSource = Model.Estado.EstadoModel.Siglas;
-            tbValor.KeyUp += ValidarEntrada.Real_KeyPress;
+            tbValor.KeyDown += ValidarEntrada.Real_KeyPress;
+
             imgProcurar.BitmapToImageSource(Icons.Find_16x16);
 
             tbData.SelectedDate = DateTime.Now;
@@ -79,11 +81,40 @@ namespace ProjetoIntegrado.View.Consultas
                 if (cadastrar && !carregouCliente)
                     CarregarPorCPF();
             };
+
+
+            tbValorMedico.KeyDown += ValidarEntrada.Real_KeyPress;
+
+            tbEsfericoODLonge.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
+            tbEsfericoOELonge.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
+
+            tbEsfericoODPerto.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
+            tbEsfericoOEPerto.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
+
+            tbCilindroODLonge.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
+            tbCilindroOELonge.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
+
+            tbCilindroODPerto.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
+            tbCilindroOEPerto.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
+
+            tbAdicaoODLonge.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
+            tbAdicaoOELonge.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
+
+            tbAdicaoODPerto.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
+            tbAdicaoOEPerto.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
+
+            tbEixoODLonge.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
+            tbEixoOELonge.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
+
+            tbEixoODPerto.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
+            tbEixoOEPerto.KeyDown += ValidarEntrada.RealComValorNegativo_KeyPress;
         }
 
         #endregion
 
         #region CARREGAR DADOS NA TELA
+
+        #region CONSULTA, CLIENTE E ENDEREÇO
 
         private void CarregarConsulta()
         {
@@ -105,6 +136,7 @@ namespace ProjetoIntegrado.View.Consultas
             CarregarPagamentos();
             CarregarLabelExtrato();
             CarregarCirurgia();
+            CarregarDiagnostico();
         }
 
         private void CarregarLabelExtrato()
@@ -135,6 +167,8 @@ namespace ProjetoIntegrado.View.Consultas
 
             lvwHistorico.ItemsSource = historico;
 
+            tbNumeroDiagnosticos.Content = $"{historico.Count:D2}";
+
             lbHistoricoTotalConsultas.Content = historico.Count.ToString("D3");
             lbHistoricoTotalCanceladas.Content = historico
                                                 .Count(x => x.tipoDeConsulta == TipoDeConsulta.Cancelado || x.tipoDeConsulta == TipoDeConsulta.NaoCompareceu)
@@ -151,6 +185,8 @@ namespace ProjetoIntegrado.View.Consultas
             tbNumero.Text = endereco.numero;
             tbComplemento.Text = endereco.complemento;
         }
+
+        #endregion
 
         #region CARREGAR COMBO
 
@@ -253,6 +289,41 @@ namespace ProjetoIntegrado.View.Consultas
             tbTotalEquipe.Content = $"{equipes.Count:D2}";
         }
 
+        private void CarregarDiagnostico()
+        {
+            #region LONGE
+
+            // OLHO DIREITO
+            tbEsfericoODLonge.Text = $"{consulta?.receita?.olhoDireitoLonge?.esferico ?? 0:n}";
+            tbCilindroODLonge.Text = $"{consulta?.receita?.olhoDireitoLonge?.cilindro ?? 0:n}";
+            tbAdicaoODLonge.Text = $"{consulta?.receita?.olhoDireitoLonge?.adicao ?? 0:n}";
+            tbEixoODLonge.Text = $"{consulta?.receita?.olhoDireitoLonge?.eixo ?? 0:n}";
+
+            // OLHO ESQUERDO
+            tbEsfericoOELonge.Text = $"{consulta?.receita?.olhoEsquerdoLonge?.esferico ?? 0:n}";
+            tbCilindroOELonge.Text = $"{consulta?.receita?.olhoEsquerdoLonge?.cilindro ?? 0:n}";
+            tbAdicaoOELonge.Text = $"{consulta?.receita?.olhoEsquerdoLonge?.adicao ?? 0:n}";
+            tbEixoOELonge.Text = $"{consulta?.receita?.olhoEsquerdoLonge?.eixo ?? 0:n}";
+
+            #endregion
+
+            #region PERTO
+
+            // OLHO DIREITO
+            tbEsfericoODPerto.Text = $"{consulta?.receita?.olhoDireitoPerto?.esferico ?? 0:n}";
+            tbCilindroODPerto.Text = $"{consulta?.receita?.olhoDireitoPerto?.cilindro ?? 0:n}";
+            tbAdicaoODPerto.Text = $"{consulta?.receita?.olhoDireitoPerto?.adicao ?? 0:n}";
+            tbEixoODPerto.Text = $"{consulta?.receita?.olhoDireitoPerto?.eixo ?? 0:n}";
+
+            // OLHO ESQUERDO
+            tbEsfericoOEPerto.Text = $"{consulta?.receita?.olhoEsquerdoPerto?.esferico ?? 0:n}";
+            tbCilindroOEPerto.Text = $"{consulta?.receita?.olhoEsquerdoPerto?.cilindro ?? 0:n}";
+            tbAdicaoOEPerto.Text = $"{consulta?.receita?.olhoEsquerdoPerto?.adicao ?? 0:n}";
+            tbEixoOEPerto.Text = $"{consulta?.receita?.olhoEsquerdoPerto?.eixo ?? 0:n}";
+
+            #endregion
+        }
+
         #endregion
 
         #region MANTEM DADOS
@@ -332,38 +403,79 @@ namespace ProjetoIntegrado.View.Consultas
             {
                 id = consulta?.receita?.id ?? 0,
                 idConsulta = consulta?.id ?? 0,
-                olhoDireito = ToModelOlhoDireito(),
-                olhoEsquerdo = ToModelOlhoEsquerdo(),
+                olhoDireitoLonge = ToModelOlhoDireitoLonge(),
+                olhoEsquerdoLonge = ToModelOlhoEsquerdoLonge(),
+                olhoDireitoPerto = ToModelOlhoDireitoPerto(),
+                olhoEsquerdoPerto = ToModelOlhoEsquerdoPerto(),
                 ativo = true,
             };
 
-        private DiagnosticoModel ToModelOlhoDireito() =>
+        #region LONGE
+
+        private DiagnosticoModel ToModelOlhoDireitoLonge() =>
             new DiagnosticoModel
             {
-                id = consulta.receita?.olhoDireito?.id ?? 0,
-                categoria = new CategoriaModel { id = 1 },
-                adicao = 1,
-                cilindro = 2,
-                eixo = 3,
-                esferico = 4,
+                id = consulta?.receita?.olhoDireitoLonge?.id ?? 0,
+                adicao = tbAdicaoODLonge.Text != string.Empty ? decimal.Parse(tbAdicaoODLonge.Text) : 0,
+                cilindro = tbCilindroODLonge.Text != string.Empty ? decimal.Parse(tbCilindroODLonge.Text) : 0,
+                eixo = tbEixoODLonge.Text != string.Empty ? decimal.Parse(tbEixoODLonge.Text) : 0,
+                esferico = tbEsfericoODLonge.Text != string.Empty ? decimal.Parse(tbEsfericoODLonge.Text) : 0,
                 ativo = true,
             };
 
-        private DiagnosticoModel ToModelOlhoEsquerdo() =>
+        private DiagnosticoModel ToModelOlhoEsquerdoLonge() =>
             new DiagnosticoModel
             {
-                id = consulta.receita?.olhoEsquerdo?.id ?? 0,
-                categoria = new CategoriaModel { id = 1 },
-                adicao = 1,
-                cilindro = 2,
-                eixo = 3,
-                esferico = 4,
+                id = consulta?.receita?.olhoEsquerdoLonge?.id ?? 0,
+                adicao = tbAdicaoOELonge.Text != string.Empty ? decimal.Parse(tbAdicaoOELonge.Text) : 0,
+                cilindro = tbCilindroOELonge.Text != string.Empty ? decimal.Parse(tbCilindroOELonge.Text) : 0,
+                eixo = tbEixoOELonge.Text != string.Empty ? decimal.Parse(tbEixoOELonge.Text) : 0,
+                esferico = tbEsfericoOELonge.Text != string.Empty ? decimal.Parse(tbEsfericoOELonge.Text) : 0,
+                ativo = true,
+            };
+
+        #endregion
+
+        #region PERTO
+
+        private DiagnosticoModel ToModelOlhoDireitoPerto() =>
+            new DiagnosticoModel
+            {
+                id = consulta?.receita?.olhoDireitoPerto?.id ?? 0,
+                adicao = tbAdicaoODPerto.Text != string.Empty ? decimal.Parse(tbAdicaoODPerto.Text) : 0,
+                cilindro = tbCilindroODPerto.Text != string.Empty ? decimal.Parse(tbCilindroODPerto.Text) : 0,
+                eixo = tbEixoODPerto.Text != string.Empty ? decimal.Parse(tbEixoODPerto.Text) : 0,
+                esferico = tbEsfericoODPerto.Text != string.Empty ? decimal.Parse(tbEsfericoODPerto.Text) : 0,
+                ativo = true,
+            };
+
+        private DiagnosticoModel ToModelOlhoEsquerdoPerto() =>
+            new DiagnosticoModel
+            {
+                id = consulta?.receita?.olhoEsquerdoPerto?.id ?? 0,
+                adicao = tbAdicaoOEPerto.Text != string.Empty ? decimal.Parse(tbAdicaoOEPerto.Text) : 0,
+                cilindro = tbCilindroOEPerto.Text != string.Empty ? decimal.Parse(tbCilindroOEPerto.Text) : 0,
+                eixo = tbEixoOEPerto.Text != string.Empty ? decimal.Parse(tbEixoOEPerto.Text) : 0,
+                esferico = tbEsfericoOEPerto.Text != string.Empty ? decimal.Parse(tbEsfericoOEPerto.Text) : 0,
                 ativo = true,
             };
 
         #endregion
 
         #endregion
+
+        #endregion
+
+        private bool NaoExisteConsulta()
+        {
+            if (ConsultaModel.ExisteConsulta(tbData.SelectedDate.Value, TimeSpan.Parse(tbHorario.Text), consulta?.id ?? 0))
+            {
+                Mbox.Afirmacao("Aviso", "Já existe uma consulta agendada na data e horário informado!");
+                return false;
+            }
+
+            return true;
+        }
 
         private void MantemDados()
         {
@@ -420,11 +532,12 @@ namespace ProjetoIntegrado.View.Consultas
         private void BtnSalvar_Click(object sender, RoutedEventArgs e)
         {
             if (ValidarCampos.Validar(this))
-            {
-                MantemDados();
-                cadastrou = true;
-                Close();
-            }
+                if (NaoExisteConsulta())
+                {
+                    MantemDados();
+                    cadastrou = true;
+                    Close();
+                }
         }
 
         private void BtnCancelar_Click(object sender, RoutedEventArgs e) => Close();
@@ -525,6 +638,23 @@ namespace ProjetoIntegrado.View.Consultas
             }
             else
                 Mbox.SelecioneUmaLinhaDaTabela();
+        }
+
+        #endregion
+
+        #region EVENTOS DIAGNOSTICO
+
+        private void btnImprimirReceita_Click(object sender, RoutedEventArgs e)
+        {
+            SplashScreenControle.Mostrar();
+
+            var x = new TimerUtil(TimeSpan.FromMilliseconds(300),
+                                 (o, a) =>
+                                 {
+                                     new Relatorios.Receita.RelReceitaWin(consulta?.id ?? 0).ShowDialog();
+                                     var trm = o as DispatcherTimer;
+                                     trm.IsEnabled = false;
+                                 });
         }
 
         #endregion

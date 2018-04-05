@@ -32,6 +32,33 @@ namespace ProjetoIntegrado.Funcoes
             }
         }
 
+        public static void RealComValorNegativo_KeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.Key != Key.Tab)
+            {
+                // 0 = 48 ||| 9 = 57
+                int ascii = KeyInterop.VirtualKeyFromKey(e.Key);
+                var tb = sender as TextBox;
+
+                if (e.Key == Key.OemComma)
+                {
+                    if (tb.Text.Contains(","))
+                        e.Handled = true;
+                    else if (tb.Text.Contains("-") && tb.Text.Length < 1)
+                        e.Handled = true;
+                    else if(tb.Text.Length == 0)
+                        e.Handled = true;
+                }
+                else if (e.Key == Key.Subtract || e.Key == Key.OemMinus)
+                {
+                    if (tb.Text.Contains("-") || tb.Text.Length > 0)
+                        e.Handled = true;
+                }
+                else if ((ascii < 48 || ascii > 57) && e.Key != Key.Back) // VALDIDA APENAS VALORES NUMERICOS (0 ATÉ 9)
+                    e.Handled = true;
+            }
+        }
+
         // EVENTO KEY PRESS PARA VALIDAR NUMERO NATURAIS
         public static void Naturais_KeyPress(object sender, KeyEventArgs e)
         {

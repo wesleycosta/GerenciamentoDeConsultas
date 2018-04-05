@@ -30,11 +30,9 @@ namespace ProjetoIntegrado.View.Consultas
 
         private void MantemItem(string itemSelecionado)
         {
-            var tipo = (TipoDeConsulta)(Enum.Parse(typeof(TipoDeConsulta), itemSelecionado));
+            var tipo = (TipoDeCancelamento)(Enum.Parse(typeof(TipoDeCancelamento), itemSelecionado));
 
-            consulta.tipoDeConsulta = tipo;
-            consulta.ativo = false;
-            consulta.Atualizar();
+            consulta.Cancelar(tipo);
             Removeu = true;
             Close();
         }

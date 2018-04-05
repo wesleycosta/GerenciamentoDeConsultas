@@ -10,7 +10,8 @@
         BorderBrush="#CCC"
         WindowStartupLocation="CenterScreen"
         Title="SplashScreen" 
-    
+        
+        Topmost="True"
         WindowStyle="None"
         Height="76.521" 
         Width="218.667" 

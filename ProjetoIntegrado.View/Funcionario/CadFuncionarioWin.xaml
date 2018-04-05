@@ -1,7 +1,7 @@
 ﻿<controls:MetroWindow
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:d="http://schemas.microsoft.com/expressionz/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -34,11 +34,11 @@
                 <ComboBoxItem Content="FEMININO"/>
             </ComboBox>
 
-            <xctk:MaskedTextBox x:Name="tbDataNascimento" x:Uid="Data de Nascimento" TabIndex="3" Mask="00/00/0000"  PromptChar=" " HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="138" Margin="16,79,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="DATA DE NASCIMENTO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+            <xctk:MaskedTextBox x:Name="tbDataNascimento" Tag="data*" x:Uid="Data de Nascimento" TabIndex="3" Mask="00/00/0000"  PromptChar=" " HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="138" Margin="16,79,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="DATA DE NASCIMENTO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
 
             <ComboBox x:Name="cbCargo" TabIndex="4" IsTabStop="True" DisplayMemberPath="descricao" Margin="176,79,0,0" materialDesign:HintAssist.Hint="CARGO"  IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Height="38" SelectedIndex="0" VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="198"  />
 
-            <xctk:MaskedTextBox x:Name="tbDataAdminissao" TabIndex="5" Mask="00/00/0000"  PromptChar=" "  TextAlignment="Center" HorizontalAlignment="Left" Height="40" Width="160" Margin="396,77,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="DATA DE ADMISSÃO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+            <xctk:MaskedTextBox x:Name="tbDataAdminissao" Tag="data*" x:Uid="Data de Admissão" TabIndex="5" Mask="00/00/0000"  PromptChar=" "  TextAlignment="Center" HorizontalAlignment="Left" Height="40" Width="160" Margin="396,77,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="DATA DE ADMISSÃO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
 
             <TextBox x:Name="tbSalario" TabIndex="6" HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="119" Margin="575,79,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="SÁLARIO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
 

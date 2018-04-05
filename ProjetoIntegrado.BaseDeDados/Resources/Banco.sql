@@ -11,6 +11,7 @@ CREATE TABLE consulta
 	valor					DECIMAL(9, 2)			NOT NULL, 
 	status_pagamento 		CHAR					NOT NULL, 
 	tipo_de_consulta		CHAR					NULL,
+	tipo_de_cancelamento	BIT						NULL,
 	retorno					BIT						NULL,
 	ativo					BIT						NOT NULL DEFAULT  1
 ); 
@@ -66,11 +67,13 @@ CREATE TABLE forma_de_pagamento
 
 CREATE TABLE receita 
 ( 
-    id_receita			INT PRIMARY KEY			IDENTITY, 
-    id_consulta			INT						NOT NULL, 
-    olho_esquerdo		INT						NOT NULL, 
-    olho_direito		INT						NOT NULL, 
-    ativo				BIT						NOT NULL DEFAULT  1, 
+    id_receita				INT PRIMARY KEY			IDENTITY, 
+    id_consulta				INT						NOT NULL, 
+    olho_esquerdo_longe		INT						NOT NULL, 
+    olho_direito_longe		INT						NOT NULL, 
+    olho_esquerdo_perto		INT						NOT NULL, 
+    olho_direito_perto		INT						NOT NULL, 
+    ativo					BIT						NOT NULL DEFAULT  1, 
     FOREIGN KEY(id_consulta) REFERENCES consulta (id_consulta) 
 ); 
 
@@ -119,13 +122,11 @@ CREATE TABLE categoria
 CREATE TABLE diagnostico 
 ( 
     id_diagnostico		INT PRIMARY KEY			IDENTITY, 
-    id_categoria		INT						NOT NULL, 
-    esferico			DECIMAL(4, 2)			NULL, 
-    cilindro			DECIMAL(4, 2)			NULL, 
-    adicao				DECIMAL(4, 2)			NULL, 
-    eixo				DECIMAL(4, 2)			NULL, 
-    ativo				BIT					    NOT  NULL DEFAULT  1, 
-    FOREIGN KEY(id_categoria) REFERENCES categoria (id_categoria) 
+    esferico			DECIMAL(9, 2)			NULL, 
+    cilindro			DECIMAL(9, 2)			NULL, 
+    adicao				DECIMAL(9, 2)			NULL, 
+    eixo				DECIMAL(9, 2)			NULL, 
+    ativo				BIT					    NOT  NULL DEFAULT  1
 ); 
 
 CREATE TABLE pagamento 
@@ -235,10 +236,16 @@ ALTER TABLE funcionario
   ADD FOREIGN KEY(id_cargo)		 REFERENCES cargo (id_cargo);
 
 ALTER TABLE receita 
-  ADD FOREIGN KEY(olho_esquerdo) REFERENCES diagnostico (id_diagnostico);
+  ADD FOREIGN KEY(olho_esquerdo_longe) REFERENCES diagnostico (id_diagnostico);
 
 ALTER TABLE receita 
-  ADD FOREIGN KEY(olho_direito)  REFERENCES diagnostico (id_diagnostico); 
+  ADD FOREIGN KEY(olho_direito_longe)  REFERENCES diagnostico (id_diagnostico); 
+
+ALTER TABLE receita 
+  ADD FOREIGN KEY(olho_esquerdo_perto) REFERENCES diagnostico (id_diagnostico);
+
+ALTER TABLE receita 
+  ADD FOREIGN KEY(olho_direito_perto)  REFERENCES diagnostico (id_diagnostico)
 
 INSERT INTO forma_de_pagamento 
 	(descricao)

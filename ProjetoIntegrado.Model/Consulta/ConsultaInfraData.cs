@@ -122,7 +122,6 @@ namespace ProjetoIntegrado.Model
             }
         }
 
-
         public void Carregar()
         {
             try
@@ -659,5 +658,74 @@ namespace ProjetoIntegrado.Model
             return listaDePagamentos.Sum(x => (double)x?.valor);
         }
 
+        public static bool ExisteConsulta(DateTime data, TimeSpan horario, int id = 0)
+        {
+            var existe = true;
+
+            try
+            {
+                var cmd = @"SELECT
+                                id_consulta
+                            FROM
+	                            consulta
+                            WHERE
+	                            ativo	     = 1
+                                AND
+                                data         = @data
+                                AND
+                                horario      = @horario
+                                AND
+                                id_consulta != @id";
+
+                Conexao.AbrirConexao();
+                Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
+                Conexao.Cmd.Parameters.AddWithValue("data", data);
+                Conexao.Cmd.Parameters.AddWithValue("horario", horario);
+                Conexao.Cmd.Parameters.AddWithValue("id", id);
+                Conexao.Leitor = Conexao.Cmd.ExecuteReader();
+
+                existe = Conexao.Leitor.Read();
+            }
+            catch (Exception ex)
+            {
+                Excecao.Mostrar(ex);
+            }
+            finally
+            {
+                Conexao.FecharConexao();
+            }
+
+            return existe;
+        }
+
+        public void Cancelar(TipoDeCancelamento tipo)
+        {
+            try
+            {
+                var cmd = @"UPDATE consulta SET
+                                tipo_de_cancelamento    = @tipo_de_cancelamento,
+                                ativo                   = @ativo
+                            WHERE
+	                            id_consulta				= @id";
+
+                Conexao.AbrirConexao();
+                Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
+
+                Conexao.Cmd.Parameters.AddWithValue("id", id);
+                Conexao.Cmd.Parameters.AddWithValue("tipo_de_cancelamento", tipo == TipoDeCancelamento.NaoCompareceu);
+                Conexao.Cmd.Parameters.AddWithValue("ativo", false);
+
+                Conexao.Cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Excecao.Mostrar(ex);
+            }
+            finally
+            {
+                Conexao.FecharConexao();
+
+            }
+        }
     }
 }

@@ -245,13 +245,53 @@
     <Compile Include="Relatorios\Consultas\Canceladas\RelConsultaCanceladaWin.xaml.cs">
       <DependentUpon>RelConsultaCanceladaWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\Consultas\ListaConsultas\RelListaConsultasWin.xaml.cs">
+      <DependentUpon>RelListaConsultasWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Consultas\Procedimentos\RelProcedimentosWin.xaml.cs">
+      <DependentUpon>RelProcedimentosWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\DataSets\ControleDataSets.cs" />
+    <Compile Include="Relatorios\DataSets\dsConsulta.cs">
+      <DependentUpon>dsConsulta.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\DataSets\dsConsulta.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsConsulta.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\DataSets\dsDespesas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsDespesas.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\DataSets\dsEmpresa.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsEmpresa.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\DataSets\dsFinanceiro.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsFinanceiro.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Filtros\FiltroConvenioWin.xaml.cs">
+      <DependentUpon>FiltroConvenioWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Filtros\FiltroOftalWin.xaml.cs">
+      <DependentUpon>FiltroOftalWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\Filtros\IntervaloDataWin.xaml.cs">
       <DependentUpon>IntervaloDataWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Financeiro\Despesas\RelDespesaWin.xaml.cs">
+      <DependentUpon>RelDespesaWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Financeiro\Faturamento\RelFaturamentoWin.xaml.cs">
+      <DependentUpon>RelFaturamentoWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Receita\RelReceitaWin.xaml.cs">
+      <DependentUpon>RelReceitaWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\RelatorioItens.cs" />
     <Compile Include="Relatorios\RelatoriosWin.xaml.cs">
@@ -267,9 +307,6 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Usuarios\PrincipalUsuariosWin.xaml.cs">
       <DependentUpon>PrincipalUsuariosWin.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WindowTeste.xaml.cs">
-      <DependentUpon>WindowTeste.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -312,6 +349,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Consultas\Canceladas\rptConsultasCanceladas.rdlc" />
+    <EmbeddedResource Include="Relatorios\Consultas\ListaConsultas\rptListaConsultas.rdlc" />
+    <EmbeddedResource Include="Relatorios\Consultas\Procedimentos\rptProcedimentos.rdlc" />
+    <EmbeddedResource Include="Relatorios\Financeiro\Despesas\rptDespesas.rdlc" />
+    <EmbeddedResource Include="Relatorios\Financeiro\Faturamento\rptFaturamento.rdlc" />
+    <EmbeddedResource Include="Relatorios\Receita\rptReceita.rdlc" />
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -475,7 +517,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Relatorios\Consultas\ListaConsultas\RelListaConsultasWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Relatorios\Consultas\Procedimentos\RelProcedimentosWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Relatorios\Filtros\FiltroConvenioWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Relatorios\Filtros\FiltroOftalWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Relatorios\Filtros\IntervaloDataWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Relatorios\Financeiro\Despesas\RelDespesaWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Relatorios\Financeiro\Faturamento\RelFaturamentoWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Relatorios\Receita\RelReceitaWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -499,12 +569,30 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowTeste.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Relatorios\DataSets\dsConsulta.xsc">
+      <DependentUpon>dsConsulta.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\DataSets\dsConsulta.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsConsulta.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\DataSets\dsConsulta.xss">
+      <DependentUpon>dsConsulta.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\DataSets\dsDespesas.xsc">
+      <DependentUpon>dsDespesas.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\DataSets\dsDespesas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDespesas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\DataSets\dsDespesas.xss">
+      <DependentUpon>dsDespesas.xsd</DependentUpon>
+    </None>
     <None Include="Relatorios\DataSets\dsEmpresa.xsc">
       <DependentUpon>dsEmpresa.xsd</DependentUpon>
     </None>
@@ -515,6 +603,17 @@
     </None>
     <None Include="Relatorios\DataSets\dsEmpresa.xss">
       <DependentUpon>dsEmpresa.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\DataSets\dsFinanceiro.xsc">
+      <DependentUpon>dsFinanceiro.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\DataSets\dsFinanceiro.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsFinanceiro.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\DataSets\dsFinanceiro.xss">
+      <DependentUpon>dsFinanceiro.xsd</DependentUpon>
     </None>
     <None Include="Resources\eyeglasses.png" />
   </ItemGroup>
@@ -722,9 +821,7 @@
   <ItemGroup>
     <None Include="Resources\WorkWeekView_16x16.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Relatorios\Financeiro\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="..\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x64\msvcr100.dll">
       <Link>SqlServerTypes\x64\msvcr100.dll</Link>

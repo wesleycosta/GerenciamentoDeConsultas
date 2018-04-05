@@ -16,7 +16,8 @@
     public enum StatusPagamento
     {
         Recebido = 0,
-        Pendente = 1
+        Pendente = 1,
+        Todos = 2
     };
 
     public enum TipoDeConsulta
@@ -25,6 +26,12 @@
         Cancelado = 1,
         NaoCompareceu = 2,
         Confirmada = 3
+    };
+
+    public enum TipoDeCancelamento
+    {
+        NaoCompareceu = 0,
+        Cancelado = 1
     };
 
     public enum FiltroPessoa

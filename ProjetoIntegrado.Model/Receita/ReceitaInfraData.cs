@@ -14,17 +14,19 @@ namespace ProjetoIntegrado.Model
             try
             {
                 var cmd = @"INSERT INTO receita	
-	                            (id_consulta, olho_esquerdo, olho_direito, ativo)
+	                            (id_consulta, olho_esquerdo_longe, olho_direito_longe, olho_esquerdo_perto, olho_direito_perto, ativo)
                             OUTPUT inserted.id_receita
                             VALUES
-	                            (@id_consulta, @olho_esquerdo, @olho_direito, @ativo)";
+	                            (@id_consulta, @olho_esquerdo_longe, @olho_direito_longe, @olho_esquerdo_perto, @olho_direito_perto, @ativo)";
 
                 Conexao.AbrirConexao();
                 Conexao.Cmd = new SqlCommand(cmd, Conexao.ConexaoSQL);
 
                 Conexao.Cmd.Parameters.AddWithValue("id_consulta", idConsulta);
-                Conexao.Cmd.Parameters.AddWithValue("olho_esquerdo", olhoEsquerdo?.id);
-                Conexao.Cmd.Parameters.AddWithValue("olho_direito", olhoDireito?.id);
+                Conexao.Cmd.Parameters.AddWithValue("olho_esquerdo_longe", olhoEsquerdoLonge?.id);
+                Conexao.Cmd.Parameters.AddWithValue("olho_direito_longe", olhoDireitoLonge?.id);
+                Conexao.Cmd.Parameters.AddWithValue("olho_direito_perto", olhoDireitoPerto?.id);
+                Conexao.Cmd.Parameters.AddWithValue("olho_esquerdo_perto", olhoEsquerdoPerto?.id);
                 Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
 
                 id = (int)Conexao.Cmd.ExecuteScalar();
@@ -44,10 +46,12 @@ namespace ProjetoIntegrado.Model
             try
             {
                 var cmd = @"UPDATE receita SET
-	                            id_consulta			= @id_consulta,
-	                            olho_esquerdo		= @olho_esquerdo,
-	                            olho_direito		= @olho_direito,
-	                            ativo				= @ativo
+	                            id_consulta			    = @id_consulta,
+	                            olho_esquerdo_longe		= @olho_esquerdo_longe,
+	                            olho_direito_longe		= @olho_direito_longe,
+	                            olho_esquerdo_perto		= @olho_esquerdo_perto,
+	                            olho_direito_perto		= @olho_direito_perto,
+                                ativo				    = @ativo
                             WHERE
 	                            id_receita			= @id";
 
@@ -57,8 +61,10 @@ namespace ProjetoIntegrado.Model
                 Conexao.Cmd.Parameters.AddWithValue("id", id);
 
                 Conexao.Cmd.Parameters.AddWithValue("id_consulta", idConsulta);
-                Conexao.Cmd.Parameters.AddWithValue("olho_esquerdo", olhoEsquerdo?.id);
-                Conexao.Cmd.Parameters.AddWithValue("olho_direito", olhoDireito?.id);
+                Conexao.Cmd.Parameters.AddWithValue("olho_esquerdo_longe", olhoEsquerdoLonge?.id);
+                Conexao.Cmd.Parameters.AddWithValue("olho_direito_longe", olhoDireitoLonge?.id);
+                Conexao.Cmd.Parameters.AddWithValue("olho_esquerdo_perto", olhoEsquerdoPerto?.id);
+                Conexao.Cmd.Parameters.AddWithValue("olho_direito_perto", olhoDireitoPerto?.id);
                 Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
 
                 Conexao.Cmd.ExecuteNonQuery();
@@ -86,9 +92,11 @@ namespace ProjetoIntegrado.Model
                 var cmd = @"SELECT
 	                            id_receita,
 	                            id_consulta,
-	                            olho_esquerdo,
-	                            olho_direito,
-	                            ativo
+	                            olho_esquerdo_longe,
+	                            olho_direito_longe,
+	                            olho_esquerdo_perto,
+	                            olho_direito_perto,
+                                ativo
                             FROM	
 	                            receita
                             WHERE
@@ -105,17 +113,25 @@ namespace ProjetoIntegrado.Model
                     id = int.Parse(Conexao.Leitor["id_receita"].ToString());
                     idConsulta= int.Parse(Conexao.Leitor["id_consulta"].ToString());
 
-
-                    olhoDireito = new DiagnosticoModel
+                    olhoDireitoLonge = new DiagnosticoModel
                     {
-                        id = int.Parse(Conexao.Leitor["olho_direito"].ToString())
+                        id = int.Parse(Conexao.Leitor["olho_direito_longe"].ToString())
                     };
 
-                    olhoEsquerdo = new DiagnosticoModel
+                    olhoDireitoPerto = new DiagnosticoModel
                     {
-                        id = int.Parse(Conexao.Leitor["olho_esquerdo"].ToString())
+                        id = int.Parse(Conexao.Leitor["olho_direito_perto"].ToString())
                     };
 
+                    olhoEsquerdoLonge = new DiagnosticoModel
+                    {
+                        id = int.Parse(Conexao.Leitor["olho_esquerdo_longe"].ToString())
+                    };
+
+                    olhoEsquerdoPerto = new DiagnosticoModel
+                    {
+                        id = int.Parse(Conexao.Leitor["olho_esquerdo_perto"].ToString())
+                    };
 
                     ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
                 }
@@ -129,24 +145,33 @@ namespace ProjetoIntegrado.Model
                 Conexao.FecharConexao();
             }
 
-            olhoEsquerdo?.Carregar();
-            olhoDireito?.Carregar();
+            olhoEsquerdoLonge?.Carregar();
+            olhoDireitoLonge?.Carregar();
+
+            olhoEsquerdoPerto?.Carregar();
+            olhoDireitoPerto?.Carregar();
         }
 
         #endregion
 
         public void CadastrarComDiagnostico()
         {
-            olhoDireito?.Cadastrar();
-            olhoEsquerdo?.Cadastrar();
+            olhoDireitoLonge?.Cadastrar();
+            olhoEsquerdoLonge?.Cadastrar();
+
+            olhoDireitoPerto?.Cadastrar();
+            olhoEsquerdoPerto?.Cadastrar();
 
             Cadastrar();
         }
 
         public void AtualizarComDiagnostico()
         {
-            olhoDireito?.Atualizar();
-            olhoEsquerdo?.Atualizar();
+            olhoDireitoLonge?.Atualizar();
+            olhoEsquerdoLonge?.Atualizar();
+
+            olhoDireitoPerto?.Atualizar();
+            olhoEsquerdoPerto?.Atualizar();
 
             Atualizar();
         }

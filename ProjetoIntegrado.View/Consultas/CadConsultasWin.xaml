@@ -21,7 +21,7 @@
     WindowStartupLocation="CenterScreen"
     KeyDown="Window_KeyDown"
     
-    Title="CONSULTAs" 
+    Title="CONSULTAS" 
     Height="510.5" 
     Width="726.417"
     Loaded="MetroWindow_Loaded"
@@ -46,6 +46,8 @@
                             IsEditable="True" 
                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                             Height="41"
+                            Tag="*"
+                            x:Uid="Tipo"
                             VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="79">
                         <ComboBoxItem Content="Particular"/>
                         <ComboBoxItem Content="Convênio"/>
@@ -60,24 +62,26 @@
 
                     <xctk:MaskedTextBox  TabIndex="3" materialDesign:HintAssist.Hint="HORÁRIO"      HorizontalContentAlignment="Center" Tag="horas*" x:Uid="Horário" x:Name="tbHorario"   Mask="00:00"  PromptChar=" " HorizontalAlignment="Left" Height="40" Width="60" Margin="540,20,0,0" TextWrapping="Wrap"      TextAlignment="Center" CharacterCasing="Upper"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
 
-                    <TextBox TabIndex="3" Tag="*"    x:Uid="Valor" x:Name="tbValor" HorizontalContentAlignment="Center"  materialDesign:HintAssist.Hint="VALOR"  Height="39" Width="80" Margin="600,21,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+                    <TextBox TabIndex="3" Tag="*"  MaxLength="12"  x:Uid="Valor" x:Name="tbValor" HorizontalContentAlignment="Center"  materialDesign:HintAssist.Hint="VALOR"  Height="39" Width="80" Margin="600,21,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
 
                     <xctk:MaskedTextBox TabIndex="8"      Tag="cpf*" x:Uid="CPF" x:Name="tbCpf"   Mask="000,000,000-00"  PromptChar=" " HorizontalAlignment="Left" Height="40" Width="179" Margin="20,140,0,0" TextWrapping="Wrap"      TextAlignment="Center" CharacterCasing="Upper" materialDesign:HintAssist.Hint="CPF" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
                     <TextBox x:Name="tbNumeroProcediemnto"  materialDesign:HintAssist.Hint="Nº PROCEDIMENTO" TabIndex="5" HorizontalAlignment="Left" Height="39" Width="119" Margin="220,81,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
 
                     <ComboBox x:Name="cbConvenio"
-            TabIndex="4" 
-            IsTabStop="True"
-            Margin="20,78,0,0" 
-            materialDesign:HintAssist.Hint="CONVÊNIO" 
-            IsEditable="True" 
-            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-            SelectedIndex="0"
-            VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="180" Height="41"/>
+                        TabIndex="4" 
+                        IsTabStop="True"
+                        Margin="20,78,0,0" 
+                        materialDesign:HintAssist.Hint="CONVÊNIO" 
+                        IsEditable="True" 
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                        SelectedIndex="0"
+                        VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="180" Height="41"/>
 
                     <ComboBox x:Name="cbMedicos"
             TabIndex="6" IsTabStop="True"
             Margin="360,79,0,0" 
+            Tag="*"
+            x:Uid="OFTALMOLOGISTA"
             materialDesign:HintAssist.Hint="OFTALMOLOGISTA" 
             IsEditable="True" 
             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
@@ -85,7 +89,7 @@
             SelectedIndex="0"
             VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="200" />
 
-                    <ComboBox x:Name="cbStatusPagamento"
+        <ComboBox x:Name="cbStatusPagamento"
             TabIndex="7" IsTabStop="True"
             SelectedIndex="0"
             Margin="582,81,0,0" 
@@ -227,12 +231,61 @@
             </TabItem>
 
             <TabItem Header="DIAGNÓSTICO" x:Name="paginaDiagnostico">
+                <StackPanel>
+                    <StackPanel Margin="20, 30, 0, 0">
+                        <Label FontWeight="Bold">LONGE</Label>
+                        <Border  Margin="0, 10, 20, 0" Background="#fdfdfd" BorderBrush="Gainsboro" BorderThickness="1" Width="676" Height="100">
+                            <Grid>
+                                <Label FontWeight="Bold"  Margin="20, 10, 20, 20">Olho Direito</Label>
+                                <TextBox  x:Name="tbEsfericoODLonge"         Margin="020, 40, 20, 20" MaxLength="5" TabIndex="1" materialDesign:HintAssist.Hint="ESFÉRICO"   Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                                <TextBox  x:Name="tbCilindroODLonge"         Margin="095, 40, 20, 20" MaxLength="5" TabIndex="2" materialDesign:HintAssist.Hint="CILINDRO"   Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                                <TextBox  x:Name="tbAdicaoODLonge"           Margin="170, 40,  0,  0" MaxLength="5" TabIndex="3" materialDesign:HintAssist.Hint="ADIÇÃO"     Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                                <TextBox  x:Name="tbEixoODLonge"             Margin="245, 40, 20, 20" MaxLength="5" TabIndex="4" materialDesign:HintAssist.Hint="EIXO"       Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+
+                                <Label FontWeight="Bold"  Margin="370, 15, 10, 20">Olho Esquerdo</Label>
+                                <TextBox  x:Name="tbEsfericoODPerto"         Margin="370, 40, 20, 20" MaxLength="5" TabIndex="5" materialDesign:HintAssist.Hint="ESFÉRICO"   Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                                <TextBox  x:Name="tbCilindroODPerto"         Margin="445, 40, 20, 20" MaxLength="5" TabIndex="6" materialDesign:HintAssist.Hint="CILINDRO"   Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                                <TextBox  x:Name="tbAdicaoODPerto"           Margin="520, 40,  0,  0" MaxLength="5" TabIndex="7" materialDesign:HintAssist.Hint="ADIÇÃO"     Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                                <TextBox  x:Name="tbEixoODPerto"             Margin="595, 40, 20, 20" MaxLength="5" TabIndex="8" materialDesign:HintAssist.Hint="EIXO"       Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Margin="20, 30, 0, 0">
+                        <Label FontWeight="Bold">PERTO</Label>
+                        <Border  Margin="0, 10, 20, 0" Background="#fdfdfd" BorderBrush="Gainsboro" BorderThickness="1" Width="676" Height="100">
+                            <Grid>
+                                <Label FontWeight="Bold"  Margin="20, 15, 20, 20">Olho Direito</Label>
+                                <TextBox  x:Name="tbEsfericoOELonge"         Margin="020, 40, 20, 20" MaxLength="5" TabIndex="09" materialDesign:HintAssist.Hint="ESFÉRICO"   Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                                <TextBox  x:Name="tbCilindroOELonge"         Margin="095, 40, 20, 20" MaxLength="5" TabIndex="10" materialDesign:HintAssist.Hint="CILINDRO"   Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                                <TextBox  x:Name="tbAdicaoOELonge"           Margin="170, 40,  0,  0" MaxLength="5" TabIndex="11" materialDesign:HintAssist.Hint="ADIÇÃO"     Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                                <TextBox  x:Name="tbEixoOELonge"             Margin="245, 40, 20, 20" MaxLength="5" TabIndex="12" materialDesign:HintAssist.Hint="EIXO"       Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+
+                                <Label FontWeight="Bold"  Margin="370, 15, 20, 20">Olho Esquerdo</Label>
+                                <TextBox  x:Name="tbEsfericoOEPerto"         Margin="370, 40, 20, 20" MaxLength="5" TabIndex="13" materialDesign:HintAssist.Hint="ESFÉRICO"   Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                                <TextBox  x:Name="tbCilindroOEPerto"         Margin="445, 40, 20, 20" MaxLength="5" TabIndex="14" materialDesign:HintAssist.Hint="CILINDRO"   Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                                <TextBox  x:Name="tbAdicaoOEPerto"           Margin="520, 40,  0,  0" MaxLength="5" TabIndex="15" materialDesign:HintAssist.Hint="ADIÇÃO"     Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                                <TextBox  x:Name="tbEixoOEPerto"             Margin="595, 40, 20, 20" MaxLength="5" TabIndex="16" materialDesign:HintAssist.Hint="EIXO"       Width="60" Height="36"  HorizontalContentAlignment="Center" HorizontalAlignment="Left"  TextWrapping="Wrap"  CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  VerticalAlignment="Top"/>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="20, 50, 20, 20" Orientation="Horizontal">
+                            <Label FontWeight="Bold" Content="Nº de Consultas Realizadas:"/>
+                            <Label x:Name="tbNumeroDiagnosticos"  Width="50" Content="00"/>
+                        </StackPanel>
+
+                        <Button Click="btnImprimirReceita_Click" x:Name="btnImprimirReceita" Margin="303, 40, 20, 20"  Content="IMPRIMIR RECEITA"  IsTabStop="False" VerticalAlignment="Bottom" HorizontalAlignment="Left" RenderTransformOrigin="-0.111,0.438"  Width="140" Height="30" FontSize="12" Background="#607D8B" BorderBrush="#607D8B"/>
+                    </StackPanel>
+                </StackPanel>
+
+
             </TabItem>
 
             <TabItem Header="CIRURGIA" x:Name="paginaCirurgia">
                 <Grid>
-                    <TextBox x:Name="tbLocal" TabIndex="6" HorizontalAlignment="Left" Height="38" Width="538" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="LOCAL DE ATENDIMENTO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" Margin="21, 10, 10, 10"  />
-                    <TextBox x:Name="tbValorMedico" TabIndex="6" HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="120" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="VALOR MÉDICO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" Margin="579, 10, 0, 0"  />
+                    <TextBox x:Name="tbLocal"       TabIndex="0" HorizontalAlignment="Left" Height="38" Width="538" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="LOCAL DE ATENDIMENTO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" Margin="21, 10, 10, 10"  />
+                    <TextBox x:Name="tbValorMedico" MaxLength="8" TabIndex="1" HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="120" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="VALOR MÉDICO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" Margin="579, 10, 0, 0"  />
 
                     <Border  
                         Margin="21,64,18,260" 

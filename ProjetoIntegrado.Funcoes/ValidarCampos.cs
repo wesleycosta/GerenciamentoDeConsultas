@@ -125,7 +125,7 @@ namespace ProjetoIntegrado.Funcoes
 
         private static bool ValidarData(IEnumerable<MaskedTextBox> lTextBoxs)
         {
-            foreach (TextBox tb in lTextBoxs)
+            foreach (MaskedTextBox tb in lTextBoxs)
             {
                 if (tb?.Tag?.ToString() == "data*")
                     if (!DataUtil.ValidarData(tb.Text))

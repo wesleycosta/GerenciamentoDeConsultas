@@ -79,6 +79,16 @@ namespace ProjetoIntegrado.View.SplashInicial
             Settings.Default["Conexao"] = Conexao.StringDeConexao;
         }
 
+
+        private void CarregarRelatorio()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                var x = new Relatorios.Financeiro.Faturamento.RelFaturamentoWin(DateTime.Now, DateTime.Now);
+                x.Carregar();
+            });
+        }
+
         private void MantemBaseDeDados()
         {
             SetStatus("Verificando se a base de dados existe...");

@@ -6,8 +6,10 @@ namespace ProjetoIntegrado.Model
     {
         public int id { get; set; }
         public int idConsulta { get; set; }
-        public DiagnosticoModel olhoDireito { get; set; }
-        public DiagnosticoModel olhoEsquerdo { get; set; }
+        public DiagnosticoModel olhoDireitoLonge { get; set; }
+        public DiagnosticoModel olhoEsquerdoLonge { get; set; }
+        public DiagnosticoModel olhoDireitoPerto { get; set; }
+        public DiagnosticoModel olhoEsquerdoPerto { get; set; }
         public bool ativo { get; set; } = true;
     }
 }

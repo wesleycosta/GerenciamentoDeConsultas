@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ProjetoIntegrado.View.Relatorios.Filtros
@@ -8,6 +9,8 @@ namespace ProjetoIntegrado.View.Relatorios.Filtros
     public partial class IntervaloDataWin
     {
         public bool SelecionouOK { get; private set; }
+        public DateTime dtInicial => tbDataInicial.SelectedDate.Value;
+        public DateTime dtFinal => tbDataFinal.SelectedDate.Value;
 
         public IntervaloDataWin()
         {
