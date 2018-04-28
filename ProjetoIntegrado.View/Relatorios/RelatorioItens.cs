@@ -8,7 +8,7 @@ namespace ProjetoIntegrado.View.Relatorios
     using Consultas.Canceladas;
     using Consultas.Procedimentos;
 
-
+    using Financeiro.Entradas;
     using Financeiro.Despesas;
     using Financeiro.Faturamento;
 
@@ -28,7 +28,7 @@ namespace ProjetoIntegrado.View.Relatorios
                     case RelatorioEnum.ConsultasCanceladas: ConsultasCanceladas(); break;
                     case RelatorioEnum.Procedimentos: Procedimentos(); break;
 
-
+                    case RelatorioEnum.Entradas: Entradas(); break;
                     case RelatorioEnum.Despesas: Despesas(); break;
                     case RelatorioEnum.Faturamento: Faturamento(); break;
                 }
@@ -107,25 +107,6 @@ namespace ProjetoIntegrado.View.Relatorios
 
         #region FINANCEIRO
 
-        private static void Faturamento()
-        {
-            var frmData = new Filtros.IntervaloDataWin();
-            frmData.ShowDialog();
-
-            if (frmData.SelecionouOK)
-            {
-                SplashScreenControle.Mostrar();
-
-                var x = new TimerUtil(TimeSpan.FromMilliseconds(300),
-                                     (o, a) =>
-                                     {
-                                         new RelFaturamentoWin(frmData.dtInicial, frmData.dtFinal).ShowDialog();
-                                         var trm = o as DispatcherTimer;
-                                         trm.IsEnabled = false;
-                                     });
-            }
-        }
-
         private static void Despesas()
         {
             var frmData = new Filtros.IntervaloDataWin();
@@ -139,6 +120,44 @@ namespace ProjetoIntegrado.View.Relatorios
                                      (o, a) =>
                                      {
                                          new RelDespesaWin(frmData.dtInicial, frmData.dtFinal).ShowDialog();
+                                         var trm = o as DispatcherTimer;
+                                         trm.IsEnabled = false;
+                                     });
+            }
+        }
+
+        private static void Entradas()
+        {
+            var frmData = new Filtros.IntervaloDataWin();
+            frmData.ShowDialog();
+
+            if (frmData.SelecionouOK)
+            {
+                SplashScreenControle.Mostrar();
+
+                var x = new TimerUtil(TimeSpan.FromMilliseconds(300),
+                                     (o, a) =>
+                                     {
+                                         new RelEntradasWin(frmData.dtInicial, frmData.dtFinal).ShowDialog();
+                                         var trm = o as DispatcherTimer;
+                                         trm.IsEnabled = false;
+                                     });
+            }
+        }
+
+        private static void Faturamento()
+        {
+            var frmData = new Filtros.IntervaloDataWin();
+            frmData.ShowDialog();
+
+            if (frmData.SelecionouOK)
+            {
+                SplashScreenControle.Mostrar();
+
+                var x = new TimerUtil(TimeSpan.FromMilliseconds(300),
+                                     (o, a) =>
+                                     {
+                                         new RelFaturamentoWin(frmData.dtInicial, frmData.dtFinal).ShowDialog();
                                          var trm = o as DispatcherTimer;
                                          trm.IsEnabled = false;
                                      });

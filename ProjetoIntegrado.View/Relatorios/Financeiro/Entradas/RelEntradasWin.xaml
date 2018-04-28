@@ -1,0 +1,25 @@
+﻿<controls:MetroWindow 
+    x:Class="ProjetoIntegrado.View.Relatorios.Financeiro.Entradas.RelEntradasWin"
+    xmlns:local="clr-namespace:ProjetoIntegrado.View.Relatorios.Financeiro.Entradas"
+            
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:winForms="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+
+    Style="{StaticResource WindowPadrao}"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Maximized"
+    ShowMinButton="False"
+    ShowInTaskbar="False"
+    
+    Title="RELATÓRIO - ENTRADAS" 
+    Height="600" 
+    Width="1100"
+>
+    <Grid>
+        <WindowsFormsHost HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <winForms:ReportViewer x:Name="rptViewer" Load="RptViewer_OnLoad"/>
+        </WindowsFormsHost>
+    </Grid>
+</controls:MetroWindow>

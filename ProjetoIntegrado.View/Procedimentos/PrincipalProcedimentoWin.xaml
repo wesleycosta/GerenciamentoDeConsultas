@@ -88,9 +88,9 @@
                                 <GridViewColumn  DisplayMemberBinding="{Binding data, StringFormat=\{0:dd/MM/yyyy\}}" Width="82">Data</GridViewColumn>
                                 <GridViewColumn  DisplayMemberBinding="{Binding convenio}" Width="200">Convênio</GridViewColumn>
                                 <GridViewColumn  DisplayMemberBinding="{Binding numeroProcedimento}" Width="170">Nº do Procedimento</GridViewColumn>
-                                <GridViewColumn  DisplayMemberBinding="{Binding cliente}" Width="230">Paciente</GridViewColumn>
+                                <GridViewColumn  DisplayMemberBinding="{Binding cliente}" Width="215">Paciente</GridViewColumn>
                                 <GridViewColumn  DisplayMemberBinding="{Binding cpfFormatado}" Width="110">CPF</GridViewColumn>
-                                <GridViewColumn  DisplayMemberBinding="{Binding valor, StringFormat=\{0:n\}}" Width="85">Valor</GridViewColumn>
+                                <GridViewColumn  DisplayMemberBinding="{Binding valorFormatado}" Width="100">Valor (R$)</GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

@@ -30,6 +30,7 @@ namespace ProjetoIntegrado.Model
 	                             valor, 
 	                             status_pagamento, 
 	                             tipo_de_consulta,
+                                 observacao,
                                  retorno) 
                             OUTPUT inserted.id_consulta
                             VALUES
@@ -43,6 +44,7 @@ namespace ProjetoIntegrado.Model
 	                             @valor, 
 	                             @status_pagamento, 
 	                             @tipo_de_consulta,
+                                 @observacao,
                                  @retorno)";
 
                 Conexao.AbrirConexao();
@@ -58,6 +60,7 @@ namespace ProjetoIntegrado.Model
                 Conexao.Cmd.Parameters.AddWithValue("valor", valor);
                 Conexao.Cmd.Parameters.AddWithValue("status_pagamento", statusPagamento);
                 Conexao.Cmd.Parameters.AddWithValue("tipo_de_consulta", tipoDeConsulta);
+                Conexao.Cmd.Parameters.AddWithValue("observacao", observacao);
                 Conexao.Cmd.Parameters.AddWithValue("retorno", retorno);
 
                 id = (int)Conexao.Cmd.ExecuteScalar();
@@ -88,6 +91,7 @@ namespace ProjetoIntegrado.Model
 	                            status_pagamento		= @status_pagamento,
 	                            tipo_de_consulta	    = @tipo_de_consulta,
                                 retorno                 = @retorno,
+                                observacao              = @observacao,
 	                            ativo					= @ativo
                             WHERE
 	                            id_consulta				= @id";
@@ -108,6 +112,7 @@ namespace ProjetoIntegrado.Model
                 Conexao.Cmd.Parameters.AddWithValue("tipo_de_consulta", tipoDeConsulta);
                 Conexao.Cmd.Parameters.AddWithValue("retorno", retorno);
                 Conexao.Cmd.Parameters.AddWithValue("ativo", ativo);
+                Conexao.Cmd.Parameters.AddWithValue("observacao", observacao);
 
                 Conexao.Cmd.ExecuteNonQuery();
             }
@@ -138,6 +143,7 @@ namespace ProjetoIntegrado.Model
 	                            status_pagamento, 
 	                            tipo_de_consulta,
                                 retorno,
+                                observacao,
 	                            ativo
                             FROM
 	                            consulta
@@ -179,6 +185,7 @@ namespace ProjetoIntegrado.Model
                     tipoDeConsulta = (TipoDeConsulta)Enum.Parse(typeof(TipoDeConsulta), Conexao.Leitor["tipo_de_consulta"].ToString());
                     retorno = bool.Parse(Conexao.Leitor["retorno"].ToString());
                     ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
+                    observacao = Conexao.Leitor["observacao"].ToString();
                 }
             }
             catch (Exception ex)
@@ -225,6 +232,7 @@ namespace ProjetoIntegrado.Model
 	                            status_pagamento, 
 	                            tipo_de_consulta,
                                 retorno,
+                                observacao,
 	                            ativo
                             FROM
 	                            consulta
@@ -266,6 +274,7 @@ namespace ProjetoIntegrado.Model
                     obj.tipoDeConsulta = (TipoDeConsulta)Enum.Parse(typeof(TipoDeConsulta), Conexao.Leitor["tipo_de_consulta"].ToString());
                     obj.ativo = bool.Parse(Conexao.Leitor["retorno"].ToString());
                     obj.ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
+                    obj.observacao = Conexao.Leitor["observacao"].ToString();
 
                     obj.cirgurgia = new CirurgiaModel
                     {
@@ -318,6 +327,7 @@ namespace ProjetoIntegrado.Model
 	                            C.status_pagamento,
 	                            C.tipo_de_consulta,
                                 C.retorno,
+                                C.observacao,
 	                            C.ativo
                             FROM
 	                            consulta C
@@ -366,6 +376,7 @@ namespace ProjetoIntegrado.Model
                     obj.tipoDeConsulta = (TipoDeConsulta)Enum.Parse(typeof(TipoDeConsulta), Conexao.Leitor["tipo_de_consulta"].ToString());
                     obj.retorno = bool.Parse(Conexao.Leitor["retorno"].ToString());
                     obj.ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
+                    obj.observacao = Conexao.Leitor["observacao"].ToString();
 
                     lista.Add(obj);
                 }
@@ -379,13 +390,13 @@ namespace ProjetoIntegrado.Model
                 Conexao.FecharConexao();
             }
 
-            lista.ForEach(x => x.cliente.Carregar());
+            lista.ForEach(x => x.cliente?.Carregar());
             lista.ForEach(x => x.convenio?.Carregar());
-            lista.ForEach(x => x.medico.Carregar());
+            lista.ForEach(x => x.medico?.Carregar());
             lista.ForEach(x => x.CarregarPagamentos());
 
-            lista.ForEach(x => x.receita.Carregar());
-            lista.ForEach(x => x.cirgurgia.Carregar());
+            lista.ForEach(x => x.receita?.Carregar());
+            lista.ForEach(x => x.cirgurgia?.Carregar());
 
             return lista;
         }
@@ -409,6 +420,7 @@ namespace ProjetoIntegrado.Model
 	                            C.status_pagamento, 
 	                            C.tipo_de_consulta,
                                 C.retorno,
+                                C.observacao,
 	                            C.ativo
                             FROM
 	                            consulta    C
@@ -480,6 +492,7 @@ namespace ProjetoIntegrado.Model
                     obj.tipoDeConsulta = (TipoDeConsulta)Enum.Parse(typeof(TipoDeConsulta), Conexao.Leitor["tipo_de_consulta"].ToString());
                     obj.retorno = bool.Parse(Conexao.Leitor["retorno"].ToString());
                     obj.ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
+                    obj.observacao = Conexao.Leitor["observacao"].ToString();
 
                     obj.cirgurgia = new CirurgiaModel
                     {
@@ -532,6 +545,7 @@ namespace ProjetoIntegrado.Model
 	                            C.status_pagamento, 
 	                            C.tipo_de_consulta,
                                 C.retorno,
+                                C.observacao,
 	                            C.ativo
                             FROM
 	                            consulta    C
@@ -591,6 +605,7 @@ namespace ProjetoIntegrado.Model
                     obj.tipoDeConsulta = (TipoDeConsulta)Enum.Parse(typeof(TipoDeConsulta), Conexao.Leitor["tipo_de_consulta"].ToString());
                     obj.retorno = bool.Parse(Conexao.Leitor["retorno"].ToString());
                     obj.ativo = bool.Parse(Conexao.Leitor["ativo"].ToString());
+                    obj.observacao = Conexao.Leitor["observacao"].ToString();
 
                     obj.cirgurgia = new CirurgiaModel
                     {

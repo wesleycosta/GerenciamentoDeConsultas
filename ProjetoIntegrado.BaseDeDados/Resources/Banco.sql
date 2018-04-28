@@ -11,6 +11,7 @@ CREATE TABLE consulta
 	valor					DECIMAL(9, 2)			NOT NULL, 
 	status_pagamento 		CHAR					NOT NULL, 
 	tipo_de_consulta		CHAR					NULL,
+	observacao				VARCHAR(500)			NULL,
 	tipo_de_cancelamento	BIT						NULL,
 	retorno					BIT						NULL,
 	ativo					BIT						NOT NULL DEFAULT  1

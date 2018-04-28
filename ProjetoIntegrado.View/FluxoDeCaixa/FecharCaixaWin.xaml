@@ -31,14 +31,8 @@
                                   Grid.Row="1" >
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn  DisplayMemberBinding="{Binding formaDePagamento}" Width="166">Forma de Pagamento</GridViewColumn>
-                        <GridViewColumn Header="Valor" Width="Auto">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding valor, StringFormat={}{0:n}}" TextAlignment="Right" Width="55"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                        <GridViewColumn  DisplayMemberBinding="{Binding formaDePagamento}" Width="140">Pagamento</GridViewColumn>
+                        <GridViewColumn  DisplayMemberBinding="{Binding valorFormatado}" Width="80">Valor</GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

@@ -77,6 +77,33 @@ SELECT id_despesa, data, descricao, valor FROM despesa WHERE (id_despesa = @id_d
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="salariosTableAdapter" GeneratorDataComponentClassName="salariosTableAdapter" Name="salarios" UserDataComponentName="salariosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Conexao (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT
+	nome,
+	cargo.descricao			AS 'cargo',
+	ISNULL(salario, 0)		AS 'salario'
+FROM
+	funcionario
+INNER JOIN cargo ON
+	cargo.id_cargo = funcionario.id_cargo
+WHERE
+	funcionario.ativo = 1</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+              <Mapping SourceColumn="cargo" DataSetColumn="cargo" />
+              <Mapping SourceColumn="salario" DataSetColumn="salario" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -98,6 +125,27 @@ SELECT id_despesa, data, descricao, valor FROM despesa WHERE (id_despesa = @id_d
                 </xs:simpleType>
               </xs:element>
               <xs:element name="valor" msprop:Generator_ColumnVarNameInTable="columnvalor" msprop:Generator_ColumnPropNameInRow="valor" msprop:Generator_ColumnPropNameInTable="valorColumn" msprop:Generator_UserColumnName="valor" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="salarios" msprop:Generator_TableClassName="salariosDataTable" msprop:Generator_TableVarName="tablesalarios" msprop:Generator_RowChangedName="salariosRowChanged" msprop:Generator_TablePropName="salarios" msprop:Generator_RowDeletingName="salariosRowDeleting" msprop:Generator_RowChangingName="salariosRowChanging" msprop:Generator_RowEvHandlerName="salariosRowChangeEventHandler" msprop:Generator_RowDeletedName="salariosRowDeleted" msprop:Generator_RowClassName="salariosRow" msprop:Generator_UserTableName="salarios" msprop:Generator_RowEvArgName="salariosRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nome" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_UserColumnName="nome">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cargo" msprop:Generator_ColumnVarNameInTable="columncargo" msprop:Generator_ColumnPropNameInRow="cargo" msprop:Generator_ColumnPropNameInTable="cargoColumn" msprop:Generator_UserColumnName="cargo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="salario" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnsalario" msprop:Generator_ColumnPropNameInRow="salario" msprop:Generator_ColumnPropNameInTable="salarioColumn" msprop:Generator_UserColumnName="salario" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -36,6 +36,20 @@ namespace ProjetoIntegrado.View.Principal
             ValidarCampos.JanelaPrincipal = this;
         }
 
+        private void IniciarPermissoes()
+        {
+            var nivel = new NivelAcesso(Sessao.funcionario.cargo);
+
+            itemProcedimentos.IsEnabled = nivel.AcessoProcedimentos;
+            itemEmpresa.IsEnabled = nivel.AcessoEmpresa;
+            itemFuncionarios.IsEnabled = nivel.AcessoFuncionario;
+            itemUsuarios.IsEnabled = nivel.AcessoUsuarios;
+
+            itemDespesas.IsEnabled = nivel.AcessoProcedimentos;
+            itemFluxoDeCaixa.IsEnabled = nivel.AcessoProcedimentos;
+            itemFormaDePagamento.IsEnabled = nivel.AcessoProcedimentos;
+        }
+
         private bool Sair()
         {
             var r = Mbox.DesejaSair();
@@ -44,7 +58,11 @@ namespace ProjetoIntegrado.View.Principal
 
         #region CARREGAR DADOS
 
-        private void CarregarUsuario() => tbUsuario.Text = Sessao.funcionario.usuario;
+        private void CarregarUsuario()
+        {
+            tbUsuario.Text = Sessao.funcionario.usuario;
+            IniciarPermissoes();
+        }
 
         private void CarregarDados()
         {

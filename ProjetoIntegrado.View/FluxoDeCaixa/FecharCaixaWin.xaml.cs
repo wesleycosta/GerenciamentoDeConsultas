@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ProjetoIntegrado.View.FluxoDeCaixa
 {
@@ -20,7 +10,8 @@ namespace ProjetoIntegrado.View.FluxoDeCaixa
     internal class FecharCaixaListViewItem
     {
         public string formaDePagamento { get; set; }
-        public double valor { get; set; }
+        public decimal valor { get; set; }
+        public string valorFormatado => valor.ToStringFormatado();
     }
 
     public partial class FecharCaixaWin
@@ -45,7 +36,7 @@ namespace ProjetoIntegrado.View.FluxoDeCaixa
                 lvwEntrada.Items.Add(new FecharCaixaListViewItem
                 {
                     formaDePagamento = item.formaDePagamento.descricao,
-                    valor = (double)item.valor
+                    valor = item.valor
                 });
         }
 

@@ -9,7 +9,7 @@ namespace ProjetoIntegrado.View.Material
     public partial class CadMaterialWin
     {
         #region  PROPRIEDADES E CTOR
-        public bool cadastrou { get; private set; }
+        public bool cadastrou { get; private set; } = false;
 
         private readonly MaterialModel material;
         private readonly bool cadastrar;

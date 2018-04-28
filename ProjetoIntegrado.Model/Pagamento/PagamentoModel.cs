@@ -12,5 +12,7 @@ namespace ProjetoIntegrado.Model
         public decimal valor { get; set; }
         public int qtdParcelas { get; set; }
         public bool ativo { get; set; } = true;
+
+        public string valorFormatado => valor.ToStringFormatado();
     }
 }

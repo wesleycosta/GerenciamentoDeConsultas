@@ -56,7 +56,7 @@
                     <DatePicker 
             TabIndex="2"
             HorizontalAlignment="Left" Margin="419,35,0,0" VerticalAlignment="Top" Width="100" 
-            Tag="data*" x:Uid="Data"
+            Tag="dataPicker*" x:Uid="Data"
             materialDesign:HintAssist.Hint="DATA" x:Name="tbData" 
             Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Height="25" />
 
@@ -135,8 +135,10 @@
 
                     <Button x:Name="BtnSalvar"   Click="BtnSalvar_Click" TabIndex="24" Content="Salvar" HorizontalAlignment="Right" Height="34"  Margin="0,386,155,0" VerticalAlignment="Top" Width="122"/>
                     <Button x:Name="BtnCancelar" Click="BtnCancelar_Click" TabIndex="25" Content="Cancelar" HorizontalAlignment="Right" Height="34" Margin="0,386,20,0" VerticalAlignment="Top" Width="124"/>
-                    <Label x:Name ="lbCodigoText" Content="Código:" HorizontalAlignment="Left" Margin="20,390,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbCodigo" Content="000" HorizontalAlignment="Left" Margin="71,391,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label x:Name ="lbCodigoText" Content="Código:" HorizontalAlignment="Left" Margin="20,400,0,0" VerticalAlignment="Top"/>
+
+                    <Label x:Name="lbObservacao" Foreground="#3949AB"  FontSize="09" FontWeight="SemiBold"  Content="Consulta remarcada de 20/10/2018 ás 13:00 para 20/10/2018 ás 13:00" HorizontalAlignment="Left" Margin="20,375,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbCodigo" Content="000" HorizontalAlignment="Left" Margin="71,401,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
 
                     <Border x:Name="bordaProcurar" Cursor="Hand" Background="#fafafa" BorderBrush="Gainsboro" BorderThickness="1" Margin="276,35,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="28" Height="26">
                         <Image MouseDown="ProcurarPaciente_MouseUp" x:Name="imgProcurar" Margin="5,5,5,3" Source="/Resources/Find_16x16.png" />
@@ -150,22 +152,22 @@
                     <StackPanel Margin="40, 20,20, 20" Orientation="Horizontal" HorizontalAlignment="Center">
                         <Border  Margin="0, 0, 20, 0" Background="#fafafa" BorderBrush="Gainsboro" BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Height="30">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Label FontWeight="Bold">Valor da Consulta:</Label>
-                                <Label x:Name="lbValorConsulta" Width="50">100,00</Label>
+                                <Label FontWeight="Bold">Consulta:</Label>
+                                <Label x:Name="lbValorConsulta" Width="70">1.000,00</Label>
                             </StackPanel>
                         </Border>
 
                         <Border Margin="0, 0, 20, 0" Background="#fafafa" BorderBrush="Gainsboro" BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Height="30">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Label FontWeight="Bold" Content="Total Pagamento:"/>
-                                <Label x:Name="lbTotalPagamento"  Width="50" Content="100,00"/>
+                                <Label FontWeight="Bold" Content="Pagamento:"/>
+                                <Label x:Name="lbTotalPagamento"  Width="70" Content="1.100,00"/>
                             </StackPanel>
                         </Border>
 
                         <Border Margin="0, 0, 20, 0" Background="#fafafa" BorderBrush="Gainsboro" BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180" Height="30">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Label FontWeight="Bold" Content="Débito:"/>
-                                <Label x:Name="lbDebito" Width="50" Content="100,00"/>
+                                <Label x:Name="lbDebito" Width="70" Content="1.100,00"/>
                             </StackPanel>
                         </Border>
                     </StackPanel>
@@ -187,7 +189,7 @@
                                 <GridView>
                                     <GridViewColumn  DisplayMemberBinding="{Binding data, StringFormat={}{0:dd/MM/yyyy}}" Width="80">Data</GridViewColumn>
                                     <GridViewColumn  DisplayMemberBinding="{Binding formaDePagamento.descricao}" Width="520">Forma de Pagamento</GridViewColumn>
-                                    <GridViewColumn  DisplayMemberBinding="{Binding valor, StringFormat={}{0:n}}" Width="80">Valor</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding valorFormatado}" Width="80">Valor</GridViewColumn>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -216,7 +218,7 @@
                                     <GridViewColumn  DisplayMemberBinding="{Binding formaDeAtentimentoFormatado}" Width="70">Tipo</GridViewColumn>
                                     <GridViewColumn  DisplayMemberBinding="{Binding medico}" Width="170">Oftalmologista</GridViewColumn>
                                     <GridViewColumn  DisplayMemberBinding="{Binding convenio}" Width="100">Convênio</GridViewColumn>
-                                    <GridViewColumn  DisplayMemberBinding="{Binding valor, StringFormat={}{0:n}}" Width="70">Valor</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding valorFormatado}" Width="70">Valor</GridViewColumn>
                                     <GridViewColumn  DisplayMemberBinding="{Binding cancelamento}" Width="78">Status</GridViewColumn>
                                 </GridView>
                             </ListView.View>
@@ -327,8 +329,8 @@
                                 <GridView>
                                     <GridViewColumn  DisplayMemberBinding="{Binding material.descricao}" Width="435">Material</GridViewColumn>
                                     <GridViewColumn  DisplayMemberBinding="{Binding quantidade, StringFormat={}{0:D2}}" Width="60">Qtd</GridViewColumn>
-                                    <GridViewColumn  DisplayMemberBinding="{Binding valorUnitario, StringFormat={}{0:n}}" Width="95">V. Unitário</GridViewColumn>
-                                    <GridViewColumn  DisplayMemberBinding="{Binding valorTotal, StringFormat={}{0:n}}" Width="70">Total</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding valorUnitarioFormatado}" Width="95">V. Unitário</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding valorTotalFormatado}" Width="70">Total</GridViewColumn>
                                 </GridView>
                             </ListView.View>
                         </ListView>

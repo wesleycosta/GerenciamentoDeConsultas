@@ -10,5 +10,7 @@
         public bool ativo { get; set; }
 
         public decimal valorTotal => valorUnitario * quantidade;
+        public string valorUnitarioFormatado => valorUnitario.ToStringFormatado();
+        public string valorTotalFormatado => valorTotal.ToStringFormatado();
     }
 }

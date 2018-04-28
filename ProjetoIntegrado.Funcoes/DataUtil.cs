@@ -37,18 +37,20 @@ namespace ProjetoIntegrado.Funcoes
 
         public static bool ValidarData(string text)
         {
-            if (!string.IsNullOrEmpty(text.Trim()))
-                try
-                {
-                    var x = DateTime.Parse(text);
+            if (string.IsNullOrEmpty(text.Trim()))
+                return false;
 
-                    if (x.Year < 1800 || x.Year > 2050)
-                        return false;
-                }
-                catch (Exception)
-                {
+            try
+            {
+                var x = DateTime.Parse(text);
+
+                if (x.Year < 1800 || x.Year > 2050)
                     return false;
-                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
 
             return true;
         }

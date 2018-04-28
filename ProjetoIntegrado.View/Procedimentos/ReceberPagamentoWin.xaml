@@ -39,9 +39,9 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn  DisplayMemberBinding="{Binding convenio}" Width="185" Header="Convênio"/>
-                            <GridViewColumn  DisplayMemberBinding="{Binding numeroProcedimento}" Width="170" Header="Nº do Procedimento"/>
+                            <GridViewColumn  DisplayMemberBinding="{Binding numeroProcedimento}" Width="155" Header="Nº do Procedimento"/>
                             <GridViewColumn  DisplayMemberBinding="{Binding cpfFormatado}" Width="100" Header="CPF"/>
-                            <GridViewColumn  DisplayMemberBinding="{Binding valor, StringFormat=\{0:n\}}" Width="85" Header="Valor"/>
+                            <GridViewColumn  DisplayMemberBinding="{Binding valorFormatado}" Width="100" Header="Valor (R$)"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

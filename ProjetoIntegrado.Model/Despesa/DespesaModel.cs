@@ -9,5 +9,7 @@ namespace ProjetoIntegrado.Model
         public decimal valor { get; set; }
         public DateTime data { get; set; }
         public bool ativo { get; set; } = true;
+
+        public string valorFormatado => valor.ToStringFormatado(16);
     }
 }

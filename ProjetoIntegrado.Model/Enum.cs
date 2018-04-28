@@ -31,7 +31,8 @@
     public enum TipoDeCancelamento
     {
         NaoCompareceu = 0,
-        Cancelado = 1
+        Cancelado = 1,
+        Remarcado = 2
     };
 
     public enum FiltroPessoa

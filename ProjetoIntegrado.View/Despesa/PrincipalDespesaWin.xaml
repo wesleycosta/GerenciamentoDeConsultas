@@ -66,8 +66,8 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn  DisplayMemberBinding="{Binding data, StringFormat={}{0:dd/MM/yyyy}}" Width="100">Data</GridViewColumn>
-                            <GridViewColumn  DisplayMemberBinding="{Binding descricao}" Width="630">Descrição</GridViewColumn>
-                            <GridViewColumn  DisplayMemberBinding="{Binding valor, StringFormat={}{0:n}}" Width="120">Valor</GridViewColumn>
+                            <GridViewColumn  DisplayMemberBinding="{Binding descricao}" Width="650">Descrição</GridViewColumn>
+                            <GridViewColumn  DisplayMemberBinding="{Binding valorFormatado}" Width="100">Valor (R$)</GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>

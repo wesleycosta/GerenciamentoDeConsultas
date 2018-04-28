@@ -85,6 +85,7 @@
     <Compile Include="Login\LoginModel.cs" />
     <Compile Include="Material\MaterialInfraData.cs" />
     <Compile Include="Material\MaterialModel.cs" />
+    <Compile Include="MetodoDeExtensao.cs" />
     <Compile Include="Pagamento\PagamentoInfraData.cs" />
     <Compile Include="Pagamento\PagamentoModel.cs" />
     <Compile Include="Receita\ReceitaInfraData.cs" />

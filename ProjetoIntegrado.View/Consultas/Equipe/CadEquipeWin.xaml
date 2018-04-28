@@ -48,6 +48,6 @@
             VerticalAlignment="Top" Width="339"/>
 
         <Button x:Name="BtnSalvar"   Click="BtnSalvar_OnClick" Content="Salvar" HorizontalAlignment="Left" Height="35" Margin="102,135,0,0" VerticalAlignment="Top" Width="122"/>
-        <Button x:Name="BtnCancelar" Click="BtnSalvar_OnClick" Content="Cancelar" HorizontalAlignment="Left" Height="35" Margin="234,135,0,0" VerticalAlignment="Top" Width="124"/>
+        <Button x:Name="BtnCancelar" Click="BtnCancelar_OnClick" Content="Cancelar" HorizontalAlignment="Left" Height="35" Margin="234,135,0,0" VerticalAlignment="Top" Width="124"/>
     </Grid>
 </controls:MetroWindow>

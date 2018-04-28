@@ -69,14 +69,7 @@
 
                                     <GridViewColumn DisplayMemberBinding="{Binding paciente}" Width="250">Paciente</GridViewColumn>
                                     <GridViewColumn DisplayMemberBinding="{Binding formaDePagamento}" Width="180">Forma de Pagamento</GridViewColumn>
-
-                                    <GridViewColumn Header="Valor" Width="Auto">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding valor, StringFormat={}{0:n}}" TextAlignment="Right" Width="60"/>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding valorFormatado}" Width="100">Valor (R$)</GridViewColumn>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -100,7 +93,7 @@
                                 <GridView>
                                     <GridViewColumn  DisplayMemberBinding="{Binding data, StringFormat={}{0:dd/MM/yyyy HH:mm}}" Width="120">Data</GridViewColumn>
                                     <GridViewColumn  DisplayMemberBinding="{Binding descricao}" Width="480">Descrição</GridViewColumn>
-                                    <GridViewColumn  DisplayMemberBinding="{Binding valor, StringFormat={}{0:n}}" Width="130">Valor</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding valorFormatado}" Width="130">Valor (R$)</GridViewColumn>
                                 </GridView>
                             </ListView.View>
                         </ListView>

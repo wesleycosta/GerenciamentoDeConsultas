@@ -1,17 +1,16 @@
 ﻿using System;
 
-
-namespace ProjetoIntegrado.View.Relatorios.Financeiro.Faturamento
+namespace ProjetoIntegrado.View.Relatorios.Financeiro.Entradas
 {
     using ViewUtil;
     using DataSets;
 
-    public partial class RelFaturamentoWin 
+    public partial class RelEntradasWin 
     {
         private DateTime dtInicial;
         private DateTime dtFinal;
 
-        public RelFaturamentoWin(DateTime dtInicial, DateTime dtFinal)
+        public RelEntradasWin(DateTime dtInicial, DateTime dtFinal)
         {
             this.dtInicial = dtInicial;
             this.dtFinal = dtFinal;
@@ -29,13 +28,12 @@ namespace ProjetoIntegrado.View.Relatorios.Financeiro.Faturamento
 
         public void Carregar()
         {
-            rptViewer.LocalReport.ReportEmbeddedResource = "ProjetoIntegrado.View.Relatorios.Financeiro.Faturamento.rptFaturamento.rdlc";
+            rptViewer.LocalReport.ReportEmbeddedResource = "ProjetoIntegrado.View.Relatorios.Financeiro.Entradas.rptEntradas.rdlc";
 
             rptViewer.LocalReport.DataSources.Add(ControleDataSets.GetReportEmpresa());
             rptViewer.LocalReport.DataSources.Add(ControleDataSets.GetReportFechamento(dtInicial, dtFinal));
-            rptViewer.LocalReport.DataSources.Add(ControleDataSets.GetReportDespesas(dtInicial, dtFinal));
             rptViewer.LocalReport.SetParameters(ControleDataSets.GetParametros(dtInicial, dtFinal));
-            rptViewer.LocalReport.DataSources.Add(ControleDataSets.GetReportSalarios());
+
             rptViewer.RefreshReport();
         }
     }

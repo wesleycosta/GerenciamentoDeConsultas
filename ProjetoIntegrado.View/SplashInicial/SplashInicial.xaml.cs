@@ -7,6 +7,8 @@ namespace ProjetoIntegrado.View.SplashInicial
 {
     using Funcoes;
     using BaseDeDados;
+    using System.Globalization;
+    using System.Threading;
 
     public partial class SplashInicial
     {

@@ -193,6 +193,31 @@ namespace ProjetoIntegrado.View.Relatorios.DataSets
 
         #endregion
 
+        #region SALARIOS
+
+        public static ReportDataSource GetReportSalarios()
+        {
+            var despesasDs = new dsDespesas();
+            var salariosTableAdapter = new salariosTableAdapter();
+
+            var reportDs = new ReportDataSource
+            {
+                Name = "dsSalarios",
+                Value = new BindingSource
+                {
+                    DataMember = "salarios",
+                    DataSource = despesasDs
+                }
+            };
+
+            salariosTableAdapter.Fill(despesasDs.salarios);
+
+            return reportDs;
+        }
+
+        #endregion
+
+
         #region GET PERIODO
 
         public static List<ReportParameter> GetParametros(DateTime dtInicial, DateTime dtFinal) =>

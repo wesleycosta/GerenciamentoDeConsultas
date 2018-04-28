@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 using System.Collections.Generic;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ProjetoIntegrado.View.Consultas
 {
@@ -11,7 +12,6 @@ namespace ProjetoIntegrado.View.Consultas
     using Funcoes;
     using ViewUtil;
     using Mensagens;
-    using MahApps.Metro.Controls.Dialogs;
 
     public partial class CadConsultasWin
     {
@@ -126,6 +126,7 @@ namespace ProjetoIntegrado.View.Consultas
             cbStatusPagamento.SelectedIndex = consulta.statusPagamento == StatusPagamento.Pendente ? 0 : 1;
             cbRetorno.SelectedIndex = consulta.retorno ? 1 : 0;
 
+            lbObservacao.Content = consulta.observacao;
             tbData.SelectedDate = consulta.data.Date;
             tbHorario.Text = consulta.horario.ToString(@"hh\:mm");
             tbValor.Text = consulta.valor.ToString("n");

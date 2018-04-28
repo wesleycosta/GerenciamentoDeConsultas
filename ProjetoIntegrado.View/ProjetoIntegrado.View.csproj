@@ -188,6 +188,9 @@
     <Compile Include="Consultas\Material\CadMaterialCirurgiaWin.xaml.cs">
       <DependentUpon>CadMaterialCirurgiaWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Consultas\RemarcarConsultaWin.xaml.cs">
+      <DependentUpon>RemarcarConsultaWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Convenio\CadConvenioWin.xaml.cs">
       <DependentUpon>CadConvenioWin.xaml</DependentUpon>
     </Compile>
@@ -236,6 +239,7 @@
       <DependentUpon>CadPagamentoWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Principal\MenuItens.cs" />
+    <Compile Include="Principal\NivelAcesso.cs" />
     <Compile Include="Procedimentos\PrincipalProcedimentoWin.xaml.cs">
       <DependentUpon>PrincipalProcedimentoWin.xaml</DependentUpon>
     </Compile>
@@ -286,6 +290,9 @@
     </Compile>
     <Compile Include="Relatorios\Financeiro\Despesas\RelDespesaWin.xaml.cs">
       <DependentUpon>RelDespesaWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Financeiro\Entradas\RelEntradasWin.xaml.cs">
+      <DependentUpon>RelEntradasWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\Financeiro\Faturamento\RelFaturamentoWin.xaml.cs">
       <DependentUpon>RelFaturamentoWin.xaml</DependentUpon>
@@ -352,6 +359,7 @@
     <EmbeddedResource Include="Relatorios\Consultas\ListaConsultas\rptListaConsultas.rdlc" />
     <EmbeddedResource Include="Relatorios\Consultas\Procedimentos\rptProcedimentos.rdlc" />
     <EmbeddedResource Include="Relatorios\Financeiro\Despesas\rptDespesas.rdlc" />
+    <EmbeddedResource Include="Relatorios\Financeiro\Entradas\rptEntradas.rdlc" />
     <EmbeddedResource Include="Relatorios\Financeiro\Faturamento\rptFaturamento.rdlc" />
     <EmbeddedResource Include="Relatorios\Receita\rptReceita.rdlc" />
     <None Include="app.config" />
@@ -434,6 +442,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Consultas\Material\CadMaterialCirurgiaWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Consultas\RemarcarConsultaWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -538,6 +550,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Relatorios\Financeiro\Despesas\RelDespesaWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Relatorios\Financeiro\Entradas\RelEntradasWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

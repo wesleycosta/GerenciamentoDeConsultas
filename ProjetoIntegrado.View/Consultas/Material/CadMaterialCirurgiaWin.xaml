@@ -24,14 +24,14 @@
                   Tag="*"
                   Uid="Material"
             TabIndex="0" IsTabStop="True"
-            Margin="21,20,20,0" 
+            Margin="21,20,0,0" 
             materialDesign:HintAssist.Hint="MATERIAL" 
             IsEditable="True" 
             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
             Height="39"
             SelectionChanged="cbMaterial_SelectionChanged"
             SelectedIndex="0"
-            VerticalAlignment="Top" IsReadOnly="True" />
+            VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="339" />
 
         <TextBox x:Name="tbQtdParcelas"    KeyUp="tbQtdParcelas_KeyUp"  Tag="*" x:Uid="Quantidade" TabIndex="1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" TextAlignment="Center" Height="38" Width="120" Margin="21,82,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="QUANTIDADE" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
         <TextBox x:Name="tbValor"          IsReadOnly="True" IsTabStop="False"  HorizontalAlignment="Left" HorizontalContentAlignment="Center" TextAlignment="Center" Height="38" Width="80" Margin="280,82,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="VALOR TOTAL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />

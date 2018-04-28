@@ -41,8 +41,8 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn  DisplayMemberBinding="{Binding id, StringFormat={}{0:D2}}" Width="85">Código</GridViewColumn>
-                    <GridViewColumn  DisplayMemberBinding="{Binding descricao}" Width="330">Descrição</GridViewColumn>
-                    <GridViewColumn  DisplayMemberBinding="{Binding valor, StringFormat={}{0:n}}" Width="80">Valor</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding descricao}" Width="320">Descrição</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding valorFormatado}" Width="100">Valor (R$)</GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

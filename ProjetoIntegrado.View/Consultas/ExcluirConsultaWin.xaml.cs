@@ -8,7 +8,6 @@ using System.Windows.Input;
 namespace ProjetoIntegrado.View.Consultas
 {
     using Model;
-    using Funcoes;
     using ViewUtil;
     using Mensagens;
 
@@ -26,15 +25,33 @@ namespace ProjetoIntegrado.View.Consultas
 
             imgNaoCompareceu.BitmapToImageSource(Icons.GroupFooter_16x16);
             imgConsultaCancelada.BitmapToImageSource(Icons.InsertHeader_16x16);
+            imgConsultaRemarcada.BitmapToImageSource(Icons.InsertFooter_16x16);
         }
 
         private void MantemItem(string itemSelecionado)
         {
             var tipo = (TipoDeCancelamento)(Enum.Parse(typeof(TipoDeCancelamento), itemSelecionado));
 
-            consulta.Cancelar(tipo);
-            Removeu = true;
-            Close();
+            if (tipo == TipoDeCancelamento.Remarcado)
+                Remarcar();
+            else
+            {
+                consulta.Cancelar(tipo);
+                Removeu = true;
+                Close();
+            }
+        }
+
+        private void Remarcar()
+        {
+            var fRemarcar = new RemarcarConsultaWin(consulta);
+            fRemarcar.ShowDialog();
+
+            if (fRemarcar.OK)
+            {
+                Removeu = true;
+                Close();
+            }
         }
 
         #region EVENTOS

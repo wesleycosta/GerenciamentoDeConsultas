@@ -18,6 +18,7 @@ namespace ProjetoIntegrado.View.FluxoDeCaixa
         public string paciente { get; set; }
         public string formaDePagamento { get; set; }
         public decimal valor { get; set; }
+        public string valorFormatado => valor.ToStringFormatado();
     }
 
     public partial class PrincipalFluxoDeCaixaWin

@@ -39,6 +39,7 @@
 
         // FINANCEIRO
         Despesas,
+        Entradas,
         Faturamento
     }
 

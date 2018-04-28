@@ -68,7 +68,7 @@
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem x:Uid="Procedimentos" MouseUp="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Name="itemProcedimentos" x:Uid="Procedimentos" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgProcedimentos" Source="/Resources/Time_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
@@ -82,7 +82,7 @@
                     <!-- CADASTROS -->
                     <TreeViewItem Header="Cadastros" IsExpanded="True">
 
-                        <TreeViewItem x:Uid="Empresa" MouseUp="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Name="itemEmpresa" x:Uid="Empresa" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgEmpresa" Source="/Resources/Home_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
@@ -91,7 +91,7 @@
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem x:Uid="Funcionarios" MouseUp="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Name="itemFuncionarios" x:Uid="Funcionarios" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgFuncionarios" Source="/Resources/Employee_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
@@ -100,7 +100,7 @@
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem x:Uid="Usuarios" MouseUp="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Name="itemUsuarios" x:Uid="Usuarios" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgUsuarios" Source="/Resources/Team_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
@@ -109,7 +109,7 @@
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem Uid="Cargos" x:Name="X" MouseUp="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Name="itemCargos" Uid="Cargos" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgCargos" Source="/Resources/PackageProduct_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
@@ -118,7 +118,7 @@
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem  x:Uid="Convenio" MouseUp="Menu_OnMouseDoubleClick"  x:Name="agendaItem">
+                        <TreeViewItem  x:Name="itemConvenio" x:Uid="Convenio" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgConvenio" Source="/Resources/Time_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
@@ -127,7 +127,7 @@
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem  x:Uid="Material" MouseUp="Menu_OnMouseDoubleClick">
+                        <TreeViewItem  x:Name="itemMaterial" x:Uid="Material" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgMaterial" Source="/Resources/Time_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
@@ -140,7 +140,7 @@
                     <!-- FINANCEIRO -->
                     <TreeViewItem Header="Financeiro" IsExpanded="True">
 
-                        <TreeViewItem x:Uid="Despesas" MouseUp="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Name="itemDespesas" x:Uid="Despesas" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgDespesas" Source="/Resources/Content_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
@@ -149,7 +149,7 @@
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem x:Uid="FluxoDeCaixa" MouseUp="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Name="itemFluxoDeCaixa" x:Uid="FluxoDeCaixa" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgFluxoDeCaixa" Source="/Resources/FluxoDeCaixa16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
@@ -158,7 +158,7 @@
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem x:Uid="FormaDePagamento" MouseUp="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Name="itemFormaDePagamento" x:Uid="FormaDePagamento" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgFormaDePagamento" Source="/Resources/FullStackedBar_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
@@ -266,7 +266,7 @@
                         <GridViewColumn  DisplayMemberBinding="{Binding cliente}"                               Width="260" Header="Paciente"/>
                         <GridViewColumn  DisplayMemberBinding="{Binding cpfFormatado}"                          Width="130" Header="CPF"/>
                         <GridViewColumn  DisplayMemberBinding="{Binding medico}"                                Width="260" Header="Oftalmologista"/>
-                        <GridViewColumn  DisplayMemberBinding="{Binding valor, StringFormat=\{0:n\}}"           Width="80"  Header="Valor"/>
+                        <GridViewColumn  DisplayMemberBinding="{Binding valorFormatado}"                        Width="80"  Header="Valor"/>
                     </GridView>
                 </ListView.View>
             </ListView>

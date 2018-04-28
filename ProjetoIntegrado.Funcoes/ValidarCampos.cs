@@ -40,6 +40,8 @@ namespace ProjetoIntegrado.Funcoes
             var tbDate = ValidarDatePicker(ValidaUtil.FindVisualChildren<DatePicker>(janela));
             if (!tbDate) return false;
 
+            
+
             return true;
         }
 
@@ -161,7 +163,7 @@ namespace ProjetoIntegrado.Funcoes
         {
             foreach (DatePicker dp in lDates)
             {
-                if (dp?.Tag?.ToString() == "*")
+                if (dp?.Tag?.ToString() == "dataPicker*")
                     if (!DataUtil.ValidarData(dp.Text))
                     {
                         Mbox.CampoInvalido(dp.Uid);

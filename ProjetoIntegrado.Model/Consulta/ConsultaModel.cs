@@ -14,6 +14,7 @@ namespace ProjetoIntegrado.Model
         public DateTime data { get; set; }
         public TimeSpan horario { get; set; }
         public decimal valor { get; set; }
+        public string observacao { get; set; } = "";
         public StatusPagamento statusPagamento { get; set; }
         public TipoDeConsulta tipoDeConsulta { get; set; }
         public bool retorno { get; set; }
@@ -21,6 +22,8 @@ namespace ProjetoIntegrado.Model
 
         public CirurgiaModel cirgurgia { get; set; }
         public ReceitaModel receita { get; set; }
+
+        public string valorFormatado => valor.ToStringFormatado();
 
         public List<PagamentoModel> listaDePagamentos { get; set; } = new List<PagamentoModel>();
 
