@@ -30,10 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,12 +47,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaixaSaida\CaixaSaidaInfraData.cs" />
+    <Compile Include="CaixaSaida\CaixaSaidaModel.cs" />
+    <Compile Include="Caixa\CaixaInfraData.cs" />
+    <Compile Include="Caixa\CaixaModel.cs" />
     <Compile Include="Cargo\CargoModel.cs" />
     <Compile Include="Cargo\CargoInfraData.cs" />
     <Compile Include="Categoria\CategoriaInfraData.cs" />
     <Compile Include="Categoria\CategoriaModel.cs" />
+    <Compile Include="Cirurgia\CirurgiaInfraData.cs" />
+    <Compile Include="Cirurgia\CirurgiaModel.cs" />
+    <Compile Include="Cirurgia\Equipe\EquipeCirurgiaInfraData.cs" />
+    <Compile Include="Cirurgia\Equipe\EquipeCirurgiaModel.cs" />
+    <Compile Include="Cirurgia\Material\MaterialCirurgiaInfraData.cs" />
+    <Compile Include="Cirurgia\Material\MaterialCirurgiaModel.cs" />
+    <Compile Include="Cliente\ClienteInfraData.cs" />
+    <Compile Include="Cliente\ClienteModel.cs" />
+    <Compile Include="Clinica\ClinicaInfraData.cs" />
+    <Compile Include="Clinica\ClinicaModel.cs" />
+    <Compile Include="Consulta\ConsultaInfraData.cs" />
+    <Compile Include="Consulta\ConsultaModel.cs" />
+    <Compile Include="Convenio\ConvenioInfraData.cs" />
+    <Compile Include="Convenio\ConvenioModel.cs" />
+    <Compile Include="Despesa\DespesaInfraData.cs" />
+    <Compile Include="Despesa\DespesaModel.cs" />
+    <Compile Include="Diagnostico\DiagnosticoInfraData.cs" />
+    <Compile Include="Diagnostico\DiagnosticoModel.cs" />
     <Compile Include="Endereco\EnderecoInfraData.cs" />
     <Compile Include="Endereco\EnderecoModel.cs" />
+    <Compile Include="Estado\EstadoModel.cs" />
     <Compile Include="FormaDePagamento\FormaDePagamentoInfraData.cs" />
     <Compile Include="FormaDePagamento\FormaDePagamentoModel.cs" />
     <Compile Include="Funcionario\FuncionarioInfraData.cs" />
@@ -55,6 +83,14 @@
     <Compile Include="Enum.cs" />
     <Compile Include="ICadastro.cs" />
     <Compile Include="Login\LoginModel.cs" />
+    <Compile Include="Material\MaterialInfraData.cs" />
+    <Compile Include="Material\MaterialModel.cs" />
+    <Compile Include="MetodoDeExtensao.cs" />
+    <Compile Include="Pagamento\PagamentoInfraData.cs" />
+    <Compile Include="Pagamento\PagamentoModel.cs" />
+    <Compile Include="Receita\ReceitaInfraData.cs" />
+    <Compile Include="Receita\ReceitaModel.cs" />
+    <Compile Include="SuperClasses\Pessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sessao\Sessao.cs" />
   </ItemGroup>
@@ -74,6 +110,10 @@
       <Project>{b36852e5-af57-4b3d-8cbf-83221c187dab}</Project>
       <Name>ProjetoIntegrado.Mensagens</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

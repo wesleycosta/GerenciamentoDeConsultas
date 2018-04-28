@@ -1,0 +1,66 @@
+﻿<controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        x:Class="ProjetoIntegrado.View.Clinica.CadClinicaWin"
+        mc:Ignorable="d"
+    
+        KeyDown="MetroWindow_KeyDown"
+        Style="{StaticResource WindowSimples}"
+        WindowStartupLocation="CenterScreen"
+    
+        Title="CLÍNICA" 
+        Height="529" 
+        Width="722">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Margin="0" Grid.RowSpan="2">
+
+            <!-- DADOS EMPRESA -->
+            <TextBox x:Name="tbRazaoSocial"     materialDesign:HintAssist.Hint="RAZÃO SOCIAL" TabIndex="0" HorizontalAlignment="Left" Height="39" Width="476" Margin="20,18,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+            <TextBox x:Name="tbNomeFantasia"     materialDesign:HintAssist.Hint="NOME FANTASIA" TabIndex="1"  HorizontalAlignment="Left" Height="40" Width="477" Margin="20,77,0,0" TextWrapping="Wrap"     CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+            <xctk:MaskedTextBox x:Name="tbIE"    materialDesign:HintAssist.Hint="INSCRIÇÃO ESTADUAL" TabIndex="2" Mask="000,000,000,000"  PromptChar=" " HorizontalAlignment="Left" Height="40" Width="227" Margin="20,137,0,0" TextWrapping="Wrap"      TextAlignment="Center" CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+            <xctk:MaskedTextBox x:Name="tbCNPJ"  materialDesign:HintAssist.Hint="CNPJ" TabIndex="3" Mask="00,000,000/0000-00"  PromptChar=" " HorizontalAlignment="Left" Height="40" Width="230" Margin="267,137,0,0" TextWrapping="Wrap"    TextAlignment="Center" CharacterCasing="Upper" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+
+            <!-- LOGO -->
+            <Border  Background="#fafafa" BorderBrush="Gainsboro" BorderThickness="1" Margin="512,17,0,0" VerticalAlignment="Top" Height="126" HorizontalAlignment="Left" Width="189">
+                <Image x:Name="imageLogo" Stretch="Uniform" HorizontalAlignment="Center" Width="187"/>
+            </Border>
+            <Button x:Name="btnBuscar"  Content="BUSCAR"  IsTabStop="False" Margin="512,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.111,0.438" HorizontalAlignment="Left" Width="89" Height="26" FontSize="11" Background="#607D8B" BorderBrush="#607D8B"/>
+            <Button x:Name="btnRemover" Content="REMOVER" IsTabStop="False" Margin="610,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.111,0.438" HorizontalAlignment="Left" Width="90" Height="26" FontSize="10" Background="#607D8B" BorderBrush="#607D8B"/>
+
+            <!-- CONTATO -->
+            <TextBox x:Name="tbDddCel" TabIndex="7" MaxLength="2" TextAlignment="Center"  HorizontalAlignment="Left" Height="38" Width="75" Margin="20,197,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="DDD CEL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+            <TextBox x:Name="tbCelular"  TabIndex="8" HorizontalAlignment="Left" Height="38" Width="258" Margin="116,197,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="CELULAR" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+            <TextBox x:Name="tbDddTel"  TabIndex="9" MaxLength="2" HorizontalAlignment="Left"  TextAlignment="Center" Height="38" Width="78" Margin="396,197,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="DDD TEL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+            <TextBox x:Name="tbTelefone"  TabIndex="10" HorizontalAlignment="Left" Height="38" Width="204" Margin="496,197,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="TELEFONE" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+            <TextBox x:Name="tbEmail"  TabIndex="11" HorizontalAlignment="Left" Height="38" Width="319" Margin="20,260,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="E-MAIL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+            <TextBox x:Name="tbSite"  TabIndex="11" HorizontalAlignment="Left" Height="38" Width="342" Margin="358,260,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="SITE" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+
+            <!-- ENDEREÇO -->
+            <xctk:MaskedTextBox  x:Name="tbCep" Mask="99999-999"  PromptChar=" "  TabIndex="12" TextAlignment="Center" HorizontalAlignment="Left" Height="38" Width="115" Margin="20,320,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="CEP" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+            <TextBox x:Name="tbCidade"  TabIndex="13" HorizontalAlignment="Left" Height="38" Width="260"  Margin="155,320,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="CIDADE" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+            <ComboBox x:Name="cbUf" TabIndex="14" IsTabStop="True" Margin="435,320,247,0" materialDesign:HintAssist.Hint="UF" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Height="38" VerticalAlignment="Top" IsReadOnly="True" RenderTransformOrigin="1.494,0.559" />
+            <TextBox x:Name="tbBairro"  TabIndex="15" HorizontalAlignment="Left" Height="38" Width="205"  Margin="495,320,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="BAIRRO"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+            <TextBox x:Name="tbLogradouro"  TabIndex="16" HorizontalAlignment="Left" Height="38" Width="354" Margin="20,380,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="LOGRADOURO"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+            <TextBox x:Name="tbNumero"  TabIndex="17" HorizontalAlignment="Left"  Height="38" Width="80" TextAlignment="Center" Margin="395,380,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="NÚMERO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+            <TextBox x:Name="tbComplemento"  TabIndex="18" HorizontalAlignment="Left" Height="38" Width="204" Margin="496,380,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="COMPLEMENTO"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top" />
+        </Grid>
+        <Grid Grid.Row="1" Margin="5, 443,-4,7">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="27*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="BtnSalvar"   Click="BtnSalvar_OnClick" TabIndex="22" Content="Salvar" HorizontalAlignment="Right" Height="34"  Margin="0,2,152,0" VerticalAlignment="Top" Width="122" Grid.RowSpan="2"/>
+            <Button x:Name="BtnCancelar" Click="BtnCancelar_OnClick" TabIndex="23" Content="Cancelar" HorizontalAlignment="Right" Height="34" Margin="0,2,17,0" VerticalAlignment="Top" Width="124" Grid.RowSpan="2"/>
+        </Grid>
+    </Grid>
+</controls:MetroWindow>

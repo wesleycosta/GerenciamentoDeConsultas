@@ -1,0 +1,147 @@
+﻿<controls:MetroWindow 
+        x:Class="ProjetoIntegrado.View.FluxoDeCaixa.PrincipalFluxoDeCaixaWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+
+    
+        Style="{StaticResource WindowSimples}"
+        WindowStartupLocation="CenterScreen"
+    
+        Title="FLUXO DE CAIXA" 
+        Height="590" 
+        Width="950"
+        KeyDown="MetroWindow_KeyDown"
+>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <dragablz:TabablzControl  Height="560" Width="750">
+                <dragablz:TabablzControl.InterTabController>
+                    <dragablz:InterTabController />
+                </dragablz:TabablzControl.InterTabController>
+                <TabItem Header="ENTRADAS">
+                    <Border Margin="22,20,21,38" 
+                            Padding="0" 
+                            BorderBrush="#FFE6E4E4" 
+                            BorderThickness="1">
+                        <ListView x:Name="lvwEntrada"
+                                  HorizontalAlignment="Left" 
+                                  Height="500" 
+                                  Width="900"
+                                  Padding="0"
+                                  Margin="0" 
+                                  VerticalAlignment="Top" 
+                                  Grid.Row="1" >
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Data" Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding data, StringFormat={}{0:dd/MM/yyyy}}" TextAlignment="Center"  Width="90"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn Header="Horário" Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding horario}" TextAlignment="Center" Width="55"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+
+                                    <GridViewColumn DisplayMemberBinding="{Binding paciente}" Width="250">Paciente</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding formaDePagamento}" Width="180">Forma de Pagamento</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding valorFormatado}" Width="100">Valor (R$)</GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Border>
+                </TabItem>
+
+                <TabItem Header="SAÍDAS">
+                    <Border   Margin="22,20,21,38" 
+                          Padding="0" 
+                          BorderBrush="#FFE6E4E4" BorderThickness="1">
+                        <ListView x:Name="lvwSaidas"
+                                  HorizontalAlignment="Left" 
+                                  Height="430" 
+                                  Width="900"
+                                  Padding="0"
+                                  Margin="0" 
+                                  VerticalAlignment="Top"
+                                  KeyDown="MetroWindow_KeyDown"
+                                  MouseDoubleClick="lvwSaidas_MouseDoubleClick" >
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding data, StringFormat={}{0:dd/MM/yyyy HH:mm}}" Width="120">Data</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding descricao}" Width="480">Descrição</GridViewColumn>
+                                    <GridViewColumn  DisplayMemberBinding="{Binding valorFormatado}" Width="130">Valor (R$)</GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Border>
+                </TabItem>
+            </dragablz:TabablzControl>
+        </Grid>
+
+        <Grid Grid.Column ="1" Background="#fafafa" Width="200" Height="Auto">
+            <StackPanel>
+
+                <Button x:Name="BtnAbrirCaixa"    Click="BtnAbrir_OnClick"  TabIndex="22" Content="Abrir Caixa"  Height="34"  Margin="38,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="122"/>
+                <Button x:Name="BtnFecharCaixa"   Click="BtnFechar_OnClick" TabIndex="22" Content="Fechar Caixa" Height="34"  Margin="38,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="122"/>
+                <Button x:Name="BtnSaida"         Click="BtnSaida_Click"  TabIndex="22" Content="Lançar Saída"  Height="34"  Margin="38,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="122"/>
+
+                <StackPanel Background="#fafafa" Margin="10, 62, 10, 0" Width="auto" Height="Auto" Orientation="Vertical">
+
+                    <StackPanel Orientation="Vertical">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold" >Data de Abertura</Label>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  x:Name="lbAbertura">Caixa Fechado</Label>
+                    </StackPanel>
+
+                    <StackPanel  Orientation="Vertical" >
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold">Aberto por</Label>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  x:Name="lbFuncionario">Caixa Fechado</Label>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold" >Valor Inicial</Label>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  x:Name="lbValorInicial">Caixa Fechado</Label>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold">Total Entrada (R$)</Label>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  x:Name="lbTotal">0,00</Label>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold">Total Saída (R$)</Label>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  x:Name="lbSaida">0,00</Label>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  FontWeight="Bold">Saldo(R$)</Label>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center"  x:Name="lbSaldo">0,00</Label>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</controls:MetroWindow>

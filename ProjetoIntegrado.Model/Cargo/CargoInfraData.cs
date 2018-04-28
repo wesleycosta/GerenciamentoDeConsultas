@@ -1,11 +1,10 @@
-﻿using System;
+using System;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 
 namespace ProjetoIntegrado.Model
 {
     using BaseDeDados;
-    using View;
 
     public partial class CargoModel : ICadastro
     {
@@ -118,7 +117,7 @@ namespace ProjetoIntegrado.Model
 
             try
             {
-                var cmd = $@"SELECT 
+                var cmd = $@"SELECT TOP 50
 	                            id_cargo,
 	                            descricao,
 	                            ativo

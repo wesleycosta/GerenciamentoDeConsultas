@@ -7,7 +7,7 @@
             var id = FuncionarioModel.Autenticar(usuario, senha);
 
             if (id > 0)
-                IniciarUsuario(1);
+                IniciarUsuario(id);
 
             return id > 0;
         }
@@ -20,7 +20,10 @@
             };
 
             funcionario.Carregar();
+
             Sessao.funcionario = funcionario;
+            Sessao.CarregarCaixaAberto();
         }
+
     }
 }

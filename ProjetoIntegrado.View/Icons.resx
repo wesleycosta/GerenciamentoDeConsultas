@@ -307,4 +307,25 @@
   <data name="Edit_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Edit_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AlignHorizontalBottom2_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\AlignHorizontalBottom2_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GroupHeader_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\GroupHeader_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Merge_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Merge_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WorkWeekView_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\WorkWeekView_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Find_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Find_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AlignHorizontalTop_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\AlignHorizontalTop_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

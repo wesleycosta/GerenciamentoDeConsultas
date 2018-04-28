@@ -1,4 +1,4 @@
-﻿namespace ProjetoIntegrado.View.Splash
+﻿namespace ProjetoIntegrado.View
 {
 
     public partial class SplashScreenWin

@@ -6,10 +6,12 @@ using MahApps.Metro.Controls.Dialogs;
 namespace ProjetoIntegrado.View.FormaDePagamento
 {
     using Model;
+    using Mensagens;
+    using ViewUtil;
 
-    public partial class PrincipalFormaDePagamentoWin 
+    public partial class PrincipalFormaDePagamentoWin
     {
-        List<FormaDePagamentoModel> lFormaDePagamento = new List<FormaDePagamentoModel>();
+        private List<FormaDePagamentoModel> lFormaDePagamento;
 
         public PrincipalFormaDePagamentoWin()
         {
@@ -18,7 +20,7 @@ namespace ProjetoIntegrado.View.FormaDePagamento
             Loaded += (o, a) => CarregarFormaDePagamento();
         }
 
-        #region MANTEM CARGO
+        #region MANTEM FORMA DE PAGAMENTO
 
         private void CarregarFormaDePagamento()
         {
@@ -27,7 +29,7 @@ namespace ProjetoIntegrado.View.FormaDePagamento
             else
                 lFormaDePagamento = FormaDePagamentoModel.Pesquisar(tbPesquisa.Text);
 
-            lvwCategorias.ItemsSource = lFormaDePagamento;
+            lvwFormaDePagamento.ItemsSource = lFormaDePagamento;
             tbPesquisa.Focus();
         }
 
@@ -42,9 +44,9 @@ namespace ProjetoIntegrado.View.FormaDePagamento
 
         private void Editar()
         {
-            if (lvwCategorias.SelectedIndex >= 0)
+            if (lvwFormaDePagamento.SelectedIndex >= 0)
             {
-                var formaDePagamento = lvwCategorias.SelectedItems[0] as FormaDePagamentoModel;
+                var formaDePagamento = lvwFormaDePagamento.SelectedItems[0] as FormaDePagamentoModel;
                 var cadFormaDePagamento = new CadFormaDePagamentoWin(formaDePagamento);
                 cadFormaDePagamento.ShowDialog();
 
@@ -57,16 +59,16 @@ namespace ProjetoIntegrado.View.FormaDePagamento
 
         private void Remover()
         {
-            if (lvwCategorias.SelectedIndex >= 0)
+            if (lvwFormaDePagamento.SelectedIndex >= 0)
             {
-                var formaDePagamento = lvwCategorias.SelectedItems[0] as FormaDePagamentoModel;
+                var formaDePagamento = lvwFormaDePagamento.SelectedItems[0] as FormaDePagamentoModel;
                 var r = Mbox.DesejaExcluir();
 
                 if (r == MessageDialogResult.Affirmative)
                 {
-                    formaDePagamento.Remover();
+                    formaDePagamento?.Remover();
                     lFormaDePagamento.Remove(formaDePagamento);
-                    lvwCategorias.Items.Refresh();
+                    lvwFormaDePagamento.Items.Refresh();
                 }
             }
             else
@@ -82,7 +84,7 @@ namespace ProjetoIntegrado.View.FormaDePagamento
             Novo();
         }
 
-        private void lvwCargos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void lvwFormaDePagamento_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Editar();
         }
@@ -92,7 +94,7 @@ namespace ProjetoIntegrado.View.FormaDePagamento
             CarregarFormaDePagamento();
 
             if (e.Key == Key.Down)
-                lvwCategorias.SelecionarPrimeiraLinha();
+                lvwFormaDePagamento.SelecionarPrimeiraLinha();
         }
 
         private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
@@ -101,7 +103,7 @@ namespace ProjetoIntegrado.View.FormaDePagamento
                 Close();
         }
 
-        private void lvwCargos_KeyDown(object sender, KeyEventArgs e)
+        private void lvwFormaDePagamento_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
                 Editar();
@@ -110,6 +112,5 @@ namespace ProjetoIntegrado.View.FormaDePagamento
         }
 
         #endregion
-
     }
 }

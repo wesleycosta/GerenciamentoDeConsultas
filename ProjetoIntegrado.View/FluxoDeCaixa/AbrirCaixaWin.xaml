@@ -1,0 +1,28 @@
+﻿<controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+        xmlns:local="clr-namespace:ProjetoIntegrado.View.FluxoDeCaixa"
+        x:Class="ProjetoIntegrado.View.FluxoDeCaixa.AbrirCaixaWin"
+    
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:materialDesignMahApps="http://materialdesigninxaml.net/winfx/xaml/themes"  
+        
+    
+        Style="{StaticResource WindowSimples}"
+        WindowStartupLocation="CenterScreen"
+    
+        Title="ABRIR CAIXA" 
+        Height="169" 
+        Width="306"
+        KeyDown="MetroWindow_KeyDown"
+ >
+    <Grid>
+        <TextBox x:Name="tbValorInicial" x:Uid="Valor Inicial" TabIndex="0" Tag="*" HorizontalAlignment="Left" TextAlignment="Center" Height="38" Width="257" Margin="21,22,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesignMahApps:HintAssist.Hint="INFORME O VALOR INICIAL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+
+        <Button x:Name="BtnSalvar"   Click="BtnSalvar_OnClick" TabIndex="22" Content="Abrir" Height="34"  Margin="21,84,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="122"/>
+        <Button x:Name="BtnCancelar" Click="BtnCancelar_OnClick" TabIndex="23" Content="Cancelar" Height="34" Margin="154,84,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="124"/>
+    </Grid>
+</controls:MetroWindow>

@@ -103,6 +103,16 @@ namespace ProjetoIntegrado.View {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AlignHorizontalBottom2_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("AlignHorizontalBottom2_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AlignHorizontalCenter_16x16 {
             get {
                 object obj = ResourceManager.GetObject("AlignHorizontalCenter_16x16", resourceCulture);
@@ -116,6 +126,16 @@ namespace ProjetoIntegrado.View {
         internal static System.Drawing.Bitmap AlignHorizontalCenter_32x32 {
             get {
                 object obj = ResourceManager.GetObject("AlignHorizontalCenter_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AlignHorizontalTop_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("AlignHorizontalTop_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -313,6 +333,16 @@ namespace ProjetoIntegrado.View {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Find_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Find_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FluxoDeCaixa16x16 {
             get {
                 object obj = ResourceManager.GetObject("FluxoDeCaixa16x16", resourceCulture);
@@ -393,6 +423,16 @@ namespace ProjetoIntegrado.View {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GroupHeader_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("GroupHeader_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap HistoryItem_16x16 {
             get {
                 object obj = ResourceManager.GetObject("HistoryItem_16x16", resourceCulture);
@@ -466,6 +506,26 @@ namespace ProjetoIntegrado.View {
         internal static System.Drawing.Bitmap InsertHeader_32x32 {
             get {
                 object obj = ResourceManager.GetObject("InsertHeader_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo {
+            get {
+                object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Merge_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Merge_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -686,6 +746,16 @@ namespace ProjetoIntegrado.View {
         internal static System.Drawing.Bitmap Time_32x32 {
             get {
                 object obj = ResourceManager.GetObject("Time_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WorkWeekView_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("WorkWeekView_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

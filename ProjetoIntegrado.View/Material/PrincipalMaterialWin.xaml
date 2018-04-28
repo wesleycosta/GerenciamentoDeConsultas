@@ -1,0 +1,50 @@
+﻿<controls:MetroWindow 
+        x:Class="ProjetoIntegrado.View.Material.PrincipalMaterialWin"
+        xmlns:local="clr-namespace:ProjetoIntegrado.View.Material"
+
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    Style="{StaticResource WindowSimples}"
+    WindowStartupLocation="CenterScreen"
+
+    Title="MATERIAIS"
+    Height="367"
+    Width="588"
+    KeyDown="MetroWindow_KeyDown"
+>
+    <Grid Margin="0, 0, 0, 0">
+        <Button x:Name="BtnNovo" Content="Novo" Click="BtnNovo_OnClick" HorizontalAlignment="Left" Height="35" Margin="440,28,0,0" VerticalAlignment="Top" Width="123"/>
+        <TextBox 
+                 TabIndex="0"
+                 x:Name="tbPesquisa" 
+                 HorizontalAlignment="Left" 
+                 Height="36" 
+                 Margin="20, 25,0,0" 
+                 TextWrapping="Wrap"     
+                 materialDesign:HintAssist.Hint="PESQUISAR"
+                 CharacterCasing="Upper"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                 VerticalAlignment="Top" 
+                 Width="400"
+                 KeyUp="tbPesquisa_KeyUp"/>
+
+        <ListView x:Name="lvwCargos"
+                  HorizontalAlignment="Left" 
+                  Height="234" 
+                  Margin="20,80,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="543"
+                  KeyDown="lvwCargos_KeyDown"
+                  MouseDoubleClick="lvwCargos_MouseDoubleClick" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn  DisplayMemberBinding="{Binding id, StringFormat={}{0:D2}}" Width="85">Código</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding descricao}" Width="320">Descrição</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding valorFormatado}" Width="100">Valor (R$)</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</controls:MetroWindow>

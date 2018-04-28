@@ -6,12 +6,15 @@ using MahApps.Metro.Controls.Dialogs;
 
 namespace ProjetoIntegrado.View.Funcionario
 {
-    using Funcoes;
     using Model;
+    using Funcoes;
+    using Mensagens;
+    using ViewUtil;
 
     public partial class PrincipalFuncionarioWin
     {
-        List<FuncionarioModel> lFuncionarios = new List<FuncionarioModel>();
+        public bool AlterouOftal;
+        private List<FuncionarioModel> lFuncionarios;
 
         public PrincipalFuncionarioWin()
         {
@@ -23,7 +26,7 @@ namespace ProjetoIntegrado.View.Funcionario
         #region MANTEM FUNCIONARIO
 
         private FiltroPessoa GetFiltro() =>
-           (FiltroPessoa)Enum.Parse(typeof(FiltroPessoa), Marcara.Remover(cbFiltro.Text.ToLower()));
+           (FiltroPessoa)Enum.Parse(typeof(FiltroPessoa), Mascara.Remover(cbFiltro.Text.ToLower()));
 
         private void CarregarFuncionarios()
         {
@@ -44,6 +47,8 @@ namespace ProjetoIntegrado.View.Funcionario
 
             if (cadFuncionario.cadastrou)
                 CarregarFuncionarios();
+
+            AlterouOftal = cadFuncionario.AlterouOftal;
         }
 
         private void Editar()
@@ -57,6 +62,8 @@ namespace ProjetoIntegrado.View.Funcionario
 
                 if (cadFuncionario.cadastrou)
                     CarregarFuncionarios();
+
+                AlterouOftal = cadFuncionario.AlterouOftal;
             }
             else
                 Mbox.SelecioneUmaLinhaDaTabela();
@@ -71,7 +78,8 @@ namespace ProjetoIntegrado.View.Funcionario
 
                 if (r == MessageDialogResult.Affirmative)
                 {
-                    funcionario.Remover();
+                    AlterouOftal = funcionario?.cargo?.id == 1;
+                    funcionario?.Remover();
                     lFuncionarios.Remove(funcionario);
                     lvwFuncionarios.Items.Refresh();
                 }
@@ -102,18 +110,18 @@ namespace ProjetoIntegrado.View.Funcionario
                 lvwFuncionarios.SelecionarPrimeiraLinha();
         }
 
-        private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-                Close();
-        }
-
         private void lvwFuncionarios_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
                 Editar();
             else if (e.Key == Key.Delete)
                 Remover();
+        }
+
+        private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
 
         #endregion

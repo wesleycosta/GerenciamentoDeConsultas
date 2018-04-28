@@ -118,7 +118,7 @@ namespace ProjetoIntegrado.Model
 
             try
             {
-                var cmd = $@"SELECT
+                var cmd = $@"SELECT TOP 50
 	                            id_forma_pagamento,
 	                            descricao,
 	                            ativo

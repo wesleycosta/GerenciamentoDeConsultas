@@ -4,13 +4,15 @@ using System.Windows.Input;
 namespace ProjetoIntegrado.View.Cargo
 {
     using Model;
+    using Funcoes;
 
     public partial class CadCargoWin
     {
-        public bool cadastrou;
+        #region  PROPRIEDADES E CTOR
+        public bool cadastrou { get; private set; }
 
-        private CargoModel cargo = new CargoModel();
-        private bool cadastrar;
+        private readonly CargoModel cargo;
+        private readonly bool cadastrar;
 
         public CadCargoWin()
         {
@@ -31,22 +33,25 @@ namespace ProjetoIntegrado.View.Cargo
             CarregarDados();
         }
 
-        private void Iniciar()
-        {
-            Loaded += (o, a) => tbDescricao.Focus();
-        }
+        #endregion
+
+        #region CARREGAR E INICIAR
+
+        private void Iniciar() => Loaded += (o, a) => tbDescricao.Focus();
 
         private void CarregarDados()
         {
             tbDescricao.Text = cargo.descricao;
         }
 
+        #endregion
+
         #region MANTEM CARGO
 
         private CargoModel ToModel() =>
             new CargoModel
             {
-                id = cargo.id,
+                id = cargo?.id ?? 0,
                 descricao = tbDescricao.Text
             };
 
@@ -58,6 +63,7 @@ namespace ProjetoIntegrado.View.Cargo
                 cargo.Cadastrar();
             else
                 cargo.Atualizar();
+
         }
 
         #endregion
@@ -66,15 +72,15 @@ namespace ProjetoIntegrado.View.Cargo
 
         private void BtnSalvar_OnClick(object sender, RoutedEventArgs e)
         {
-            MantemCargo();
-            cadastrou = true;
-            Close();
+            if (ValidarCampos.Validar(this))
+            {
+                MantemCargo();
+                cadastrou = true;
+                Close();
+            }
         }
 
-        private void BtnCancelar_OnClick(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
+        private void BtnCancelar_OnClick(object sender, RoutedEventArgs e) => Close();
 
         private void MetroWindow_KeyDown(object sender, KeyEventArgs e)
         {

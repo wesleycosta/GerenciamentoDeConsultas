@@ -35,8 +35,8 @@
                   Margin="20,80,0,0" 
                   VerticalAlignment="Top" 
                   Width="543"
-                  KeyDown="lvwCargos_KeyDown"
-                  MouseDoubleClick="lvwCargos_MouseDoubleClick" >
+                  KeyDown="lvwCategoria_KeyDown"
+                  MouseDoubleClick="lvwCategoria_MouseDoubleClick" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn  DisplayMemberBinding="{Binding id}" Width="85">Código</GridViewColumn>

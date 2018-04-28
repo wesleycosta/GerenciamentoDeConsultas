@@ -1,40 +1,45 @@
 ﻿<controls:MetroWindow
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         x:Class="ProjetoIntegrado.View.Principal.JanelaPrincipalWin"
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesignMahApps="http://materialdesigninxaml.net/winfx/xaml/themes"
+
         mc:Ignorable="d"
         Style="{StaticResource WindowPadrao}"
         
         Loaded="JanelaPrincipal_OnLoaded"
         Title="Projeto Integrado" 
-        Height="700" 
-        Width="1113"
+        Height="710" 
+        Width="1366"
     
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
-        KeyDown="MetroWindow_KeyDown">
+    
+        KeyDown="MetroWindow_KeyDown"
+>
 
-    <Grid>
-
+    <Grid Margin="0,0,20,0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="37*"/>
-            <RowDefinition Height="186*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="577*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto" MinWidth="22"/>
+            <ColumnDefinition Width="Auto" MinWidth="596"/>
         </Grid.ColumnDefinitions>
 
-        <Border  BorderThickness="0, 0, 1, 0" BorderBrush="#ccc" Grid.RowSpan="2">
+        <Border  BorderThickness="0, 0, 1, 0" BorderBrush="#ccc" Grid.RowSpan="2" Margin="0,0,2,0">
             <StackPanel 
-            x:Name="menuLateral" 
-            Background="#fafafa" 
-            HorizontalAlignment="Left" 
-            Width="221">
+                x:Name="menuLateral" 
+                Background="#fafafa" 
+                HorizontalAlignment="Left" 
+                Width="221">
                 <Image      
                 x:Name="imgLogo" 
                 Margin="0, 20, 0, 0" 
@@ -52,31 +57,22 @@
                   MinWidth="220" Padding="0, 20, 0, 0">
 
                     <!-- CONSULTAS -->
-                    <TreeViewItem Header="Consultas" IsExpanded="True">
+                    <TreeViewItem Header="Principal" IsExpanded="True">
 
-                        <TreeViewItem MouseDoubleClick="Menu_OnMouseDoubleClick" x:Uid="Agenda" x:Name="agendaItem">
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="imgAgenda" Source="/Resources/Time_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Agenda</Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-
-                        <TreeViewItem x:Uid="ListaDeConsultas" MouseDoubleClick="Menu_OnMouseDoubleClick">
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="imgListaConsulta" Source="/Resources/MonthView_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Lista de Consultas</Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-
-                        <TreeViewItem x:Uid="Pacientes" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Uid="Pacientes" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgPacientes" Source="/Resources/Customer_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Pacientes</Label>
+                                    <Label Height="16" Padding="0" Content="Pacientes"/>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+
+                        <TreeViewItem x:Name="itemProcedimentos" x:Uid="Procedimentos" MouseUp="Menu_OnMouseDoubleClick">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image x:Name="imgProcedimentos" Source="/Resources/Time_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0" Content="Procedimentos"/>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
@@ -86,116 +82,221 @@
                     <!-- CADASTROS -->
                     <TreeViewItem Header="Cadastros" IsExpanded="True">
 
-                        <TreeViewItem x:Uid="Empresa" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Name="itemEmpresa" x:Uid="Empresa" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgEmpresa" Source="/Resources/Home_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Empresa</Label>
+                                    <Label Height="16" Padding="0" Content="Empresa"/>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem x:Uid="Funcionarios" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Name="itemFuncionarios" x:Uid="Funcionarios" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgFuncionarios" Source="/Resources/Employee_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Funcionários</Label>
+                                    <Label Height="16" Padding="0" Content="Funcionários"/>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem x:Uid="Usuarios" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Name="itemUsuarios" x:Uid="Usuarios" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgUsuarios" Source="/Resources/Team_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Usuários</Label>
+                                    <Label Height="16" Padding="0" Content="Usuários"/>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem Uid="Cargos" Name="X" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Name="itemCargos" Uid="Cargos" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgCargos" Source="/Resources/PackageProduct_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Cargos</Label>
+                                    <Label Height="16" Padding="0" Content="Cargos"/>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem x:Uid="Categoria" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                        <TreeViewItem  x:Name="itemConvenio" x:Uid="Convenio" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="imgCategoria" Source="/Resources/Palette_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Categoria</Label>
+                                    <Image x:Name="imgConvenio" Source="/Resources/Time_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0" Content="Convênios"/>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
+                        <TreeViewItem  x:Name="itemMaterial" x:Uid="Material" MouseUp="Menu_OnMouseDoubleClick">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image x:Name="imgMaterial" Source="/Resources/Time_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0" Content="Materiais"/>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
                     </TreeViewItem>
 
                     <!-- FINANCEIRO -->
                     <TreeViewItem Header="Financeiro" IsExpanded="True">
 
-                        <TreeViewItem x:Uid="FormaDePagamento" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Name="itemDespesas" x:Uid="Despesas" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="imgFormaDePagamento" Source="/Resources/FullStackedBar_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Forma de Pagamento</Label>
+                                    <Image x:Name="imgDespesas" Source="/Resources/Content_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0" Content="Despesas"/>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem x:Uid="FluxoDeCaixa" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Name="itemFluxoDeCaixa" x:Uid="FluxoDeCaixa" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <Image x:Name="imgFluxoDeCaixa" Source="/Resources/FluxoDeCaixa16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Fluxo de Caixa</Label>
+                                    <Label Height="16" Padding="0" Content="Fluxo de Caixa"/>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
-                        <TreeViewItem x:Uid="LivroCaixa" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                        <TreeViewItem x:Name="itemFormaDePagamento" x:Uid="FormaDePagamento" MouseUp="Menu_OnMouseDoubleClick">
                             <TreeViewItem.Header>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="imgLivroCaixa" Source="/Resources/Content_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Livro Caixa</Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-
-                        <TreeViewItem x:Uid="Faturamento" MouseDoubleClick="Menu_OnMouseDoubleClick">
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="imgFaturamento" Source="/Resources/Chart_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                    <Label Height="16" Padding="0">Faturamento</Label>
+                                    <Image x:Name="imgFormaDePagamento" Source="/Resources/FullStackedBar_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                    <Label Height="16" Padding="0" Content="Forma de Pagamento"/>
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
 
                     </TreeViewItem>
 
-                    <TreeViewItem x:Uid="Relatorios" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                    <TreeViewItem x:Uid="Relatorios" MouseUp="Menu_OnMouseDoubleClick">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Image x:Name="imgRelatorios" Source="/Resources/Report_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                <Label Height="16" Padding="0">Relatórios</Label>
+                                <Label Height="16" Padding="0" Content="Relatórios"/>
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
 
-                    <TreeViewItem x:Uid="Configuracoes" Visibility="Hidden" MouseDoubleClick="Menu_OnMouseDoubleClick">
+                    <TreeViewItem x:Uid="TrocarUsuario" MouseUp="Menu_OnMouseDoubleClick">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image x:Name="imgTrocarUsuario" Source="/Resources/Project_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
+                                <Label Height="16" Padding="0" Content="Trocar Usuário"/>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Uid="Configuracoes" Visibility="Hidden" MouseUp="Menu_OnMouseDoubleClick">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Image x:Name="imgConfiguracoes" Source="/Resources/Properties_16x16.png" Height="16" Width="16" Margin="0, 0, 5, 0"/>
-                                <Label Height="16" Padding="0">Configurações</Label>
+                                <Label Height="16" Padding="0" Content="Configurações"/>
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
 
                 </TreeView>
+
             </StackPanel>
         </Border>
-        <Button x:Name="button" Content="Nova Consulta" Grid.Column="1" Margin="743,52,-866,27" VerticalAlignment="Center" HorizontalAlignment="Center" Width="126" />
-    </Grid>
+        <Button x:Name="BtnNovo" Margin="975,48,-207,0" Height="32" Content="Nova Consulta"  Grid.Column="1" HorizontalAlignment="Left" Width="140" Click="BtnNovo_Click" VerticalAlignment="Top" TabIndex="6"/>
+        <TextBox 
+        TabIndex="0"
+        x:Name="tbPesquisa" 
+        HorizontalAlignment="Left" 
+        Height="39" 
+        Width="232"
+        Margin="23,41,0,0" 
+        TextWrapping="Wrap"     
+        materialDesignMahApps:HintAssist.Hint="PESQUISAR"
+        CharacterCasing="Upper"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+        VerticalAlignment="Top"             Grid.Column="1"
+            KeyUp="tbPesquisa_KeyUp"/>
 
+        <ComboBox x:Name="cbFiltro"
+                TabIndex="1" IsTabStop="True"
+                Margin="275,40,533,0" 
+                materialDesignMahApps:HintAssist.Hint="FILTRAR POR" 
+                IsEditable="True" 
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                Height="39"
+                SelectedIndex="0"                              
+                VerticalAlignment="Top" 
+                IsReadOnly="True" 
+                Grid.Column="1" SelectionChanged="cbFiltro_SelectionChanged">
+            <ComboBoxItem Content="Nome"/>
+            <ComboBoxItem Content="CPF"/>
+            <ComboBoxItem Content="Telefone"/>
+            <ComboBoxItem Content="Celular"/>
+            <ComboBoxItem Content="E-mail"/>
+        </ComboBox>
+
+        <DatePicker HorizontalAlignment="Left" Margin="735,55,0,0" VerticalAlignment="Top" Width="100" 
+            Tag="*" x:Uid="Data Inicial"
+            TabIndex="4"
+            materialDesignMahApps:HintAssist.Hint="DATA INICIAL" x:Name="tbDataInicial" 
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Grid.Column="1" Height="25" 
+                    SelectedDateChanged="tbDataInicial_SelectedDateChanged"
+                    />
+        <DatePicker HorizontalAlignment="Left" Margin="855,55,-48,0" VerticalAlignment="Top" Width="100" 
+            Tag="*" x:Uid="Data Final"
+            TabIndex="5"
+            materialDesignMahApps:HintAssist.Hint="DATA FINAL" x:Name="tbDataFinal"
+            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Grid.Column="1" Height="25" 
+                    SelectedDateChanged="tbDataInicial_SelectedDateChanged"
+                    
+                    />
+        <Border   Grid.Row="1" Grid.Column="1"
+                          Padding="0" 
+                          BorderBrush="#FFE6E4E4" BorderThickness="1" Margin="23,10,-216,20" HorizontalAlignment="Left" Width="1093">
+            <ListView x:Name="lvwConsultas"
+            Padding="0"
+            Margin="0,-1,-1,-1"
+                      MouseDoubleClick="lvwConsultas_MouseDoubleClick"
+                      KeyDown="lvwConsultas_KeyDown"
+             Grid.Row="1" Grid.Column="1" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn  DisplayMemberBinding="{Binding data, StringFormat=\{0:dd/MM/yyyy\}}"   Width="80"  Header="Data"/>
+                        <GridViewColumn  DisplayMemberBinding="{Binding horarioFormatado}"                      Width="85"  Header="Horário"/>
+                        <GridViewColumn  DisplayMemberBinding="{Binding formaDeAtentimentoFormatado}"           Width="90"  Header="Tipo"/>
+                        <GridViewColumn  DisplayMemberBinding="{Binding retornoFormatado}"                      Width="87"  Header="Retorno"/>
+                        <GridViewColumn  DisplayMemberBinding="{Binding cliente}"                               Width="260" Header="Paciente"/>
+                        <GridViewColumn  DisplayMemberBinding="{Binding cpfFormatado}"                          Width="130" Header="CPF"/>
+                        <GridViewColumn  DisplayMemberBinding="{Binding medico}"                                Width="260" Header="Oftalmologista"/>
+                        <GridViewColumn  DisplayMemberBinding="{Binding valorFormatado}"                        Width="80"  Header="Valor"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+        <ComboBox x:Name="cbMedicos"
+            TabIndex="3" IsTabStop="True"
+            Margin="515,40,193,0" 
+            materialDesignMahApps:HintAssist.Hint="OFTALMOLOGISTA" 
+            IsEditable="True" 
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            Height="39"
+            SelectedIndex="0"
+            SelectionChanged="cbFiltro_SelectionChanged"       
+            VerticalAlignment="Top" IsReadOnly="True" Grid.Column="1" />
+
+        <ComboBox x:Name="cbTipo"
+            TabIndex="2" IsTabStop="True"
+            Margin="395,40,413,0" 
+            materialDesignMahApps:HintAssist.Hint="TIPO" 
+            IsEditable="True" 
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            Height="39"
+            SelectedIndex="0"
+            SelectionChanged="cbFiltro_SelectionChanged"
+                              
+            VerticalAlignment="Top" IsReadOnly="True" Grid.Column="1">
+            <ComboBoxItem Content="TODOS"/>
+            <ComboBoxItem Content="Particular"/>
+            <ComboBoxItem Content="Convênio"/>
+        </ComboBox>
+
+    </Grid>
 </controls:MetroWindow>

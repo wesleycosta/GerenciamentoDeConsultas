@@ -17,7 +17,7 @@
         Loaded="MetroWindow_Loaded">
     <Grid>
         <Grid Grid.Row="0" Margin="20, 20, 20, 90">
-            <Label  Width="400" Height="170" FontWeight="Bold">IMAGEM 400X170</Label>
+            <Label  Width="400" Height="170" FontWeight="Bold" Visibility="Hidden">IMAGEM 400X170</Label>
         </Grid>
 
         <Grid Grid.Row="1" HorizontalAlignment="Stretch" Margin="0,211,0,0">

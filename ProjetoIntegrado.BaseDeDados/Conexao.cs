@@ -16,6 +16,10 @@ namespace ProjetoIntegrado.BaseDeDados
         public static SqlDataReader Leitor { get; set; }
         public static ConfiguracaoArquivo Configuracao { get; private set; }
 
+        public static string StringDeConexao { get; private set; }
+        public static string StringDeConexaoMaster { get; private set; }
+
+
         public static bool Iniciar()
         {
             Configuracao = ConfiguracaoArquivo.Carregar();
@@ -32,14 +36,17 @@ namespace ProjetoIntegrado.BaseDeDados
         {
             if (Configuracao.IsLocalhost)
             {
-                ConexaoSQL = new SqlConnection(GetStrDeConexaoLocal(Configuracao.banco));
-                ConexaoMaster = new SqlConnection(GetStrDeConexaoLocal("master"));
+                StringDeConexao = GetStrDeConexaoLocal(Configuracao.banco);
+                StringDeConexaoMaster = GetStrDeConexaoLocal("master");
             }
             else
             {
-                ConexaoSQL = new SqlConnection(GetStrDeConexaoRede(Configuracao.banco));
-                ConexaoMaster = new SqlConnection(GetStrDeConexaoRede("master"));
+                StringDeConexao = GetStrDeConexaoRede(Configuracao.banco);
+                StringDeConexaoMaster = GetStrDeConexaoRede("master");
             }
+
+            ConexaoSQL = new SqlConnection(StringDeConexao);
+            ConexaoMaster = new SqlConnection(StringDeConexaoMaster);
         }
 
         private static string GetStrDeConexaoRede(string nomeBanco) =>

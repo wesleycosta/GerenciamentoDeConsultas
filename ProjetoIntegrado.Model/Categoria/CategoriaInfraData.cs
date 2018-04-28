@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace ProjetoIntegrado.Model
 {
-    using BaseDeDados;
     using View;
+    using BaseDeDados;
 
     public partial class CategoriaModel : ICadastro
     {
@@ -117,7 +117,7 @@ namespace ProjetoIntegrado.Model
             var lista = new List<CategoriaModel>();
             try
             {
-                var cmd = $@"SELECT
+                var cmd = $@"SELECT TOP 50
 	                            id_categoria,
 	                            descricao,
 	                            ativo

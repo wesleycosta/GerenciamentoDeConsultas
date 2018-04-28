@@ -1,20 +1,25 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using ProjetoIntegrado.ViewUtil;
 
 namespace ProjetoIntegrado.View.Login
 {
     using Model;
+    using ViewUtil;
 
     public partial class LoginWin
     {
-        public LoginWin(Window splashInicial)
+        private bool trocarUsuario;
+
+        public LoginWin(Window splashInicial, bool trocarUsuario = false)
         {
             InitializeComponent();
-            splashInicial.Close();
-            imgLogin.BitmapToImageSource(Icons.eyeglasses);
+            this.trocarUsuario = trocarUsuario;
 
+            if (!trocarUsuario)
+                splashInicial.Close();
+
+            imgLogin.BitmapToImageSource(Icons.eyeglasses);
             Loaded += (o, a) => CarregarUsuarios();
         }
 
@@ -23,15 +28,21 @@ namespace ProjetoIntegrado.View.Login
         private void CarregarUsuarios()
         {
             var usuarios = FuncionarioModel.CarregarTodos().Select(x => x.usuario).Where(x => x != string.Empty).ToList();
-
             cbUsuario.Items.Clear();
+
+            cbUsuario.Items.Add("ADMINISTRADOR");
             usuarios.ForEach(x => cbUsuario.Items.Add(x));
         }
 
         private void CriarTelaPrincipal()
         {
-            var frmPrincipal = new Principal.JanelaPrincipalWin(this);
-            frmPrincipal.ShowDialog();
+            if (!trocarUsuario)
+            {
+                var frmPrincipal = new Principal.JanelaPrincipalWin(this);
+                frmPrincipal.ShowDialog();
+            }
+            else
+                Close();
         }
 
         private bool Validar() =>
@@ -39,23 +50,18 @@ namespace ProjetoIntegrado.View.Login
 
         private void RealizarLogin()
         {
-            var f = new FuncionarioModel { id = 1 };
-            f.Carregar();
-            Sessao.funcionario = f;
-            CriarTelaPrincipal();
+            if (Validar())
+            {
+                var login = new LoginModel();
+                var autenticou = login.Autenticar(cbUsuario.Text, tbSenha.Password);
 
-            //if (Validar())
-            //{
-            //    var login = new LoginModel();
-            //    var autenticou = login.Autenticar(cbUsuario.Text, tbSenha.Password);
-
-            //    if (autenticou)
-            //        CriarTelaPrincipal();
-            //    else
-            //        lbInvalido.Visibility = Visibility.Visible;
-            //}
-            //else
-            //    lbInvalido.Visibility = Visibility.Visible;
+                if (autenticou)
+                    CriarTelaPrincipal();
+                else
+                    lbInvalido.Visibility = Visibility.Visible;
+            }
+            else
+                lbInvalido.Visibility = Visibility.Visible;
         }
 
         #endregion

@@ -1,0 +1,43 @@
+﻿<controls:MetroWindow 
+    x:Class="ProjetoIntegrado.View.Consultas.Material.CadMaterialCirurgiaWin"
+    xmlns:local="clr-namespace:ProjetoIntegrado.View.Consultas.Material"
+    
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        
+        Style="{StaticResource WindowSimples}"
+        WindowStartupLocation="CenterScreen"
+    
+        Title="CADASTRAR MATERIAL" 
+        Height="223.169" 
+        Width="385.575"
+        KeyDown="MetroWindow_KeyDown"
+>
+    <Grid>
+        <ComboBox x:Name="cbMaterial"
+                  Tag="*"
+                  Uid="Material"
+            TabIndex="0" IsTabStop="True"
+            Margin="21,20,0,0" 
+            materialDesign:HintAssist.Hint="MATERIAL" 
+            IsEditable="True" 
+            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+            Height="39"
+            SelectionChanged="cbMaterial_SelectionChanged"
+            SelectedIndex="0"
+            VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="339" />
+
+        <TextBox x:Name="tbQtdParcelas"    KeyUp="tbQtdParcelas_KeyUp"  Tag="*" x:Uid="Quantidade" TabIndex="1" HorizontalAlignment="Left" HorizontalContentAlignment="Center" TextAlignment="Center" Height="38" Width="120" Margin="21,82,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="QUANTIDADE" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+        <TextBox x:Name="tbValor"          IsReadOnly="True" IsTabStop="False"  HorizontalAlignment="Left" HorizontalContentAlignment="Center" TextAlignment="Center" Height="38" Width="80" Margin="280,82,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="VALOR TOTAL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+        <TextBox x:Name="tbValorUnitario"  IsReadOnly="True" IsTabStop="False"  HorizontalAlignment="Left" HorizontalContentAlignment="Center" TextAlignment="Center" Height="38" Width="99" Margin="161,82,0,0" TextWrapping="Wrap"      CharacterCasing="Upper" materialDesign:HintAssist.Hint="VALOR UNITÁRIO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"    VerticalAlignment="Top"  />
+
+        <Button x:Name="BtnSalvar"   Click="BtnSalvar_OnClick" TabIndex="2" Content="Salvar" HorizontalAlignment="Left" Height="35" Margin="104,141,0,0" VerticalAlignment="Top" Width="122"/>
+        <Button x:Name="BtnCancelar" Click="BtnCancelar_OnClick" TabIndex="3" Content="Cancelar" HorizontalAlignment="Left" Height="35" Margin="236,141,0,0" VerticalAlignment="Top" Width="124"/>
+    </Grid>
+</controls:MetroWindow>
