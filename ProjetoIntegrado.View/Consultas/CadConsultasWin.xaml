@@ -137,7 +137,7 @@
                     <Button x:Name="BtnCancelar" Click="BtnCancelar_Click" TabIndex="25" Content="Cancelar" HorizontalAlignment="Right" Height="34" Margin="0,386,20,0" VerticalAlignment="Top" Width="124"/>
                     <Label x:Name ="lbCodigoText" Content="Código:" HorizontalAlignment="Left" Margin="20,400,0,0" VerticalAlignment="Top"/>
 
-                    <Label x:Name="lbObservacao" Foreground="#3949AB"  FontSize="09" FontWeight="SemiBold"  Content="Consulta remarcada de 20/10/2018 ás 13:00 para 20/10/2018 ás 13:00" HorizontalAlignment="Left" Margin="20,375,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbObservacao" Foreground="#3949AB"  FontSize="09" FontWeight="SemiBold" HorizontalAlignment="Left" Margin="20,375,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lbCodigo" Content="000" HorizontalAlignment="Left" Margin="71,401,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
 
                     <Border x:Name="bordaProcurar" Cursor="Hand" Background="#fafafa" BorderBrush="Gainsboro" BorderThickness="1" Margin="276,35,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="28" Height="26">

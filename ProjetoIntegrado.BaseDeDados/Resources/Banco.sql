@@ -113,12 +113,6 @@ CREATE TABLE clinica
     FOREIGN KEY(id_endereco) REFERENCES endereco (id_endereco)
 ); 
 
-CREATE TABLE categoria 
-( 
-    id_categoria		INT PRIMARY KEY			IDENTITY, 
-    descricao			VARCHAR(255)			NOT NULL, 
-    ativo				BIT						NULL DEFAULT  1 
-); 
 
 CREATE TABLE diagnostico 
 ( 
@@ -257,14 +251,6 @@ VALUES
 	('CARTÃO DE CRÉDITO'),
 	('BOLETO'),
 	('DEPÓSITO');
-
-INSERT INTO categoria 
-	(descricao)
-VALUES
-	('PRESBIOPIA'),
-	('MIOPIA'),
-	('HIPERMETROPIA'),
-	('ASTIGMATISMO');
 
 INSERT INTO cargo 
 	(descricao)

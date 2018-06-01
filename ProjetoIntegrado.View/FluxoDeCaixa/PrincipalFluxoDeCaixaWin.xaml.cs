@@ -72,7 +72,8 @@ namespace ProjetoIntegrado.View.FluxoDeCaixa
 
         private void CarregarEntradas()
         {
-            var lista = Sessao.caixa.CarregarEntrada();
+			lvwEntrada.Items.Clear();
+			var lista = Sessao.caixa.CarregarEntrada();
             totalEntrada = (double)lista.Sum(x => x.listaDePagamentos.Sum(z => z.valor));
 
             foreach (var c in lista)
